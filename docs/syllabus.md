@@ -22,6 +22,14 @@ Upon completing this course, each student will be able to:
 
 - [The Art of Computer Programming Volume 1](https://www-cs-faculty.stanford.edu/~knuth/taocp.html)
 
+## Classes
+
+Each 2 hour block will be broken down as follows:
+
+- 30 minutes of lecture
+- 60 minutes of lab work
+- 25 minutes of code review
+
 ## Lab Sessions
 
 All lab sessions will involve group programming activities, where 5-7 people will work together to solve challenging problems. 
