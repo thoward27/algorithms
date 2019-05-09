@@ -67,3 +67,13 @@ Any student with a documented disability is welcome to contact me as early in th
 It is the policy of the University of Rhode Island to accord students, on an individual basis, the opportunity to observe their traditional religious holidays. Students desiring to observe a holiday of special importance must provide written notification to each instructor.
 
 
+## TA Instructions
+
+1. Clone the public repository (`git clone git@github.com:thoward27/algorithms.git`)
+2. Checkout branch dev (`git checkout -b dev`)
+3. Add the private remote (`git remote add private git@github.com:thoward27/_algorithms.git')
+4. Pull from the remote ('git pull private`)
+5. Enjoy!
+
+Be sure that when you're dealing with solutions, or WIP, that you ensure you push only to private. The branch Dev should never be pushed to the public facing repo, accidental pushes will be hard wiped immediately, **all data will be lost**.
+
