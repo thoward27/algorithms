@@ -72,8 +72,8 @@ It is the policy of the University of Rhode Island to accord students, on an ind
 1. Clone the public repository (`git clone git@github.com:thoward27/algorithms.git`)
 2. Checkout branch dev (`git checkout -b dev`)
 3. Add the private remote (`git remote add private git@github.com:thoward27/_algorithms.git')
-4. Pull from the remote ('git pull private`)
-5. Enjoy!
+4. Fetch from the remote ('git fetch private`)
+5. Checkout dev to work, merge to master when you're ready to publish.
 
 Be sure that when you're dealing with solutions, or WIP, that you ensure you push only to private. The branch Dev should never be pushed to the public facing repo, accidental pushes will be hard wiped immediately, **all data will be lost**.
 
