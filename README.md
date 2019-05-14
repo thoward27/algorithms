@@ -7,3 +7,4 @@ Here are some select resources:
 - [Syllabus](docs/syllabus.md)
 - [Schedule](docs/schedule.md)
 - [Github Quickstart](docs/github.md)
+- [Crash Course C++](docs/CrashCourseCpp.html)
