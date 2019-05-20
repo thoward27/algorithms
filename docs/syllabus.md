@@ -14,22 +14,31 @@ Upon completing this course, each student will be able to:
 
 ## Recommended Textbooks
 
+- [Accelerated C++](https://www.amazon.com/Accelerated-C-Practical-Programming-Example/dp/020170353X)
 - [OpenDSA](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/index.html)
 
-## Classes
+## Class outline
 
-Classes this semester are all 2-hours in length, we will try to adhere to the following structure: 30 minutes of lecture, 60 minutes of lab work, 30 minutes of review.
+Throughout this semester we will loosely follow this format:
 
-During class all electronic devices must be used for educational purposes only, failure to do so will result in a 0 for attendance.
-
-All lab work will involve group programming activities, where 5-7 people will work together to solve challenging problems.
+- 30 minutes of lecture, writing pseudo-code and analyzing algorithms
+- 60 minutes of coding in groups
+- 30 minutes of review
 
 ## Programming Assignments
 
 Throughout the semester there will be weekly programming assignments where students will be asked to implement various algorithms and data structures in C/C++.
 These assignments will be autograded for functionality, and manually graded for code-quality.
 
-**These assignments are to be done individually.**
+Grading will be as follows:
+
+- Functional Correctness: 50-90 points
+- Readability: Remainder of points
+
+Throughout the semester I will be conducting randomized code reviews, where you will be asked to discuss your code in-depth.
+If you fail a code review you will receive a 0 for the assignment, if it is believed that you plagiarized, then I **must** report you to the Dean.
+
+**These assignments are to be done invidually.**
 
 We will be using advanced plagiarism detection techniques to compare all students code to both other submissions, as well as online resources.
 If your code is deemed to have been shared with other students, or you are suspected of taking code from online resources, you will be reported to the dean immediately.
@@ -57,12 +66,13 @@ The two portions of this exam will be weighted equally.
 - During the entire exam:
   - One hand-written 8.5" x 11" cheat sheet (double sided is fine)
 - During the programming portion:
+  - Your cheat sheet
   - [devdocs.io](devdocs.io) will be setup with C++ cached for offline use
 
 ## Grading
 
 Each assignment in this course will be associated with some number of points.
-You're final grade will be the number of points you accrue over 2,000.
+You're final grade will be the number of points you accrue divided by 2,000.
 
 ## Academic Enhancement Center
 
