@@ -6,5 +6,7 @@ Here are some select resources:
 
 - [Syllabus](docs/syllabus.md)
 - [Schedule](docs/schedule.md)
-- [Github Quickstart](docs/github.md)
-- [Crash Course C++](docs/CrashCourseCpp.html)
+- [Github Handbook](docs/github.md)
+- [IDE Guide](docs/IDE.md)
+- [Crash Course C++](docs/CrashCourseCpp.pdf)
+- [Slack Room](https://csc212.slack.com/)

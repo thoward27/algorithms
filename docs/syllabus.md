@@ -16,18 +16,22 @@ Upon completing this course, each student will be able to:
 
 - [OpenDSA](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/index.html)
 
-## Lab Sessions
+## Classes
 
-All lab sessions will involve group programming activities, where 5-7 people will work together to solve challenging problems. 
+Classes this semester are all 2-hours in length, we will try to adhere to the following structure: 30 minutes of lecture, 60 minutes of lab work, 30 minutes of review.
+
+During class all electronic devices must be used for educational purposes only, failure to do so will result in a 0 for attendance.
+
+All lab work will involve group programming activities, where 5-7 people will work together to solve challenging problems.
 
 ## Programming Assignments
 
 Throughout the semester there will be weekly programming assignments where students will be asked to implement various algorithms and data structures in C/C++.
 These assignments will be autograded for functionality, and manually graded for code-quality.
 
-**These assignments are to be done invidually.**
+**These assignments are to be done individually.**
 
-We will be using advanced plagarism detection techniques to compare all students code to both other submissions, as well as online resources.
+We will be using advanced plagiarism detection techniques to compare all students code to both other submissions, as well as online resources.
 If your code is deemed to have been shared with other students, or you are suspected of taking code from online resources, you will be reported to the dean immediately.
 You are better off getting a 0 than trying to cheat theses assignments.
 
@@ -35,16 +39,16 @@ You are better off getting a 0 than trying to cheat theses assignments.
 
 Exams for this class will be held during lecture times, in the Tyler Hall computer lab, and will proceed as follows:
 
-1. (30 Minutes) A written exam, focusing on conceptual understanding.
+1. (40 Minutes) A written exam, focusing on conceptual understanding.
 2. (10 Minute Break)
-3. (30 Minutes) A programming challenge, focusing on problem solving skills.
+3. (40 Minutes) A programming challenge, focusing on problem solving skills.
 
 The two portions of this exam will be weighted equally.
 
 ### Things that you cannot do during an exam
 
 - No electronic devices (If I see any device other than the lab computer you will receive a 0 and be asked to leave the exam).
-- No leaving the room during the 30 minute blocks.
+- No leaving the room during the examination blocks.
 - No teamwork, exams are completely solo efforts.
 - No internet access (If your device pings, you will receive a 0 and be asked to leave the room)
 

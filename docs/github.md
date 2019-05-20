@@ -1,4 +1,6 @@
-# Github Quickstart for 212 
+# Github Handbook for 212
+
+[View the official Handbook](https://guides.github.com/introduction/git-handbook/)
 
 ## Student Instructions
 
