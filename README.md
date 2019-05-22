@@ -15,17 +15,23 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Homeworks
 
-### Due May 23
+### Due May 23 (Midnight)
 
 - [Code Signal](https://app.codesignal.com/) Practice Test with your favorite language (1 hr)
+- [Apply for the Github Student Developer Pack](https://education.github.com/pack)
+- Read Accelerated C++ Chapters 1, 2
 
 ### Due May 22
 
 #### In your browser
 
+##### VS Code
+
 1. Go to [VS Code: Getting Started](https://code.visualstudio.com/docs/getstarted/introvideos)
 2. Watch introductory videos (36 m)
 3. Read Tips and Tricks, User Interface, Themes, and Settings (1 hr)
+
+##### DevDocs
 
 1. Go to [devdocs](https://devdocs.io/)
 2. Enable C++
@@ -36,6 +42,6 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 - Install C++ Extensions
 
-#### Readings 
+#### Readings
 
-- Read Chapter 1: Accelerated C++ (30 m) 
+- Read Chapter 0: Accelerated C++ (30 m)
