@@ -10,6 +10,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [IDE Guide](docs/IDE.md)
 - [Crash Course C++](docs/CrashCourseCpp.pdf)
 - [Slack Room](https://csc212.slack.com/)
+- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
 
 ---
 
