@@ -2,10 +2,11 @@
 
 ## Online IDEs
 
-This section contains some helpful online IDEs.
+This section contains some helpful online IDEs that can be used for in-class work.
 
-1. [repl](https://repl.it/) (No private repos allowed for free, meaning you cannot complete assignments using the free version)
-2. [StackBlitz](https://stackblitz.com/) (No private repos allowed for free)
+1. [Gitpod](https://www.gitpod.io/)
+2. [repl](https://repl.it/)
+3. [StackBlitz](https://stackblitz.com/)
 
 ## Linux
 
@@ -23,7 +24,7 @@ You are more than welcome to try, but we highly recommend booting into Linux dir
 1. Booting Linux, like [Ubuntu](https://www.ubuntu.com/)
 2. [Coder](https://coder.com/) (Requires: [Docker Desktop](https://docs.docker.com/docker-for-windows/install/))
 
-## Windows 10 Home
+### Windows 10 Home
 
 1. Booting Linux, like [Ubuntu](https://www.ubuntu.com/)
 2. [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
