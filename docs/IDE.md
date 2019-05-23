@@ -2,10 +2,11 @@
 
 ## Online IDEs
 
-This section contains some helpful online IDEs.
+This section contains some helpful online IDEs that can be used for in-class work.
 
-1. [repl](https://repl.it/) (No private repos allowed for free, meaning you cannot complete assignments using the free version)
-2. [StackBlitz](https://stackblitz.com/) (No private repos allowed for free)
+1. [Gitpod](https://www.gitpod.io/)
+2. [repl](https://repl.it/)
+3. [StackBlitz](https://stackblitz.com/)
 
 ## Linux
 
