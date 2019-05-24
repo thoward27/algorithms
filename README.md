@@ -16,6 +16,10 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Homeworks
 
+### Due May 30
+
+- [Kattis Competition](https://open.kattis.com/contests/gk5vue/edit)
+
 ### Due May 23 (Midnight)
 
 - [Code Signal](https://app.codesignal.com/) Practice Test with your favorite language (1 hr)
