@@ -10,39 +10,20 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [IDE Guide](docs/IDE.md)
 - [Crash Course C++](docs/CrashCourseCpp.pdf)
 - [Slack Room](https://csc212.slack.com/)
-- [Git Cheat Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
+- [DevDocs](https://devdocs.io/)
+- [Cheat Sheets](docs/cheat_sheets/)
 
 ---
 
-## Homeworks
+## Assignments
 
-### Due May 23 (Midnight)
+- [A01: Kattis Competition](docs/assignments/A01.md)
+- [A00: Practice Test](docs/assignments/A00.md)
 
-- [Code Signal](https://app.codesignal.com/) Practice Test with your favorite language (1 hr)
-- [Apply for the Github Student Developer Pack](https://education.github.com/pack)
-- Read Accelerated C++ Chapters 1, 2
+## Readings
 
-### Due May 22
-
-#### In your browser
-
-##### VS Code
-
-1. Go to [VS Code: Getting Started](https://code.visualstudio.com/docs/getstarted/introvideos)
-2. Watch introductory videos (36 m)
-3. Read Tips and Tricks, User Interface, Themes, and Settings (1 hr)
-
-##### DevDocs
-
-1. Go to [devdocs](https://devdocs.io/)
-2. Enable C++
-3. Navigate to “Offline Data” (Use the 3 dots on the lefthand side of the screen)
-4. Install C++ Package
-
-#### In VS Code
-
-- Install C++ Extensions
-
-#### Readings
-
-- Read Chapter 0: Accelerated C++ (30 m)
+- [Accelerated C++](https://www.google.com/search?q=accelerated+c%2B%2B&oq=accelerated+c%2B%2B&aqs=chrome..69i57j69i60j0l4.2026j0j7&client=ubuntu&sourceid=chrome&ie=UTF-8)
+  - Chapters: 0, 1, 2, 3, 4, 5
+- [VS Code: Getting Started](https://code.visualstudio.com/docs/getstarted/introvideos)
+  - Watch: Introductory Videos (all)
+  - Read: Tips and Tricks, User Interface, Themes, and Settings
