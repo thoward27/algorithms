@@ -171,7 +171,7 @@ int round(double, char);
 TEST_CASE("Round a float.") {
     SUBCASE("Up") {
         CHECK(round(2.1, 'u') == 3);
-        CHECK(round(-4.6, 'u') == 4);
+        CHECK(round(-4.6, 'u') == -4);
     }
     SUBCASE("Down") {
         CHECK(round(4.6, 'd') == 4);
