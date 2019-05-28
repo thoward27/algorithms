@@ -22,6 +22,8 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Readings
 
+- [OpenDSA](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/)
+  - Chapters: 4, 6, 8, 10
 - [Accelerated C++](https://www.google.com/search?q=accelerated+c%2B%2B&oq=accelerated+c%2B%2B&aqs=chrome..69i57j69i60j0l4.2026j0j7&client=ubuntu&sourceid=chrome&ie=UTF-8)
   - Chapters: 0, 1, 2, 3, 4, 5
 - [VS Code: Getting Started](https://code.visualstudio.com/docs/getstarted/introvideos)
