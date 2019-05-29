@@ -316,7 +316,7 @@ TEST_CASE("testing sorted array check function") {
   CHECK(is_sorted(arr1, 1));
 
   int arr2[2] = {5, 4};
-  CHECK(!is_sorted(arr2, 2));
+  CHECK(is_sorted(arr2, 2));
 
   int arr3[6] = {1, 1, 3, 3, 5, 5};
   CHECK(is_sorted(arr3, 6));
