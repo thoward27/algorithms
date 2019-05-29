@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Functions 1</title>
+    <meta charset="utf-8">
+    <style>
+
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+      @import "style.css";
+    
+    </style>
+    <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+
+---
+class: center, middle
+
+# Functions on Arrays
+
+---
+
+## Agenda
+
+1. Asymptotic Analysis: Dominant Terms
+2. Working with Arrays in C++
+
+---
+class: center, middle
+
+## Asymptotic Analysis: Dominant Terms
+
+---
+
+## Some Calculous
+
+We can think of asymptotic analysis as a limit problem:
+
+$$O(kn^2) \rightarrow \lim_{n \rightarrow \infty} O(kn^2) = O(n^2)$$
+
+As $n \rightarrow \infty$, we know that $k$ becomes irrelevant.
+
+Hence, when we describe "Big-Oh" notation for a given algorithm, we will always denote just the dominant term.
+
+---
+
+## What is the Big-Oh notation?
+
+$$O(2n)$$
+
+$$O(n! + n^2)$$
+
+$$O(\frac{2^n}{2} + 80n)$$
+
+$$O(1,000n + n^3)$$
+
+$$O(n * \log{n} + \sqrt{n})
+
+$$O(n + n + n + n)$$
+
+---
+class: center, middle
+
+## Working with Arrays in C++
+
+---
+
+## You Shall Not Pass ... by value
+
+- Arrays in C++ cannot be passed by value
+- They can only be passed as pointers (or references)
+
+--
+
+There are a few different ways to pass arrays:
+
+```c++
+double sum(int *array, int n) {
+    // Things
+}
+
+double sum(int array[], int n) {
+    // Things
+}
+
+// Very uncommon, fixed size array passing.
+double sum(int array[10]) {
+    // Things
+}
+```
+
+--
+
+**In this class we will deal with the first two syntaxes**
+
+---
+
+## You Shall (Also) Not Return Arrays
+
+- C++ does not allow you to return arrays by value
+- Again, you must use a pointer
+
+So, how can we return arrays?
+
+--
+
+We cannot rely on stack allocation, since the memory will be freed when the function returns.
+
+--
+
+Thus our function must either directly modify the array it is passed, or allocate a new array on the heap to return.
+
+--
+
+**Or**, we can define new classes that handle dynamic allocation for us!
+
+---
+
+## Your turn to implement and analyze some functions!
+
+1. Make sure you have updated your repository.
+2. Navigate to the `source` directory.
+3. You should see a `functions.hpp` header file full of new functions that handle arrays.
+4. It is your job to create `functions.cpp`, implement and analyze the functions, and pass all of the unit tests.
+
+Be sure to write clean, concise code, remember there are 25 points up for grabs!
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
