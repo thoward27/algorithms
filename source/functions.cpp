@@ -2,86 +2,62 @@
 #include "functions.hpp"
 
 int abs_val(int x) {
-    return (x > 0) ? x : x * -1;
+  return (x > 0) ? x : x * -1;
 }
 
-int pow(int base , int num){
-    if (num == 0){
-        return 0;
-    }else if(num == 1){
-        return base;
-    }else{
-        int ans = base;
-        for(int i = 0; i < num; ++i){
-            ans *= base;
-        }
-        return ans;
-    }
-    
+int pow(int base, int num) {
+  int ret = 1;
+  for (int i = 0; i < num; ++i) {
+    ret *= base;
+  }
+  return ret;
 }
 
 int log(int base, int num) {
-    int count = 0;
-    while (num > 1) {
-        num /= base;
-        count++;
-    }
-    return count;
+  int count = 0;
+  for (num; num > 1; num /= base)
+    count++;
+  return count;
 }
 
 int chartoint(char c) {
-    int result = (int) c;
-    result -= 48;
-    return result;
+  int result = (int)c;
+  result -= 48;
+  return result;
 }
 
 char inttochar(int x) {
-    return (char) (x + 48);
+  return (char)(x + 48);
 }
 
 char chr(int x) {
-    return (char) x;
+  return (char)x;
 }
-
 
 int ord(char c) {
-    return (int) c;
+  return (int)c;
 }
 
-int max(int x, int y){
-    return(x > y)? x : y;
+int max(int x, int y) {
+  return (x > y) ? x : y;
 }
 
-int max(int x, int y, int z){
-    int max1 = (x > y)? x : y;
-    return (max1 > z)? max1 : z;
-
+int max(int x, int y, int z) {
+  return max(x, max(y, z));
 }
 
-int min(int x, int y){
-    return(x < y)? x : y;
+int min(int x, int y) {
+  return (x < y) ? x : y;
 }
 
-int min(int x, int y, int z){
-    int min1 = (x < y)? x : y;
-    return (min1 < z)? min1 : z;
+int min(int x, int y, int z) {
+  return min(x, min(y, z));
 }
 
-}   
-
-char chr(int x){
-    return (char)(x);
-}
-
-int ord(char x){
-    return int(x);
-}
-
-
-int round(double x, char c){
-    if(c == 'd'){
-        return (int)x;
-    }else{
-        return (int)(x+1);
-    }
+int round(double x, char c) {
+  if (x > 0) {
+    return (c == 'd') ? (int)x : (int)x + 1;
+  } else {
+    return (c == 'd') ? (int)x - 1 : (int)x;
+  }
 }
