@@ -16,18 +16,18 @@ int pow(int base, int num) {
 int log(int base, int num) {
   int count = 0;
   for (num; num > 1; num /= base)
-    count++;
+    ++count;
   return count;
 }
 
 int chartoint(char c) {
   int result = (int)c;
-  result -= 48;
+  result -= '0';
   return result;
 }
 
 char inttochar(int x) {
-  return (char)(x + 48);
+  return (char)(x + '0');
 }
 
 char chr(int x) {
