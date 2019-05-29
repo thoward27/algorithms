@@ -306,7 +306,7 @@ TEST_CASE("testing index function") {
 }
 
 /** Is sorted.
- * Returns if an array is strictly increasing, decreasing, or neither.
+ * Returns whether or not an array is monotonically increasing or decreasing.
  * O(?)
  */
 bool is_sorted(int arr[], int n);
@@ -316,13 +316,18 @@ TEST_CASE("testing sorted array check function") {
   CHECK(is_sorted(arr1, 1));
 
   int arr2[2] = {5, 4};
-  CHECK(!is_sorted(arr2, 2));
+  CHECK(is_sorted(arr2, 2));
 
   int arr3[6] = {1, 1, 3, 3, 5, 5};
   CHECK(is_sorted(arr3, 6));
 
   int arr4[5] = {1, 2, 3, 4, 3};
   CHECK(!is_sorted(arr4, 5));
+
+  int arr5[5] = {1, 2, 3, 2, 1};
+  CHECK(!is_sorted(arr5, 5));
+  CHECK(!is_sorted(arr5, 4));
+  CHECK(is_sorted(arr5, 3));
 }
 
 #endif
