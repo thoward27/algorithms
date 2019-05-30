@@ -62,81 +62,85 @@ int round(double x, char c) {
   }
 }
 
-/*O(n) */
 int max(int arr[], int n) {
   int max = arr[0];
   for (int i = 1; i < n; ++i) {
-    if (arr[i] > max) max = arr[i];
+    if (arr[i] > max)
+      max = arr[i];
   }
   return max;
 }
 
-/*O(n) */
 int min(int arr[], int n) {
   int min = arr[0];
   for (int i = 1; i < n; ++i) {
-    if (arr[i] < min) min = arr[i];
+    if (arr[i] < min)
+      min = arr[i];
   }
   return min;
 }
 
-/*O(n) */
 bool all(bool arr[], int n) {
-  bool result = true;
   for (int i = 0; i < n; ++i) {
-    if (!arr[i]) result = false;
+    if (!arr[i])
+      return false;
   }
-  return result;
+  return true;
 }
 
-/*O(n) */
 bool any(bool arr[], int n) {
   for (int i = 0; i < n; ++i) {
-    if (arr[i]) return true;
+    if (arr[i])
+      return true;
   }
   return false;
 }
 
-/*O(n) */
 int frequency(int arr[], int n, int x) {
   int count = 0;
   for (int i = 0; i < n; ++i) {
-    if (arr[i] == x) count++;
+    if (arr[i] == x)
+      count++;
   }
   return count;
 }
 
-/*O(n) */
 long sum(int arr[], int n) {
-  if (n == 1) return arr[0];
-  else return arr[0] + sum(arr+1, n-1);
+  long sum = 0;
+  for (int i = 0; i < n; ++i)
+    sum += arr[i];
+  return sum;
 }
 
-/*O(n)? */
 int index(char str[], char substr[]) {
-  // int index = -1;
-  // int i = 0;
-  // while (str[i] != '\0') {
-  //   int j = 0;
-  //   while (substr[j] != '\0') 
-  //   }
-  //   i++;
-  // }
-  // return index;
+  int i = 0;
+  int j = 0;
+  while (str[i] != '\0') {
+    if (substr[j] == '\0')
+      return i - j;
+    if (str[i] == substr[j])
+      ++j;
+    else
+      j = 0;
+    ++i;
+  }
+  if (substr[j] == '\0')
+    return i - j;
+  return -1;
 }
 
-/*O(n) */
 bool is_sorted(int arr[], int n) {
-  if (n == 1 || n == 2) return true;
-  int count = 1;
-  for (int i = 0; i < n - 1; ++i) {
-    if (arr[i] <= arr[i+1]) count++;
+  if (n <= 2)
+    return true;
+  else {
+    int increasing = 1, decreasing = 1;
+    for (int i = 0; i < (n - 1); ++i) {
+      if (arr[i] <= arr[i + 1])
+        ++increasing;
+
+      if (arr[i] >= arr[i + 1])
+        ++decreasing;
+    }
+    return (increasing == n || decreasing == n);
   }
-  if (count == n) return true;
-  count = 1;
-  for (int i = 0; i < n - 1; ++i) {
-    if (arr[i] >= arr[i+1]) count++;
-  }
-  if (count == n) return true;
-  else return false;
 }
