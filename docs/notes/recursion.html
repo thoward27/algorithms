@@ -67,7 +67,7 @@ $$
 \begin{align} 
 T(n) &= T(n - 1) + 1; T(0) = T(1) = 1 \\\\
 T(n - 1) &= T(n - 2) + 1 \\\\
-T(n) &= (T(n -1) + 1) + 1 \\\\
+T(n) &= (T(n - 2) + 1) + 1 \\\\
 T(n - 2) &= T(n - 3) + 1 \\\\
 T(n) &= ((T(n - 3) + 1) + 1) + 1 \\\\
 &= T(n - 3) + 3 \\\\
@@ -240,13 +240,13 @@ Algorithm sum(array, n):
 
 Algorithm sum(array, n):
   if n == 1:
-    return array[0] + array[1]
+    return array[0]
   else:
     return array[0] + sum(array[1:], n - 1)
 
 Algorithm sum(array, n):
   if n == 0:
-    return array[0] + array[1]
+    return 0; 
   else:
     return array[0] + sum(array[1:], n - 1)
 ```
