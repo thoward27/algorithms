@@ -6,15 +6,36 @@
 
 ## Student Instructions
 
-1. Visit the public repository's [website](https://github.com/thoward27/algorithms)
-2. Fork the repository (Button on the top right)
-3. Clone the forked repo to your computer (`git clone <your_repo_goes_here>`)
-4. CD into the freshly cloned repo (`cd algorithms`)
-5. [Configure a remote for your fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork)
-6. For each coding activity, you will create a branch for that specific work. (`git checkout -b <{lab, assignment}>/<topic>`)
-7. Push your changes to your own copy of the repo (`git push -u origin <{lab, assignment}>/<topic>`), note that `-u origin <branch>` is only necessary on the first push, subsequent pushes can use `git push origin`.
-8. If you need to submit a pull request, simply head to your online copy of the repo and select "Compare & pull request".
-9. Review the guidelines for contributing if you have not already, once your pull request adheres to the guidelines, create the request.
+1. Create a fork.
+   1. Visit the public repository's [website](https://github.com/thoward27/algorithms)
+   2. Fork the repository (Button on the top right)
+2. Cloning your fork
+   1. Navigate to your Github profile
+   2. Select your copy of the `algorithms` repository
+   3. Get the link to your repo from the big green button on the right side of the page.
+   4. In your terminal, navigate to where you'd like to save your work
+   5. Execute `git clone --recurse-submodules <your_repo_link_goes_here>`
+3. Configuring your new repository
+   1. CD into the freshly cloned repo (`cd algorithms`)
+   2. [Configure a remote for your fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork)
+   3. Make sure when you run `git remote -v` you see `upstream` with a link to my copy of `algorithms` (`https://github.com/thoward27/algorithms.git`)
+4. Working with your repository
+   1. Before beginning any work, you should update your copy of the repo from upstream.
+      1. Checkout the master branch `git checkout master`
+      2. Update from upstream `git fetch upstream && git merge upstream master`
+   2. Then create a new branch for your work `git checkout -b lab/<topic>`
+   3. Publish your changes with `git push -u origin lab/<topic>`
+   4. Do your work
+   5. Commit your changes to the branch
+      1. Stage all of you changes `git add *`
+      2. Commit them `git commit -m "<your message goes here>"`
+   6. Push them to the remote `git push`
+5. Opening a Pull Request
+   1. **You should only do this with explicit permission**
+   2. Navigate to your Github profile, and select the `algorithms` repository.
+   3. Select the branch you'd like to open a pull request from (normally the one from that days work)
+   4. Select "Open a Pull Request"
+   5. In the message, put all of your groups URI Emails so that I can update my gradebook
 
 ## TA Instructions
 
