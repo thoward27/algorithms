@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Functions</title>
+  <meta charset="utf-8">
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+    @import "style.css";
+  </style>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+
+<body>
+  <textarea id="source">
+
+name: inverse
+layout: true
+
+---
+class: center, middle
+
+# Functions on Arrays
+
+---
+
+## Agenda
+
+.two-columns[
+
+1. [Functions](#functions)
+   1. Why we write functions
+   2. How to write a function
+   3. What a function is, and isn't
+   4. Inputs / Outputs / Side Effects
+   5. Scope
+2. [Runtime Analysis](#runtime)
+   1. Empirical Analysis
+   2. Asymptotic Analysis
+      1. Big-Oh, Omega, Theta
+      2. Dominant Terms
+3. [Iterative Problem Solving](#iterative)
+   1. Iterative Programming
+   2. Working with singular variables
+   3. Working with arrays
+   4. Implementation and Analysis
+4. [Recursive Problem Solving](#recursive)
+   1. Recursive Programming
+   2. Recursive Definitions
+   3. Recurrence Relations
+   4. Re-Implement and Analyze Iterative Solutions
+5. [Review](#review)
+]
+
+---
+name: functions
+class: center, middle
+
+## Functions
+
+---
+
+### Why we write functions
+
+- To reuse code instead of re-writing it
+- To break programs into small, more manageable, sub-steps
+- To keep our namespace clean, since functions get their own unique scope
+- To test and ensure functionality in small components of code that have easily testable inputs / outputs / side effects
+
+---
+
+### How to write a function
+
+1. Define a clear purpose (notice a pattern of repeated code, or a small section that is completely independent from the rest of the program)
+2. Define the inputs to the program (what parameters the function will need)
+3. Define the steps the function should take, and the variables it will need, to complete it's goal (the algorithm)
+
+---
+
+### What a function is, and isn't
+
+```
+ReturnType function_name( parameters ) {
+    // This is inside of the functions scope.
+    statement1;
+    statement2;
+    statement3;
+    return something or nothing;
+}
+```
+
+.pull-left[
+
+#### A function is
+
+- A combination of multiple statements into a single line of code that accomplishes a single specific task
+- A "black box", once it's written we don't care how it works, only that it works, which should be tested and proven
+- A unique and isolated scope (or workspace) that can be used to solve a specific problem
+]
+
+.pull-right[
+
+#### A function is not
+
+- Multipurpose, it should only perform one task (think of addition, a specific and singular task)
+- More than 25 lines long (keep them short and easy to prove)
+- Cluttered with unneeded variables, only declare what you absolutely need, and always question if something can be removed
+]
+
+---
+
+### Inputs / Outputs / Side Effects
+
+- **Inputs** or parameters, are what a function receives, they should modify behavior so that the function can be flexible (EX: addition can take any two numbers, and it's output depends on them, it performs the specific task of addition on it's parameters)
+- **Outputs** are what a function returns
+- **Side Effects** are changes to the outside world's state that a function causes
+
+In general functions should either have outputs or side effects, but not both.
+For example, refer to `sort()` and `sorted()` in [Python](https://docs.python.org/3/howto/sorting.html).
+
+---
+
+#### Which of the following functions have outputs? Side effects? Both?
+
+```c++
+int add(int *a, int *b) {
+  return *a + *b;
+}
+
+void add(int *a, int *b) {
+  *a += *b;
+}
+
+int add(int *a, int *b) {
+  *a += *b;
+  return *a;
+}
+```
+
+---
+
+### Scope
+
+- Every block of code has it's own scope, denoted by the curly braces
+- Variables do not outlive their scope by default
+- Thus, all functions have their own unique scope, within which they can use anything they are *passed* as parameters, and anything they declare themselves
+- Unlike for-loops, or other forms of scope, functions cannot access variables they do not create or receive as parameters
+- This allows you to reuse variable names in different scopes! (EX: you can use *i* in every for loop, without name collisions)
+
+---
+name: runtime
+
+## Runtime Analysis
+
+How can we objectively compare how fast algorithms take to complete their given task?
+
+We analyze it's *runtime*.
+
+--
+
+Can you think of some ways we could measure a functions' runtime?
+
+---
+
+### Empirical Analysis
+
+- The process of actually running and timing code on your machine
+- What are some pros and cons to this approach?
+
+--
+
+.pull-left[
+
+#### Pros
+
+- Provides a way to compare similar algorithms
+- Extremely simple
+]
+
+.pull-right[
+
+#### Cons
+
+- Unreliable: machine and language dependent
+- Doesn't generalize to untested input sizes
+- Have to implement the algorithm
+- Can take months to complete timing certain functions
+- Need input data
+]
+
+--
+
+.footnote[
+
+##### We can do better
+
+]
+
+---
+
+### Asymptotic Analysis
+
+Determines how long an algorithm take as a function of its inputs by counting operations performed (addition, comparisons, etc)
+
+We have two primary ways to describe an algorithms asymptotic performance:
+
+- An Upper Bound, an algorithm can do no **worse** than this
+- A Lower Bound, an algorithm can do no **better** than this
+
+--
+
+Fortunately, we have specific notations to describe these bounds, so we don't have to always write "function $x$ has an upper bound of $y$".
+
+---
+
+#### Big-Oh, Omega, Theta
+
+- $O(?)$
+  - Pronounced "Big-Oh"
+  - Represents an upper-bound on the functions runtime as a function of it's inputs
+  - Does not indicate a "tight" upper bound
+- $\Omega(?)$
+  - Pronounced "Big-Omega"
+  - Represents a lower-bound on a functions runtime as a function of it's inputs
+  - Also does not indicate a tight bound
+- $\Theta(?)$
+  - Pronounced "Big-Theta"
+  - Only applicable when $O(f()) == \Theta(f())$ where $f()$ is some arbitrary function
+  - Represents the strongest promise, and should always be used when possible
+
+---
+
+#### What are the $O(), \Omega(), \Theta()$ notations for the following functions
+
+```c++
+int add(int a, int b) {
+  return a + b;
+}
+
+int fact(int n) {
+  int product = 1;
+  for (int i = 1; i < n; ++i)
+    product *= i;
+  return product;
+}
+
+void func(int n) {
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < n; ++j) {
+      std::cout << i + j << std::endl;
+    }
+  }
+}
+
+void funky(int n) {
+  while (n > 0) --n;
+  while (n < 0) ++n;
+}
+```
+
+---
+
+#### What are the $O(), \Omega(), \Theta()$ notations for the following functions (answers)
+
+```c++
+// O(1) Constant Time
+int add(int a, int b) {
+  return a + b;
+}
+
+// O(n) Linear
+int fact(int n) {
+  int product = 1;
+  for (int i = 1; i < n; ++i)
+    product *= i;
+  return product;
+}
+
+// O(n^2) Polynomial
+void func(int n) {
+  for (int i = 0; i < n; ++i) {
+    for (int j = 0; j < n; ++j) {
+      std::cout << i + j << std::endl;
+    }
+  }
+}
+
+// O(2n)
+void funky(int n) {
+  while (n > 0) --n;
+  while (n < 0) ++n;
+}
+```
+
+---
+
+#### Visual Growth Rates
+
+![Growth Rates](images/growth_rate1.png)
+
+We can see that $20n < n!$ as $n \rightarrow \inf$, but let's zoom in on smaller values of $n$
+
+---
+
+#### Visual Growth Rates (Zooming In)
+
+![Growth Rates](images/growth_rate2.png)
+
+It is not always clear cut that an asymptotically better algorithm is the better fit!
+
+---
+
+#### Dominant Terms
+
+We can think of asymptotic analysis as a limit problem:
+
+$$O(kn^2) \rightarrow \lim_{n \rightarrow \infty} O(kn^2) = O(n^2)$$
+
+As $n \rightarrow \infty$, we know that $k$ becomes irrelevant.
+
+Hence, when we describe "Big-Oh" notation for a given algorithm, we will always denote just the dominant term.
+
+--
+
+This leads to the important concept of "classes" of algorithms.
+
+Since we do not care about constants, we call all $O(kn)$ functions "linear", and denote them $O(n)$
+
+---
+
+#### Simplify the Following Equations
+
+Use what you've just learned about dominant terms
+
+$$O(2n)$$
+
+$$O(n + n^2)$$
+
+$$O(\frac{2^n}{2} + 80n)$$
+
+$$O(1,000n + n^3)$$
+
+$$O(n * \log{n} + \sqrt{n})$$
+
+$$O(n + n + n + n)$$
+
+---
+
+#### Simplify the Following Equations (answers)
+
+Use what you've just learned about dominant terms
+
+$$O(2n) = O(n)$$
+
+$$O(n + n^2) = O(n^2)$$
+
+$$O(\frac{2^n}{2} + 80n) = O(2^n)$$
+
+$$O(1,000n + n^3) = O(n^3)$$
+
+$$O(n * \log{n} + \sqrt{n}) = O(n \cdot \log n)$$
+
+$$O(n + n + n + n) = O(n)$$
+
+---
+
+#### Ordering Algorithms by Speed
+
+Where $c$ is some constant.
+
+| Notation             | Name            |
+| -------------------- | --------------- |
+| $O(1)$               | Constant        |
+| $O(\log{n})$         | Logarithmic     |
+| $O(\log{n}^c)$       | Polylogarithmic |
+| $O(n)$               | Linear          |
+| $O(n \cdot \log{n})$ | Linearithmic    |
+| $O(n^c)$             | Polynomial      |
+| $O(c^n)$             | Exponential     |
+| $O(n!)$              | Factorial       |
+
+---
+name: iterative
+
+## Iterative Problem Solving
+
+Uses *iterative* loops to solve problems.
+
+Can be thought of as building a recipe to solve a given problem, a formal set of instructions.
+
+---
+
+### Iterative Programming
+
+Iterative functions do not need to call themselves repeatedly to complete their task, usually the problem is entirely solved by a single function call.
+
+Example: Factorial
+
+```c++
+int factorial(int n) {
+  ret = 1;
+  for (int i = n; i > 0; --i) {
+    ret *= n;
+  }
+  return ret;
+}
+```
+
+---
+
+### Working with singular variables
+
+You can pass variables to functions in multiple ways in C++
+
+```c++
+// Pass by Address
+int func(int* x) {
+  // x is a pointer to a location in memory containing an integer.
+}
+
+// Pass by Value
+int func(int x) {
+  // x contains a copy of the value given to the function.
+}
+
+// Pass by Reference
+int func(int& x) {
+  // x is a reference to the original value from the caller.
+}
+```
+
+---
+class: middle
+
+### Working with arrays
+
+A much more complicated arrangement than simple variables.
+
+---
+
+#### You Shall Not Pass ... by value
+
+- Arrays in C++ cannot be passed by value
+- They can only be passed as pointers (or references)
+
+--
+
+There are a few different ways to pass arrays:
+
+```c++
+double sum(int *array, int n) {
+    // Things
+}
+
+double sum(int array[], int n) {
+    // Things
+}
+
+// Very uncommon, fixed size array passing.
+double sum(int array[10]) {
+    // Things
+}
+```
+
+--
+
+Notice the use of $n$ to denote the number of elements.
+Unless you're dealing with an array of characters, you must provide the number of elements.
+
+--
+
+**This class will deal with the first two syntaxes.**
+
+---
+
+#### You Shall (Also) Not Return Arrays
+
+- C++ does not allow you to return arrays by value either
+- Again, you must use a pointer
+
+So, how can we return arrays? Can we use stack allocation?
+
+--
+
+No, we cannot rely on stack allocation, since the memory will be freed when the function returns.
+
+So how can we accomplish this?
+
+--
+
+We must directly modify the given array, allocate a new array on the heap and return its address, or ...
+
+--
+
+**we can define new classes that handle dynamic allocation for us!**
+
+---
+
+---
+
+### Implementation and Analysis
+
+Open VS Code, you should be on a branch other than master.
+
+Terminal commands to prepare your workspace for today's activities:
+
+```bash
+git add *
+git commit -m "Your message here"
+git checkout master
+git fetch upstream
+git merge upstream/master
+git checkout -b lab/iterative
+```
+
+Compile and run with `g++ -std=c++11 source/functions.cpp && ./a.out
+
+---
+name: recursive
+
+## Recursive Problem Solving
+
+Recursion is the process of breaking down larger problems into smaller, more easily solvable ones, then recombining the solutions.
+
+Example: MergeSort
+
+As we saw yesterday, an array is sorted if it contains $n \leq 2$ elements.
+
+MergeSort exploits this by breaking an array into singletons, then merging those singletons back together into a sorted array.
+
+--
+
+MergeSort breaks a hard problem down into many subproblems that are solved in $O(1)$ (constant) time, then works to recombine them.
+
+---
+
+### Recursive Programming
+
+- Recursive functions must call themselves with reduced parameters
+- There must be a **base case** when the problem can be solved trivially
+
+The hard part is figuring out how to recursively work down to the base case!
+
+--
+
+```c++
+int multiply(int a, int b) {
+  return (a == 0) ? 0 : multiply(a - 1, b) + b;
+}
+```
+
+What's the base case? How are we recursively getting down to it?
+
+---
+
+#### Base Case Troubles
+
+The most common issue when dealing with recursion is the base case.
+
+As a rule of thumb, select the smallest base case possible.
+
+Example: Array Sum
+
+```
+array = Random numbers
+n = Length of array
+Algorithm A(array, n):
+  if n == 2:
+    return array[0] + array[1]
+  else:
+    return array[0] + sum(array[1:], n - 1)
+
+Algorithm B(array, n):
+  if n == 1:
+    return array[0]
+  else:
+    return array[0] + sum(array[1:], n - 1)
+
+Algorithm C(array, n):
+  if n == 0:
+    return 0
+  else:
+    return array[0] + sum(array[1:], n - 1)
+```
+
+Which of the above algorithms is the best one for array summation?
+
+--
+
+`C` is, since it has the most inclusive base case.
+
+---
+
+### Recursive Definitions
+
+Describing how a recursive function works.
+
+Example: Factorial
+
+$$n! = (n - 1)! \cdot n, \forall n > 1; 1! = 0! = 1$$
+
+--
+
+Computing $n!$ requires computing $(n - 1)!$, then multiplying by $n$ itself.
+
+--
+
+Additionally, a recursive definition should specify when no computation is required, in this example, that point is $1!$ and $0!$, which are the **base cases**.
+
+---
+
+### Recurrence Relations
+
+Recurrence relations are derived from recursive definitions, and describe the runtime required to compute the answer.
+
+Example: Factorial
+
+$$T(n) = T(n - 1) + 1, \forall n > 1; T(0) = T(1) = 1$$
+
+--
+
+This says that the time to compute the answer for $n$ is the time to compute $(n - 1)$ with one additional operation (a multiplication in this case).
+
+--
+
+Again, we specify the base cases, by saying that the time to compute $n = 0$ or $n = 1$ takes 1 operation.
+
+--
+
+How can we convert this relation to something more useful, like $O(n)$ or $\Omega(n)$?
+
+---
+
+#### Unrolling a Recurrence Relation
+
+Unrolling a recurrence is the most basic technique, involving a repeated expansion of the relation in an effort to identify a useable pattern.
+
+$$
+\begin{align}
+T(n) &= T(n - 1) + 1; T(0) = T(1) = 1 \\\\
+T(n - 1) &= T(n - 2) + 1 \\\\
+T(n) &= (T(n - 2) + 1) + 1 \\\\
+T(n - 2) &= T(n - 3) + 1 \\\\
+T(n) &= ((T(n - 3) + 1) + 1) + 1 \\\\
+&= T(n - 3) + 3 \\\\
+&= T(n - k) + k
+\end{align}
+$$
+
+At this point we can solve for $T(n - k) = T(0)$:
+
+$$
+\begin{align}
+n - k &= 0 \\\\
+n &= k
+\end{align}
+$$
+
+Finally, we can substitute that solution into our recurrence:
+
+$$
+\begin{align}
+T(n) &= T(n - n) + n \\\\
+T(n) &= 1 + n \\\\
+T(n) &= n = O(n)
+\end{align}
+$$
+
+---
+
+#### Unrolling a recurrence (cont)
+
+We can also apply this technique to slightly more complicated examples.
+
+Our goal during the unrolling process is to eliminate all of the $T(n)$ components, thus we must unroll until we can do so.
+
+$$
+\begin{align}
+T(n) &= T(n - 1) + n; T(1) = 1 \\\\
+T(n - 1) &= T(n - 2) + n - 1 \\\\
+T(n) &= (T(n - 2) + n - 1) + n \\\\
+T(n - 2) &= T(n - 3) + n - 2 \\\\
+T(n) &= ((T(n - 3) + n - 2) + n - 1) + n \\\\
+&= T(n - 3) + 3n - 3 \\\\
+&= T(n - k) + kn - k \\\\
+n - k &= 1 \\\\
+k &= n - 1 \\\\
+T(n) &= T(n - (n - 1)) + (n - 1)n - (n - 1) \\\\
+T(n) &= T(1) + n^2 - n - n + 1 \\\\
+T(n) &= 1 + n^2 - 2n +1 \\\\
+&= O(n^2)
+\end{align}
+$$
+
+--
+
+But this is not *quite* right, we're missing a powerful tool that can help us better identify the true closed-form solution.
+
+---
+
+#### Unrolling with Summations
+
+Here is the same example using summations with the unrolling.
+
+$$
+\begin{align}
+T(n) &= n + T(n - 1) \\\\
+&= n + (n - 1 + T(n - 2)) \\\\
+&= n + (n - 1 + (n - 2 + T(n - 3))) \\\\
+&= n + (n - 1 + (n - 2 + (n - 3 + T(n - 4)))) \\\\
+&= n + (n - 1 + (n - 2 + (n - 3 + (n - 4 + (... + 1)))) \\\\
+&= \sum_{i = 1}^n i \\\\
+&= \frac{n(n + 1)}{2}
+\end{align}
+$$
+
+Notice how the expansion differs.
+In general, this should be your approach, as it produces more accurate closed form answers.
+
+---
+
+#### Unrolling with Summations (cont)
+
+And, a more complicated example, requiring a summation and a substitution and solving for $k$.
+
+$$
+\begin{align}
+T(n) &= 2T(n - 1) + 3; T(1) = 1 \\\\
+&= 2(2T(n - 2) + 3) + 3 \\\\
+&= 2(2(2T(n - 3) + 3) + 3) + 3 \\\\
+&= 2(2^2 T(n - 3) + 2 \cdot 3 + 3) + 3 \\\\
+&= 2^3 T(n - 3) + 2^2 \cdot 3 + 2 \cdot 3 + 3 \\\\
+&= 2^k T(n - k) + \sum_{i = 0}^{k - 1} 2^i \cdot 3
+\end{align}
+$$
+
+Solving for our base case ($T(1)$) yields $k = n - 1$
+
+$$
+\begin{align}
+T(n) &= 2^{n - 1} + \sum_{i = 0}^{n - 2} 2^i \cdot 3 \\\\
+T(n) &= 2^{n - 1} + 3 (2^{n - 1} - 1) = O(2^n)
+\end{align}
+$$
+
+---
+class: middle
+
+#### Summation Identities
+
+MathJax would not let me typeset them for you, so here's a link:
+
+[Wikipedia to the rescue](https://en.wikipedia.org/wiki/Summation#Identities)
+
+---
+
+#### Additional Methods
+
+In this class we will primarily use unrolling, however there are **much** more powerful methods to solve recurrences.
+
+If you wish to learn those methods you will not be penalized, and you may save a ton of time during exams!
+
+If you choose not to, you will be **fine**, exams are written with the unrolling methods in mind.
+
+Note: there will be at least one question on the exam where you will be required to use unrolling.
+
+---
+
+### Re-Implement and Analyze
+
+Open VS Code, you should be on a branch other than master.
+
+Terminal commands to prepare your workspace for today's activities:
+
+```bash
+git add *
+git commit -m "Your message here"
+git checkout master
+git fetch upstream
+git merge upstream/master
+git checkout -b lab/recursive
+```
+
+Compile and run with `g++ -std=c++11 source/functions.cpp && ./a.out
+
+---
+name: review
+
+## Review
+
+- When discussing algorithm performance, it is best to use non-hardware dependant characterizations
+- Asymptotic growth is the best method to compare classes of algorithms
+- Even with that analysis, it is worth it to optimize for your problem! If you will always deal with very small values for your input, the constants become much more important than the asymptotic growth.
+
+We will see later in this course algorithms that combine these above principles to optimize their own performance!
+
+    </textarea>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+
+  <script>
+    var slideshow = remark.create();
+  </script>
+</body>
+
+</html>
