@@ -6,6 +6,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 - [Syllabus](docs/syllabus.md)
 - [Schedule](docs/schedule.md)
+- [FAQ](docs/FAQ.md)
 - [Github Handbook](docs/github.md)
 - [IDE Guide](docs/IDE.md)
 - [Crash Course C++](docs/CrashCourseCpp.pdf)
