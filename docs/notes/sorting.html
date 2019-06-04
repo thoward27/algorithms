@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sorting</title>
+    <meta charset="utf-8">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+        @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+        @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+        @import "style.css";
+    </style>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+
+<body>
+    <textarea id="source">
+
+class: center, middle
+
+# Sorting
+
+---
+name: agenda
+
+## Agenda
+
+.two-columns[
+
+1. [Sorting Motivation](#motivation)
+2. [Bubble Sort](#bubble)
+   1. Group Implementation
+   2. Analysis
+3. [Insertion Sort](#insertion)
+   1. Group Implementation and Analysis
+4. [Stable Sorting](#stable)
+   1. Why we may want stable sorting?
+   2. How to achieve stable sorting
+   3. Situations where it doesn't matter.
+5. [Selection Sort](#selection)
+   1. Group Implementation and Analysis
+6. [MergeSort](#merge)
+   1. Recap of Recursion: Divide and Conquer
+   2. Group Implementation
+   3. Analysis
+7. [QuickSort](#quick)
+   1. Group Implementation and Analysis
+8. [Review](#review)
+
+
+]
+
+---
+name: motivation
+
+## Sorting Motivation
+
+There are many use cases for sorting things, it's something you most likely do every day, it's also something your computer does every day, all the time.
+
+Can you think of common things that your computer sorts for you?
+
+--
+
+- Emails
+- Articles
+- Contacts in your Phone
+- Your calendar events
+
+--
+
+The question is, how is your computer sorting so many thing so quickly?
+
+---
+name: bubble
+class: middle
+
+## Bubble Sort
+
+---
+
+### Bubble Sort: Introduction
+
+What if we simply walk through the list, and repeatedly swap out-of-order elements?
+
+--
+
+Let's start with the array: `[5, 2, 4, 3, 1]`
+
+--
+
+We begin by starting with `5` and `2`, which are swapped: `[2, 5, 4, 3, 1]`
+
+--
+
+Then `5` and `4` must be swapped: `[2, 4, 5, 3, 1]`
+
+--
+
+Now `5` and `3` are out of order: `[2, 4, 3, 5, 1]`.
+
+--
+
+Finally for this pass, we must fix `5` and `1`: `[2, 4, 3, 1, 5]`
+
+--
+
+We must then repeat this process until the entire list is sorted.
+
+--
+
+How much work is required if the list is sorted? Reversed?
+
+---
+
+### Bubble Sort: Implementation
+
+.pull-left[
+
+### A helpful animation
+
+<img src="images/sort_bubble.gif" width="350" height="200">
+
+### Pseudocode
+
+```
+While the array is not sorted:
+  For each element in the array (except the last):
+    If the current element is greater than the next element:
+      Swap the current and next element.
+```
+
+]
+
+.pull-right[
+
+### Details
+
+- Comparison based sort
+- Extremely simple
+- Stable
+- Larger elements "bubble" to the top
+- Too slow for practical use
+- A fantastic first algorithm to implement
+
+]
+
+---
+name: insertion
+class: middle
+
+## Insertion Sort
+
+---
+
+### Insertion Sort: Introduction
+
+What if we *inserted* each element in the list into an already sorted list?
+
+--
+
+Let's start with the array: `[5, 2, 4, 3, 1]`
+
+--
+
+Adding a bar demarking the "sorted" portion of the array: `[5|, 2, 4, 3, 1]`
+
+> *(Remember that an array of 1 element is always sorted!)*
+
+--
+
+Now, let's *insert* the `2` element into our sorted sublist: `[2, 5|, 4, 3, 1]`.
+
+--
+
+And, again with the 4: `[2, 4, 5|, 3, 1]`
+
+--
+
+With the 3: `[2, 3, 4, 5|, 1]`
+
+--
+
+And finally, `[1, 2, 3, 4, 5|]`
+
+Which terminates our process.
+
+--
+
+How much work is required if the list is reversed? Already sorted?
+
+---
+
+### Insertion Sort: Implementation
+
+.pull-left[
+
+#### A helpful animation
+
+<img src="images/sort_insertion.gif" width="350" height="200">
+
+#### Pseudocode
+
+```
+For each i from 0 to n:
+  For each j from i to 0:
+    If the element at j-1 is greater than the element at j:
+      Swap the elements at j-1 and j
+    Otherwise:
+      Break
+```
+
+]
+
+.pull-right[
+
+#### Details
+
+- Definitely better than bubble
+- The left-hand side of the array is considered sorted, the algorithm then inserts each new element into it's proper place
+- Too slow for practical use
+- Stable
+- Efficient
+
+]
+
+---
+name: stable
+class: middle
+
+## Stable Sorting
+
+---
+
+### Stable Sorting: Why
+
+If we want equal elements to preserve their order in the original list, we must use a stable sorting algorithm.
+
+Consider if we wanted to sort a list by multiple keys, when we sort by the secondary key, we do not want the primary order to be disrupted!
+
+If we consider sorting students by section and name, we would first sort by name, then by section. Ideally, at the end of this process, we would end up with the students names in alphabetic order by section.
+
+---
+name: selection
+class: middle
+
+## Selection Sort
+
+---
+
+### Selection Sort: Implementation
+
+.pull-left[
+
+#### A helpful animation
+
+<img src="images/sort_selection.gif" width="350" height="200">
+
+#### Pseudocode
+
+```
+For each i from 0 to n:
+  Set the current minimum index to i
+  For each j from i + 1 to n:
+    If the element at j is less than the element at the current minimum index:
+      Set the current minimum index to j
+  Swap the elements at i and the current minimum index
+```
+
+]
+
+.pull-right[
+
+#### Details
+
+- Definitely better than bubble
+- Starts from the left, selects the minimum element in the array and replaces the value at it's current position with the minimum
+- Too slow for practical use
+- Can be unstable
+
+]
+
+---
+name: merge
+class: middle
+
+## MergeSort
+
+---
+
+### MergeSort: Implementation
+
+.pull-left[
+
+#### A helpful animation
+
+<img src="images/sort_merge.gif" width="300" height="200">
+
+#### Pseudocode for Merge
+
+```
+make a copy of the array
+set j to 0 and k to the middle index
+for each i from 0 to n:
+    if j has reached or passed the middle index:
+        set the array at i to the copy at k and increment k
+    otherwise, if k has reached or passed the end of the array:
+        set the array at i to the copy at j and increment j
+    otherwise, if the array at j is less than the array at k
+        set the array at i to the copy at j and increment j
+    otherwise
+        set the array at i to the copy at k and increment k 
+```
+
+]
+
+.pull-right[
+
+#### Pseudocode for MergeSort
+
+```
+if the number of elements is greater than 1:
+    call mergesort on the first half
+    call mergesort on the second half
+    merge the array
+```
+
+#### Details
+
+- Recursive
+- Fast
+
+]
+
+---
+name: quick
+class: middle
+
+## QuickSort
+
+---
+
+### QuickSort Implementation
+
+.pull-left[
+
+#### A helpful animation
+
+<img src="images/sort_quick.gif" width="350" height="200">
+
+#### Pseudocode for Partition
+
+```
+set i to lo + 1 and j to hi
+while true:
+    increment i until array at i is greater than array at lo
+    decrement j until array at j is less than array at lo
+    break if j <= i
+    swap the elements at i and at j
+swap the elements at lo and at j
+return j
+```
+
+]
+
+.pull-right[
+
+#### Pseudocode for QuickSort
+
+```
+if lo is less than hi:
+    p = call partition on the array
+    call quicksort with lo and p - 1
+    call quicksort with p + 1 and hi
+```
+
+#### Details
+
+- Recursive
+- Fast
+
+]
+
+---
+name: review
+
+## Review
+
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+
+    <script>
+        var slideshow = remark.create();
+    </script>
+</body>
+
+</html>
