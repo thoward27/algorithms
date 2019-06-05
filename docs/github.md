@@ -22,7 +22,7 @@
 4. Working with your repository
    1. Before beginning any work, you should update your copy of the repo from upstream.
       1. Checkout the master branch `git checkout master`
-      2. Update from upstream `git fetch upstream && git merge upstream master`
+      2. Update from upstream `git fetch upstream && git merge upstream/master`
    2. Then create a new branch for your work `git checkout -b lab/<topic>`
    3. Publish your changes with `git push -u origin lab/<topic>`
    4. Do your work
