@@ -35,7 +35,6 @@ void selection_sort(int* arr, int n) {
     swap(&arr[min],&arr[i]);
     
   }
-  
 }
 
 void insertion_sort(int* arr, int n) {
