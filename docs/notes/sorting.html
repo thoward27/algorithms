@@ -36,18 +36,14 @@ name: agenda
 2. [Bubble Sort](#bubble)
    1. Group Implementation
    2. Analysis
-3. [Insertion Sort](#insertion)
+3. [Selection Sort](#selection)
    1. Group Implementation and Analysis
 4. [Stable Sorting](#stable)
-   1. Why we may want stable sorting?
-   2. How to achieve stable sorting
-   3. Situations where it doesn't matter.
-5. [Selection Sort](#selection)
+5. [Insertion Sort](#insertion)
    1. Group Implementation and Analysis
 6. [MergeSort](#merge)
-   1. Recap of Recursion: Divide and Conquer
-   2. Group Implementation
-   3. Analysis
+   1. Group Implementation
+   2. Class Analysis / Divide and Conquer
 7. [QuickSort](#quick)
    1. Group Implementation and Analysis
 8. [Review](#review)
@@ -142,12 +138,173 @@ While the array is not sorted:
 
 - Comparison based sort
 - Extremely simple
-- Stable
+- Stable: Does not change the relative order of elements of equal value
+- Adaptive: Runs in linear time on sorted arrays
 - Larger elements "bubble" to the top
 - Too slow for practical use
-- A fantastic first algorithm to implement
 
 ]
+
+---
+name: selection
+class: middle
+
+## Selection Sort
+
+---
+
+### Selection Sort: Introduction
+
+What if we simply selected the minimum from the array at each pass, and appended it to a sorted sublist?
+
+--
+
+Let's start with the array: `[5, 2, 4, 3, 1]`, and the sorted sublist `[]`
+
+--
+
+Select the smallest element in the list, and append it to the sorted list.
+
+`[2, 4, 3, 5]`, `[1]`
+
+--
+
+We repeat this process, until the unsorted array is empty: 
+
+`[4, 3, 5]`, `[1, 2]`
+
+--
+
+`[4, 5]`, `[1, 2, 3]`
+
+--
+
+`[5]`, `[1, 2, 3, 4]`
+
+--
+
+`[]`, `[1, 2, 3, 4, 5]`
+
+--
+
+Although this will work, ideally we would make this work in-place, like bubble sort did.
+
+--
+
+We can accomplish this by using swaps, and using the left side of our array as our sorted portion.
+
+---
+
+### Selection Sort: In-Place
+
+We start with the same array: `[|5, 2, 4, 3, 1]` where the bar denotes the sorted sublist.
+
+--
+
+For each index in the array, from left to right, we select the minimum value in the array, and swap it with our current position.
+
+--
+
+`[1|, 2, 4, 3, 5]` Here we selected the `1`, and swapped it with the `5`.
+
+--
+
+`[1, 2|, 4, 3, 5]` Here we selected the `2`, and swapped it with itself.
+
+--
+
+`[1, 2, 3|, 4, 5]` On this step, we swapped the `3` and the `4`.
+
+--
+
+`[1, 2, 3, 4|, 5]` On this step, we swapped the `4` with itself.
+
+--
+
+And finally, we can swap the `5` with itself, but do we actually have to do this?
+
+--
+
+No, the final element must be the largest, this algorithm can exit safely after evaluating the second to last index.
+
+--
+
+How much work is required for Selection Sort on an already sorted list? Reversed list?
+
+---
+
+### Selection Sort: Implementation
+
+.pull-left[
+
+#### A helpful animation
+
+<img src="images/sort_selection.gif" width="400" height="170">
+
+#### Pseudocode
+
+```
+For each i from 0 to n:
+  Set the current minimum index to i
+  For each j from i + 1 to n:
+    If the element at j is less than the element at the current minimum index:
+      Set the current minimum index to j
+  Swap the elements at i and the current minimum index
+```
+
+]
+
+.pull-right[
+
+#### Details
+
+- Starts from the left, selects the minimum element in the array and swaps the value at it's current position with the minimum
+- Unstable: Elements relative orders are not preserved, though it can be made stable
+- Linear in regards to swaps, which is unique
+
+]
+
+---
+
+### Selection Sort: Analysis
+
+- Worst Case: $O(n^2)$
+- Average Case: $O(n^2)$
+- Best Case: $O(n^2)$
+
+Selection sort scans the array at each interval searching for the minimum, the total number of comparisons is:
+
+$$(n - 1) + (n - 2) + (n - 3) + ... + 1 = \sum_{i = 1}^{n - 1} i$$
+
+Which evaluates to $O(n^2)$ in all cases.
+
+---
+name: stable
+class: middle
+
+## Stable Sorting
+
+---
+
+### Stable Sorting: Overview
+
+If we want equal elements to preserve their order in the original list, we must use a stable sorting algorithm.
+
+Consider if we wanted to sort a list by multiple keys, when we sort by the secondary key, we do not want the primary order to be disrupted!
+
+.pull-left[
+  <img src="images/sort_stable.png" width="200" height="350">
+]
+
+Let's examine how stable sorting could impact the order of these cards.
+
+We can see that stable sorting preserves the *relative* order of the cards of rank 5.
+
+Can you think of some applications where this may be important?
+
+--
+
+How about flights? They could be sorted by price, then by day, in which case we do not want our list to be out of order by price!
 
 ---
 name: insertion
@@ -159,39 +316,39 @@ class: middle
 
 ### Insertion Sort: Introduction
 
-What if we *inserted* each element in the list into an already sorted list?
+What if we *inserted* each element in the array into an already sorted array?
 
 --
 
-Let's start with the array: `[5, 2, 4, 3, 1]`
+Similarly to Selection Sort, we can use the left side of the array to hold the *sorted* elements, and iterate through to the right.
 
 --
 
-Adding a bar demarking the "sorted" portion of the array: `[5|, 2, 4, 3, 1]`
+Let's start with the array:
 
-> *(Remember that an array of 1 element is always sorted!)*
-
---
-
-Now, let's *insert* the `2` element into our sorted sublist: `[2, 5|, 4, 3, 1]`.
+`[5|, 2, 4, 3, 1]` Where the `|` marks the end of the sorted sublist.
 
 --
 
-And, again with the 4: `[2, 4, 5|, 3, 1]`
+`[2, 5|, 4, 3, 1]` The `2` element gets inserted into the sorted sublist.
 
 --
 
-With the 3: `[2, 3, 4, 5|, 1]`
+`[2, 4, 5|, 3, 1]` Then the `4` gets inserted.
 
 --
 
-And finally, `[1, 2, 3, 4, 5|]`
-
-Which terminates our process.
+`[2, 3, 4, 5|, 1]` After the `3` is inserted.
 
 --
 
-How much work is required if the list is reversed? Already sorted?
+Finally, the `1` gets inserted and we have concluded our sort:
+
+`[1, 2, 3, 4, 5]`
+
+--
+
+How much work is required if the list is reversed? Already sorted? Partially Sorted?
 
 ---
 
@@ -220,75 +377,96 @@ For each i from 0 to n:
 
 #### Details
 
-- Definitely better than bubble
-- The left-hand side of the array is considered sorted, the algorithm then inserts each new element into it's proper place
-- Too slow for practical use
-- Stable
-- Efficient
+- The left-hand side of the array is considered sorted, the algorithm then *inserts* each new element into it's proper place
+- Stable: The order of elements of equal value is preserved
+- Adaptive: Efficient for datasets that are already sorted or partially sorted
+- Efficient on small datasets
+- In-place: Requires a constant amount of extra memory
 
 ]
 
 ---
-name: stable
-class: middle
 
-## Stable Sorting
+### Insertion Sort: Analysis
 
----
+- Worst Case: $O(n^2)$
+- Average Case: $O(n^2)$
+- Best Case: $O(n)$
+- Partially Sorted Arrays: $O(kn)$ where $k$ is some constant limit on the number of inversions.
 
-### Stable Sorting: Why
+Consider the act of inserting an element into a sorted sublist, if the element is the smallest element in the list, it must be swapped all the way to the beginning of the list. The worst case for insertion sort is when the list is in reversed order, forcing the algorithm to make $1 + 2 + 3 + ... + n - 1$ swaps.
 
-If we want equal elements to preserve their order in the original list, we must use a stable sorting algorithm.
+We can convert this statement into a recurrence, which can then be used to attain the closed-form solution:
 
-Consider if we wanted to sort a list by multiple keys, when we sort by the secondary key, we do not want the primary order to be disrupted!
-
-If we consider sorting students by section and name, we would first sort by name, then by section. Ideally, at the end of this process, we would end up with the students names in alphabetic order by section.
-
----
-name: selection
-class: middle
-
-## Selection Sort
-
----
-
-### Selection Sort: Implementation
-
-.pull-left[
-
-#### A helpful animation
-
-<img src="images/sort_selection.gif" width="350" height="200">
-
-#### Pseudocode
-
-```
-For each i from 0 to n:
-  Set the current minimum index to i
-  For each j from i + 1 to n:
-    If the element at j is less than the element at the current minimum index:
-      Set the current minimum index to j
-  Swap the elements at i and the current minimum index
-```
-
-]
-
-.pull-right[
-
-#### Details
-
-- Definitely better than bubble
-- Starts from the left, selects the minimum element in the array and replaces the value at it's current position with the minimum
-- Too slow for practical use
-- Can be unstable
-
-]
+$$\sum_{i = 1}^{n - 1} i = \frac{n(n - 1)}{2} = O(n^2)$$
 
 ---
 name: merge
 class: middle
 
 ## MergeSort
+
+---
+
+### MergeSort: Introduction
+
+What if we could sort an array recursively and efficiently in any case?
+
+- What should our base case be?
+- How can we get there?
+- How do we put together the pieces?
+
+--
+
+As the name may suggest, we are going to put the pieces back together by *merging* them, but wait - what pieces?
+
+--
+
+MergeSort works by breaking down an array into singletons, arrays of length 1 or 0, then recombines them via merging.
+
+--
+
+Starting with the array below, we split down to singletons.
+
+`[5, 2, 4, 3, 1]`
+
+--
+
+`[[5, 2, 4], [3, 1]]`
+
+--
+
+`[[[5, 2], [4]], [[3], [1]]]`
+
+--
+
+`[[[[5], [2]], [4]], [[3], [1]]]`
+
+---
+
+### MergeSort: Introduction (cont)
+
+Starting with our singletons from the last slide:
+
+`[[[[5], [2]], [4]], [[3], [1]]]`
+
+We now merge these pieces back together.
+
+--
+
+`[[[2, 5], [4]], [1, 3]]`
+
+--
+
+`[[2, 4, 5], [1, 3]]`
+
+--
+
+`[1, 2, 3, 4, 5]` And we are done!
+
+--
+
+While you are implementing this algorithm strongly consider what it's runtime should be.
 
 ---
 
@@ -300,39 +478,42 @@ class: middle
 
 <img src="images/sort_merge.gif" width="300" height="200">
 
-#### Pseudocode for Merge
-
-```
-make a copy of the array
-set j to 0 and k to the middle index
-for each i from 0 to n:
-    if j has reached or passed the middle index:
-        set the array at i to the copy at k and increment k
-    otherwise, if k has reached or passed the end of the array:
-        set the array at i to the copy at j and increment j
-    otherwise, if the array at j is less than the array at k
-        set the array at i to the copy at j and increment j
-    otherwise
-        set the array at i to the copy at k and increment k 
-```
-
-]
-
-.pull-right[
-
 #### Pseudocode for MergeSort
 
 ```
+Let Array be an array of n elements.
 if the number of elements is greater than 1:
     call mergesort on the first half
     call mergesort on the second half
     merge the array
 ```
 
+]
+
+.pull-right[
+
+#### Pseudocode for Merge
+
+```
+Let Array be an array of n elements.
+Temp = Copy(Array)
+Let j = 0, k = MiddleIndex(Array)
+For each i from 0 to n:
+  If j >= MiddleIndex(Array):
+    Array[i] = Temp[k], k = k + 1
+  Else if (k >= n):
+    Array[i] = Temp[j], j = j + 1
+  Else if Temp[j] < Temp[k]:
+    Array[i] = Temp[j], j = j + 1
+  Else:
+    Array[i] = Temp[k], k = k + 1
+```
+
 #### Details
 
-- Recursive
-- Fast
+- Recursive: Calls itself to solve the problem
+- Stable: Relative orderings of elements of equal value are preserved.
+- Not Adaptive: Takes the same amount of time in all conditions
 
 ]
 
@@ -350,7 +531,7 @@ class: middle
 
 #### A helpful animation
 
-<img src="images/sort_quick.gif" width="350" height="200">
+<img src="images/sort_quick.gif" width="400" height="200">
 
 #### Pseudocode for Partition
 
