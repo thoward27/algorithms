@@ -330,4 +330,199 @@ TEST_CASE("testing sorted array check function") {
   CHECK(is_sorted(arr5, 3));
 }
 
+/** Primality testing.
+ * Checks if a given number is prime
+ * O(?)
+ */
+bool prime(int);
+
+TEST_CASE("Checking if a number is prime.") {
+  REQUIRE(prime(2));
+  REQUIRE(prime(3));
+  REQUIRE_FALSE(prime(4));
+  REQUIRE(prime(5));
+  REQUIRE_FALSE(prime(6));
+  REQUIRE(prime(7));
+  REQUIRE_FALSE(prime(8));
+  REQUIRE_FALSE(prime(9));
+  REQUIRE_FALSE(prime(10));
+
+  REQUIRE_FALSE(prime(66));
+  REQUIRE(prime(97));
+}
+
+/** Fibonacci numbers
+ * Returns the fibonacci number of the given index.
+ * O(?)
+ */
+long fibonacci(int);
+
+TEST_CASE("Fibonacci numbers.") {
+  CHECK(fibonacci(0) == 0);
+  CHECK(fibonacci(1) == 1);
+  CHECK(fibonacci(2) == 1);
+  CHECK(fibonacci(6) == 8);
+  CHECK(fibonacci(16) == 987);
+}
+
+/** Factorial
+ * Returns n!
+ * O(?)
+ */
+long factorial(int);
+
+TEST_CASE("Factorial") {
+  CHECK(factorial(0) == 1);
+  CHECK(factorial(4) == 24);
+  CHECK(factorial(8) == 40320);
+}
+
+/** String Length
+ * Returns the length of the given C-String
+ * O(?)
+ */
+int strlen(char string[]);
+
+TEST_CASE("Testing the string length function") {
+  CHECK(strlen((char*)"Hello") == 5);
+  CHECK(strlen("Hello World") == 11);
+  CHECK(strlen("1234") == 4);
+  CHECK(strlen("0123456789") == 10);
+}
+
+/** String to Int
+ * Returns the given string as an integer
+ * O(?)
+ */
+int stringtoint(char string[]);
+
+TEST_CASE("Testing the string to integer function") {
+  CHECK(stringtoint((char*)"0") == 0);
+  CHECK(stringtoint((char*)"1") == 1);
+  CHECK(stringtoint((char*)"12") == 12);
+  CHECK(stringtoint((char*)"123") == 123);
+  CHECK(stringtoint((char*)"1234") == 1234);
+  CHECK(stringtoint((char*)"10") == 10);
+  CHECK(stringtoint((char*)"33") == 33);
+}
+
+/** Insert
+ * Inserts the given element `x` into the array at the given index.
+ * O(?)
+ */
+void insert(int* arr, int n, int idx, int x);
+
+TEST_CASE("testing insert function") {
+  int* arr1 = nullptr;
+  insert(arr1, 0, 0, 1);
+  CHECK(arr1[0] == 1);
+
+  int* arr2 = new int[1];
+  arr2[0] = 2;
+  insert(arr2, 1, 0, 1);
+  CHECK(arr2[0] == 1);
+  CHECK(arr2[1] == 2);
+
+  int* arr3 = new int[1];
+  arr3[0] = 1;
+  insert(arr3, 1, 1, 2);
+  CHECK(arr3[0] == 1);
+  CHECK(arr3[1] == 2);
+
+  int* arr4 = new int[2];
+  arr4[0] = 1;
+  arr4[1] = 3;
+  insert(arr4, 2, 1, 2);
+  CHECK(arr4[0] == 1);
+  CHECK(arr4[1] == 2);
+  CHECK(arr4[2] == 3);
+}
+
+/** Reverse
+ * Reverses the array in-place.
+ * O(?)
+ */
+void reverse(int* arr, int n);
+void reverse(char* arr, int n);
+void reverse(char* arr);
+
+TEST_CASE("testing reverse functions") {
+  SUBCASE("testing reverse function for integers") {
+    int arr1[1] = {1};
+    reverse(arr1, 1);
+    CHECK(arr1[0] == 1);
+
+    int arr2[3] = {1, 2, 3};
+    reverse(arr2, 3);
+    for (int i = 0; i < 3; ++i)
+      CHECK(arr2[i] == 3 - i);
+
+    int arr3[4] = {1, 2, 3, 4};
+    reverse(arr3, 4);
+    for (int i = 0; i < 4; ++i)
+      CHECK(arr3[i] == 4 - i);
+
+    int arr4[4] = {1, 2, 3, 4};
+    int arr5[4] = {1, 2, 3, 4};
+    reverse(arr4, 4);
+    reverse(arr4, 4);
+    for (int i = 0; i < 4; ++i)
+      CHECK(arr4[i] == arr5[i]);
+  }
+
+  SUBCASE("testing reverse function for strings with length given") {
+    char arr0[1] = "";
+    reverse(arr0, 0);
+    CHECK(arr0[0] == '\0');
+
+    char arr1[2] = "I";
+    reverse(arr1, 1);
+    CHECK(arr1[0] == 'I');
+
+    char arr2[4] = "abc";
+    reverse(arr2, 3);
+    for (int i = 0; i < 3; ++i)
+      CHECK(arr2[i] == 'c' - i);
+
+    char arr3[5] = "abcd";
+    reverse(arr3, 4);
+    for (int i = 0; i < 4; ++i)
+      CHECK(arr3[i] == 'd' - i);
+
+    char arr4[5] = "abcd";
+    char arr5[5] = "abcd";
+    reverse(arr4, 4);
+    reverse(arr4, 4);
+    for (int i = 0; i < 4; ++i)
+      CHECK(arr4[i] == arr5[i]);
+  }
+
+  SUBCASE("testing reverse function for strings without length given") {
+    char arr0[1] = "";
+    reverse(arr0);
+    CHECK(arr0[0] == '\0');
+
+    char arr1[2] = "I";
+    reverse(arr1);
+    CHECK(arr1[0] == 'I');
+
+    char arr2[4] = "abc";
+    reverse(arr2);
+    for (int i = 0; i < 3; ++i)
+      CHECK(arr2[i] == 'c' - i);
+
+    char arr3[5] = "abcd";
+    reverse(arr3);
+    for (int i = 0; i < 4; ++i)
+      CHECK(arr3[i] == 'd' - i);
+
+    char arr4[5] = "abcd";
+    char arr5[5] = "abcd";
+    reverse(arr4);
+    reverse(arr4);
+    for (int i = 0; i < 4; ++i)
+      CHECK(arr4[i] == arr5[i]);
+  }
+}
+
 #endif
