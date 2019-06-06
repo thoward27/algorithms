@@ -518,6 +518,24 @@ For each i from 0 to n:
 ]
 
 ---
+
+### MergeSort: Analysis
+
+MergeSort calls itself on two halfs of the original list, then combines them.
+
+Roughly speaking, we can provide this recursive definition:
+
+`MergeSort(n) = Merge(MergeSort(n / 2), MergeSort(n / 2))`
+
+--
+
+We can translate this into the recurrence:
+
+$$ T(n) = 2T(n / 2) + n = O(n \log n) $$
+
+To solve this recurrence you can unroll the equation, use the [tree method](https://www.educative.io/collection/page/10370001/760001/1280004), or the master method.
+
+---
 name: quick
 class: middle
 
