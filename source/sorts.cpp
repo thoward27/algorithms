@@ -51,59 +51,46 @@ void insertion_sort(int* arr, int n) {
 
 }
 
-
-
-
-
-
-/** Selection Sort
- * O(n^2), Omega(n^2), Theta(n^2)
- */
-void selection_sort(int * arr, int n)
-{
-  int min;
-  for(int i = 0; i < (n - 1); i++)
-  {
-    min = i;
-    for(int j = i+1; j < n ; j++)
-    {
-      if(arr[j]<arr[min])
-      {
-        min = j;
-      }
-    }
-    int temp = arr[i];
-    arr[i] = arr[min];
-    arr[min]=temp;
+void copy_arr(int *arr, int *temp, int n) {
+  for(int i = 0; i < n; i++) {
+    temp[i] = arr[i];
   }
 }
-/** Insertion Sort
- * O(n^2), Omega(n), Theta(N/A) Average(n^2)
- * 
- */
 
-void insertion_sort(int* arr, int n)
- {
-   
-   int min;
-  for(int i =0; i < n; i++)
-  {
-    min = i;
-    for(int j = i; j > 0  ; j--)
-    {
-      if(arr[j-1] > arr[j])
-      {
-        int temp = arr[j-1];
-        arr[j-1] = arr[j];
-        arr[j]=temp;
-      }
-      else
-      {
-        break;
-      }
-      
+void merge(int *arr, int n, int mid) {
+  int *temp = new int[n];
+  copy_arr(arr, temp, n);
+
+  int j = 0;int k = mid;
+  for(int i = 0; i < n; i++) {
+    if(j >= mid) {
+      arr[i] = temp[k];
+      k++;
+    }
+    else if(k >= n) {
+      arr[i] = temp[j];
+      j++;
+    }
+    else if(temp[j] < temp[k]) {
+      arr[i] = temp[j];
+      j++;
+    }
+    else{
+      arr[i] = temp[k];
+      k++;
     }
   }
-  
- }
+}
+
+void mergesort(int *arr, int n) {
+  if(n > 1) {
+    mergesort(arr, n /2);
+    mergesort(arr + (n/2), n - n/2);
+    merge(arr, n, n/2);
+  }
+}
+
+
+
+
  
