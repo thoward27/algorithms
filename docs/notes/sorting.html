@@ -543,6 +543,37 @@ class: middle
 
 ---
 
+### QuickSort: Introduction
+
+What if instead of simply dividing the array into two halves, we split it into lower and upper portions, then sorted those halves?
+
+We'll walk through our normal example with this scheme:
+
+`[5, 2, 4, 3, 1]` Starting with our array, we pick a *pivot*, which is normally the first, last, middle, or median of 3 elements.
+For this example, we will pick the first element.
+
+--
+
+`[2, 4, 3, 1], [5], []` After pivoting on 5.
+
+--
+
+`[1], [2], [4, 3], [5], []` Pivoting on 2.
+
+--
+
+`[1], [2], [3], [4], [], [5], []` Pivoting on 4.
+
+--
+
+`[1, 2, 3, 4, 5]` Combing the results.
+
+--
+
+Of course, this is actually done in-place, with recursive calls on each sublist.
+
+---
+
 ### QuickSort Implementation
 
 .pull-left[
@@ -579,10 +610,32 @@ if lo is less than hi:
 
 #### Details
 
-- Recursive
-- Fast
+- Think of some details as you work! We'll do this section together
 
 ]
+
+---
+
+### QuickSort: Analysis
+
+#### Worst Case
+
+The partition is always the largest or smallest, removing only a single element from each call.
+
+$$T(n) = 1 + T(n - 1) = \sum_{i=1}^n i = O(n^2)$$
+
+#### Best Case
+
+The partition is the exact median element, separating the list into two equal halves, minimizing the height of the call tree.
+
+Each level of the tree examines all $n$ elements, and the max height of this tree is $\log n$, which equates to $O(n \cdot \log n)$
+
+$$
+T(n) = n + 2T \bigg( \frac{n}{2} \bigg) 
+= k \cdot n  + 2^k T \bigg(\frac{n}{2^k} \bigg)
+= n \cdot \log n + n
+= O(n \cdot \log n)
+$$
 
 ---
 name: review
