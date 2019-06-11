@@ -117,7 +117,7 @@ TEST_CASE("Testing sorting functions") {
   int arr5[10] = {3, 1, 3, 2, 1, 3, 2, 2, 1, 2};
   int arr5_sorted[10] = {1, 1, 1, 2, 2, 2, 2, 3, 3, 3};
 
-  for (int i = 0; i < 5; ++i) {
+  for (int i = 0; i < sizeof(sorts) / sizeof(sort_fn); ++i) {
     SUBCASE(names[i]) {
       sorts[i](arr1, 1);
       CHECK(arr1[0] == 1);
