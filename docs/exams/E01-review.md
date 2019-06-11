@@ -18,7 +18,7 @@ Provide recursive definitions, recurrence relations, and Big-Oh notation for the
 
 ```
 function func(int x):
-    return (x) ? func(x - 1) + x : 0;
+    return (x) ? func(abs(x) - 1) + x : 0;
 
 function func(int[] array, int n):
     if n <= 1: return
