@@ -27,7 +27,7 @@ layout: true
 ---
 class: center, middle
 
-# Functions on Arrays
+# Functions
 
 ---
 
@@ -503,8 +503,6 @@ We must directly modify the given array, allocate a new array on the heap and re
 
 ---
 
----
-
 ### Implementation and Analysis
 
 Open VS Code, you should be on a branch other than master.
@@ -520,7 +518,7 @@ git merge upstream/master
 git checkout -b lab/iterative
 ```
 
-Compile and run with `g++ -std=c++11 source/functions.cpp && ./a.out
+Compile and run with `g++ -std=c++11 source/functions.cpp && ./a.out`
 
 ---
 name: recursive
@@ -551,7 +549,7 @@ The hard part is figuring out how to recursively work down to the base case!
 --
 
 ```c++
-int multiply(int a, int b) {
+int multiply(unsigned int a, unsigned int b) {
   return (a == 0) ? 0 : multiply(a - 1, b) + b;
 }
 ```
@@ -568,7 +566,7 @@ As a rule of thumb, select the smallest base case possible.
 
 Example: Array Sum
 
-```
+```algorithm
 array = Random numbers
 n = Length of array
 Algorithm A(array, n):
