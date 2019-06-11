@@ -7,12 +7,11 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [Syllabus](docs/syllabus.md)
 - [Schedule](docs/schedule.md)
 - [FAQ](docs/FAQ.md)
-- [Github Handbook](docs/github.md)
-- [IDE Guide](docs/IDE.md)
-- [Crash Course C++](docs/notes/CrashCourseCpp.pdf)
+- [Setup](docs/setup/)
 - [Slack Room](https://csc212.slack.com/)
 - [DevDocs](https://devdocs.io/)
 - [Cheat Sheets](docs/cheat_sheets/)
+- [Exam Review Materials](docs/exams/)
 
 ---
 
@@ -36,3 +35,9 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [VS Code: Getting Started](https://code.visualstudio.com/docs/getstarted/introvideos)
   - Watch: Introductory Videos (all)
   - Read: Tips and Tricks, User Interface, Themes, and Settings
+
+## Notes
+
+- [C++](docs/notes/CrashCourseCpp.pdf)
+- [Functions](docs/notes/functions.html)
+- [Sorting](docs/notes/sorting.html)
