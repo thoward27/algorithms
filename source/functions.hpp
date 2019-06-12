@@ -385,9 +385,9 @@ int strlen(char string[]);
 
 TEST_CASE("Testing the string length function") {
   CHECK(strlen((char*)"Hello") == 5);
-  CHECK(strlen("Hello World") == 11);
-  CHECK(strlen("1234") == 4);
-  CHECK(strlen("0123456789") == 10);
+  CHECK(strlen((char*)"Hello World") == 11);
+  CHECK(strlen((char*)"1234") == 4);
+  CHECK(strlen((char*)"0123456789") == 10);
 }
 
 /** String to Int
@@ -404,38 +404,6 @@ TEST_CASE("Testing the string to integer function") {
   CHECK(stringtoint((char*)"1234") == 1234);
   CHECK(stringtoint((char*)"10") == 10);
   CHECK(stringtoint((char*)"33") == 33);
-}
-
-/** Insert
- * Inserts the given element `x` into the array at the given index.
- * O(?)
- */
-void insert(int* arr, int n, int idx, int x);
-
-TEST_CASE("testing insert function") {
-  int* arr1 = nullptr;
-  insert(arr1, 0, 0, 1);
-  CHECK(arr1[0] == 1);
-
-  int* arr2 = new int[1];
-  arr2[0] = 2;
-  insert(arr2, 1, 0, 1);
-  CHECK(arr2[0] == 1);
-  CHECK(arr2[1] == 2);
-
-  int* arr3 = new int[1];
-  arr3[0] = 1;
-  insert(arr3, 1, 1, 2);
-  CHECK(arr3[0] == 1);
-  CHECK(arr3[1] == 2);
-
-  int* arr4 = new int[2];
-  arr4[0] = 1;
-  arr4[1] = 3;
-  insert(arr4, 2, 1, 2);
-  CHECK(arr4[0] == 1);
-  CHECK(arr4[1] == 2);
-  CHECK(arr4[2] == 3);
 }
 
 /** Reverse

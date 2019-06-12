@@ -62,6 +62,17 @@ int round(double x, char c) {
   }
 }
 
+int stringtoint(char string[]) {
+  int len = strlen(string);
+  int out = 0;
+
+  for (int i = 0; i < len; ++i) {
+    out += chartoint(string[len - i - 1]) * pow(10, i);
+  }
+
+  return out;
+}
+
 int max(int arr[], int n) {
   int max = arr[0];
   for (int i = 1; i < n; ++i) {
@@ -143,4 +154,65 @@ bool is_sorted(int arr[], int n) {
     }
     return (increasing == n || decreasing == n);
   }
+}
+
+void reverse(char* arr) {
+  int len;
+  for (len = 0; arr[len] != '\0'; ++len) {
+  }
+  for (int i = 0; i < len / 2; ++i) {
+    char tmp = arr[i];
+    arr[i] = arr[len - i - 1];
+    arr[len - i - 1] = tmp;
+  }
+}
+
+void reverse(int* arr, int n) {
+  for (int i = 0; i < n / 2; ++i) {
+    int tmp = arr[i];
+    arr[i] = arr[n - i - 1];
+    arr[n - i - 1] = tmp;
+  }
+}
+
+void reverse(char* arr, int n) {
+  for (int i = 0; i < n / 2; ++i) {
+    char tmp = arr[i];
+    arr[i] = arr[n - i - 1];
+    arr[n - i - 1] = tmp;
+  }
+}
+
+int strlen(char string[]) {
+  int out = 0;
+  for (int i = 0; string[i]; ++i) {
+    ++out;
+  }
+
+  return out;
+}
+
+bool prime(int x) {
+  for (int i = 2; i <= x / 2; ++i) {
+    if (x % i == 0)
+      return false;
+  }
+  return true;
+}
+
+long factorial(int x) {
+  long ret = 1;
+  for (int i = 2; i <= x; ++i)
+    ret *= i;
+  return ret;
+}
+
+long fibonacci(int n) {
+  long a = 0, b = 1, temp;
+  for (int i = 0; i < n; ++i) {
+    temp = a + b;
+    a = b;
+    b = temp;
+  }
+  return a;
 }

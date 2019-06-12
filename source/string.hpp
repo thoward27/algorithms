@@ -6,6 +6,7 @@
 class String {
  private:
   char* array;
+  unsigned int _capacity;
 
  public:
   /** Constructors */

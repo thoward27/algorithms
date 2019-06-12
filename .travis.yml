@@ -16,9 +16,11 @@ matrix:
     - name: "Strings"
       env: 
       - SOURCE=source/string.cpp
-    - name: "Functions"
+    - name: "Iterative Functions"
       env:
       - SOURCE=source/functions.cpp
+    - name: "Recursive Functions"
+      env:
       - SOURCE=source/functions_recursive.cpp
     - name: "Sorts"
       env:
