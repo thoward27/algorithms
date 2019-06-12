@@ -4,6 +4,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Resources
 
+- [Website](https://thoward27.github.io/algorithms/)
 - [Syllabus](docs/syllabus.md)
 - [Schedule](docs/schedule.md)
 - [FAQ](docs/FAQ.md)

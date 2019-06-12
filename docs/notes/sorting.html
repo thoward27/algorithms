@@ -521,7 +521,7 @@ For each i from 0 to n:
 
 ### MergeSort: Analysis
 
-MergeSort calls itself on two halfs of the original list, then combines them.
+MergeSort calls itself on two halves of the original list, then combines them.
 
 Roughly speaking, we can provide this recursive definition:
 
@@ -622,13 +622,11 @@ if lo is less than hi:
 
 The partition is always the largest or smallest, removing only a single element from each call.
 
-$$T(n) = 1 + T(n - 1) = \sum_{i=1}^n i = O(n^2)$$
+$$T(n) = n + T(n - 1) = \sum_{i=1}^n i = O(n^2)$$
 
 #### Best Case
 
-The partition is the exact median element, separating the list into two equal halves, minimizing the height of the call tree.
-
-Each level of the tree examines all $n$ elements, and the max height of this tree is $\log n$, which equates to $O(n \cdot \log n)$
+We can look at the best case in two different ways, as a recurrence relation
 
 $$
 T(n) = n + 2T \bigg( \frac{n}{2} \bigg) 
@@ -637,10 +635,16 @@ T(n) = n + 2T \bigg( \frac{n}{2} \bigg)
 = O(n \cdot \log n)
 $$
 
+Or, as a call tree, where each level of the tree examines all $n$ elements, and the max height of this tree is $\log n$, since we dividing $n$ by $2$ at each call, which equates to $O(n \cdot \log n)$
+
 ---
 name: review
 
 ## Review
+
+1. Are there any questions about any sorting algorithms motivations?
+2. Are there any algorithms you'd like to cover the solution for?
+3. Recurrences you'd like to solve?
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
