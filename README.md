@@ -11,7 +11,6 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [Slack Room](https://csc212.slack.com/)
 - [DevDocs](https://devdocs.io/)
 - [Cheat Sheets](docs/cheat_sheets/)
-- [Exam Review Materials](docs/exams/)
 
 ---
 
@@ -41,3 +40,8 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [C++](docs/notes/CrashCourseCpp.pdf)
 - [Functions](docs/notes/functions.html)
 - [Sorting](docs/notes/sorting.html)
+
+## Exam Review
+
+- [E01 Review](docs/exams/E01R.md)
+- [E01 Review Answers](docs/exams/E01RA.md)
