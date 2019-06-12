@@ -54,24 +54,56 @@ function func(int[] array, int n):
 
 Calculate the value for `n` at which you would choose algorithm A over algorithm B to sort a given list, or if you would always choose algorithm B.
 
-```
-A: T(n) = 27n; B: T(n) = n!
-n >= 5
+Algorithms: A: T<sub>1</sub>(n) = 27n; B: T<sub>2</sub>(n) = n!
 
-A: T(n) = 10n log n; B: T(n) = 2^n
+Answer: n = 6. You can set the equations equal to one another and find the n such that T<sub>1</sub>(n-1) > T<sub>2</sub>(n-1) but T<sub>1</sub>(n) < T<sub>2</sub>(n).
+
+1. 27n = n! 
+2. 27 = n!/n = (n-1)!
+3. Think about the first few factorials:
+    1. 2! = 2, 3! = 6, 4! = 24, 5! = 120, 6! = 720
+4. Since 4! = 24 \< 27 \< 120 = 5!, we have n-1 = 5, or n = 6.
+
+Algorithms: A: T<sub>1</sub>(n) = 10n log n; B: T<sub>2</sub>(n) = 2^n
 n = 1
 
-A: T(n) = 5n + n^2 - 6; B: T(n) = n^3 / 2
-n = 1
+Answer: n = 8. Here, trial and error is easier than solving algebraically. Since log n is easy to solve for powers of 2, try each one starting from 1.
 
-A: T(n) = n^60; B: T(n) = 100n
-Always B
-```
+1. T<sub>1</sub>(1) = 10*1 * log 1 = 10 * 0 = 0; T<sub>2</sub>(1) = 2^1 = 2
+    1. T<sub>1</sub>(1) \< T<sub>2</sub>(1)
+    2. We might think we are done, but since we have log 1 = 0 in T<sub>1</sub>(1), we can't be certain this is the solution
+2. T<sub>1</sub>(2) = 10*2 * log 2 = 20 * 1 = 20; T<sub>2</sub>(2) = 2^2 = 4.
+    1. T<sub>1</sub>(2) \> T<sub>2</sub>(2)
+3. T<sub>1</sub>(4) = 10*4 * log 4 = 40 * 2 = 80; T<sub>2</sub>(4) = 2^4 = 16.
+    1. T<sub>1</sub>(4) \> T<sub>2</sub>(4)
+4. T<sub>1</sub>(8) = 10*8 * log 8 = 80 * 3 = 240; T<sub>2</sub>(8) = 2^8 = 256.
+    1. T<sub>1</sub>(8) \< T<sub>2</sub>(8)
+5. We could then check T<sub>1</sub>(7) and T<sub>2</sub>(7) with a calculator, and see that T<sub>1</sub>(7) \> T<sub>2</sub>(7)
+6. Since T<sub>2</sub> continues to increase more quickly than T<sub>1</sub> after n = 8, our solution is n = 8. 
+
+Algorithms: A: T<sub>1</sub>(n) = 5n + n^2 - 6; B: T<sub>2</sub>(n) = n^3 / 2
+
+Answer: n = 4. Again, rather than attempting to solve a cubic polynomial, we can do simple trial and error starting at n = 1
+
+1. T<sub>1</sub>(1) = 5*1 + 1^2 - 6 = 0; T<sub>2</sub>(1) = 1^3 / 2 = 1/2.
+    1. T<sub>1</sub>(1) \< T<sub>2</sub>(1).
+    2. Again, we have to be careful, because 1^x is 1 for all x.
+2. T<sub>1</sub>(2) = 5*2 + 2^2 - 6 = 8; T<sub>2</sub>(2) = 2^3 / 2 = 4.
+    1. T<sub>1</sub>(2) \> T<sub>2</sub>(2).
+3. T<sub>1</sub>(3) = 5*3 + 3^2 - 6 = 18; T<sub>2</sub>(3) = 3^3 / 2 = 13.5.
+    1. T<sub>1</sub>(3) \> T<sub>2</sub>(3).
+4. T<sub>1</sub>(4) = 5*4 + 4^2 - 6 = 30; T<sub>2</sub>(4) = 4^3 / 2 = 32.
+    1. T<sub>1</sub>(4) \< T<sub>2</sub>(4).
+5. Since T<sub>2</sub> continues to increase more quickly than T<sub>1</sub> after n = 4, our solution is n = 4.
+
+Algorithms: A: T<sub>1</sub>(n) = n^60; B: T<sub>2</sub>(n) = 100n
+
+Answer: n = 2. It may seem like the answer is "Always B", since even just 2^60 is much greater than 200, but again, since 1^x is 1 for all x, T<sub>1</sub>(1) = 1 \< T<sub>2</sub>(1) = 100. Thus, since we clearly saw that 2^60 is much greater than 200, n = 2.
 
 ### Bubble Sort
 
 1. Provide the upper and lower bounds for best and worst cases for Bubble Sort.
-   1. Best: $O(n)$ Worst: $O(n^2)
+   1. Best: $O(n)$ Worst: $O(n^2)$
 2. Is Bubble Sort stable? Adaptive? In-Place?
    1. Bubble sort is stable and in-place.
 3. Are there any advantages to Bubble Sort?
