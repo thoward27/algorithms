@@ -6,7 +6,7 @@ void array_increment(int*, int);
 
 int main() {
   // Instantiate an array on the heap.
-  int* arr = new int[N];
+  int* arr = new int[N]();
 
   // Print it out.
   for (int i = 0; i < N; ++i)
