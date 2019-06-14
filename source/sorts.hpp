@@ -1,5 +1,5 @@
 #pragma once
-#include "doctest/doctest/doctest.h"
+#include "doctest.h"
 
 /* Auxiliary Functions */
 

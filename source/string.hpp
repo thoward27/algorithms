@@ -1,7 +1,7 @@
 #ifndef __STRING__
 #define __STRING__
 
-#include "doctest/doctest/doctest.h"
+#include "doctest.h"
 
 class String {
  private:

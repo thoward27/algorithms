@@ -1,7 +1,7 @@
 #ifndef __FUNCTIONS__
 #define __FUNCTIONS__
 
-#include "doctest/doctest/doctest.h"
+#include "doctest.h"
 
 /** Absolute Value.
  * Converts any integer to its absolute value.
