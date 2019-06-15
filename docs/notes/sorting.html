@@ -31,28 +31,20 @@ name: agenda
 ## Agenda
 
 .two-columns[
-
-1. [Sorting Motivation](#motivation)
-2. [Bubble Sort](#bubble)
-   1. Group Implementation
-   2. Analysis
-3. [Selection Sort](#selection)
-   1. Group Implementation and Analysis
-4. [Stable Sorting](#stable)
-5. [Insertion Sort](#insertion)
-   1. Group Implementation and Analysis
-6. [MergeSort](#merge)
-   1. Group Implementation
-   2. Class Analysis / Divide and Conquer
-7. [QuickSort](#quick)
-   1. Group Implementation and Analysis
-8. [Review](#review)
-
+- [Agenda](#agenda)
+- [Sorting Motivation](#sorting-motivation)
+- [Bubble Sort](#bubble-sort)
+- [Selection Sort](#selection-sort)
+- [Stable Sorting](#stable-sorting)
+- [Insertion Sort](#insertion-sort)
+- [MergeSort](#mergesort)
+- [QuickSort](#quicksort)
+- [Resources](#resources)
 
 ]
 
 ---
-name: motivation
+name: sorting-motivation
 
 ## Sorting Motivation
 
@@ -72,7 +64,7 @@ Can you think of common things that your computer sorts for you?
 The question is, how is your computer sorting so many thing so quickly?
 
 ---
-name: bubble
+name: bubble-sort
 class: middle
 
 ## Bubble Sort
@@ -146,7 +138,7 @@ While the array is not sorted:
 ]
 
 ---
-name: selection
+name: selection-sort
 class: middle
 
 ## Selection Sort
@@ -279,7 +271,7 @@ $$(n - 1) + (n - 2) + (n - 3) + ... + 1 = \sum_{i = 1}^{n - 1} i$$
 Which evaluates to $O(n^2)$ in all cases.
 
 ---
-name: stable
+name: stable-sorting
 class: middle
 
 ## Stable Sorting
@@ -307,7 +299,7 @@ Can you think of some applications where this may be important?
 How about flights? They could be sorted by price, then by day, in which case we do not want our list to be out of order by price!
 
 ---
-name: insertion
+name: insertion-sort
 class: middle
 
 ## Insertion Sort
@@ -401,7 +393,7 @@ We can convert this statement into a recurrence, which can then be used to attai
 $$\sum_{i = 1}^{n - 1} i = \frac{n(n - 1)}{2} = O(n^2)$$
 
 ---
-name: merge
+name: mergesort
 class: middle
 
 ## MergeSort
@@ -536,7 +528,7 @@ $$ T(n) = 2T(n / 2) + n = O(n \log n) $$
 To solve this recurrence you can unroll the equation, use the [tree method](https://www.educative.io/collection/page/10370001/760001/1280004), or the master method.
 
 ---
-name: quick
+name: quicksort
 class: middle
 
 ## QuickSort
@@ -638,13 +630,18 @@ $$
 Or, as a call tree, where each level of the tree examines all $n$ elements, and the max height of this tree is $\log n$, since we dividing $n$ by $2$ at each call, which equates to $O(n \cdot \log n)$
 
 ---
-name: review
+name: resources
 
-## Review
+## Resources
 
-1. Are there any questions about any sorting algorithms motivations?
-2. Are there any algorithms you'd like to cover the solution for?
-3. Recurrences you'd like to solve?
+Visualizations
+
+- [sorting.at](http://sorting.at/)
+- [Comparison Sorts TOPTAL](https://www.toptal.com/developers/sorting-algorithms)
+- [Sound of Sorting](https://www.youtube.com/watch?v=kPRA0W1kECg)
+- [Comparison Sorts USFCA](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)
+- [Median of Medians](http://eshrews.com/select)
+
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
