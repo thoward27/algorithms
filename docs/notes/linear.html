@@ -5,150 +5,33 @@
   <title>Linear Structures</title>
   <meta charset="utf-8">
   <style>
-    @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
-    @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
-    @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+    @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Roboto+Slab&display=swap');
     @import "static/base.css";
   </style>
   <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
   <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 </head>
 
 <body>
-  <textarea id="source">
-
-name: linear-data-structures
-class: center, middle
-
-# Linear Data Structures
-
----
-name: agenda
-
-## Agenda
-
-- [Agenda](#agenda)
-- [Singularly Linked Lists](#singularly-linked-lists)
-  - [SLL: Motivation](#sll-motivation)
-  - [SLL: A Depiction](#sll-a-depiction)
-- [Stacks](#stacks)
-  - [Stacks: Motivation](#stacks-motivation)
-- [Queues](#queues)
-- [Memory Management](#memory-management)
-- [Circular Singularly Linked Lists](#circular-singularly-linked-lists)
-- [Doubly Linked Lists](#doubly-linked-lists)
-- [Review](#review)
-
----
-name: singularly-linked-lists
-class: middle
-
-## Singularly Linked Lists
-
----
-
-### SLL: Motivation
-
-Consider the array
-
-| 5   | 4   | 6   | 1   |
-| --- | --- | --- | --- |
-| 0   | 1   | 2   | 3   |
-
---
-
-What are the costs to insert elements into the front of an array? End? Middle?
-
---
-
-What about deletions?
-
---
-
-What if we used **non-contiguous** memory?
-
----
-name: sll-a-depiction
-
-### SLL: A Depiction
-
-<div class="mermaid">graph LR
-H((Head)) --> A
-T((Tail)) --> C
-A --> B
-B --> C
-</div>
-
----
-name: stacks
-class: middle
-
-## Stacks
-
----
-
-### Stacks: Motivation
-
-Consider a stack of magazines on your table.
-
---
-
-Specifically, consider the way in which you place them down, then pick them back up.
-
---
-
-If we restrict access to middle elements, we have a last in first out (LIFO) stack!
-
---
-
-Can you think of other real life uses for stacks? What about computationally
-
----
-name: queues
-class: middle
-
-## Queues
-
----
-name: memory-management
-class: middle
-
-## Memory Management
-
----
-name: circular-singularly-linked-lists
-class: middle
-
-## Circular Singularly Linked Lists
-
----
-name: doubly-linked-lists
-class: middle
-
-## Doubly Linked Lists
-
----
-name: review
-class: middle
-
-## Review
-
-</textarea>
   <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-
   <script>
-    var slideshow = remark.create();
+    var slideshow = remark.create({
+      navigation: {
+        click: false,
+      },
+      countIncrementalSlides: false,
+      sourceUrl: 'linear.md'
+    });
   </script>
-
   <script>
     var config = {
       startOnLoad: true,
-      theme: 'forest',
+      theme: 'default',
       flowchart: {
         useMaxWidth: true,
         htmlLabels: true
