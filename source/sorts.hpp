@@ -91,22 +91,22 @@ TEST_CASE("Testing partition function") {
 
 typedef void (*sort_fn)(int*, int);
 
-void bubble_sort(int* arr, int n);
+void bubble_sort(int*, int);
 
-void insertion_sort(int* arr, int n);
+void insertion_sort(int*, int);
 
-void selection_sort(int* arr, int n);
+void selection_sort(int*, int);
 
-void mergesort(int* arr, int n);
+void mergesort(int*, int);
 
-void quicksort(int* arr, int n);
+void quicksort(int*, int);
 
-void quicksort(int* arr, int lo, int hi);
+void hybridsort(int*, int);
 
-sort_fn sorts[] = {bubble_sort, insertion_sort, selection_sort, mergesort,
-                   quicksort};
+sort_fn sorts[] = {bubble_sort, insertion_sort, selection_sort,
+                   mergesort,   quicksort,      hybridsort};
 char names[][20] = {"Bubble sort", "Insertion sort", "Selection sort",
-                    "Mergesort", "Quicksort"};
+                    "Mergesort",   "Quicksort",      "Hybrid Sort"};
 
 TEST_CASE("Testing sorting functions") {
   int arr1[1] = {1};
