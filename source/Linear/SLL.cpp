@@ -89,13 +89,20 @@ int SLL::at(int idx) {
   return iter->data;
 }
 
-int SLL::set(int d, int idx) {
+int SLL::set(int idx, int data) {
+  // Handle negative indexes by making it positive.
+  idx = (idx < 0) ? len + idx : idx;
+
+  // Check for out of bounds.
+  if (idx < 0 || (unsigned int)idx >= len)
+    throw "Bad index";
+
   Node* iter = head;
   while (--idx >= 0) {
     iter = iter->next;
   }
   int old = iter->data;
-  iter->data = d;
+  iter->data = data;
   return old;
 }
 
@@ -146,39 +153,21 @@ void SLL::clear() {
 }
 
 void SLL::remove(int d) {
-  while (head && head->data == d) {
+  if (head && head->data == d)
     pop_front();
-  }
-  if (!len)
-    return;
-  Node* to_remove;
-  Node* iter = head;
-  while (iter->next) {
-    if (iter->next->data == d) {
-      to_remove = iter->next;
-      iter->next = to_remove->next;
-      delete to_remove;
-      --len;
-    } else {
-      iter = iter->next;
+  else {
+    Node* iter = head;
+    while (iter->next) {
+      if (iter->next->data == d) {
+        Node* to_remove = iter->next;
+        iter->next = to_remove->next;
+        delete to_remove;
+        --len;
+        break;
+      } else {
+        iter = iter->next;
+      }
     }
-  }
-}
-
-void SLL::unique() {
-  Node* iter = head;
-  int i = 0;
-  int data;
-  while (iter && iter->next) {
-    if (iter->data > 0) {
-      data = set(iter->data - 1, i);
-    } else {
-      data = set(iter->data + 1, i);
-    }
-    remove(data);
-    set(data, i);
-    ++i;
-    iter = iter->next;
   }
 }
 

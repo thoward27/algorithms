@@ -56,10 +56,12 @@ class SLL {
   int pop_back();
   int pop(int index);
 
-  /** set(int data, int index)
+  /** set(int index, int data)
    * Overwrite the node at index to contain the new data.
+   * Negative numbers set from the end of the list.
+   * Throws Out of Bounds exception if index not in list.
    */
-  int set(int data, int index);
+  int set(int index, int data);
 
   /** clear()
    * Clears the entire list.
@@ -70,11 +72,6 @@ class SLL {
    * Removes the first item from the list with value data.
    */
   void remove(int data);
-
-  /** unique()
-   * Returns the count of unique elements in the list.
-   */
-  void unique();
 
   /** reverse()
    * Reverses the order of the list in-place.
