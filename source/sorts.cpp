@@ -56,7 +56,7 @@ void insertion_sort(int* arr, int n) {
   }
 }
 
-// All Cases: O(n log n)
+// O(n log n)
 void mergesort(int* arr, int n) {
   if (n > 1) {
     mergesort(arr, n / 2);
