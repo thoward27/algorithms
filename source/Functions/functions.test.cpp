@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include "doctest.h"
+#include "../doctest.h"
 #include "functions.hpp"
 
 TEST_CASE("abs_val") {

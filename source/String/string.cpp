@@ -1,5 +1,5 @@
 #include "string.hpp"
-#include "functions.hpp"
+#include "../Functions/functions.hpp"
 
 // O(1)
 String::String() {

@@ -10,17 +10,11 @@ SLL::~SLL() {
   clear();
 }
 
-
-int SLL::front() {
-  return head->data;
-}
-
-int SLL::length() {
+unsigned int SLL::length() {
   return len;
 }
 
-
-void SLL::push_front(int d) {
+void SLL::prepend(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
@@ -44,12 +38,12 @@ int SLL::pop_front() {
   return rval;
 }
 
-void SLL::push_back(int d) {
+void SLL::append(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
   } else {
-    Node *iter = head;
+    Node* iter = head;
     while (iter->next) {
       iter = iter->next;
     }
@@ -64,7 +58,7 @@ int SLL::pop_back() {
     to_remove = head;
     head = nullptr;
   } else {
-    Node *iter = head;
+    Node* iter = head;
     while (iter->next->next) {
       iter = iter->next;
     }
@@ -97,9 +91,9 @@ int SLL::set(int d, int idx) {
 
 void SLL::insert(int d, int idx) {
   if (!idx) {
-    push_front(d);
+    prepend(d);
   } else if (idx == len) {
-    push_back(d);
+    append(d);
   } else {
     Node* n = new Node(d);
     Node* iter = head;
@@ -131,7 +125,7 @@ void SLL::erase(int idx) {
 
 void SLL::clear() {
   Node* to_remove;
-  while (--len >= 0) {
+  while (head) {
     to_remove = head;
     head = head->next;
     delete to_remove;
@@ -139,12 +133,12 @@ void SLL::clear() {
   len = 0;
 }
 
-
 void SLL::remove(int d) {
   while (head && head->data == d) {
     pop_front();
   }
-  if (!len) return;
+  if (!len)
+    return;
   Node* to_remove;
   Node* iter = head;
   while (iter->next) {
@@ -177,7 +171,8 @@ void SLL::unique() {
 }
 
 void SLL::reverse() {
-  if (len <= 1) return;
+  if (len <= 1)
+    return;
   Node* prev = nullptr;
   Node* curr = head;
   Node* next;

@@ -2,7 +2,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #endif
 
-#include "doctest.h"
+#include "../doctest.h"
 #include "string.hpp"
 
 TEST_CASE("Append") {

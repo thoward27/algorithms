@@ -1,6 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "doctest.h"
-#include "functions.hpp"
+#include "../doctest.h"
+
+#include "../Functions/functions.hpp"
 #include "sorts.hpp"
 
 #define CASES 11
