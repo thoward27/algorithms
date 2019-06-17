@@ -1,24 +1,24 @@
 #pragma once
-#include "../doctest/doctest/doctest.h"
+#include "../doctest.h"
 
 class Node {
-private:
+ private:
   int data;
   Node* next;
 
-public:
-  Node(int d): data(d) {next = nullptr;}
-  ~Node(){}
+ public:
+  Node(int d) : data(d) { next = nullptr; }
+  ~Node() {}
 
   friend class SLL;
 };
 
 class SLL {
-private:
+ private:
   Node* head;
   int len;
 
-public:
+ public:
   SLL();
   ~SLL();
 
@@ -45,8 +45,9 @@ TEST_CASE("Testing constructor (trivial) and length accessor (trivial)...") {
   CHECK(list.length() == 0);
 }
 
-TEST_CASE("Testing constructor (nontrivial), push_front, front accessor,"
-          "and length accessor (nontrivial)...") {
+TEST_CASE(
+    "Testing constructor (nontrivial), push_front, front accessor,"
+    "and length accessor (nontrivial)...") {
   SLL list;
   list.push_front(5);
   CHECK_EQ(list.length(), 1);
@@ -84,12 +85,12 @@ TEST_CASE("Testing pop_back...") {
   list.push_front(5);
   list.push_front(10);
   int val1 = list.pop_back();
-      CHECK_EQ(val1, 5);
-      CHECK_EQ(list.length(), 1);
-      CHECK_EQ(list.front(), 10);
+  CHECK_EQ(val1, 5);
+  CHECK_EQ(list.length(), 1);
+  CHECK_EQ(list.front(), 10);
   int val2 = list.pop_back();
-      CHECK_EQ(val2, 10);
-      CHECK_EQ(list.length(), 0);
+  CHECK_EQ(val2, 10);
+  CHECK_EQ(list.length(), 0);
 }
 
 TEST_CASE("Testing general element accessor (at)...") {

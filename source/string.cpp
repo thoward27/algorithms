@@ -1,8 +1,5 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "string.hpp"
-
-// Inclusions go here:
-// #include <iostream>
+#include "functions.hpp"
 
 String::String() {
   // Allocate space.
@@ -51,7 +48,8 @@ String::~String() {
 char String::at(int index) const {
   // If our index is negative, or beyond the size of our array, we cannot return
   // anything.
-  return (index < 0 || index >= this->size()) ? throw "Index" : array[index];
+  return (index < 0 || (unsigned int)index >= size()) ? throw "Index"
+                                                      : array[index];
 }
 
 unsigned int String::size() const {
@@ -96,7 +94,7 @@ void String::insert(char c, int index) {
   // Prepend and append as easy cases.
   if (index < 0)
     prepend(c);
-  else if (index >= size())
+  else if ((unsigned int)index >= size())
     append(c);
   else {
     // Increase capacity, if needed.
@@ -138,7 +136,7 @@ void String::remove(int index) {
 }
 
 void String::append(char c) {
-  int length = size();
+  unsigned int length = size();
   if (length == this->capacity()) {
     this->reserve(length * 2);
   }
@@ -148,7 +146,7 @@ void String::append(char c) {
 }
 
 void String::prepend(char c) {
-  int length = size();
+  unsigned int length = size();
   if (length == this->capacity()) {
     this->reserve(length * 2);
   }
@@ -174,7 +172,7 @@ bool String::compare(String& str) const {
 
 void String::concatenate(char* str) {
   // Get our lengths.
-  int strlen = 0, length = size();
+  unsigned int strlen = 0, length = size();
   while (str[strlen])
     ++strlen;
   // Reserve the space/
@@ -182,7 +180,7 @@ void String::concatenate(char* str) {
     this->reserve(strlen);
   }
   // Copy things over.
-  for (int i = length, j = 0; i <= length + strlen; ++i, ++j) {
+  for (unsigned int i = length, j = 0; i <= length + strlen; ++i, ++j) {
     this->array[i] = str[j];
   }
   return;
@@ -197,8 +195,8 @@ bool exact_match(char* a, char* b) {
   return (!b[0]) ? true : a[0] == b[0] && exact_match(a + 1, b + 1);
 }
 unsigned int String::find(char* str, int start) const {
-  unsigned int i = start, length = size();
-  for (i, length; i < length; ++i) {
+  unsigned int i, length;
+  for (i = start, length = size(); i < length; ++i) {
     if (exact_match(this->array + i, str))
       return i;
   }
@@ -206,8 +204,8 @@ unsigned int String::find(char* str, int start) const {
 }
 
 unsigned int String::find(char c, int start) const {
-  unsigned int i = start, length = size();
-  for (i, length; i < length; ++i)
+  unsigned int i, length;
+  for (i = start, length = size(); i < length; ++i)
     if (array[i] == c)
       return i;
   return i;
@@ -237,9 +235,9 @@ void String::shift(int n) {
   return;
 }
 
-int chartoint(char c) {
-  return ('0' <= c && c <= '9') ? c - 48 : throw "bad input";
-}
+// int chartoint(char c) {
+//   return ('0' <= c && c <= '9') ? c - 48 : throw "bad input";
+// }
 int String::toInt() const {
   int len = size();
   int out = 0;
