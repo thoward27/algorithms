@@ -14,7 +14,7 @@ unsigned int SLL::length() {
   return len;
 }
 
-void SLL::prepend(int d) {
+void SLL::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
@@ -38,7 +38,7 @@ int SLL::pop_front() {
   return rval;
 }
 
-void SLL::append(int d) {
+void SLL::push_back(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
@@ -72,10 +72,20 @@ int SLL::pop_back() {
 }
 
 int SLL::at(int idx) {
+  // Handle negative indexes by making it positive.
+  idx = (idx < 0) ? len + idx : idx;
+
+  // Check for out of bounds.
+  if (idx < 0 || (unsigned int)idx >= len)
+    throw "Bad index";
+
+  // Iterate to the element.
   Node* iter = head;
-  while (--idx >= 0) {
+  for (int i = 0; i < idx; ++i) {
     iter = iter->next;
   }
+
+  // Return it's data.
   return iter->data;
 }
 
@@ -89,11 +99,11 @@ int SLL::set(int d, int idx) {
   return old;
 }
 
-void SLL::insert(int d, int idx) {
+void SLL::push(int d, int idx) {
   if (!idx) {
-    prepend(d);
-  } else if (idx == len) {
-    append(d);
+    push_front(d);
+  } else if ((unsigned int)idx == len) {
+    push_back(d);
   } else {
     Node* n = new Node(d);
     Node* iter = head;
@@ -106,11 +116,11 @@ void SLL::insert(int d, int idx) {
   }
 }
 
-void SLL::erase(int idx) {
+int SLL::pop(int idx) {
   if (!idx) {
-    pop_front();
-  } else if (idx == len - 1) {
-    pop_back();
+    return pop_front();
+  } else if ((unsigned int)idx == len - 1) {
+    return pop_back();
   } else {
     Node* iter = head;
     while (--idx > 0) {
@@ -118,8 +128,10 @@ void SLL::erase(int idx) {
     }
     Node* to_remove = iter->next;
     iter->next = to_remove->next;
+    int ret = to_remove->data;
     delete to_remove;
     --len;
+    return ret;
   }
 }
 
@@ -183,4 +195,14 @@ void SLL::reverse() {
     curr = next;
   }
   head = prev;
+}
+
+void SLL::print(std::ostream& oss) {
+  Node* temp = head;
+  while (temp) {
+    oss << temp->data << ", ";
+    temp = temp->next;
+  }
+  oss << std::endl;
+  return;
 }

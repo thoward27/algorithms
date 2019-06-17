@@ -1,5 +1,5 @@
 #pragma once
-#include "../doctest.h"
+#include <iostream>
 
 /** Node Class
  * These are the building blocks of the linked list.
@@ -35,39 +35,31 @@ class SLL {
    * Negative numbers return from the end of the list.
    * Throws Out of Bounds exception if index not in list.
    */
-  int at(int);
+  int at(int index);
 
   /** length()
    * Returns the length of linked list.
    */
   unsigned int length();
 
-  /** prepend(int data)
-   * Prepends a new node with the given integer data.
+  /** push(int data, [int index])
+   * Pushes a node containing the given data to the list.
    */
-  void prepend(int);
-
-  /** append(int data)
-   * Appends a new node with the given integer data.
-   */
-  void append(int);
-
-  /** insert(int data, int index)
-   * Inserts the given data at the given index.
-   */
-  void insert(int, int);
+  void push_front(int data);
+  void push_back(int data);
+  void push(int data, int index);
 
   /** pop([int index])
    * Removes and returns the data behind the given index.
    */
   int pop_front();
   int pop_back();
-  int pop(int);
+  int pop(int index);
 
   /** set(int data, int index)
    * Overwrite the node at index to contain the new data.
    */
-  int set(int, int);
+  int set(int data, int index);
 
   /** clear()
    * Clears the entire list.
@@ -77,7 +69,7 @@ class SLL {
   /** remove(int data)
    * Removes the first item from the list with value data.
    */
-  void remove(int);
+  void remove(int data);
 
   /** unique()
    * Returns the count of unique elements in the list.
@@ -88,4 +80,9 @@ class SLL {
    * Reverses the order of the list in-place.
    */
   void reverse();
+
+  /** print()
+   * Prints the contents of the list to the ostream.
+   */
+  void print(std::ostream& oss = std::cout);
 };
