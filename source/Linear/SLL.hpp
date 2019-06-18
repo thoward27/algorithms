@@ -23,7 +23,7 @@ class Node {
 class SLL {
  private:
   Node* head;
-  // Node* tail;
+  // Node* tail; // Could be helpful!
   unsigned int len;
 
  public:
@@ -72,6 +72,12 @@ class SLL {
    * Removes the first item from the list with value data.
    */
   void remove(int data);
+
+  /** index(data)
+   * Returns the index of the given data in the linked list,
+   * -1 if that data is not present.
+   */
+  int index(int data);
 
   /** reverse()
    * Reverses the order of the list in-place.

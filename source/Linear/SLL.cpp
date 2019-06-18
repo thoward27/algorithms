@@ -37,6 +37,18 @@ int SLL::pop_front() {
   return rval;
 }
 
+int SLL::index(int data) {
+  Node* temp = head;
+  int i = 0;
+  while (temp) {
+    if (temp->data == data)
+      return i;
+    i += 1;
+    temp = temp->next;
+  }
+  return -1;
+}
+
 void SLL::push_back(int d) {
   Node* n = new Node(d);
   if (!head) {

@@ -139,6 +139,14 @@ TEST_CASE("remove") {
   REQUIRE_EQ(list.at(9), 6);
 }
 
+TEST_CASE("index") {
+  SLL list;
+  for (int i = 0; i < 10; ++i)
+    list.push_back(i);
+  for (int i = 0; i < 10; ++i)
+    REQUIRE_EQ(list.index(i), i);
+}
+
 TEST_CASE("Testing reverse...") {
   SLL list;
   list.reverse();
