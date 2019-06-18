@@ -1,9 +1,11 @@
 # FAQ
 
-- Why is the `doctest` folder empty?
-  - Your missing your submodule, following the documentation found [here](https://git-scm.com/book/en/v2/Git-Tools-Submodules), execute `git submodule init && git submodule update` to solve this problem.
-- Why won't my class compile?
-  - Checklist: Are all the expected methods defined? Are there things in your `doctest` folder? Are you using `-std=c++11`?
+- Why won't my code compile?
+  - Checklist:
+    - Are all the expected methods declared and defined?
+    - Do you have `doctest.h` in your `source` folder?
+    - Are you using `-std=c++11`?
+    - What do the errors themselves say?
 - Can I add attribute `x` to my class?
   - Yes! Any time an assignment involves a `private` section you may add anything you'd like to it.
 - What libraries can I use?
