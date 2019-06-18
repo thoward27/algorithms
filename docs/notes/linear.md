@@ -8,32 +8,31 @@ name: agenda
 
 ## Agenda
 
-- [Agenda](#agenda)
-- [Singly Linked Lists](#singly-linked-lists)
-- [Stacks](#stacks)
-- [Queues](#queues)
-- [Memory Management](#memory-management)
-- [Circular Singularly Linked Lists](#circular-singularly-linked-lists)
-- [Doubly Linked Lists](#doubly-linked-lists)
-- [Resources](#resources)
+- [Agenda](#Agenda)
+- [Singly Linked Lists](#Singly-Linked-Lists)
+- [Stacks & Queues](#Stacks--Queues)
+- [Memory Management](#Memory-Management)
+- [Circular Singularly Linked Lists](#Circular-Singularly-Linked-Lists)
+- [Doubly Linked Lists](#Doubly-Linked-Lists)
+- [Resources](#Resources)
 
 ---
-name: singly-linked-lists
+name: Singly-Linked-Lists
 class: middle
 
 ## Singly Linked Lists
 
 ---
 
-### SLL: Why we need better ways to store data
+### SLL: Arrays Aren't Perfect
 
 Consider the array
 
 .array[
 
-| arr*  | 5   | 4   | 6   | 1   |     |
+| arr*  | 5   | 4   | 6   | 1   | ... |
 | ----- | --- | --- | --- | --- | --- |
-| index | 0   | 1   | 2   | 3   |     |
+| index | 0   | 1   | 2   | 3   | ... |
 
 ]
 
@@ -70,6 +69,10 @@ B -->|next| C("C")
 C -->|next| Null[" "]
 </div>
 
+Where each node holds `int data, Node* next`
+
+--
+
 A linked list is just a collection of sequential data, it can be any type of data, we are no longer limited to primitive types.
 
 ---
@@ -77,12 +80,26 @@ A linked list is just a collection of sequential data, it can be any type of dat
 ### SLL: Pseudocode
 
 ```c++
+// Returns the data
+//at the given index.
 int at(index);
 
+
+
+// Returns first index of
+// value in list, else -1
 int search(value);
 
+
+
+// Pushes an element onto
+// the back of the list.
 void push_back(element);
 
+
+
+// Removes and returns the
+// first value in the list
 int pop_front(index);
 ```
 
@@ -90,33 +107,43 @@ int pop_front(index);
 
 ### SLL: Pseudocode Answers
 
+.two-columns[
+  
 ```pseudocode
-function at(index) -> data:
+func at(index):
   temp = head
-  for (int i = 0; i < index; ++i)
+  for (i = 0; i < index; ++i)
     iter = iter->next
   return iter->data
 
-function search(value) -> index:
+
+func search(value):
   temp = head
   int i = 0;
   while (temp):
-    if (temp->data == value) return i;
+    if (temp->data == value):
+      return i;
     temp = temp->next
     ++i;
   return i;
 
-function push_back(element) -> void:
+func push_back(element):
   temp = head
-  while (temp->next is not null):
+  while (temp->next):
     temp = temp->next
   temp->next = element
+  return
 
-function pop_front(element, index) -> data:
+
+func pop_front():
   temp = head
   head = head->next
+  ret = temp->data
   delete temp
+  return ret
 ```
+
+]
 
 ---
 
@@ -131,14 +158,14 @@ The header has been provided under `source/Linear`
 [Assignment Link](https://classroom.github.com/g/_D7D_Rxt)
 
 ---
-name: stacks
+name: Stacks--Queues
 class: middle
 
-## Stacks
+## Stacks & Queues
 
 ---
 
-### Stacks: Motivation
+### Stacks: LIFO (Last In First Out)
 
 Consider a stack of magazines on your table.
 
@@ -154,26 +181,142 @@ If we restrict access to middle elements, we have a last in first out (LIFO) sta
 
 Can you think of other real life uses for stacks? What about computationally
 
----
-name: queues
-class: middle
+--
 
-## Queues
+Undo in applications, language execution, expression parsing, ...
 
 ---
-name: memory-management
+
+### Stacks: API
+
+There are two few crucial methods to any stack:
+
+- Push: Add an element to the stack
+- Pop: Removes and returns the topmost element
+
+--
+
+What other methods would you want to use in a Stack?
+
+--
+
+isEmpty, reverse, peak, clear, ...
+
+---
+
+### Stacks: Array Based
+
+Take a moment to discuss with your teams how an array-based stack could be implemented.
+
+Where should we push and pop to / from?
+
+--
+
+The end is much easier to work with, by simply maintaining a "top" placeholder:
+
+.array[
+| arr*  | 4   | 5   | 1   | 9   |         |     | ... |
+| ----- | --- | --- | --- | --- | ------- | --- | --- |
+| index | 0   | 1   | 2   | 3   | 4 (TOP) | 5   | ... |
+]
+
+---
+
+### Stacks: Linked List Based
+
+If we use a linked list, should we still push and pop from the back?
+
+--
+
+It doesn't really matter, so long as we choose the fastest methods!
+
+We need to look at the underlying implementation, and try to use the fastest subset of methods.
+
+---
+
+### Stacks: Implementation
+
+Wait! We are going to be be building both stacks **and** queues today, so let's talk about those first as well.
+
+---
+
+### Queues: FIFO (First In First Out)
+
+Consider any line you've ever waited in, that was a First In First Out queue!
+
+What are some applications that may use a queue internally?
+
+--
+
+Tasks, processor scheduling, playlists, simulations, ...
+
+---
+
+### Queues: API
+
+Again, there are two crucial methods
+
+- Enqueue: Inserts one element into the queue (also called push)
+- Dequeue: Removes and returns the next element in the queue (also called push)
+
+Can you think of some other helpful methods a queue may need?
+
+--
+
+isEmpty, reverse, peak, clear, ... (same as stacks!)
+
+---
+
+### Queues: Array Based
+
+What is the easiest way to push/pop from a queue if it is array-based?
+
+--
+
+Keep two helper addresses, base and top!
+
+.array[
+| arr*  |     | 5        | 1   | 9   |         |     | ... |
+| ----- | --- | -------- | --- | --- | ------- | --- | --- |
+| index | 0   | 1 (BASE) | 2   | 3   | 4 (TOP) | 5   | ... |
+]
+
+---
+
+### Queues: Linked List Based
+
+Based on our class Linked List Implementation, what is the best way to build a queue from the SLL class?
+
+--
+
+<!-- TODO -->
+
+---
+
+### Implementation Time
+
+Today you must build both a Stack and Queue using the SLL class we built yesterday.
+
+Helpful visualizations:
+
+- [Visualgo](https://visualgo.net/en/list)
+- [Stack](https://www.cs.usfca.edu/~galles/visualization/StackLL.html)
+- [Queue](https://www.cs.usfca.edu/~galles/visualization/QueueLL.html)
+
+---
+name: Memory-Management
 class: middle
 
 ## Memory Management
 
 ---
-name: circular-singularly-linked-lists
+name: Circular-Singularly-Linked-Lists
 class: middle
 
 ## Circular Singularly Linked Lists
 
 ---
-name: doubly-linked-lists
+name: Doubly-Linked-Lists
 class: middle
 
 ## Doubly Linked Lists
