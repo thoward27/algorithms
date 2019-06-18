@@ -15,17 +15,19 @@ matrix:
   include:
     - name: "Strings"
       env: 
-      - SOURCE=source/string.cpp
+      - TARGET=string
     - name: "Iterative Functions"
       env:
-      - SOURCE=source/functions.cpp
+      - TARGET=functions
     - name: "Recursive Functions"
       env:
-      - SOURCE=source/functions_recursive.cpp
+      - TARGET=functions_recursive
     - name: "Sorts"
       env:
-      - SOURCE=source/sorts.cpp
+      - TARGET=sorts
+    - name: "SLL"
+      env:
+      - TARGET=SLL
 
 script:
-  - echo $SOURCE
-  - g++-8 -std=c++11 $SOURCE && ./a.out
+  - make CXX=g++-8 $(TARGET)

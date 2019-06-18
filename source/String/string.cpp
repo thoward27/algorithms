@@ -1,9 +1,7 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "string.hpp"
+#include "../Functions/functions.hpp"
 
-// Inclusions go here:
-// #include <iostream>
-
+// O(1)
 String::String() {
   // Allocate space.
   array = new char[1];
@@ -15,6 +13,7 @@ String::String() {
   _capacity = 0;
 }
 
+// O(1)
 String::String(char c) {
   // Allocate space.
   array = new char[2];
@@ -27,6 +26,7 @@ String::String(char c) {
   _capacity = 1;
 }
 
+// O(n)
 String::String(char* str) {
   // Get the length of the incoming string.
   int length = 0;
@@ -44,16 +44,20 @@ String::String(char* str) {
   _capacity = length;
 }
 
+// O(1)
 String::~String() {
   delete[] array;
 }
 
+// O(n)
 char String::at(int index) const {
   // If our index is negative, or beyond the size of our array, we cannot return
   // anything.
-  return (index < 0 || index >= this->size()) ? throw "Index" : array[index];
+  return (index < 0 || (unsigned int)index >= size()) ? throw "Index"
+                                                      : array[index];
 }
 
+// O(n)
 unsigned int String::size() const {
   int length = 0;
   while (array[length])
@@ -61,14 +65,17 @@ unsigned int String::size() const {
   return length;
 }
 
+// O(1)
 bool String::empty() const {
-  return this->size() == 0;
+  return !this->array[0];
 }
 
+// O(1)
 unsigned int String::capacity() const {
   return this->_capacity;
 }
 
+// O(n)
 void String::reserve(unsigned int n) {
   if (!n)
     return;
@@ -92,11 +99,12 @@ void String::reserve(unsigned int n) {
   return;
 }
 
+// O(n)
 void String::insert(char c, int index) {
   // Prepend and append as easy cases.
   if (index < 0)
     prepend(c);
-  else if (index >= size())
+  else if ((unsigned int)index >= size())
     append(c);
   else {
     // Increase capacity, if needed.
@@ -112,6 +120,7 @@ void String::insert(char c, int index) {
   return;
 }
 
+// O(n)
 void String::erase(char c) {
   // Create a new array.
   char* _array = new char[_capacity + 1];
@@ -129,6 +138,7 @@ void String::erase(char c) {
   return;
 }
 
+// O(n)
 void String::remove(int index) {
   // Copy all characters to the left, overwriting index.
   int length = this->size();
@@ -137,8 +147,11 @@ void String::remove(int index) {
   return;
 }
 
+// O(1) Amortized Cost due to doubling.
+// More info:
+// https://www.interviewcake.com/concept/java/dynamic-array-amortized-analysis
 void String::append(char c) {
-  int length = size();
+  unsigned int length = size();
   if (length == this->capacity()) {
     this->reserve(length * 2);
   }
@@ -147,8 +160,9 @@ void String::append(char c) {
   return;
 }
 
+// O(n)
 void String::prepend(char c) {
-  int length = size();
+  unsigned int length = size();
   if (length == this->capacity()) {
     this->reserve(length * 2);
   }
@@ -158,6 +172,7 @@ void String::prepend(char c) {
   return;
 }
 
+// O(n)
 bool String::compare(char* str) const {
   int length = size();
   // Compare all the way up to the null.
@@ -168,13 +183,15 @@ bool String::compare(char* str) const {
   return true;
 }
 
+// O(n)
 bool String::compare(String& str) const {
   return this->compare(str.array);
 }
 
+// O(n)
 void String::concatenate(char* str) {
   // Get our lengths.
-  int strlen = 0, length = size();
+  unsigned int strlen = 0, length = size();
   while (str[strlen])
     ++strlen;
   // Reserve the space/
@@ -182,41 +199,48 @@ void String::concatenate(char* str) {
     this->reserve(strlen);
   }
   // Copy things over.
-  for (int i = length, j = 0; i <= length + strlen; ++i, ++j) {
+  for (unsigned int i = length, j = 0; i <= length + strlen; ++i, ++j) {
     this->array[i] = str[j];
   }
   return;
 }
 
+// O(n)
 void String::concatenate(String& str) {
   this->concatenate(str.array);
   return;
 }
 
+// O(n)
 bool exact_match(char* a, char* b) {
   return (!b[0]) ? true : a[0] == b[0] && exact_match(a + 1, b + 1);
 }
+
+// O(n^2)
 unsigned int String::find(char* str, int start) const {
-  unsigned int i = start, length = size();
-  for (i, length; i < length; ++i) {
+  unsigned int i, length;
+  for (i = start, length = size(); i < length; ++i) {
     if (exact_match(this->array + i, str))
       return i;
   }
   return i;
 }
 
+// O(n)
 unsigned int String::find(char c, int start) const {
-  unsigned int i = start, length = size();
-  for (i, length; i < length; ++i)
+  unsigned int i, length;
+  for (i = start, length = size(); i < length; ++i)
     if (array[i] == c)
       return i;
   return i;
 }
 
+// O(n^2)
 unsigned int String::find(String& str, int start) const {
   return this->find(str.array, start);
 }
 
+// O(n)
 void String::reverse() {
   int length = size() - 1;
   for (int i = 0; i < length / 2; ++i) {
@@ -227,6 +251,7 @@ void String::reverse() {
   return;
 }
 
+// O(n)
 void String::shift(int n) {
   int length = size();
   for (int i = 0; i < length; ++i) {
@@ -237,9 +262,7 @@ void String::shift(int n) {
   return;
 }
 
-int chartoint(char c) {
-  return ('0' <= c && c <= '9') ? c - 48 : throw "bad input";
-}
+// O(n)
 int String::toInt() const {
   int len = size();
   int out = 0;
@@ -251,6 +274,7 @@ int String::toInt() const {
   return out;
 }
 
+// O(n) since append is O(1) amortized.
 String String::substr(int start, int end) const {
   String ret;
   for (int i = start; i < end; ++i)

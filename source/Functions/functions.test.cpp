@@ -1,16 +1,9 @@
-#ifndef __FUNCTIONS__
-#define __FUNCTIONS__
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include "doctest.h"
+#include "../doctest.h"
+#include "functions.hpp"
 
-/** Absolute Value.
- * Converts any integer to its absolute value.
- * O(1) and Omega(1), thus,
- * Theta(1)
- */
-int abs_val(int x);
-
-TEST_CASE("Testing the absolute value function") {
+TEST_CASE("abs_val") {
   CHECK(abs_val(1) == 1);
   CHECK(abs_val(-1) == 1);
   CHECK(abs_val(-60) == 60);
@@ -21,13 +14,7 @@ TEST_CASE("Testing the absolute value function") {
   CHECK(abs_val(0) == 0);
 }
 
-/** Power.
- * Raise the given base to the given power.
- * O(?)
- */
-int pow(int base, int num);
-
-TEST_CASE("Testing the power function") {
+TEST_CASE("pow") {
   CHECK(pow(1, 0) == 1);
   CHECK(pow(10, 0) == 1);
   CHECK(pow(100, 0) == 1);
@@ -41,13 +28,7 @@ TEST_CASE("Testing the power function") {
   CHECK(pow(3, 3) == 27);
 }
 
-/** Logarithm.
- * Returns an integer such that base^{integer} = number.
- * O(?)
- */
-int log(int base, int num);
-
-TEST_CASE("Testing the logarithm function") {
+TEST_CASE("log") {
   CHECK(log(3, 27) == 3);
   CHECK(log(2, 4) == 2);
   CHECK(log(2, 8) == 3);
@@ -55,13 +36,7 @@ TEST_CASE("Testing the logarithm function") {
   CHECK(log(5, 25) == 2);
 }
 
-/** Character to Int.
- * Returns the integer value of the given character [0, 9].
- * O(?)
- */
-int chartoint(char c);
-
-TEST_CASE("Testing the character to integer function") {
+TEST_CASE("chartoint") {
   CHECK(chartoint('0') == 0);
   CHECK(chartoint('1') == 1);
   CHECK(chartoint('2') == 2);
@@ -74,13 +49,7 @@ TEST_CASE("Testing the character to integer function") {
   CHECK(chartoint('9') == 9);
 }
 
-/** Int to Character.
- * Returns the character represented by the given integer [0, 9].
- * O(?)
- */
-char inttochar(int x);
-
-TEST_CASE("Testing the integer to character function") {
+TEST_CASE("inttochar") {
   CHECK(inttochar(0) == '0');
   CHECK(inttochar(1) == '1');
   CHECK(inttochar(2) == '2');
@@ -93,40 +62,20 @@ TEST_CASE("Testing the integer to character function") {
   CHECK(inttochar(9) == '9');
 }
 
-/** Character.
- * Returns the character represented by the integer give.
- * O(?)
- */
-char chr(int);
-
-TEST_CASE("chr()") {
+TEST_CASE("chr") {
   CHECK(chr(43) == '+');
   CHECK(chr(40) == '(');
   CHECK(chr(48) == '0');
   CHECK(chr(122) == 'z');
 }
 
-/** Ordinal.
- * Returns the index of the ASCII character given.
- * O(?)
- */
-int ord(char);
-
-TEST_CASE("ord()") {
+TEST_CASE("ord") {
   CHECK(ord('c') == 99);
   CHECK(ord('O') == 79);
   CHECK(ord('|') == 124);
 }
 
-/** Max.
- * Returns the maximum element from the parameters given.
- * O(?)
- */
-int max(int, int);
-int max(int, int, int);
-int max(int arr[], int n);
-
-TEST_CASE("Max") {
+TEST_CASE("max") {
   SUBCASE("Two variables.") {
     CHECK(max(1, 2) == 2);
     CHECK(max(2, 1) == 2);
@@ -151,15 +100,7 @@ TEST_CASE("Max") {
   }
 }
 
-/** Min.
- * Returns the minimum element from the parameters given.
- * O(?)
- */
-int min(int, int);
-int min(int, int, int);
-int min(int arr[], int n);
-
-TEST_CASE("Min") {
+TEST_CASE("min") {
   SUBCASE("Two variables.") {
     CHECK(min(1, 2) == 1);
     CHECK(min(2, 1) == 1);
@@ -184,13 +125,7 @@ TEST_CASE("Min") {
   }
 }
 
-/** Round a float.
- * Rounds a float either (u)p or (d)own, depending on the char given.
- * O(?)
- */
-int round(double, char);
-
-TEST_CASE("Round a float.") {
+TEST_CASE("round") {
   SUBCASE("Up") {
     CHECK(round(2.1, 'u') == 3);
     CHECK(round(-4.6, 'u') == -4);
@@ -201,13 +136,7 @@ TEST_CASE("Round a float.") {
   }
 }
 
-/** All true.
- * Checks if all elements in the array are true.
- * O(?)
- */
-bool all(bool arr[], int n);
-
-TEST_CASE("All true.") {
+TEST_CASE("all") {
   bool arr1[1] = {true};
   CHECK(all(arr1, 1));
 
@@ -221,13 +150,7 @@ TEST_CASE("All true.") {
   CHECK(!all(arr4, 6));
 }
 
-/** Any true
- * Returns whether or not any element is true.
- * O(?)
- */
-bool any(bool arr[], int n);
-
-TEST_CASE("Any element.") {
+TEST_CASE("any") {
   bool arr1[1] = {true};
   CHECK(any(arr1, 1));
 
@@ -241,13 +164,7 @@ TEST_CASE("Any element.") {
   CHECK(any(arr4, 6));
 }
 
-/** Frequency of x.
- * Returns the frequency of x in the given array.
- * O(?)
- */
-int frequency(int arr[], int n, int x);
-
-TEST_CASE("testing frequency function") {
+TEST_CASE("frequency") {
   int arr[10] = {1, 1, 1, 3, 2, 5, 3, 4, 7, 7};
   CHECK(frequency(arr, 10, 1) == 3);
   CHECK(frequency(arr, 10, 3) == 2);
@@ -261,13 +178,7 @@ TEST_CASE("testing frequency function") {
   }
 }
 
-/** Sum.
- * Returns the sum of all elements in the array.
- * O(?)
- */
-long sum(int arr[], int n);
-
-TEST_CASE("testing sum function") {
+TEST_CASE("sum") {
   int arr1[1] = {5};
   CHECK(sum(arr1, 1) == 5);
 
@@ -281,13 +192,7 @@ TEST_CASE("testing sum function") {
   CHECK(sum(arr4, 2) == -4000000000);
 }
 
-/** Index.
- * Returns the index of the given substring if found, or -1.
- * O(?)
- */
-int index(char str[], char substr[]);
-
-TEST_CASE("testing index function") {
+TEST_CASE("index") {
   char str1[] = "this is my string";
   char sub1[] = "ring";
   char sub2[] = "thin";
@@ -305,13 +210,7 @@ TEST_CASE("testing index function") {
   CHECK(index(str2, str2) == 0);
 }
 
-/** Is sorted.
- * Returns whether or not an array is monotonically increasing or decreasing.
- * O(?)
- */
-bool is_sorted(int arr[], int n);
-
-TEST_CASE("testing sorted array check function") {
+TEST_CASE("is_sorted") {
   int arr1[1] = {80};
   CHECK(is_sorted(arr1, 1));
 
@@ -330,13 +229,7 @@ TEST_CASE("testing sorted array check function") {
   CHECK(is_sorted(arr5, 3));
 }
 
-/** Primality testing.
- * Checks if a given number is prime
- * O(?)
- */
-bool prime(int);
-
-TEST_CASE("Checking if a number is prime.") {
+TEST_CASE("prime") {
   REQUIRE(prime(2));
   REQUIRE(prime(3));
   REQUIRE_FALSE(prime(4));
@@ -351,13 +244,7 @@ TEST_CASE("Checking if a number is prime.") {
   REQUIRE(prime(97));
 }
 
-/** Fibonacci numbers
- * Returns the fibonacci number of the given index.
- * O(?)
- */
-long fibonacci(int);
-
-TEST_CASE("Fibonacci numbers.") {
+TEST_CASE("fibonacci") {
   CHECK(fibonacci(0) == 0);
   CHECK(fibonacci(1) == 1);
   CHECK(fibonacci(2) == 1);
@@ -365,38 +252,20 @@ TEST_CASE("Fibonacci numbers.") {
   CHECK(fibonacci(16) == 987);
 }
 
-/** Factorial
- * Returns n!
- * O(?)
- */
-long factorial(int);
-
-TEST_CASE("Factorial") {
+TEST_CASE("factorial") {
   CHECK(factorial(0) == 1);
   CHECK(factorial(4) == 24);
   CHECK(factorial(8) == 40320);
 }
 
-/** String Length
- * Returns the length of the given C-String
- * O(?)
- */
-int strlen(char string[]);
-
-TEST_CASE("Testing the string length function") {
+TEST_CASE("strlen") {
   CHECK(strlen((char*)"Hello") == 5);
   CHECK(strlen((char*)"Hello World") == 11);
   CHECK(strlen((char*)"1234") == 4);
   CHECK(strlen((char*)"0123456789") == 10);
 }
 
-/** String to Int
- * Returns the given string as an integer
- * O(?)
- */
-int stringtoint(char string[]);
-
-TEST_CASE("Testing the string to integer function") {
+TEST_CASE("stringtoint") {
   CHECK(stringtoint((char*)"0") == 0);
   CHECK(stringtoint((char*)"1") == 1);
   CHECK(stringtoint((char*)"12") == 12);
@@ -406,16 +275,8 @@ TEST_CASE("Testing the string to integer function") {
   CHECK(stringtoint((char*)"33") == 33);
 }
 
-/** Reverse
- * Reverses the array in-place.
- * O(?)
- */
-void reverse(int* arr, int n);
-void reverse(char* arr, int n);
-void reverse(char* arr);
-
-TEST_CASE("testing reverse functions") {
-  SUBCASE("testing reverse function for integers") {
+TEST_CASE("reverse") {
+  SUBCASE("reverse(int*, int)") {
     int arr1[1] = {1};
     reverse(arr1, 1);
     CHECK(arr1[0] == 1);
@@ -438,7 +299,7 @@ TEST_CASE("testing reverse functions") {
       CHECK(arr4[i] == arr5[i]);
   }
 
-  SUBCASE("testing reverse function for strings with length given") {
+  SUBCASE("reverse(char*, n)") {
     char arr0[1] = "";
     reverse(arr0, 0);
     CHECK(arr0[0] == '\0');
@@ -465,7 +326,7 @@ TEST_CASE("testing reverse functions") {
       CHECK(arr4[i] == arr5[i]);
   }
 
-  SUBCASE("testing reverse function for strings without length given") {
+  SUBCASE("reverse(char*)") {
     char arr0[1] = "";
     reverse(arr0);
     CHECK(arr0[0] == '\0');
@@ -492,5 +353,3 @@ TEST_CASE("testing reverse functions") {
       CHECK(arr4[i] == arr5[i]);
   }
 }
-
-#endif

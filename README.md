@@ -12,6 +12,8 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [Slack Room](https://csc212.slack.com/)
 - [DevDocs](https://devdocs.io/)
 - [Cheat Sheets](docs/cheat_sheets/)
+- [Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- [Visualgo](https://visualgo.net/en)
 
 ---
 
@@ -47,3 +49,8 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 - [E01 Review](docs/exams/E01R.md)
 - [E01 Review Answers](docs/exams/E01RA.md)
+
+## Good Reads
+
+- [Visualizing Algorithms](https://bost.ocks.org/mike/algorithms/)
+- [Algorithmic Art](http://www.kristenwebster.net/)

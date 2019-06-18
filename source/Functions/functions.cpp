@@ -1,4 +1,3 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "functions.hpp"
 
 int abs_val(int x) {
@@ -15,15 +14,17 @@ int pow(int base, int num) {
 
 int log(int base, int num) {
   int count = 0;
-  for (num; num > 1; num /= base)
+  while (num > 1) {
+    num /= base;
     ++count;
+  }
   return count;
 }
 
 int chartoint(char c) {
-  int result = (int)c;
-  result -= '0';
-  return result;
+  if (c < '0' || c > '9')
+    throw "Bad character";
+  return c - '0';
 }
 
 char inttochar(int x) {

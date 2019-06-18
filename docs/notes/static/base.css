@@ -1,58 +1,55 @@
 body {
-  font-family: 'Droid Serif';
+  font-family: 'Roboto';
 }
 
 h1,
 h2,
-h3 {
-  font-family: 'Yanone Kaffeesatz';
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Roboto Slab';
   font-weight: 400;
   margin-bottom: 0;
 }
 
-h4 {
-  margin-bottom: 0;
+h1 {
+  font-size: 5em;
 }
 
-.remark-slide-content h1 {
+h2 {
   font-size: 3em;
 }
 
-.remark-slide-content h2 {
+h3 {
   font-size: 2em;
 }
 
-.remark-slide-content h3 {
-  font-size: 1.6em;
+p {
+  font-size: 1.5em;
 }
 
-.footnote {
-  position: absolute;
-  bottom: 3em;
-}
-
-.red {
-  color: #fa0000;
-}
-
-a,
-a > code {
-  color: #f92672;
+a {
+  color: #0738be;
   text-decoration: none;
 }
 
-code {
-  background: #e7e8e2;
+pre code {
+  font-family: "Roboto Mono";
+  background: #dedede;
   border-radius: 5px;
+  padding: 1em;
+  display: block;
 }
 
-.remark-code,
-.remark-inline-code {
-  font-family: 'Ubuntu Mono';
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
 }
 
-.remark-code-line-highlighted {
-  background-color: #373832;
+table * {
+  border: 1px solid black;
+  padding: .4em;
 }
 
 .pull-left {
@@ -65,28 +62,27 @@ code {
   width: 47%;
 }
 
-.inverse {
-  background: #272822;
-  color: #cccccc;
-  text-shadow: 0 0 20px #333;
-}
-
-.inverse h1,
-.inverse h2 {
-  color: #f3f3f3;
-  line-height: 0.8em;
-}
-
-/* Slide-specific styling */
-#slide-inverse .footnote {
-  bottom: 12px;
-  left: 20px;
-}
-
 .two-columns {
   -webkit-columns: 2;
           columns: 2;
   -webkit-column-gap: 2em;
           column-gap: 2em;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 3em;
+}
+
+.array * {
+  text-align: center;
+}
+
+.array th {
+  font-size: 2.2em;
+}
+
+.MathJax {
+  font-size: 2.5em;
 }
 /*# sourceMappingURL=base.css.map */

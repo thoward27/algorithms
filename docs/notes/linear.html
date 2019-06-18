@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Linear Structures</title>
+  <meta charset="utf-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Roboto+Slab&display=swap');
+    @import "static/base.css";
+  </style>
+  <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+    });
+  </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+</head>
+
+<body>
+  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  <script>
+    var slideshow = remark.create({
+      navigation: {
+        click: false,
+      },
+      countIncrementalSlides: false,
+      sourceUrl: 'linear.md'
+    });
+  </script>
+  <script>
+    var config = {
+      startOnLoad: true,
+      theme: 'default',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      }
+    };
+    mermaid.initialize(config);
+    window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+  </script>
+</body>
+
+</html>

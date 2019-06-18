@@ -19,7 +19,7 @@ This assignment will be hosted on Github Classroom.
    1. Open a terminal
    2. Navigate to your algorithms folder
    3. Go to the parent directory (`cd ..`)
-   4. Clone the repository to this location (`git clone --recurse-submodules https://github.com/uri-cs/HybridSort-<your username here>.git`)
+   4. Clone the repository to this location (`git clone <Link to your repository>`)
       1. Be sure to use the link for **your copy** of the repository
 3. Getting things in order
    1. Open your new folder in VS Code

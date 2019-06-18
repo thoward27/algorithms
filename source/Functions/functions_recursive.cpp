@@ -1,4 +1,3 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "functions.hpp"
 
 bool r_prime(int n, int k) {
@@ -52,15 +51,9 @@ int strlen(char* string) {
   return length;
 }
 
-bool exact_match(char* string, char* substring) {
-  std::cout << "STR: " << string << " SUB: " << substring << std::endl;
-  if (!string[0] || !substring[0]) {
-    std::cout << " Bool: " << (string[0] == substring[0]) << std::endl;
-    return string[0] == substring[0];
-  }
-  return (string[0] == substring[0]) && exact_match(string + 1, substring + 1);
+bool exact_match(char* a, char* b) {
+  return (!b[0]) ? true : a[0] == b[0] && exact_match(a + 1, b + 1);
 }
-
 int r_index(char str[], char substr[]) {
   if (!substr[0] || exact_match(str, substr))
     return 0;
@@ -71,7 +64,6 @@ int r_index(char str[], char substr[]) {
 
 int index(char* str, char* substr) {
   int idx = r_index(str, substr);
-  std::cout << idx << " " << strlen(str) << std::endl;
   return idx <= strlen(str) ? idx : -1;
 }
 
