@@ -13,6 +13,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [DevDocs](https://devdocs.io/)
 - [Cheat Sheets](docs/cheat_sheets/)
 - [Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- [Visualgo](https://visualgo.net/en)
 
 ---
 
