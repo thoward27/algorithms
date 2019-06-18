@@ -69,11 +69,11 @@ B -->|next| C("C")
 C -->|next| Null[" "]
 </div>
 
-Where each node holds `int data, Node* next`
+Each node holds `int data` and, `Node* next`
 
 --
 
-A linked list is just a collection of sequential data, it can be any type of data, we are no longer limited to primitive types.
+A linked list is data structure that holds sequential information non-contiguously.
 
 ---
 
@@ -110,13 +110,14 @@ int pop_front(index);
 .two-columns[
   
 ```pseudocode
+// O(n)
 func at(index):
   temp = head
   for (i = 0; i < index; ++i)
     iter = iter->next
   return iter->data
 
-
+// O(n)
 func search(value):
   temp = head
   int i = 0;
@@ -127,6 +128,7 @@ func search(value):
     ++i;
   return i;
 
+// O(n)
 func push_back(element):
   temp = head
   while (temp->next):
@@ -134,7 +136,7 @@ func push_back(element):
   temp->next = element
   return
 
-
+// O(1)
 func pop_front():
   temp = head
   head = head->next
