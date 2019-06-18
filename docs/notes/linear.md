@@ -9,7 +9,7 @@ name: agenda
 ## Agenda
 
 - [Agenda](#agenda)
-- [Singularly Linked Lists](#singularly-linked-lists)
+- [Singly Linked Lists](#singly-linked-lists)
 - [Stacks](#stacks)
 - [Queues](#queues)
 - [Memory Management](#memory-management)
@@ -18,14 +18,14 @@ name: agenda
 - [Resources](#resources)
 
 ---
-name: singularly-linked-lists
+name: singly-linked-lists
 class: middle
 
-## Singularly Linked Lists
+## Singly Linked Lists
 
 ---
 
-### SLL: Motivation
+### SLL: Why we need better ways to store data
 
 Consider the array
 
@@ -43,6 +43,12 @@ What is the cost to insert into the front? Middle? Rear?
 
 --
 
+$$O(n), O(n), O(1)^*$$
+
+*Using amortization.
+
+--
+
 What about deletions?
 
 --
@@ -51,20 +57,76 @@ What if we used **non-contiguous** memory?
 
 ---
 
-### SLL: A Depiction
-
-
-<div class="mermaid">graph LR
-H((Head)) --> A
-A -->|next| B
-B -->|next| C
-C -->|next| Null
-</div>
-
+### SLL: How
 
 - Non-Contiguous storage.
 - Nodes are connected by links (pointers).
 - Can grow and shrink dynamically.
+
+<div class="mermaid">graph LR
+H((Head)) --> A
+A("A") -->|next| B("B")
+B -->|next| C("C")
+C -->|next| Null[" "]
+</div>
+
+A linked list is just a collection of sequential data, it can be any type of data, we are no longer limited to primitive types.
+
+---
+
+### SLL: Pseudocode
+
+```c++
+int at(index);
+
+int search(value);
+
+void push_back(element);
+
+int pop_front(index);
+```
+
+---
+
+### SLL: Pseudocode Answers
+
+```pseudocode
+function at(index) -> data:
+  temp = head
+  for (int i = 0; i < index; ++i)
+    iter = iter->next
+  return iter->data
+
+function search(value) -> index:
+  temp = head
+  int i = 0;
+  while (temp):
+    if (temp->data == value) return i;
+    temp = temp->next
+    ++i;
+  return i;
+
+function push_back(element) -> void:
+  temp = head
+  while (temp->next is not null):
+    temp = temp->next
+  temp->next = element
+
+function pop_front(element, index) -> data:
+  temp = head
+  head = head->next
+  delete temp
+```
+
+---
+
+### SLL: Implementation
+
+With your teams, implement a Singly Linked List!
+
+The header has been provided under `source/Linear`
+
+[Interactive Visualization](https://visualgo.net/en/list)
 
 ---
 name: stacks
