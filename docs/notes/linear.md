@@ -168,7 +168,6 @@ What if the last element didn't point to null, but to `head`?
 
 <div class="mermaid">graph LR
 H((Head)) --> A
-T((Tail)) --> C
 A("A") -->|next| B("B")
 B -->|next| C("C")
 C -->|next| A
