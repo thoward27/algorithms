@@ -1,6 +1,6 @@
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra
-SOURCES=functions functions_recursive sorts string SLL
+SOURCES=functions functions_recursive sorts string SLL CSLL DLL
 
 %: source/Functions/functions.test.cpp source/Functions/%.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out

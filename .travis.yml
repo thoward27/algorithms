@@ -13,6 +13,9 @@ addons:
 
 matrix:
   include:
+    - name: "All"
+      env:
+      - TARGET=all
     - name: "Strings"
       env: 
       - TARGET=string
