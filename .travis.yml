@@ -30,4 +30,4 @@ matrix:
       - TARGET=SLL
 
 script:
-  - make CXX=g++-8 $(TARGET)
+  - make CXX=g++-8 $TARGET
