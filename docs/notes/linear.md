@@ -10,10 +10,10 @@ name: agenda
 
 - [Agenda](#Agenda)
 - [Singly Linked Lists](#Singly-Linked-Lists)
-- [Stacks & Queues](#Stacks--Queues)
-- [Memory Management](#Memory-Management)
 - [Circular Singularly Linked Lists](#Circular-Singularly-Linked-Lists)
 - [Doubly Linked Lists](#Doubly-Linked-Lists)
+- [Stacks & Queues](#Stacks--Queues)
+- [Memory Management](#Memory-Management)
 - [Resources](#Resources)
 
 ---
@@ -158,6 +158,42 @@ The header has been provided under `source/Linear`
 [Interactive Visualization](https://visualgo.net/en/list)
 
 [Assignment Link](https://classroom.github.com/g/_D7D_Rxt)
+
+---
+name: Circular-Singularly-Linked-Lists
+
+## Circular Singularly Linked Lists
+
+What if the last element didn't point to null, but to `head`?
+
+<div class="mermaid">graph LR
+H((Head)) --> A
+T((Tail)) --> C
+A("A") -->|next| B("B")
+B -->|next| C("C")
+C -->|next| A
+</div>
+
+---
+name: Doubly-Linked-Lists
+
+## Doubly Linked Lists
+
+Instead of just storing the `next` element, also store the `previous` one.
+
+<div class="mermaid">graph LR
+H((Head)) --> A
+Null2[" "] ---|prev| A
+A("A") -->|next| B("B")
+B -->|prev| A
+B -->|next| C("C")
+C -->|prev| B
+C -->|next| Null[" "]
+</div>
+
+--
+
+This can also be made circular
 
 ---
 name: Stacks--Queues
@@ -310,18 +346,6 @@ name: Memory-Management
 class: middle
 
 ## Memory Management
-
----
-name: Circular-Singularly-Linked-Lists
-class: middle
-
-## Circular Singularly Linked Lists
-
----
-name: Doubly-Linked-Lists
-class: middle
-
-## Doubly Linked Lists
 
 ---
 name: Resources
