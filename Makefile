@@ -14,7 +14,7 @@ string: source/String/string.test.cpp source/String/string.cpp source/Functions/
 %: source/Linear/%.test.cpp source/Linear/%.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
-all: functions functions_recursive sorts string
+all: $(SOURCES) 
 
 .PHONY: clean
 
