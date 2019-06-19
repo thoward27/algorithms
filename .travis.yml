@@ -13,6 +13,9 @@ addons:
 
 matrix:
   include:
+    - name: "All"
+      env:
+      - TARGET=all
     - name: "Strings"
       env: 
       - TARGET=string
@@ -30,4 +33,4 @@ matrix:
       - TARGET=SLL
 
 script:
-  - make CXX=g++-8 $(TARGET)
+  - make CXX=g++-8 $TARGET
