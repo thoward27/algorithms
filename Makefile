@@ -1,6 +1,6 @@
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra
-SOURCES=functions functions_recursive sorts string SLL CSLL DLL
+TARGETS=functions functions_recursive sorts string SLL CSLL DLL
 
 %: source/Functions/functions.test.cpp source/Functions/%.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
@@ -14,7 +14,7 @@ string: source/String/string.test.cpp source/String/string.cpp source/Functions/
 %: source/Linear/%.test.cpp source/Linear/%.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
-all: $(SOURCES) 
+all: $(TARGETS) 
 
 .PHONY: clean
 
