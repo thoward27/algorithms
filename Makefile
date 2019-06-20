@@ -11,7 +11,7 @@ sorts: source/Sorts/sorts.test.cpp source/Sorts/sorts.cpp source/Functions/funct
 string: source/String/string.test.cpp source/String/string.cpp source/Functions/functions.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
-%: source/Linear/%.test.cpp source/Linear/%.cpp
+%: source/Linear/LinkedList.test.cpp source/Linear/%.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
 all: $(TARGETS) 

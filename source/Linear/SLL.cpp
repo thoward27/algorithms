@@ -1,19 +1,19 @@
-#include "SLL.hpp"
+#include "LinkedList.hpp"
 
-SLL::SLL() {
+LinkedList::LinkedList() {
   head = nullptr;
   len = 0;
 }
 
-SLL::~SLL() {
+LinkedList::~LinkedList() {
   clear();
 }
 
-unsigned int SLL::length() {
+unsigned int LinkedList::length() {
   return len;
 }
 
-void SLL::push_front(int d) {
+void LinkedList::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
@@ -24,7 +24,7 @@ void SLL::push_front(int d) {
   ++len;
 }
 
-int SLL::pop_front() {
+int LinkedList::pop_front() {
   Node* to_remove = head;
   int rval = head->data;
   if (len == 1) {
@@ -37,7 +37,7 @@ int SLL::pop_front() {
   return rval;
 }
 
-int SLL::index(int data) {
+int LinkedList::index(int data) {
   Node* temp = head;
   int i = 0;
   while (temp) {
@@ -49,7 +49,7 @@ int SLL::index(int data) {
   return -1;
 }
 
-void SLL::push_back(int d) {
+void LinkedList::push_back(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
@@ -63,7 +63,7 @@ void SLL::push_back(int d) {
   ++len;
 }
 
-int SLL::pop_back() {
+int LinkedList::pop_back() {
   Node* to_remove;
   if (len == 1) {
     to_remove = head;
@@ -82,7 +82,7 @@ int SLL::pop_back() {
   return rval;
 }
 
-int SLL::at(int idx) {
+int LinkedList::at(int idx) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -100,7 +100,7 @@ int SLL::at(int idx) {
   return iter->data;
 }
 
-int SLL::set(int idx, int data) {
+int LinkedList::set(int idx, int data) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -117,7 +117,7 @@ int SLL::set(int idx, int data) {
   return old;
 }
 
-void SLL::push(int d, int idx) {
+void LinkedList::push(int d, int idx) {
   if (!idx) {
     push_front(d);
   } else if ((unsigned int)idx == len) {
@@ -134,7 +134,7 @@ void SLL::push(int d, int idx) {
   }
 }
 
-int SLL::pop(int idx) {
+int LinkedList::pop(int idx) {
   if (!idx) {
     return pop_front();
   } else if ((unsigned int)idx == len - 1) {
@@ -153,7 +153,7 @@ int SLL::pop(int idx) {
   }
 }
 
-void SLL::clear() {
+void LinkedList::clear() {
   Node* to_remove;
   while (head) {
     to_remove = head;
@@ -163,7 +163,7 @@ void SLL::clear() {
   len = 0;
 }
 
-void SLL::remove(int d) {
+void LinkedList::remove(int d) {
   if (head && head->data == d)
     pop_front();
   else {
@@ -182,7 +182,7 @@ void SLL::remove(int d) {
   }
 }
 
-void SLL::reverse() {
+void LinkedList::reverse() {
   if (len <= 1)
     return;
   Node* prev = nullptr;
@@ -197,7 +197,7 @@ void SLL::reverse() {
   head = prev;
 }
 
-void SLL::print(std::ostream& oss) {
+void LinkedList::print(std::ostream& oss) {
   Node* temp = head;
   while (temp) {
     oss << temp->data << ", ";

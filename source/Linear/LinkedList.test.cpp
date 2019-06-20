@@ -1,15 +1,15 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
 
-#include "CSLL.hpp"
+#include "LinkedList.hpp"
 
 TEST_CASE("Constructor") {
-  CSLL list;
+  LinkedList list;
   CHECK(list.length() == 0);
 }
 
 TEST_CASE("at") {
-  CSLL list;
+  LinkedList list;
   for (int i = 0; i < 10; ++i) {
     list.push_front(i);
   }
@@ -31,7 +31,7 @@ TEST_CASE("at") {
 
 TEST_CASE("push") {
   SUBCASE("to front") {
-    CSLL list;
+    LinkedList list;
     list.push_front(5);
     REQUIRE(list.length() == 1);
     REQUIRE(list.at(0) == 5);
@@ -40,14 +40,14 @@ TEST_CASE("push") {
     REQUIRE(list.at(0) == 10);
   }
   SUBCASE("to back") {
-    CSLL list;
+    LinkedList list;
     list.push_back(5);
     list.push_back(10);
     REQUIRE(list.length() == 2);
     REQUIRE(list.at(0) == 5);
   }
   SUBCASE("to index") {
-    CSLL list;
+    LinkedList list;
     list.push(10, 0);
     list.push(1, 1);
     list.push(2, 1);
@@ -58,7 +58,7 @@ TEST_CASE("push") {
 
 TEST_CASE("pop") {
   SUBCASE("front") {
-    CSLL list;
+    LinkedList list;
     for (int i = 0; i < 10; ++i)
       list.push_back(i);
     for (int i = 0; i < 10; ++i)
@@ -66,7 +66,7 @@ TEST_CASE("pop") {
     REQUIRE_EQ(list.length(), 0);
   }
   SUBCASE("back") {
-    CSLL list;
+    LinkedList list;
     for (int i = 0; i < 10; ++i)
       list.push_front(i);
     for (int i = 0; i < 10; ++i)
@@ -74,7 +74,7 @@ TEST_CASE("pop") {
     REQUIRE_EQ(list.length(), 0);
   }
   SUBCASE("index") {
-    CSLL list;
+    LinkedList list;
     for (int i = 0; i < 10; ++i)
       list.push_front(i);
     REQUIRE_EQ(list.pop(0), 9);
@@ -84,7 +84,7 @@ TEST_CASE("pop") {
 }
 
 TEST_CASE("set") {
-  CSLL list;
+  LinkedList list;
   for (int i = 0; i < 5; ++i)
     list.push_front(i);
   SUBCASE("Positive indexes") {
@@ -110,7 +110,7 @@ TEST_CASE("set") {
 }
 
 TEST_CASE("clear") {
-  CSLL list;
+  LinkedList list;
   for (int i = 0; i < 5; ++i) {
     list.push_front(i);
   }
@@ -123,7 +123,7 @@ TEST_CASE("clear") {
 }
 
 TEST_CASE("remove") {
-  CSLL list;
+  LinkedList list;
   for (int i = 0; i < 10; ++i)
     list.push_back(i);
   list.remove(6);
@@ -140,7 +140,7 @@ TEST_CASE("remove") {
 }
 
 TEST_CASE("index") {
-  CSLL list;
+  LinkedList list;
   for (int i = 0; i < 10; ++i)
     list.push_back(i);
   for (int i = 0; i < 10; ++i)
@@ -148,7 +148,7 @@ TEST_CASE("index") {
 }
 
 TEST_CASE("Testing reverse...") {
-  CSLL list;
+  LinkedList list;
   list.reverse();
   list.push_front(50);
   list.reverse();

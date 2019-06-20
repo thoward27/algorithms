@@ -1,20 +1,19 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "DLL.hpp"
+#include "LinkedList.hpp"
 
-DLL::DLL() {
+LinkedList::LinkedList() {
   head = tail = nullptr;
   len = 0;
 }
 
-DLL::~DLL() {
+LinkedList::~LinkedList() {
   clear();
 }
 
-unsigned int DLL::length() {
+unsigned int LinkedList::length() {
   return len;
 }
 
-void DLL::push_front(int d) {
+void LinkedList::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = tail = n;
@@ -26,7 +25,7 @@ void DLL::push_front(int d) {
   ++len;
 }
 
-int DLL::pop_front() {
+int LinkedList::pop_front() {
   Node* to_remove = head;
   int rval = head->data;
   if (len == 1) {
@@ -40,7 +39,7 @@ int DLL::pop_front() {
   return rval;
 }
 
-int DLL::index(int data) {
+int LinkedList::index(int data) {
   Node* temp = head;
   int i = 0;
   while (temp) {
@@ -52,7 +51,7 @@ int DLL::index(int data) {
   return -1;
 }
 
-void DLL::push_back(int d) {
+void LinkedList::push_back(int d) {
   Node* n = new Node(d);
   if (!tail) {
     head = tail = n;
@@ -64,7 +63,7 @@ void DLL::push_back(int d) {
   ++len;
 }
 
-int DLL::pop_back() {
+int LinkedList::pop_back() {
   Node* to_remove = tail;
   int rval = tail->data;
   if (len == 1) {
@@ -78,7 +77,7 @@ int DLL::pop_back() {
   return rval;
 }
 
-int DLL::at(int idx) {
+int LinkedList::at(int idx) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -88,7 +87,7 @@ int DLL::at(int idx) {
 
   // Iterate to the element from the head or tail, whichever is closer.
   Node* iter;
-  if ((unsigned int)idx < len/2) {
+  if ((unsigned int)idx < len / 2) {
     iter = head;
     while (--idx >= 0) {
       iter = iter->next;
@@ -104,7 +103,7 @@ int DLL::at(int idx) {
   return iter->data;
 }
 
-int DLL::set(int idx, int d) {
+int LinkedList::set(int idx, int d) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -113,7 +112,7 @@ int DLL::set(int idx, int d) {
     throw "Bad index";
 
   Node* iter;
-  if ((unsigned int)idx < len/2) {
+  if ((unsigned int)idx < len / 2) {
     iter = head;
     while (--idx >= 0) {
       iter = iter->next;
@@ -130,7 +129,7 @@ int DLL::set(int idx, int d) {
   return old;
 }
 
-void DLL::push(int d, int idx) {
+void LinkedList::push(int d, int idx) {
   if (!idx) {
     push_front(d);
   } else if ((unsigned int)idx == len) {
@@ -138,7 +137,7 @@ void DLL::push(int d, int idx) {
   } else {
     Node* n = new Node(d);
     Node* iter;
-    if ((unsigned)idx < len/2) {
+    if ((unsigned)idx < len / 2) {
       iter = head;
       while (--idx > 0) {
         iter = iter->next;
@@ -157,14 +156,14 @@ void DLL::push(int d, int idx) {
   }
 }
 
-int DLL::pop(int idx) {
+int LinkedList::pop(int idx) {
   if (!idx) {
     return pop_front();
   } else if ((unsigned int)idx == len - 1) {
     return pop_back();
   } else {
     Node* iter;
-    if ((unsigned)idx < len/2) {
+    if ((unsigned)idx < len / 2) {
       iter = head;
       while (--idx > 0) {
         iter = iter->next;
@@ -185,7 +184,7 @@ int DLL::pop(int idx) {
   }
 }
 
-void DLL::clear() {
+void LinkedList::clear() {
   Node* to_remove;
   while (head) {
     to_remove = head;
@@ -196,8 +195,7 @@ void DLL::clear() {
   len = 0;
 }
 
-
-void DLL::remove(int d) {
+void LinkedList::remove(int d) {
   if (head && head->data == d) {
     pop_front();
   } else {
@@ -217,8 +215,9 @@ void DLL::remove(int d) {
   }
 }
 
-void DLL::reverse() {
-  if (len <= 1) return;
+void LinkedList::reverse() {
+  if (len <= 1)
+    return;
   Node* prev = nullptr;
   Node* curr = head;
   Node* next;
@@ -233,7 +232,7 @@ void DLL::reverse() {
   head = prev;
 }
 
-void DLL::print(std::ostream& oss) {
+void LinkedList::print(std::ostream& oss) {
   Node* temp = head;
   while (temp) {
     oss << temp->data << ", ";
