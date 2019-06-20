@@ -1,17 +1,34 @@
 # Assignment 05: Stacks / Queues  
 
-For this assignment you will be implementing:
+For this assignment you will be building a program to evaluate fully parenthesized arithmetic expressions using Djikstra's Two Stack Algorithm for expression evaluation.
 
-- Array Based Stack & Queue
-- Djikstra's two-stack algorithm
+## The Algorithm
 
-The student with the fastest sorting algorithm will receive 50 bonus points, second fastest will receive 30, third will receive 20.
+Djikstra's two stack algorithm is a way to evaluate fully parenthesized infix expressions.
+
+- Infixed expressions are those where the operators are placed between two operands, (2 + 4) is an infix expression.
+- Full parenthesized means that every operator and it's operands are contained in parentheses, which means precedence and associativity do not matter.
+
+An example expression:
+
+$$((5 + ((10 - 4) * (3 + 2))) + 25)$$
+
+For each element in the expression, the following rules are applied:
+
+| Element           | Action                                                                                                                                            |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Operand           | Push to stack 1                                                                                                                                   |
+| Operator          | Push to stack 2                                                                                                                                   |
+| Left Parenthesis  | Ignore                                                                                                                                            |
+| Right Parenthesis | Pop an operator from stack 2 and two values from stack 1, then apply the operator to those two values, the result gets pushed back onto stack one |
+
+Using only these simple rules, and two functioning stacks, you can solve any infix fully parenthesized expression!
 
 ## Instructions
 
 This assignment will be hosted on Github Classroom.
 
-1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/0-TyqToY)
+1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/jQi18jXV)
    1. Be sure to select your name from the list to link your Github to the class roster!
 2. Clone the repository to your machine
    1. Open a terminal
@@ -21,20 +38,20 @@ This assignment will be hosted on Github Classroom.
       1. Be sure to use the link for **your copy** of the repository for the assignment
 3. Getting things in order
    1. Open your new folder in VS Code
-   2. Begin by creating adding your algorithms' signature to `sorts.hpp`, and adding it to all the relevant unit tests
-   3. Create a dummy definition for your function in `sorts.cpp`
-   4. Check your work by compiling and running your code (`g++ -std=c++11 source/sorts.cpp && ./a.out`)
-   5. Make sure the code compiled and ran, and that the unit tests for your function failed.
-   6. Commit and push these changes (`git add . && git push`)
-   7. Check the online copy of your repository to make sure these changes were actually pushed
-4. Implement your algorithm (80 points)
+   2. In your folder you should have: `calculator.cpp`, `source/Algorithms/twostack.hpp`, `source/Algorithms/twostack.cpp`.
+   3. Check that you can compile and run your calculator program `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
+   4. Check that you can compile and run the Two Stack starter code `g++ -std=c++11 calculator.cpp source/Algorithms/twostack.tests.cpp && ./a.out`
+      1. Ensure that your test cases fail.
+4. Implement the algorithm (90 points)
    1. Write pseudocode for your algorithm
    2. Commit and push this pseudocode (`git add . && git push`)
+      1. Check that your pseudocode uploaded, and is visible on the master branch of your assignment.
    3. Implement your pseudocode in C++
    4. Pass all unit tests
    5. Commit and push your code (`git add . && git push`)
+      1. Check that all of your working code is uploaded, and visible on the master branch of your assignment.
 5. Analyze your work (10 points)
-   1. Provide your algorithms' Big-Oh, Omega, and Theta notation
+   1. Provide your algorithms' Big-Oh notation as a function of expression length.
 
 ## Submission
 
