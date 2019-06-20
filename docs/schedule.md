@@ -16,9 +16,9 @@
 | Thu, 6/13 | 11      | Exam (Algorithms)               |
 | Tue, 6/18 | 12      | SLL                             |
 | Wed, 6/19 | 13      | SLL (cont) / CSLL / DLL         |
-| Thu, 6/20 | 14      | DLL (cont) Stacks               |
-| Tue, 6/25 | 15      | Memory Management / Queues      |
-| Wed, 6/26 | 16      | DLL                             |
+| Thu, 6/20 | 14      | CDLL / Stacks                   |
+| Tue, 6/25 | 15      | Stacks / Queues                 |
+| Wed, 6/26 | 16      | Memory Management               |
 | Thu, 6/27 | 17      | Trees                           |
 | Tue, 7/2  | 18      | Binary Trees                    |
 | Wed, 7/3  | 19      | Binary Trees / Heaps            |

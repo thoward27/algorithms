@@ -1,26 +1,26 @@
-#include "CSLL.hpp"
+#include "LinkedList.hpp"
 
-CSLL::CSLL() {
+LinkedList::LinkedList() {
   head = nullptr;
   len = 0;
 }
 
-CSLL::~CSLL() {
+LinkedList::~LinkedList() {
   clear();
 }
 
-unsigned int CSLL::length() {
+unsigned int LinkedList::length() {
   return len;
 }
 
-void CSLL::push_front(int d) {
+void LinkedList::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
     n->next = head;
   } else {
     Node* iter = head;
-    while(iter->next != head) {
+    while (iter->next != head) {
       iter = iter->next;
     }
     iter->next = n;
@@ -30,14 +30,14 @@ void CSLL::push_front(int d) {
   ++len;
 }
 
-int CSLL::pop_front() {
+int LinkedList::pop_front() {
   Node* to_remove = head;
   int rval = head->data;
   if (len == 1) {
     head = nullptr;
   } else {
     Node* iter = head;
-    while(iter->next != head) {
+    while (iter->next != head) {
       iter = iter->next;
     }
     head = head->next;
@@ -48,8 +48,9 @@ int CSLL::pop_front() {
   return rval;
 }
 
-int CSLL::index(int data) {
-  if (!len) return -1;
+int LinkedList::index(int data) {
+  if (!len)
+    return -1;
   Node* temp = head;
   int i = 0;
   do {
@@ -61,14 +62,14 @@ int CSLL::index(int data) {
   return -1;
 }
 
-void CSLL::push_back(int d) {
+void LinkedList::push_back(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
     n->next = head;
   } else {
     Node* iter = head;
-    while(iter->next != head) {
+    while (iter->next != head) {
       iter = iter->next;
     }
     iter->next = n;
@@ -77,14 +78,14 @@ void CSLL::push_back(int d) {
   ++len;
 }
 
-int CSLL::pop_back() {
+int LinkedList::pop_back() {
   Node* to_remove;
   if (len == 1) {
     to_remove = head;
     head = nullptr;
   } else {
     Node* iter = head;
-    while(iter->next->next != head) {
+    while (iter->next->next != head) {
       iter = iter->next;
     }
     to_remove = iter->next;
@@ -96,7 +97,7 @@ int CSLL::pop_back() {
   return rval;
 }
 
-int CSLL::at(int idx) {
+int LinkedList::at(int idx) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -114,7 +115,7 @@ int CSLL::at(int idx) {
   return iter->data;
 }
 
-int CSLL::set(int idx, int d) {
+int LinkedList::set(int idx, int d) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -131,7 +132,7 @@ int CSLL::set(int idx, int d) {
   return old;
 }
 
-void CSLL::push(int d, int idx) {
+void LinkedList::push(int d, int idx) {
   if (!idx) {
     push_front(d);
   } else if ((unsigned int)idx == len) {
@@ -148,7 +149,7 @@ void CSLL::push(int d, int idx) {
   }
 }
 
-int CSLL::pop(int idx) {
+int LinkedList::pop(int idx) {
   if (!idx) {
     return pop_front();
   } else if ((unsigned int)idx == len - 1) {
@@ -167,7 +168,7 @@ int CSLL::pop(int idx) {
   }
 }
 
-void CSLL::clear() {
+void LinkedList::clear() {
   Node* to_remove;
   ++len;
   while (--len) {
@@ -179,7 +180,7 @@ void CSLL::clear() {
   len = 0;
 }
 
-void CSLL::remove(int d) {
+void LinkedList::remove(int d) {
   if (len > 0 && head->data == d) {
     pop_front();
   } else if (!len) {
@@ -200,8 +201,9 @@ void CSLL::remove(int d) {
   }
 }
 
-void CSLL::reverse() {
-  if (len <= 1) return;
+void LinkedList::reverse() {
+  if (len <= 1)
+    return;
   Node* prev = head;
   Node* curr = head->next;
   Node* next;
@@ -215,7 +217,7 @@ void CSLL::reverse() {
   head = prev;
 }
 
-void CSLL::print(std::ostream& oss) {
+void LinkedList::print(std::ostream& oss) {
   Node* temp = head;
   while (temp) {
     oss << temp->data << ", ";

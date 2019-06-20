@@ -12,24 +12,24 @@ class Node {
 
  public:
   Node(int d) : data(d) { next = prev = nullptr; }
-  ~Node(){}
+  ~Node() {}
 
-  friend class DLL;
+  friend class LinkedList;
 };
 
 /** Doubly Linked List
  * A class that manages nodes to store data
  * non-contiguously in memory.
  */
-class DLL {
+class LinkedList {
  private:
   Node* head;
   Node* tail;
   unsigned int len;
 
  public:
-  DLL();
-  ~DLL();
+  LinkedList();
+  ~LinkedList();
 
   /** at(int index)
    * Returns the element at the given index.
