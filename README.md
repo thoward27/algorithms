@@ -19,11 +19,11 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Assignments
 
-- [A04: Advanced Sorting](docs/assignments/A04.md)
-- [A03: HybridSort](docs/assignments/A03.md)
-- [A02: String Class](docs/assignments/A02.md)
-- [A01: Kattis Competition](docs/assignments/A01.md)
-- [A00: Practice Test](docs/assignments/A00.md)
+- [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)
+- [A03: HybridSort](docs/assignments/A03-hybrid-sort.md)
+- [A02: String Class](docs/assignments/A02-string.md)
+- [A01: Kattis Competition](docs/assignments/A01-kattis.md)
+- [A00: Practice Test](docs/assignments/A00-pretest.md)
 
 ## Readings
 
