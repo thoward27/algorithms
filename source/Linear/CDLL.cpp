@@ -1,17 +1,10 @@
 #include "LinkedList.hpp"
 
-LinkedList::LinkedList() {
-  head = nullptr;
-  len = 0;
-}
+LinkedList::LinkedList() {}
 
-LinkedList::~LinkedList() {
-  clear();
-}
+LinkedList::~LinkedList() {}
 
-unsigned int LinkedList::length() {
-  return len;
-}
+unsigned int LinkedList::length() {}
 
 void LinkedList::push_front(int d) {}
 
