@@ -1,19 +1,19 @@
-#include "CDLL.hpp"
+#include "LinkedList.hpp"
 
-CDLL::CDLL() {
+LinkedList::LinkedList() {
   head = nullptr;
   len = 0;
 }
 
-CDLL::~CDLL() {
+LinkedList::~LinkedList() {
   clear();
 }
 
-unsigned int CDLL::length() {
+unsigned int LinkedList::length() {
   return len;
 }
 
-void CDLL::push_front(int d) {
+void LinkedList::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
@@ -29,7 +29,7 @@ void CDLL::push_front(int d) {
   ++len;
 }
 
-int CDLL::pop_front() {
+int LinkedList::pop_front() {
   Node* to_remove = head;
   int rval = head->data;
   if (len == 1) {
@@ -44,8 +44,9 @@ int CDLL::pop_front() {
   return rval;
 }
 
-int CDLL::index(int data) {
-  if (!len) return -1;
+int LinkedList::index(int data) {
+  if (!len)
+    return -1;
   Node* temp = head;
   int i = 0;
   do {
@@ -57,7 +58,7 @@ int CDLL::index(int data) {
   return -1;
 }
 
-void CDLL::push_back(int d) {
+void LinkedList::push_back(int d) {
   Node* n = new Node(d);
   if (!head) {
     head = n;
@@ -72,7 +73,7 @@ void CDLL::push_back(int d) {
   ++len;
 }
 
-int CDLL::pop_back() {
+int LinkedList::pop_back() {
   Node* to_remove = head->prev;
   int rval = to_remove->data;
   if (len == 1) {
@@ -86,7 +87,7 @@ int CDLL::pop_back() {
   return rval;
 }
 
-int CDLL::at(int idx) {
+int LinkedList::at(int idx) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -96,7 +97,7 @@ int CDLL::at(int idx) {
 
   // Iterate to the element from the head or tail, whichever is closer.
   Node* iter = head;
-  if ((unsigned int)idx <= len/2) {
+  if ((unsigned int)idx <= len / 2) {
     while (--idx >= 0) {
       iter = iter->next;
     }
@@ -111,7 +112,7 @@ int CDLL::at(int idx) {
   return iter->data;
 }
 
-int CDLL::set(int idx, int d) {
+int LinkedList::set(int idx, int d) {
   // Handle negative indexes by making it positive.
   idx = (idx < 0) ? len + idx : idx;
 
@@ -120,7 +121,7 @@ int CDLL::set(int idx, int d) {
     throw "Bad index";
 
   Node* iter = head;
-  if ((unsigned int)idx <= len/2) {
+  if ((unsigned int)idx <= len / 2) {
     while (--idx >= 0) {
       iter = iter->next;
     }
@@ -135,7 +136,7 @@ int CDLL::set(int idx, int d) {
   return old;
 }
 
-void CDLL::push(int d, int idx) {
+void LinkedList::push(int d, int idx) {
   if (!idx) {
     push_front(d);
   } else if ((unsigned int)idx == len) {
@@ -143,7 +144,7 @@ void CDLL::push(int d, int idx) {
   } else {
     Node* n = new Node(d);
     Node* iter = head;
-    if ((unsigned int)idx < len/2) {
+    if ((unsigned int)idx < len / 2) {
       while (--idx > 0) {
         iter = iter->next;
       }
@@ -161,14 +162,14 @@ void CDLL::push(int d, int idx) {
   }
 }
 
-int CDLL::pop(int idx) {
+int LinkedList::pop(int idx) {
   if (!idx) {
     return pop_front();
   } else if ((unsigned int)idx == len - 1) {
     return pop_back();
   } else {
     Node* iter = head;
-    if ((unsigned int)idx < len/2) {
+    if ((unsigned int)idx < len / 2) {
       while (--idx > 0) {
         iter = iter->next;
       }
@@ -188,7 +189,7 @@ int CDLL::pop(int idx) {
   }
 }
 
-void CDLL::clear() {
+void LinkedList::clear() {
   Node* to_remove;
   ++len;
   while (--len) {
@@ -199,8 +200,7 @@ void CDLL::clear() {
   head = nullptr;
 }
 
-
-void CDLL::remove(int d) {
+void LinkedList::remove(int d) {
   if (len > 0 && head->data == d) {
     pop_front();
   } else if (!len) {
@@ -222,8 +222,9 @@ void CDLL::remove(int d) {
   }
 }
 
-void CDLL::reverse() {
-  if (len <= 1) return;
+void LinkedList::reverse() {
+  if (len <= 1)
+    return;
   Node* prev = head->prev;
   Node* curr = head;
   Node* next;
@@ -237,7 +238,7 @@ void CDLL::reverse() {
   head = prev;
 }
 
-void CDLL::print(std::ostream& oss) {
+void LinkedList::print(std::ostream& oss) {
   Node* temp = head;
   while (temp) {
     oss << temp->data << ", ";
