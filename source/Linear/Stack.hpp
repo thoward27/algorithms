@@ -1,29 +1,11 @@
 #pragma once
 
-/** Node Class
- * These are the building blocks of the linked list.
- */
-class Node {
- private:
-  int data;
-  Node* next;
-
- public:
-  Node(int d) : data(d) { next = nullptr; }
-  ~Node() {}
-
-  friend class Stack;
-};
-
 /** Stack
  * A container class that stores data using a LIFO
  * (last in, first out) scheme.
  */
 class Stack {
  private:
-  Node* head;
-  unsigned int len;
-
  public:
   Stack();
   ~Stack();

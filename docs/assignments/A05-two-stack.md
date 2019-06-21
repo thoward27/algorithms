@@ -38,9 +38,9 @@ This assignment will be hosted on Github Classroom.
       1. Be sure to use the link for **your copy** of the repository for the assignment
 3. Getting things in order
    1. Open your new folder in VS Code
-   2. In your folder you should have: `calculator.cpp`, `source/Algorithms/twostack.hpp`, `source/Algorithms/twostack.cpp`.
+   2. In your folder you should have: `calculator.cpp`, `source/Algorithms/twostack.hpp`, `source/Algorithms/twostack.cpp`, `source/Linear/Stack.test.cpp` and `source/Linear/Stack.cpp`.
    3. Check that you can compile and run your calculator program `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
-   4. Check that you can compile and run the Two Stack starter code `g++ -std=c++11 calculator.cpp source/Algorithms/twostack.tests.cpp && ./a.out`
+   4. Check that you can compile and run the Two Stack starter code `g++ -std=c++11 calculator.cpp source/Algorithms/twostack.tests.cpp  source/Linear/Stack.cpp && ./a.out`
       1. Ensure that your test cases fail.
 4. Implement the `main` function (30 points)
    1. Following the pseudocode in `calculator.cpp`, implement the main function for your calculator.
@@ -48,9 +48,10 @@ This assignment will be hosted on Github Classroom.
    1. Write pseudocode for your algorithm
    2. Commit and push this pseudocode (`git add . && git push`)
       1. Check that your pseudocode uploaded, and is visible on the master branch of your assignment.
-   3. Implement your pseudocode in C++
-   4. Pass all unit tests
-   5. Commit and push your code (`git add . && git push`)
+   3. Implement the Stack datatype, as it is not provided.
+   4. Implement your pseudocode in C++
+   5. Pass all unit tests
+   6. Commit and push your code (`git add . && git push`)
       1. Check that all of your working code is uploaded, and visible on the master branch of your assignment.
 6. Analyze your work (10 points)
    1. Provide your algorithms' Big-Oh notation as a function of expression length.
