@@ -19,6 +19,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Assignments
 
+- [A05: Djikstra's Two Stack Algorithm](docs/assignments/A05-two-stack.md)
 - [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)
 - [A03: HybridSort](docs/assignments/A03-hybrid-sort.md)
 - [A02: String Class](docs/assignments/A02-string.md)
