@@ -28,7 +28,7 @@ This assignment will be hosted on Github Classroom.
       2. Your dummy definition should just be a blank return statement.
    3. Check your work by compiling and running your code (`g++ -std=c++11 source/sorts.cpp && ./a.out`)
    4. Make sure the code compiled and ran, and that the unit tests for your function failed.
-   5. Commit and push these changes (`git add . && git push`)
+   5. Commit and push these changes (`git add . && git commit -m "<message>" && git push`)
    6. Check the online copy of your repository to make sure these changes were actually pushed
 4. Implement your algorithm (50 points)
    1. Select the algorithms you'd like to combine

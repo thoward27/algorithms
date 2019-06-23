@@ -18,7 +18,7 @@ To complete our section on C++, functions, iterative / recursive problem solving
    1. Open your new folder in VS Code
    2. Begin by creating all of your dummy definitions for the method.
    3. Check your work by compiling and running your code (`g++ -std=c++11 source/string.cpp && ./a.out`)
-   4. Commit and push these changes (`git add . && git push`)
+   4. Commit and push these changes (`git add . && git commit -m "<message>" && git push`)
    5. Check the online copy of your repository to make sure these changes were actually pushed.
 4. Implement all of the methods
    1. Open your new folder in VS Code
