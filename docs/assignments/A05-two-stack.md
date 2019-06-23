@@ -46,12 +46,12 @@ This assignment will be hosted on Github Classroom.
    1. Following the pseudocode in `calculator.cpp`, implement the main function for your calculator.
 5. Implement the algorithm (60 points)
    1. Write pseudocode for your algorithm
-   2. Commit and push this pseudocode (`git add . && git push`)
+   2. Commit and push this pseudocode (`git add . && git commit -m "<message>" && git push`)
       1. Check that your pseudocode uploaded, and is visible on the master branch of your assignment.
    3. Implement the Stack datatype, as it is not provided.
    4. Implement your pseudocode in C++
    5. Pass all unit tests
-   6. Commit and push your code (`git add . && git push`)
+   6. Commit and push your code (`git add . && git commit -m "<message>" && git push`)
       1. Check that all of your working code is uploaded, and visible on the master branch of your assignment.
 6. Analyze your work (10 points)
    1. Provide your algorithms' Big-Oh notation as a function of expression length.

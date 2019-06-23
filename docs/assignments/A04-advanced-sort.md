@@ -40,14 +40,14 @@ This assignment will be hosted on Github Classroom.
    3. Create a dummy definition for your function in `sorts.cpp`
    4. Check your work by compiling and running your code (`g++ -std=c++11 source/sorts.cpp && ./a.out`)
    5. Make sure the code compiled and ran, and that the unit tests for your function failed.
-   6. Commit and push these changes (`git add . && git push`)
+   6. Commit and push these changes (`git add . && git commit -m "<message>" && git push`)
    7. Check the online copy of your repository to make sure these changes were actually pushed
 4. Implement your algorithm (80 points)
    1. Write pseudocode for your algorithm
-   2. Commit and push this pseudocode (`git add . && git push`)
+   2. Commit and push this pseudocode (`git add . && git commit -m "<message>" && git push`)
    3. Implement your pseudocode in C++
    4. Pass all unit tests
-   5. Commit and push your code (`git add . && git push`)
+   5. Commit and push your code (`git add . && git commit -m "<message>" && git push`)
 5. Analyze your work (10 points)
    1. Provide your algorithms' Big-Oh, Omega, and Theta notation
 
