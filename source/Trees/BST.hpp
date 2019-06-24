@@ -32,7 +32,7 @@ class BST {
    * and returns n at every other call.
    * Does nothing if the data is already in the subtree.
    */
-  BSTNode* insert(int data, Node* n);
+  Node* insert(int data, Node* n);
 
   /** search(int data, Node* n)
    * Recursively searches for data in the subtree rooted at n, returning
@@ -43,8 +43,12 @@ class BST {
   /** remove(int data, Node* n)
    * Recursively searches for data in the subtree rooted at n, removing it
    * if it exists and preserving the BST properties.
+   * Returns...
+   *   nullptr if data was not found or n was a leaf.
+   *   the pointer to the child if n has only one child.
+   *   the pointer to the right child (successor) if n has two children.
    */
-  void remove(int data, Node* n);
+  Node* remove(int data, Node* n);
 
   /** height(Node* n)
    * Recursively determines the height of the subtree rooted at n.
@@ -87,7 +91,7 @@ class BST {
   /** is_empty()
    * Returns true if the tree is empty and false otherwise
    */
-  bool is_emtpy();
+  bool is_empty();
 
   /** search(int data)
    * Searches the tree for the given data, returning true if the data
