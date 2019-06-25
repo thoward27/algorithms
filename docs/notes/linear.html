@@ -1,44 +1,320 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
-  <title>Linear Structures</title>
   <meta charset="utf-8">
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Roboto+Slab&display=swap');
-    @import "static/base.css";
-  </style>
-  <script src="https://unpkg.com/mermaid@8.0.0/dist/mermaid.min.js"></script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-    });
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Linear Structures</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link id="theme" rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/monokai.css">
+  <script src="js/diagrams.js"></script>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
   </script>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
 </head>
 
 <body>
-  <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+  <div class="reveal">
+    <div class="slides">
+      <section class="center">
+        <h1>Linear Data Structures</h1>
+      </section>
+      <!-- Linked Lists -->
+      <section>
+        <section>
+          <h2>The Linked List</h2>
+          <h5>An alternative to the array</h5>
+          <canvas id="test" height="500" width="1000"></canvas>
+          <script>
+            var canvas = document.getElementById('test')
+            var ctx = canvas.getContext('2d');
+            ctx.strokeStyle = "red";
+            var list = new LinkedList();
+
+            function appendTest() {
+              console.log("APPEND");
+              list.append(1);
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              list.draw(ctx, true, false);
+            }
+
+            appendTest();
+            appendTest();
+          </script>
+        </section>
+        <section>
+          <h3>Motivation</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Structure</th>
+                <th>Array</th>
+                <th>Dynamic <br>Array</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Prepend</td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+              </tr>
+              <tr>
+                <td>Insert</td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+              </tr>
+              <tr>
+                <td>Append</td>
+                <td>O(n)</td>
+                <td>O(1)</td>
+              </tr>
+              <tr>
+                <td>Remove First</td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+              </tr>
+              <tr>
+                <td>Remove Index</td>
+                <td>O(n)</td>
+                <td>O(n)</td>
+              </tr>
+              <tr>
+                <td>Remove Last</td>
+                <td>O(n)</td>
+                <td>O(1)</td>
+              </tr>
+              <tr>
+                <td>Random Access</td>
+                <td>O(1)</td>
+                <td>O(1)</td>
+              </tr>
+            </tbody>
+          </table>
+          </p>
+        </section>
+        <section>
+          <h3>How</h3>
+          <p>What if we stored memory non-contiguously?</p>
+          <canvas class="fragment" id="LL" width="1000" height="500"></canvas>
+          <script>
+            var canvas = document.getElementById('LL');
+            var ctx = canvas.getContext('2d');
+            var color = "red";
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = color;
+            drawNode(ctx, [400, 50], null, null);
+            drawNode(ctx, [600, 150], null, null);
+            drawNode(ctx, [100, 300], null, null);
+            drawNode(ctx, [700, 400], null, null);
+          </script>
+          <p class="fragment">Unlike arrays, in linked lists, data is stored <br><em>non-contiguously</em> in
+            these nodes</p>
+        </section>
+        <section>
+          <h3>Singly Linked List</h3>
+          <p>Where nodes only contain <code>data</code> and <code>*next</code></p>
+          <canvas id="SLL" width="1000" height="500"></canvas>
+          <script>
+            var canvas = document.getElementById('SLL');
+            var ctx = canvas.getContext('2d');
+            var color = "red";
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = color;
+            var n = drawNode(ctx, [100, 150], undefined, 290);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, 485);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, 680);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, null);
+          </script>
+        </section>
+        <section>
+          <h3>Circular Singly Linked List</h3>
+          <p>Where nodes only contain <code>data</code> and <code>*next</code>, but no node points to null</p>
+          <canvas id="CSLL" width="1000" height="500"></canvas>
+          <script>
+            var canvas = document.getElementById('CSLL');
+            var ctx = canvas.getContext('2d');
+            var color = "red";
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = color;
+            var n = drawNode(ctx, [100, 150], undefined, 290);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, 485);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, 680);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, 100);
+          </script>
+        </section>
+        <section>
+          <h3>Doubly Linked List</h3>
+          <p>Where nodes only contain <code>data</code> and <code>*next</code>, but no node points to null</p>
+          <canvas id="DLL" width="1000" height="500"></canvas>
+          <script>
+            var canvas = document.getElementById('DLL');
+            var ctx = canvas.getContext('2d');
+            var color = "red";
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = color;
+            var n = drawNode(ctx, [50, 50], null, 270);
+            n = drawNode(ctx, [n[0] + 100, 50], n[0] + 5, 495);
+            n = drawNode(ctx, [n[0] + 100, 50], n[0] + 5, 720);
+            n = drawNode(ctx, [n[0] + 100, 50], n[0] + 5, null);
+          </script>
+        </section>
+        <section>
+          <h3>Circular Doubly Linked List</h3>
+          <p>Where nodes only contain <code>data</code> and <code>*next</code>, but no node points to null</p>
+          <canvas id="CDLL" width="1000" height="500"></canvas>
+          <script>
+            var canvas = document.getElementById('CDLL');
+            var ctx = canvas.getContext('2d');
+            var color = "red";
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = color;
+            var n = drawNode(ctx, [50, 150], 850, 270);
+            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, 495);
+            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, 720);
+            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, 50);
+          </script>
+        </section>
+      </section>
+      <!-- Stacks -->
+      <section>
+        <section class="center">
+          <h2>Stacks</h2>
+          <h5>Last In First Out</h5>
+        </section>
+      </section>
+      <!-- Queues -->
+      <section>
+        <section class="center">
+          <h2>Queues</h2>
+          <h5>First in First Out</h5>
+        </section>
+        <section>
+          <h3>Queues: Required Methods</h3>
+          <ul>
+            <li>Enqueue (push)</li>
+            <li>Dequeue (pop)</li>
+            <li>Is Empty</li>
+          </ul>
+          <p class="fragment">What should the underlying structure be?</p>
+        </section>
+        <section>
+          <h3>Queues: DLL Backend Visual</h3>
+          <canvas id="queue" height="500" width="1000"></canvas>
+          <script>
+            var canvas = document.getElementById('queue');
+            var ctx = canvas.getContext('2d');
+            var color = "red";
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            var n = drawNode(ctx, [50, 150], null, 270);
+            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, 495);
+            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, 720);
+            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, null);
+          </script>
+        </section>
+        <section>
+          <h2>Dequeues</h2>
+          <h5>Double Ended Queues</h5>
+        </section>
+        <section>
+          <h3>Dequeues vs Queues</h3>
+          <p class="fragment">Dequques are themselves queues, with just a few extra methods.</p>
+          <p class="fragment">They allow <em>fast</em> pushes and pops from either end.</p>
+          <ul class="fragment">
+            <li>pushleft</li>
+            <li>pushright</li>
+            <li>popleft</li>
+            <li>popright</li>
+          </ul>
+        </section>
+      </section>
+    </div>
+  </div>
+
+  <script src="js/reveal.js"></script>
+
   <script>
-    var slideshow = remark.create({
-      navigation: {
-        click: false,
+    Reveal.initialize({
+      dependencies: [{
+          src: 'plugin/markdown/marked.js'
+        },
+        {
+          src: 'plugin/markdown/markdown.js'
+        },
+        {
+          src: 'plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: 'plugin/highlight/highlight.js',
+          async: true
+        },
+        {
+          src: 'plugin/math/math.js',
+          async: true
+        },
+        {
+          src: 'plugin/menu/menu.js',
+          async: true
+        },
+        {
+          src: 'plugin/chalkboard/chalkboard.js',
+          async: true
+        }
+      ],
+      hash: true,
+      center: false,
+      keyboard: {
+        // toggle notes canvas when 'c' is pressed
+        67: function () {
+          RevealChalkboard.toggleNotesCanvas()
+        },
+        // toggle chalkboard when 'b' is pressed
+        66: function () {
+          RevealChalkboard.toggleChalkboard()
+        },
+        // clear chalkboard when 'DEL' is pressed
+        46: function () {
+          RevealChalkboard.clear()
+        },
+        // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+        8: function () {
+          RevealChalkboard.reset()
+        },
+        // downlad recorded chalkboard drawing when 'd' is pressed
+        68: function () {
+          RevealChalkboard.download()
+        },
       },
-      countIncrementalSlides: false,
-      sourceUrl: 'linear.md'
-    });
-  </script>
-  <script>
-    var config = {
-      startOnLoad: true,
-      theme: 'default',
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true
+      chalkboard: {
+        toggleChalkboardButton: {
+          left: "80px"
+        },
+        toggleNotesButton: {
+          left: "130px"
+        },
+        color: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 1)']
+      },
+      menu: {
+        titleSelector: 'h2',
+        hideMissingTitles: true,
       }
-    };
-    mermaid.initialize(config);
-    window.mermaid.init(undefined, document.querySelectorAll('.mermaid'));
+    });
   </script>
 </body>
 
