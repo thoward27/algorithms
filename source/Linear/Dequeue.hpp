@@ -2,79 +2,66 @@
 
 #include "LinkedList.hpp"
 
-/** Double Ended Queues
- * TODO
- */
-
 /** Dequeue Class
  * A Double ended queue class
  * Supports functionality of a Stack and Queue simultaneously
- * Implemented with a variant of a DLL under the hood 
  */
 class Dequeue {
-  private:
-    LinkedList queue;
-  
-  public:
-    Dequeue();
-    ~Dequeue();
+ private:
+  LinkedList queue;
 
-    /** size();
-     * Returns an unsigned integer representing the 
-     * number of nodes in the Dequeue 
-     */
-    unsigned int size();
+ public:
+  Dequeue();
+  ~Dequeue();
 
+  /** size();
+   * Returns an unsigned integer representing the
+   * number of nodes in the Dequeue
+   */
+  unsigned int size();
 
-    /** push(int data);
-     * Adds a node to the front of the dequeue (stack functionality)
-     */
-    void pushleft(int data);
+  /** push(int data);
+   * Adds a node to the front of the dequeue (stack functionality)
+   */
+  void pushleft(int data);
 
+  /** pop();
+   * Returns the value of the first node in the dequeue
+   * and removes that node from the dequeue (stack functionality)
+   */
+  int popleft();
 
-    /** pop();
-     * Returns the value of the first node in the dequeue
-     * and removes that node from the dequeue (stack functionality)
-     */
-    int popleft();
+  /** pushright(int data);
+   * Adds a node to the end of the dequeue (queue functionality)
+   */
+  void pushright(int data);
 
+  /** popright();
+   * Returns the value of the first node in the dequeue
+   * and removes that node from the dequeue (queue functionality)
+   */
+  int popright();
 
-    /** pushright(int data);
-     * Adds a node to the end of the dequeue (queue functionality)
-     */
-    void pushright(int data);
+  /** front();
+   * Returns the value of the first node in the dequeue without
+   * changing the dequeue
+   */
+  int front();
 
+  /** back();
+   * Returns the value of the last node in the dequeue without
+   * changing the dequeue
+   */
+  int back();
 
-    /** popright();
-     * Returns the value of the first node in the dequeue
-     * and removes that node from the dequeue (queue functionality)
-     */
-    int popright();
+  /** empty();
+   * Returns true if the dequeue is empty,
+   *         false otherwise
+   */
+  bool empty();
 
-
-    /** front();
-     * Returns the value of the first node in the dequeue without
-     * changing the dequeue
-     */
-    int front();
-
-
-    /** back();
-     * Returns the value of the last node in the dequeue without
-     * changing the dequeue
-     */
-    int back();
-
-
-    /** empty();
-     * Returns true if the dequeue is empty,
-     *         false otherwise
-     */
-    bool empty();
-
-
-    /** clear();
-     * Removes all nodes from the dequeue without destructing it
-     */
-    void clear();
+  /** clear();
+   * Removes all nodes from the dequeue without destructing it
+   */
+  void clear();
 };
