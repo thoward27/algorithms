@@ -1,31 +1,16 @@
 #pragma once
 
-/** Node Class
- * These are the building blocks of the linked list.
- */
-class Node {
- private:
-  int data;
-  Node* next;
-
- public:
-  Node(int d) : data(d) { next = nullptr; }
-  ~Node() {}
-
-  friend class Queue;
-};
+#include "LinkedList.hpp"
 
 /** Queue
  * A container class that stores data using a FIFO
  * (first in, first out) scheme.
  */
 class Queue {
-private:
-  Node* head;
-  Node* tail;
-  unsigned int len;
+ private:
+  LinkedList* list;
 
-public:
+ public:
   Queue();
   ~Queue();
 
