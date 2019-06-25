@@ -128,3 +128,139 @@ function drawNode(ctx, start, prev = undefined, next = undefined) {
     }
     return start;
 }
+
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+class Node {
+    constructor(data, prev = undefined, next = null) {
+        this.data = data;
+        this.prev = prev;
+        this.next = next;
+        this.widthData = 70;
+        this.widthPoint = 30;
+        this.height = 75;
+        this.start = [];
+    }
+    get width() {
+        return this.widthData + (this.prev !== undefined) * this.widthPoint + (this.next !== undefined) * this.widthPoint;
+    }
+    get stop() {
+        return [this.start[0] + this.width, this.start[1]];
+    }
+    drawPointers(ctx) {
+        var start = this.start[0];
+        if (this.prev !== undefined) {
+            // Draw the arrow.
+            var x = start + this.widthPoint / 2;
+            var y = this.start[1] + 3 * this.height / 4;
+            if (this.prev === null) {
+                ctx.moveTo(x, y);
+                x -= 40;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                drawAngledArrow(ctx, [x, y], [x, this.start[1] + this.height + 25]);
+
+            } else if (this.prev > x) { // prev points forwards
+                ctx.moveTo(x, y);
+                x -= 40;
+                ctx.lineTo(x, y);
+                y += 50;
+                ctx.lineTo(x, y);
+                x = this.prev + 40;
+                ctx.lineTo(x, y);
+                y -= 50;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                drawAngledArrow(ctx, [x, y], [this.prev, y]);
+
+            } else {
+                // drawAngledArrow(ctx, [x, y], [this.prev, y])
+            }
+
+            // Update starting position.
+            start = start + this.widthPoint;
+        }
+
+        start = start + this.widthData;
+
+        // Draw the next pointer.
+        if (this.next !== undefined) {
+            // Draw the next pointer.
+            var x = start + this.widthPoint / 2;
+            var y = this.start[1] + this.height / 4;
+            if (this.next === null) {
+                ctx.moveTo(x, y);
+                x += 40;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                drawAngledArrow(ctx, [x, y], [x, this.start[1] + this.height + 25]);
+            } else if (this.next < x) {
+                ctx.moveTo(x, y);
+                x += 40;
+                ctx.lineTo(x, y);
+                y -= 50;
+                ctx.lineTo(x, y);
+                x = this.next - 40;
+                ctx.lineTo(x, y);
+                y += 50;
+                ctx.lineTo(x, y);
+                ctx.stroke();
+                drawAngledArrow(ctx, [x, y], [this.next, y]);
+            } else {
+                drawAngledArrow(ctx, [x, y], [this.next, y]);
+            }
+        }
+    }
+    drawNode(ctx, start) {
+        this.start = start;
+        var x = start[0];
+        if (this.prev !== undefined) {
+            // Draw the box for the pointer.
+            ctx.strokeRect(x, this.start[1], this.widthPoint, this.height);
+            x += this.widthPoint;
+        }
+
+        // Draw data bin.
+        ctx.strokeRect(x, start[1], this.widthData, this.height);
+        x += this.widthData;
+
+        // Draw the next pointer.
+        if (this.next !== undefined) {
+            // Draw the box for the next pointer.
+            ctx.strokeRect(x, start[1], this.widthPoint, this.height);
+        }
+    }
+}
+class LinkedList {
+    constructor() {
+        this.list = [];
+    }
+    append(data) {
+        this.list.push(new Node(data));
+    }
+    draw(ctx, double, circular) {
+        const start = new Point(100, 100);
+
+        this.list.forEach(function (node, index) {
+            if (double) {
+                node.prev = null;
+            }
+            node.drawNode(ctx, [start.x + index * (node.width + 60), start.y]);
+        });
+
+        this.list.forEach(function (node, index) {
+            // Configure next and prev
+            if (double) {
+                var prev = this.list[index - 1];
+                node.prev = !!prev ? prev.stop[0] : null;
+            }
+            var next = this.list[index + 1];
+            node.next = !!next ? next.start[0] : null;
+            node.drawPointers(ctx);
+        }, this);
+    }
+}
