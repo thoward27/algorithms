@@ -177,7 +177,6 @@ void LinkedList::remove(int d) {
   else if (head->data == d)
     pop_front();
   else {
-    Node* iter = head;
     for (Node* iter = head; iter->next; iter = iter->next) {
       if (iter->next->data == d) {
         Node* to_remove = iter->next;

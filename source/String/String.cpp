@@ -1,4 +1,4 @@
-#include "string.hpp"
+#include "String.hpp"
 #include "../Functions/functions.hpp"
 
 // O(1)
