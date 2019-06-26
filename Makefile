@@ -23,6 +23,9 @@ Queue: source/Linear/Queue.test.cpp source/Linear/Queue.cpp source/Linear/DLL.cp
 Dequeue: source/Linear/Dequeue.test.cpp source/Linear/Dequeue.cpp source/Linear/DLL.cpp
 	$(CXX) $(FLAGS) $^ && ./a.out
 
+%: source/Trees/%.test.cpp source/Trees/%.cpp
+	$(CXX) $(FLAGS) $^ && ./a.out
+
 all: $(TARGETS) 
 
 .PHONY: clean

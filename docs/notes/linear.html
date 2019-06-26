@@ -212,7 +212,7 @@
           <p class="fragment">What should the underlying structure be?</p>
         </section>
         <section>
-          <h3>Queues: DLL Backend Visual</h3>
+          <h3>Queues: SLL Backend Visual</h3>
           <canvas id="queue" height="500" width="1000"></canvas>
           <script>
             var canvas = document.getElementById('queue');
@@ -221,19 +221,15 @@
             ctx.lineWidth = 3;
             ctx.strokeStyle = color;
             ctx.fillStyle = color;
-            var n = drawNode(ctx, [50, 150], null, 270);
-            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, 495);
-            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, 720);
-            n = drawNode(ctx, [n[0] + 100, 150], n[0] + 5, null);
+            var n = drawNode(ctx, [50, 150], undefined, 240);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, 435);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, 630);
+            n = drawNode(ctx, [n[0] + 100, 150], undefined, null);
           </script>
         </section>
         <section>
           <h2>Dequeues</h2>
           <h5>Double Ended Queues</h5>
-        </section>
-        <section>
-          <h3>Dequeues vs Queues</h3>
-          <p class="fragment">Dequques are themselves queues, with just a few extra methods.</p>
           <p class="fragment">They allow <em>fast</em> pushes and pops from either end.</p>
           <ul class="fragment">
             <li>pushleft</li>

@@ -1,11 +1,15 @@
 #pragma once
 
+#include "LinkedList.hpp"
+
 /** Dequeue Class
  * A Double ended queue class
  * Supports functionality of a Stack and Queue simultaneously
  */
 class Dequeue {
  private:
+  LinkedList queue;
+
  public:
   Dequeue();
   ~Dequeue();
