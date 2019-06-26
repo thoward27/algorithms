@@ -24,7 +24,7 @@ void BST::insert(int data) {
 }
 
 bool BST::is_empty() {
-  return root == nullptr;
+  return !root;
 }
 
 bool BST::search(int data, Node* n) {
@@ -77,12 +77,14 @@ void BST::remove(int data) {
   root = remove(data, root);
 }
 
+int max(int a, int b) {
+  return (a > b) ? a : b;
+}
 int BST::height(Node* n) {
+  return (!n) ? -1 : 1 + max(height(n->left), height(n->right));
   if (!n)
     return -1;
-  int left_height = height(n->left);
-  int right_height = height(n->right);
-  return 1 + ((left_height > right_height) ? left_height : right_height);
+  return 1 + max(height(n->left), height(n->right));
 }
 
 int BST::height() {
@@ -112,7 +114,7 @@ void BST::preorder(Node* n, std::ostream& oss) {
 
 void BST::preorder(std::ostream& oss) {
   preorder(root, oss);
-  oss << '\n';
+  oss << std::endl;
 }
 
 void BST::inorder(Node* n, std::ostream& oss) {
@@ -125,7 +127,7 @@ void BST::inorder(Node* n, std::ostream& oss) {
 
 void BST::inorder(std::ostream& oss) {
   inorder(root, oss);
-  oss << '\n';
+  oss << std::endl;
 }
 
 void BST::postorder(Node* n, std::ostream& oss) {
