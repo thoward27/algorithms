@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Trees</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link id="theme" rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/monokai.css">
+  <script src="js/diagrams.js"></script>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class="center">
+        <h1>Trees</h1>
+      </section>
+      <section>
+        <section class="center">
+          <h2>General Trees</h2>
+          <h5>Allowing Hierarchical Relationships</h5>
+        </section>
+        <section>
+          <h3>Key Terms</h3>
+          <div class="row">
+            <canvas id="general-tree" height="1000" width="800" class="column"></canvas>
+            <script>
+              var canvas = document.getElementById('general-tree')
+              var ctx = canvas.getContext('2d');
+              ctx.lineWidth = 3;
+              ctx.strokeStyle = "red";
+              ctx.beginPath();
+              // Root node
+              ctx.arc(500, 100, 50, 0, 2 * Math.PI);
+              // First Row 
+              ctx.moveTo(470, 140);
+              ctx.arc(350, 250, 50, 3 * Math.PI / 2, 3 * 3 * Math.PI / 2);
+
+              ctx.moveTo(500, 150);
+              ctx.arc(500, 250, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              ctx.moveTo(530, 140);
+              ctx.arc(650, 250, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              // Second Row 
+              ctx.moveTo(320, 290);
+              ctx.arc(200, 400, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              ctx.moveTo(350, 300);
+              ctx.arc(350, 400, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              ctx.moveTo(650, 300);
+              ctx.arc(650, 400, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              // Third Row
+              ctx.moveTo(200, 450);
+              ctx.arc(200, 550, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              ctx.moveTo(350, 450);
+              ctx.arc(350, 550, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              ctx.moveTo(620, 440);
+              ctx.arc(500, 550, 50, 3 * Math.PI / 2, 9 * Math.PI / 2);
+
+              // Fourth Row
+              ctx.moveTo(350, 600);
+              ctx.arc(350, 700, 50, 1.5 * Math.PI, 4.5 * Math.PI);
+
+              // Fifth Row
+              ctx.moveTo(320, 740);
+              ctx.arc(200, 850, 50, 1.5 * Math.PI, 4.5 * Math.PI);
+
+              ctx.moveTo(350, 750);
+              ctx.arc(350, 850, 50, 1.5 * Math.PI, 4.5 * Math.PI);
+
+              ctx.moveTo(380, 740);
+              ctx.arc(500, 850, 50, 1.5 * Math.PI, 4.5 * Math.PI);
+
+              ctx.stroke();
+              ctx.closePath();
+            </script>
+            <ul>
+              <li class="fragment">Parents / Children</li>
+              <li class="fragment">Siblings</li>
+              <li class="fragment">Root / Subtrees</li>
+              <li class="fragment">Paths</li>
+              <li class="fragment">Depth / Height</li>
+              <li class="fragment">Descendants / Ancestors</li>
+              <li class="fragment">Internal Nodes / Leaves</li>
+              <li class="fragment">K-ary</li>
+              <li class="fragment">Full / Complete / Perfect</li>
+            </ul>
+            </p>
+          </div>
+          <aside class="notes">
+            Parents / Children are nodes that are above / below eachother
+            <br> Siblings are on the same level
+            <br> Root is the topmost, subtrees make up a tree
+            <br> A path from v0 to vN is a sequence of connected nodes (length = # edges)
+            <br> Internal nodes have children, leaves do not
+            <br> Descendants are all nodes in the path from v to a leaf
+            <br> Ancestors are all nodes in the path from v to the root
+            <br> Depth is length of path from root to v
+            <br> Height of v is the length of the path from v to deepest descendant
+            <br> k-ary: each node has [0, k] children
+            <br> full: every node has 0 or k children
+            <br> complete: every level is filled except the deepest, which all nodes are as far left as possible
+            <br> perfect: every leaf has the same depth and the tree is full
+          </aside>
+        </section>
+        <section>
+          <h3>Implementing General Trees</h3>
+          <p class="fragment">What should a node contain?</p>
+          <ul class="fragment">
+            <li>Data</li>
+            <li>Parent</li>
+            <li>Array of children</li>
+          </ul>
+        </section>
+        <section class="center">
+          <h2>Traversals</h2>
+          <p>A traversal is a method that <em>visits</em> every node in a tree once.</p>
+        </section>
+        <section>
+          <h3>Preorder Traversals</h3>
+          <pre class="fragment">
+            <code class="python" data-trim>
+              def preorder(p):
+                visit(p)
+                for child in p.children:
+                  preorder(child)
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Postorder Traversals</h3>
+          <pre class="fragment">
+            <code class="python" data-trim>
+              def postorder(p):
+                for child in p.children:
+                  postorder(child)
+                visit(p)
+            </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Inorder Traversals</h3>
+          <pre class="fragment">
+            <code class="python" data-trim>
+              def inorder(p):
+                for child in p.children[:len(p.children) // 2]:
+                  inorder(child)
+                visit(p)
+                for child in p.children[len(p.children) // 2:]:
+                  inorder(child)
+            </code>
+          </pre>
+        </section>
+      </section>
+      <section>
+        <section class="center">
+          <h2>Binary Trees</h2>
+          <h5>Fixing k = 2</h5>
+        </section>
+        <section>
+          <h3>Implementing Binary Trees</h3>
+          <p class="fragment">What is the minimum a node could contain?</p>
+          <ul class="fragment">
+            <li>Data</li>
+            <li>Left Child</li>
+            <li>Right Child</li>
+          </ul>
+        </section>
+        <section class="center">
+          <h2>Binary Search Trees</h2>
+          <h5>Maintaining systematic ordering</h5>
+        </section>
+        <section>
+          <h3>Binary Search Trees</h3>
+          <div class="row">
+            <canvas class="column" id="bst1" width="1000" height="2000"></canvas>
+            <script>
+              var ctx = document.getElementById('bst1').getContext('2d');
+              ctx.lineWidth = 3;
+              ctx.strokeStyle = "red";
+              ctx.fillStyle = "red";
+              ctx.font = "1.5em serif"
+              ctx.beginPath();
+              // Root
+              ctx.arc(500, 100, 50, 1.5 * Math.PI, 4.5 * Math.PI);
+              ctx.fillText("50", 500 - 30, 100 + 20);
+
+              // First Row
+              ctx.moveTo(470, 140);
+              ctx.arc(350, 250, 50, 1.5 * Math.PI, 4.5 * Math.PI);
+              ctx.fillText("30", 350 - 30, 250 + 20);
+
+              ctx.moveTo(530, 140);
+              ctx.arc(650, 250, 50, 1.5 * Math.PI, 4.5 * Math.PI);
+              ctx.fillText("70", 650 - 30, 250 + 20);
+
+              // Second Row
+              ctx.moveTo(320, 290);
+              ctx.arc(250, 400, 50, 1.5 * Math.PI, 4.5 * Math.PI)
+              ctx.fillText("20", 250 - 30, 400 + 20);
+
+              ctx.moveTo(380, 290);
+              ctx.arc(450, 400, 50, 1.5 * Math.PI, 4.5 * Math.PI)
+              ctx.fillText("20", 450 - 30, 400 + 20);
+
+              ctx.moveTo(680, 290);
+              ctx.arc(750, 400, 50, 1.5 * Math.PI, 4.5 * Math.PI)
+              ctx.fillText("80", 750 - 30, 400 + 20);
+
+              // Third Row
+              ctx.moveTo(220, 440);
+              ctx.arc(150, 550, 50, 1.5 * Math.PI, 4.5 * Math.PI)
+              ctx.fillText("15", 150 - 30, 550 + 20);
+
+              ctx.moveTo(720, 440);
+              ctx.arc(650, 550, 50, 1.5 * Math.PI, 4.5 * Math.PI)
+              ctx.fillText("75", 650 - 30, 550 + 20);
+
+              ctx.stroke();
+              ctx.closePath();
+            </script>
+
+          </div>
+        </section>
+        <section>
+          <h3>Collections as Arrays</h3>
+          <table>
+            <thead>
+              <tr>
+                <td>Function</td>
+                <td>Sequential Search</td>
+                <td>Binary Search</td>
+              </tr>
+            </thead>
+          </table>
+        </section>
+
+      </section>
+    </div>
+  </div>
+
+  <script src="js/reveal.js"></script>
+
+  <script>
+    Reveal.initialize({
+      dependencies: [{
+          src: 'plugin/markdown/marked.js'
+        },
+        {
+          src: 'plugin/markdown/markdown.js'
+        },
+        {
+          src: 'plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: 'plugin/highlight/highlight.js',
+          async: true
+        },
+        {
+          src: 'plugin/math/math.js',
+          async: true
+        },
+        {
+          src: 'plugin/menu/menu.js',
+          async: true
+        },
+        {
+          src: 'plugin/chalkboard/chalkboard.js',
+          async: true
+        }
+      ],
+      hash: true,
+      center: false,
+      fragmentInURL: true,
+      keyboard: {
+        // toggle notes canvas when 'c' is pressed
+        67: function () {
+          RevealChalkboard.toggleNotesCanvas()
+        },
+        // toggle chalkboard when 'b' is pressed
+        66: function () {
+          RevealChalkboard.toggleChalkboard()
+        },
+        // clear chalkboard when 'DEL' is pressed
+        46: function () {
+          RevealChalkboard.clear()
+        },
+        // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+        8: function () {
+          RevealChalkboard.reset()
+        },
+        // downlad recorded chalkboard drawing when 'd' is pressed
+        68: function () {
+          RevealChalkboard.download()
+        },
+      },
+      chalkboard: {
+        toggleChalkboardButton: {
+          left: "80px"
+        },
+        toggleNotesButton: {
+          left: "130px"
+        },
+        color: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 1)']
+      },
+      menu: {
+        titleSelector: 'h2',
+        hideMissingTitles: true,
+      }
+    });
+  </script>
+</body>
+
+</html>
