@@ -1,4 +1,4 @@
-# Assignment 05: For the Love of Binary
+# Assignment 06: For the Love of Binary
 
 For this assignment you will be implementing and analyzing two algorithms: Tree Sort and Binary Search.
 
@@ -38,29 +38,23 @@ This assignment will be hosted on Github Classroom.
       1. Be sure to use the link for **your copy** of the repository for the assignment
 3. Getting things in order
    1. Open your new folder in VS Code
-   2. In your folder you should have: `calculator.cpp`, `source/Algorithms/twostack.hpp`, `source/Algorithms/twostack.cpp`, `source/Linear/Stack.test.cpp` and `source/Linear/Stack.cpp`.
-   3. Check that you can compile and run your calculator program `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
-   4. Check that you can compile and run the Two Stack starter code `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
-      1. Ensure that your test cases fail.
-4. Implement the `main` function (30 points)
-   1. Following the pseudocode in `calculator.cpp`, implement the main function for your calculator.
-5. Implement the algorithm (60 points)
-   1. Write pseudocode for your algorithm
-   2. Commit and push this pseudocode (`git add . && git commit -m "<message>" && git push`)
-      1. Check that your pseudocode uploaded, and is visible on the master branch of your assignment.
-   3. Implement the Stack datatype, as it is not provided.
-   4. Implement your pseudocode in C++
-   5. Pass all unit tests
-   6. Commit and push your code (`git add . && git commit -m "<message>" && git push`)
-      1. Check that all of your working code is uploaded, and visible on the master branch of your assignment.
-6. Analyze your work (10 points)
-   1. Provide your algorithms' Big-Oh notation as a function of expression length.
+   2. In your folder you should have an updated copies of `functions.test.cpp, functions.hpp, functions.cpp, functions_recursive.cpp, sorts.test.cpp, sorts.hpp, and sorts.cpp`.
+   3. Check that you can compile and run the unit tests for Tree Sort `g++ -std=c++11 source/Sorts/Sorts.test.cpp source/Linear/Sorts.cpp && ./a.out`
+   4. Check that you can compile and run the unit tests for Binary Search
+      1. Iterative `g++ -std=c++11 source/Functions/functions.test.cpp source/Functions/functions.cpp && ./a.out`
+      2. Recursive `g++ -std=c++11 source/Functions/functions.test.cpp source/Functions/functions_recursive.cpp && ./a.out`
+   5. At this point you should be failing 3 unit tests, one for tree sort, and one for each implementation of binary search.
+4. [60 points] Implement and analyze Tree Sort **Commit and Push your work after each task**
+   1. [50 points] Implement Tree Sort in `sorts.cpp`.
+   2. [10 points] Analyze the function, providing your pseudocode, and Big-Oh for the best and worst case.
+5. Run the following command: `git add . && git commit -m "Tree Sort" && git push`
+6. [40 points] Implement and analyze Binary Search **Commit and Push your work after each task**
+   1. [15 points] Your iterative implementation should go in `functions.cpp`
+   2. [15 points] Your recursive implementation should go in `functions_recursive.cpp`
+   3. [10 points] Analyze your functions, providing pseudocode, and Big-Oh notation.
+7. Run the following command: `git add . && git commit -m "Binary Search" && git push`
 
 ## Submission
 
 To submit this assignment, simply commit and push your work to your assignment repository.
 Your last submission before the deadline will be graded.
-
-## Grading
-
-For this assignment, 70 points will be awarded for functionality, 10 for your analysis, and 20 for readability.
