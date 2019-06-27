@@ -90,7 +90,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 3. Configure your new repository.
    1. CD into the freshly cloned repository (`cd algorithms`)
    2. [Configure a remote for your fork](https://help.github.com/en/articles/configuring-a-remote-for-a-fork)
-      1. Run `git add remote upstream https://github.com/thoward27/algorithms.git`
+      1. Run `git remote add upstream https://github.com/thoward27/algorithms.git`
    3. Make sure when you run `git remote -v` you see `upstream` with a link to my copy of `algorithms` (`https://github.com/thoward27/algorithms.git`)
 4. Procedure for doing classwork.
    1. Ensure that you've committed all of your work to your current branch (**which should not be master**)
