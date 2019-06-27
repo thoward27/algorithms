@@ -38,7 +38,7 @@ This assignment will be hosted on Github Classroom.
       1. Be sure to use the link for **your copy** of the repository for the assignment
 3. Getting things in order
    1. Open your new folder in VS Code
-   2. In your folder you should have: `calculator.cpp`, `source/Algorithms/twostack.hpp`, `source/Algorithms/twostack.cpp`, `source/Linear/Stack.test.cpp` and `source/Linear/Stack.cpp`.
+   2. In your folder you should have: `calculator.cpp`, `source/Algorithms/twostack.hpp`, `source/Linear/Stack.test.cpp` and `source/Linear/Stack.cpp`.
    3. Check that you can compile and run your calculator program `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
    4. Check that you can compile and run the Two Stack starter code `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
       1. Ensure that your test cases fail.
