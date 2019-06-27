@@ -29,3 +29,6 @@
 *.exe
 *.out
 *.app
+
+# Core Dumps
+core.out*
