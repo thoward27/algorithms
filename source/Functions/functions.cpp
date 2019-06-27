@@ -217,3 +217,5 @@ long fibonacci(int n) {
   }
   return a;
 }
+
+int binsearch(int* arr, int n, int key) {}
