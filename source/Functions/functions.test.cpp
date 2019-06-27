@@ -353,3 +353,19 @@ TEST_CASE("reverse") {
       CHECK(arr4[i] == arr5[i]);
   }
 }
+
+TEST_CASE("Binary Search") {
+  int arr[100];
+  for (int i = 0; i < 100; ++i)
+    arr[i] = i;
+  SUBCASE("Key is present") {
+    REQUIRE_EQ(binsearch(arr, 100, 50), 50);
+    REQUIRE_EQ(binsearch(arr, 100, 0), 0);
+    REQUIRE_EQ(binsearch(arr, 100, 99), 99);
+  }
+  SUBCASE("Key is not preset") {
+    REQUIRE_EQ(binsearch(arr, 100, 100), -1);
+    REQUIRE_EQ(binsearch(arr, 100, -1), -1);
+    REQUIRE_EQ(binsearch(arr, 100, 1000), -1);
+  }
+}

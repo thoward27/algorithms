@@ -157,3 +157,7 @@ void hybridsort(int* arr, int n) {
   hybridsort_quick(arr, 0, n - 1);
   // hyrbidsort_merge(arr, n);
 }
+
+void treesort(int* arr, int n) {
+  return;
+}
