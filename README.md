@@ -5,21 +5,71 @@ Welcome to CSC 212, Data Structures and Algorithms!
 ## Table of Contents
 
 - [Table of Contents](#Table-of-Contents)
-- [Resources](#Resources)
+- [Important Links](#Important-Links)
 - [Schedule](#Schedule)
+- [Resources](#Resources)
 - [Setup](#Setup)
+- [Working with Github Classroom](#Working-with-Github-Classroom)
 - [FAQ](#FAQ)
 - [Good Reads](#Good-Reads)
 
-## Resources
+## Important Links
 
 - [Website](https://thoward27.github.io/algorithms/)
 - [Syllabus](docs/syllabus.md)
 - [Slack Room](https://csc212.slack.com/)
+
+---
+
+## Schedule
+
+| Date      | Lectures                                                             | Readings                                                                                                                               | Assignments                                |
+| --------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| Tue, 5/21 | Getting Started                                                      | Accelerated C++ [0, 4], [CS50 Data Types](https://youtu.be/Fc9htmvVZ9U)                                                                | [A00: Practice Test][a00]                  |
+| Wed, 5/22 | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                    | Accelerated C++ [5, 7], [CS50 Variables and Scope](https://youtu.be/GiFbdVGjF9I)                                                       |                                            |
+| Thu, 5/23 | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                    | Accelerated C++ [8, 10], [CS50 Pointers](https://youtu.be/XISnO2YhnsY)                                                                 | [A01: Kattis Competition][a01]             |
+| Tue, 5/28 | [Algorithms for Singular Variables](docs/notes/algorithms.html)      | [OpenDSA 6][odsa6], [CS50 Functions](https://youtu.be/n1glFqt3g38)                                                                     |                                            |
+| Wed, 5/29 | [Algorithms for Arrays](docs/notes/algorithms.html)                  | [OpenDSA 8][odsa8], [CS50 Arrays](https://youtu.be/YdSycMcxvY0)                                                                        |                                            |
+| Thu, 5/30 | [Recursion](docs/notes/algorithms.html)                              | [OpenDSA 10][odsa10],  [CS50 Recursion](https://youtu.be/mz6tAJMVmfM), [CS50 Stack Frames](https://youtu.be/aCPkszeKRa4)               | [A02: String Class][a02]                   |
+| Tue, 6/4  | [Sorting / Bubble Sort](docs/notes/sorting.html)                     | [OpenDSA 13.1, 13.2, 13.4][odsa13],  [CS50 Bubble Sort](https://youtu.be/RT-hUXUWQ2I)                                                  |                                            |
+| Wed, 6/5  | [Insertion Sort / Selection Sort](docs/notes/sorting.html)           | [OpenDSA 13.3, 13.5][odsa13], [CS50 Insertion Sort](https://youtu.be/O0VbBkUvriI), [CS50 Selection Sort](https://youtu.be/3hH8kTHFw2A) |                                            |
+| Thu, 6/6  | [MergeSort](docs/notes/sorting.html)                                 | [OpenDSA 13.9][odsa13], [CS50 MergeSort](https://youtu.be/Ns7tGNbtvV4)                                                                 | [A03: HybridSort][a03]                     |
+| Tue, 6/11 | [QuickSort](docs/notes/sorting.html)                                 | [OpenDSA 13.11][odsa13],                                                                                                               |                                            |
+| Wed, 6/12 | Sorting & Analysis Review                                            | [OpenDSA 6, 8, 10, 13][odsa]                                                                                                           |                                            |
+| Thu, 6/13 | [Exam 01 Review](docs/exams/E01R.md), [Answers](docs/exams/E01RA.md) |                                                                                                                                        | [A04: Advanced Sorting][a04]               |
+| Tue, 6/18 | [SLL](docs/notes/linear.html)                                        | [OpenDSA 9.1-9.5][odsa9], [CS50 SLL](https://youtu.be/zQI3FyWm144)                                                                     |                                            |
+| Wed, 6/19 | [CSLL / DLL / CDLL](docs/notes/linear.html)                          | [OpenDSA 9.6][odsa9], [CS50 DLL](https://youtu.be/FHMPswJDCvU)                                                                         |                                            |
+| Thu, 6/20 | [Stacks](docs/notes/linear.html)                                     | [OpenDSA 9.8, 9.9][odsa9], [CS50 Stacks](https://youtu.be/hVsNqhEthOk)                                                                 | [A05: Djikstra's Two Stack Algorithm][a05] |
+| Tue, 6/25 | [Queues](docs/notes/linear.html)                                     | [OpenDSA 9.12, 9.13][odsa9], [CS50 Queues](https://youtu.be/3TmUv1uS92s)                                                               |                                            |
+| Wed, 6/26 | [Trees / Binary Trees](docs/notes/trees.html)                        | [OpenDSA 12.1-12.13][odsa12]                                                                                                           |                                            |
+| Thu, 6/27 | [Binary Trees](docs/notes/trees.html#/2)                             | [OpenDSA 12.14-12.16][odsa12]                                                                                                          | [A06: For the Love of Binary](a06)         |
+| Tue, 7/2  | Heaps                                                                | [OpenDSA 12.17][odsa12]                                                                                                                |                                            |
+| Wed, 7/3  | Heap Sort                                                            |                                                                                                                                        |                                            |
+| Fri, 7/5  | 2-3 Tree                                                             |                                                                                                                                        | A07                                        |
+| Tue, 7/9  | Red-Black Tree                                                       |                                                                                                                                        |                                            |
+| Wed, 7/10 | Data Structures Review                                               |                                                                                                                                        |                                            |
+| Thu, 7/11 | Exam (Data Structures)                                               |                                                                                                                                        | A08                                        |
+| Tue, 7/16 | Hashing                                                              |                                                                                                                                        |                                            |
+| Wed, 7/17 | Open / Bucket Hashing                                                |                                                                                                                                        |                                            |
+| Thu, 7/18 | Collision Resolution                                                 |                                                                                                                                        | A09                                        |
+| Tue, 7/23 | Graphs                                                               |                                                                                                                                        |                                            |
+| Wed, 7/24 | Prims Algorithm                                                      |                                                                                                                                        |                                            |
+| Thu, 7/25 | Kruskal's Algorithm                                                  |                                                                                                                                        | A10                                        |
+|           | Final Exam (Cumulative)                                              |                                                                                                                                        |                                            |
+
+## Resources
+
 - [DevDocs](https://devdocs.io/)
-- [Cheat Sheets](docs/cheat_sheets/)
-- [Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-- [Visualgo](https://visualgo.net/en)
+- Cheat Sheets
+  - [Git](docs/cheat_sheets/git-cheat-sheet-education.pdf)
+  - [Github](docs/cheat_sheets/github-get-cheat-sheet.pdf)
+  - VS Code
+    - [Linux](docs/cheat_sheets/vscode-linux.pdf)
+    - [Mac OS](docs/cheat_sheets/vscode-macos.pdf)
+    - [Windows](docs/cheat_sheets/vscode-windows.pdf)
+- Visualizations
+  - [Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+  - [Visualgo](https://visualgo.net/en)
 - Books
   - [OpenDSA](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/)
   - [Accelerated C++](https://www.google.com/search?q=accelerated+c%2B%2B&oq=accelerated+c%2B%2B&aqs=chrome..69i57j69i60j0l4.2026j0j7&client=ubuntu&sourceid=chrome&ie=UTF-8)
@@ -30,7 +80,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - Interactive Online Learning
   - [Khan Academy Computer Science](https://www.khanacademy.org/computing/computer-science)
   - [FreeCodeCamp](https://www.freecodecamp.org/)
-- Problem Solving
+- Problem Solving Practice
   - [Code Signal](https://codesignal.com/)
   - [Kattis](https://open.kattis.com/)
 - Learning C++
@@ -49,49 +99,13 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - Learning Git & Github
   - [Github Hello World](https://guides.github.com/activities/hello-world/)
 
-## Schedule
-
-| Date      | Week # | Lectures                                                             | Readings                                                                                                                               | Assignments                                |
-| --------- | ------ | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Tue, 5/21 | 0      | Getting Started                                                      | Accelerated C++ [0, 4], [CS50 Data Types](https://youtu.be/Fc9htmvVZ9U)                                                                | [A00: Practice Test][a00]                  |
-| Wed, 5/22 | 0      | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                    | Accelerated C++ [5, 7], [CS50 Variables and Scope](https://youtu.be/GiFbdVGjF9I)                                                       |                                            |
-| Thu, 5/23 | 0      | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                    | Accelerated C++ [8, 10], [CS50 Pointers](https://youtu.be/XISnO2YhnsY)                                                                 | [A01: Kattis Competition][a01]             |
-| Tue, 5/28 | 1      | [Algorithms for Singular Variables](docs/notes/algorithms.html)      | [OpenDSA 6][odsa6], [CS50 Functions](https://youtu.be/n1glFqt3g38)                                                                     |                                            |
-| Wed, 5/29 | 1      | [Algorithms for Arrays](docs/notes/algorithms.html)                  | [OpenDSA 8][odsa8], [CS50 Arrays](https://youtu.be/YdSycMcxvY0)                                                                        |                                            |
-| Thu, 5/30 | 1      | [Recursion](docs/notes/algorithms.html)                              | [OpenDSA 10][odsa10],  [CS50 Recursion](https://youtu.be/mz6tAJMVmfM), [CS50 Stack Frames](https://youtu.be/aCPkszeKRa4)               | [A02: String Class][a02]                   |
-| Tue, 6/4  | 2      | [Sorting / Bubble Sort](docs/notes/sorting.html)                     | [OpenDSA 13.1, 13.2, 13.4][odsa13],  [CS50 Bubble Sort](https://youtu.be/RT-hUXUWQ2I)                                                  |                                            |
-| Wed, 6/5  | 2      | [Insertion Sort / Selection Sort](docs/notes/sorting.html)           | [OpenDSA 13.3, 13.5][odsa13], [CS50 Insertion Sort](https://youtu.be/O0VbBkUvriI), [CS50 Selection Sort](https://youtu.be/3hH8kTHFw2A) |                                            |
-| Thu, 6/6  | 2      | [MergeSort](docs/notes/sorting.html)                                 | [OpenDSA 13.9][odsa13], [CS50 MergeSort](https://youtu.be/Ns7tGNbtvV4)                                                                 | [A03: HybridSort][a03]                     |
-| Tue, 6/11 | 3      | [QuickSort](docs/notes/sorting.html)                                 | [OpenDSA 13.11][odsa13],                                                                                                               |                                            |
-| Wed, 6/12 | 3      | Sorting & Analysis Review                                            | [OpenDSA 6, 8, 10, 13][odsa]                                                                                                           |                                            |
-| Thu, 6/13 | 3      | [Exam 01 Review](docs/exams/E01R.md), [Answers](docs/exams/E01RA.md) |                                                                                                                                        | [A04: Advanced Sorting][a04]               |
-| Tue, 6/18 | 4      | [SLL](docs/notes/linear.html)                                        | [OpenDSA 9.1-9.5][odsa9], [CS50 SLL](https://youtu.be/zQI3FyWm144)                                                                     |                                            |
-| Wed, 6/19 | 4      | [CSLL / DLL / CDLL](docs/notes/linear.html)                          | [OpenDSA 9.6][odsa9], [CS50 DLL](https://youtu.be/FHMPswJDCvU)                                                                         |                                            |
-| Thu, 6/20 | 4      | [Stacks](docs/notes/linear.html)                                     | [OpenDSA 9.8, 9.9][odsa9], [CS50 Stacks](https://youtu.be/hVsNqhEthOk)                                                                 | [A05: Djikstra's Two Stack Algorithm][a05] |
-| Tue, 6/25 | 5      | [Queues](docs/notes/linear.html)                                     | [OpenDSA 9.12, 9.13][odsa9], [CS50 Queues](https://youtu.be/3TmUv1uS92s)                                                               |                                            |
-| Wed, 6/26 | 5      | [Trees / Binary Trees](docs/notes/trees.html)                        | [OpenDSA 12.1-12.13][odsa12]                                                                                                           |                                            |
-| Thu, 6/27 | 5      | [Binary Trees](docs/notes/trees.html#/2)                             | [OpenDSA 12.14-12.16][odsa12]                                                                                                          | [A06: For the Love of Binary](a06)         |
-| Tue, 7/2  | 6      | Heaps                                                                | [OpenDSA 12.17][odsa12]                                                                                                                |                                            |
-| Wed, 7/3  | 6      | Heap Sort                                                            |                                                                                                                                        |                                            |
-| Fri, 7/5  | 6      | 2-3 Tree                                                             |                                                                                                                                        | A07                                        |
-| Tue, 7/9  | 7      | Red-Black Tree                                                       |                                                                                                                                        |                                            |
-| Wed, 7/10 | 7      | Data Structures Review                                               |                                                                                                                                        |                                            |
-| Thu, 7/11 | 7      | Exam (Data Structures)                                               |                                                                                                                                        | A08                                        |
-| Tue, 7/16 | 8      | Hashing                                                              |                                                                                                                                        |                                            |
-| Wed, 7/17 | 8      | Open / Bucket Hashing                                                |                                                                                                                                        |                                            |
-| Thu, 7/18 | 8      | Collision Resolution                                                 |                                                                                                                                        | A09                                        |
-| Tue, 7/23 | 9      | Graphs                                                               |                                                                                                                                        |                                            |
-| Wed, 7/24 | 9      | Prims Algorithm                                                      |                                                                                                                                        |                                            |
-| Thu, 7/25 | 9      | Kruskal's Algorithm                                                  |                                                                                                                                        | A10                                        |
-|           | 10     | Final Exam (Cumulative)                                              |                                                                                                                                        |                                            |
-
 ## Setup
 
 ### Github
 
 [View the official Handbook](https://guides.github.com/introduction/git-handbook/)
 
-### Students
+#### Students
 
 1. Create a fork.
    1. Visit the public repository's [website](https://github.com/thoward27/algorithms)
@@ -130,7 +144,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
    4. Select "Open a Pull Request"
    5. In the message, put all of your groups URI Emails so that I can update my grade book
 
-### TAs
+#### TAs
 
 1. Clone the public repository (`git clone git@github.com:thoward27/algorithms.git`)
 2. CD into the repo (`cd algorithms`)
@@ -142,17 +156,17 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ### IDE
 
-### Linux (Preferred, Auto-grader OS)
+#### Linux (Preferred, Auto-grader OS)
 
 This is the operating system we prefer in this class, as it closely mirrors your auto-grader environment.
 
 [VSCode](https://code.visualstudio.com/)
 
-### Windows 10
+#### Windows 10
 
 [VS Code via WSL](https://code.visualstudio.com/docs/remote/wsl)
 
-### Windows 8 and older
+#### Windows 8 and older
 
 Please boot linux, Windows 8 and older is extremely challenging to develop C++ on.
 
@@ -161,7 +175,7 @@ If you insist on using Windows 8, you will need to install [Cygwin](https://www.
 [VS Code](https://code.visualstudio.com/)
 Requirement: [Cygwin](https://www.cygwin.com/)
 
-### Mac OS
+#### Mac OS
 
 In order of preference:
 
@@ -169,7 +183,7 @@ In order of preference:
    1. Requirement: [Docker](https://docs.docker.com/docker-for-mac/install/)
 2. [VS Code](https://code.visualstudio.com/)
 
-### Online IDEs
+#### Online IDEs
 
 This section contains some helpful online IDEs that can be used for in-class work, but may not be used for homework without purchasing an upgrade.
 
@@ -178,6 +192,30 @@ This section contains some helpful online IDEs that can be used for in-class wor
 1. [Gitpod](https://www.gitpod.io/)
 2. [repl](https://repl.it/)
 3. [StackBlitz](https://stackblitz.com/)
+
+## Working with Github Classroom
+
+1. Registering for the assignment
+   1. Click on the link to the assignment
+   2. Make sure you select your email from the roster if you have not already
+   3. Accept the assignment
+   4. Click on the link after the text "Your assignment has been created here:"
+2. Clone your assignment to your computer
+   1. Go to the page for your assignment
+   2. Select "Clone or download" (big green button)
+   3. Copy the link
+   4. Open a terminal and navigate to the `algorithms` folder
+   5. Use the command `cd ..` to step out of the algorithms folder
+   6. Clone your repository `git clone <your link goes here>`
+   7. `cd` into your new folder: `cd <your assignment folder>`
+   8. Open this folder in VS Code
+3. Completing your assignment
+   1. Following the instructions for the assignment, being working on the provided unit tests.
+   2. After passing each unit test, commit and push your progress.
+      1. Stage your changes: `git add .`
+      2. Commit your work: `git commit -m "<Name of the test case you just passed>"`
+      3. Push your work to Github: `git push`
+   3. Check that your submission worked by visiting the online copy of your assignment, and verifying your changes were pushed.
 
 ## FAQ
 
