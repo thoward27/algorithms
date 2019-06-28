@@ -33,6 +33,21 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - Problem Solving
   - [Code Signal](https://codesignal.com/)
   - [Kattis](https://open.kattis.com/)
+- Learning C++
+  - [cplusplus Tutorial](http://www.cplusplus.com/doc/tutorial/)
+  - [Codecademy](https://www.codecademy.com/learn/learn-c-plus-plus)
+  - [FreeCodeCamp (YouTube)](https://www.youtube.com/watch?v=-ofiQpm3Kmo)
+  - [C++, Short and Sweet (Udemy)](https://www.udemy.com/share/1001No/)
+  - [C++ For Complete Beginners (Udemy)](https://www.udemy.com/free-learn-c-tutorial-beginners/)
+  - [Udacity Nanodegree (non-free)](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213)
+  - [Learn C++ by Creating (Udemy non-free)](https://www.udemy.com/share/10079O/)
+  - [LearnCPP](https://www.learncpp.com/)
+  - [C++ Programming Basics (Udemy non-free)](https://www.udemy.com/share/100nB6/)
+  - [Sololearn](https://www.sololearn.com/Course/CPlusPlus/)
+  - [C++ Templates](https://www.udemy.com/share/1002YA/)
+  - [Learn Advanced C++ Programming (udemy non-free)](https://www.udemy.com/share/1000MS/)
+- Learning Git & Github
+  - [Github Hello World](https://guides.github.com/activities/hello-world/)
 
 ## Schedule
 
