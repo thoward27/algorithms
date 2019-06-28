@@ -1,14 +1,18 @@
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra
-TARGETS=functions functions_recursive sorts String SLL CSLL DLL CDLL Stack Queue Dequeue BST
+TARGETS=functions sorts String SLL CSLL DLL CDLL Stack Queue Dequeue BST
+RECURSIVE=false
 
-%: source/Functions/functions.test.cpp source/Functions/%.cpp
+functions.o: source/Functions/functions.cpp
+	$(CXX) -c -DRECURSIVE=$(if $(filter true,$(RECURSIVE)),true,false) $(FLAGS) $^
+
+functions: source/Functions/functions.test.cpp functions.o
 	$(CXX) $(FLAGS) $^ && ./a.out
 
-sorts: source/Sorts/sorts.test.cpp source/Sorts/sorts.cpp source/Functions/functions.cpp
-	$(CXX) $(FLAGS) $^ && ./a.out
+sorts: source/Sorts/sorts.test.cpp source/Sorts/sorts.cpp functions.o
+	$(CXX) -DRECURSIVE=$(if $(filter true, $(RECURSIVE)),true,false) $(FLAGS) $^ && ./a.out
 
-String: source/String/String.test.cpp source/String/String.cpp source/Functions/functions.cpp
+String: source/String/String.test.cpp source/String/String.cpp functions.o
 	$(CXX) $(FLAGS) $^ && ./a.out
 
 %: source/LinkedList/LinkedList.test.cpp source/LinkedList/%.cpp
@@ -32,3 +36,4 @@ all: $(TARGETS)
 
 clean:
 	find . -name "*out" -delete
+	find . -name "*.o" -delete

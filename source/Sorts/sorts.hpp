@@ -24,9 +24,6 @@ void quicksort(int*, int);
 /** HybridSort */
 void hybridsort(int*, int);
 
-/** Tree Sort */
-void treesort(int*, int);
-
 /**
  *
  * Helpers

@@ -156,7 +156,3 @@ TEST_CASE("QuickSort") {
 TEST_CASE("Hybrid Sort") {
   test_sort(hybridsort);
 }
-
-TEST_CASE("Tree Sort") {
-  test_sort(treesort);
-}
