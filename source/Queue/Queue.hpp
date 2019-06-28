@@ -1,6 +1,6 @@
 #pragma once
 
-#include "LinkedList.hpp"
+#include "../LinkedList/LinkedList.hpp"
 
 /** Queue
  * A container class that stores data using a FIFO

@@ -1,4 +1,4 @@
-#include "../Linear/Stack.hpp"
+#include "../Stack/Stack.hpp"
 
 /** Djikstra's Two Stack Algorithm
  * <Place your notes and analysis here>
