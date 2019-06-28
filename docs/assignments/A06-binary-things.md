@@ -6,12 +6,32 @@ For this assignment you will be implementing and analyzing two algorithms: Tree 
 
 ### Tree Sort
 
-This algorithm uses a BST to sort an array of elements.
+Using a BST to sort an array of elements.
 
-The steps are:
+The steps to perform tree sort are:
 
-1. Insert all elements into the binary search tree.
-2. Traverse the tree, refilling the original array such that it is sorted.
+1. Insert all of the elements in the array into a BST
+2. Traverse the tree, placing each element back into the array in sorted order.
+
+Input constraints:
+
+Let $A = \{x \in \mathbb{Z} | -10,000 \leq x \leq 10,000\}$.
+
+Some pseudocode:
+
+```python
+def treesort(A) -> None:
+   tree = BST()
+   # Insert all of the elements into a BST
+   for element in A:
+      tree.insert(element)
+
+   # Traverse the tree replacing elements in A
+   i = 0
+   for element in A.traverse():
+      A[i] = element
+      i += 1
+```
 
 ## Binary Search
 
@@ -19,10 +39,14 @@ This algorithm relies on the input array being in sorted order to efficiently fi
 
 The steps are:
 
-1. Check if the middle element is the one we are looking for, return the index if so.
-2. If the element at the middle is larger than the one we are searching for, recursively search the left half.
-3. Otherwise, recursively search the right half.
-4. Return -1 if the element is not in the array.
+1. If there are no elements in the array, return -1.
+2. If the middle element is the one we are looking for, return that index.
+3. If the element at the middle is larger than the one we are searching for, recursively search the left half.
+4. Otherwise, recursively search the right half.
+
+Input constraints:
+
+Let $A = \{x \in \mathbb{Z} | x[i-1] \leq x[i] \forall i \geq 1, -1000 \leq x \leq 1000 \}$
 
 ## Instructions
 
