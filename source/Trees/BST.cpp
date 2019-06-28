@@ -43,34 +43,38 @@ bool BST::search(int data) {
 }
 
 Node* BST::remove(int data, Node* n) {
-  if (!n)
+  if (!n) {
     return nullptr;
-  if (data < n->data) {
+
+  } else if (data < n->data) {
+    // Recurse down the left subtree.
     n->left = remove(data, n->left);
-    return n;
+
   } else if (data > n->data) {
+    // Recurse down the right subtree.
     n->right = remove(data, n->right);
-    return n;
-  } else {
-    Node* ret;
-    if (!n->left && !n->right)
-      ret = nullptr;
-    else if (n->left && !n->right)
-      ret = n->left;
-    else if (!n->left && n->right)
-      ret = n->right;
-    else {
-      Node* successor = n->right;
-      while (successor->left) {
-        successor = successor->left;
-      }
-      n->data = successor->data;
-      n->right = remove(n->data, n->right);
-      return n;
-    }
+
+  } else if (!n->left && !n->right) {
+    // Remove a leaf.
     delete n;
-    return ret;
+    n = nullptr;
+
+  } else if (!n->left != !n->right) {
+    // Remove a node with a single child.
+    Node* rm = n;
+    n = (n->left) ? n->left : n->right;
+    delete rm;
+
+  } else {
+    // Remove a node with two children.
+    Node* successor = n->right;
+    while (successor->left) {
+      successor = successor->left;
+    }
+    n->data = successor->data;
+    n->right = remove(n->data, n->right);
   }
+  return n;
 }
 
 void BST::remove(int data) {
