@@ -15,7 +15,7 @@ The steps to perform tree sort are:
 
 Input constraints:
 
-Let $A = \{x \in \mathbb{Z} | -10,000 \leq x \leq 10,000\}$.
+Let \[A = \{x \in \mathbb{Z} | -10,000 \leq x \leq 10,000\}\].
 
 Some pseudocode:
 
