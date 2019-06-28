@@ -8,7 +8,7 @@
  */
 class Dequeue {
  private:
-  LinkedList queue;
+  LinkedList* list;
 
  public:
   Dequeue();
