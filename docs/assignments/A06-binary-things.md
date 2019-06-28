@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Assignment 06: For the Love of Binary
 
 For this assignment you will be implementing and analyzing two algorithms: Tree Sort and Binary Search.
