@@ -18,7 +18,7 @@ matrix:
       - TARGET=all
     - name: "Strings"
       env: 
-      - TARGET=string
+      - TARGET=String
     - name: "Functions"
       env:
       - TARGET=functions RECURSIVE=true
