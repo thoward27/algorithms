@@ -55,7 +55,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | Thu, 6/20 | 4      | [Stacks](docs/notes/linear.html)                                     | [OpenDSA 9.8, 9.9][odsa9], [CS50 Stacks](https://youtu.be/hVsNqhEthOk)                                                                 | [A05: Djikstra's Two Stack Algorithm][a05] |
 | Tue, 6/25 | 5      | [Queues](docs/notes/linear.html)                                     | [OpenDSA 9.12, 9.13][odsa9], [CS50 Queues](https://youtu.be/3TmUv1uS92s)                                                               |                                            |
 | Wed, 6/26 | 5      | [Trees / Binary Trees](docs/notes/trees.html)                        | [OpenDSA 12.1-12.13][odsa12]                                                                                                           |                                            |
-| Thu, 6/27 | 5      | [Binary Trees](docs/notes/trees.html#/2)                             | [OpenDSA 12.14-12.16][odsa12]                                                                                                          | A06                                        |
+| Thu, 6/27 | 5      | [Binary Trees](docs/notes/trees.html#/2)                             | [OpenDSA 12.14-12.16][odsa12]                                                                                                          | [A06: For the Love of Binary](a06)         |
 | Tue, 7/2  | 6      | Heaps                                                                | [OpenDSA 12.17][odsa12]                                                                                                                |                                            |
 | Wed, 7/3  | 6      | Heap Sort                                                            |                                                                                                                                        |                                            |
 | Fri, 7/5  | 6      | 2-3 Tree                                                             |                                                                                                                                        | A07                                        |
@@ -192,6 +192,7 @@ This section contains some helpful online IDEs that can be used for in-class wor
 [a03]: docs/assignments/A03-hybrid-sort.md
 [a04]: docs/assignments/A04-advanced-sort.md
 [a05]: docs/assignments/A05-two-stack.md
+[a06]: docs/assignments/A06-binary-things.md
 
 [git-basics]: https://git-scm.com/book/en/v1/Getting-Started-Git-Basics
 [git-handbook]: https://guides.github.com/introduction/git-handbook/
