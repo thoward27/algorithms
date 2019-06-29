@@ -36,6 +36,10 @@ Dequeue: source/Queue/Dequeue.test.cpp Dequeue.o $(if $(LIST),$(LIST).o,DLL.o)
 	$(CXX) $(FLAGS) $^
 	./a.out
 
+calculator: calculator.cpp Stack.o SLL.o String.o functions.o
+	$(CXX) $(FLAGS) $^
+	./a.out
+
 %: source/Algorithms/%.test.cpp functions.o Stack.o Queue.o SLL.o String.o
 	$(CXX) $(FLAGS) $^
 	./a.out
