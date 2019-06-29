@@ -32,6 +32,8 @@ matrix:
       - TARGET=CSLL
       - TARGET=DLL
       - TARGET=CDLL
+    - name: "Two Stacks"
+      -TARGET=twostack
 
 script:
   - make $TARGET
