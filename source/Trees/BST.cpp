@@ -81,7 +81,7 @@ void BST::remove(int data) {
   root = remove(data, root);
 }
 
-int max(int a, int b) {
+inline int max(int a, int b) {
   return (a > b) ? a : b;
 }
 int BST::height(Node* n) {

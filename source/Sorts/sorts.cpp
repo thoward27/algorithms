@@ -1,5 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "sorts.hpp"
+#include <sstream>
+#include "../Functions/functions.hpp"
+#include "../Trees/BST.hpp"
 
 /* Helper Functions */
 
@@ -156,4 +159,27 @@ void hyrbidsort_merge(int* arr, int n) {
 void hybridsort(int* arr, int n) {
   hybridsort_quick(arr, 0, n - 1);
   // hyrbidsort_merge(arr, n);
+}
+
+void treesort(int* arr, int n) {
+  std::ostringstream oss;
+  BST tree;
+  for (int i = 0; i < n; ++i)
+    tree.insert(arr[i]);
+
+  tree.inorder(oss);
+
+  int j = 0;
+  for (int i = 0; i < n; ++i) {
+    char num[50] = {0};
+    int n = 0;
+    // Skip irrelevant characters.
+    while (oss.str()[j] < '0' && '9' < oss.str()[j])
+      ++j;
+    // Get a number
+    while ('0' <= oss.str()[j] && oss.str()[j] <= '9')
+      num[n++] = oss.str()[j++];
+    // Save it.
+    arr[i] = stringtoint(num);
+  }
 }

@@ -1,5 +1,21 @@
 #include "functions.hpp"
 
+int chartoint(char c) {
+  return (c >= '0' && c <= '9') ? c - '0' : throw "bad input";
+}
+
+int ord(char c) {
+  return c;
+}
+
+char chr(int x) {
+  return x;
+}
+
+char inttochar(int x) {
+  return (x >= 0 && x <= 9) ? x + 48 : throw "bad input";
+}
+
 #if RECURSIVE
 /** Recursive Solutions
  *
@@ -107,26 +123,6 @@ int stringtoint(char* string) {
                   : 0;
 }
 
-/* NOT RECURSIVE */
-int chartoint(char c) {
-  return (c >= '0' && c <= '9') ? c - '0' : throw "bad input";
-}
-
-/* NOT RECURSIVE */
-int ord(char c) {
-  return c;
-}
-
-/* NOT RECURSIVE */
-char chr(int x) {
-  return x;
-}
-
-/* NOT RECURSIVE */
-char inttochar(int x) {
-  return (x >= 0 && x <= 9) ? x + 48 : throw "bad input";
-}
-
 int max(int arr[], int n) {
   if (n == 1)
     return arr[0];
@@ -204,8 +200,21 @@ int log(int base, int num) {
   return (num == 1) ? 0 : 1 + log(base, num / base);
 }
 
+int binsearch(int* arr, int lo, int hi, int key) {
+  if (lo > hi)
+    return -1;
+  else {
+    int mid = lo + (hi - lo) / 2;
+    if (arr[mid] == key)
+      return mid;
+    else
+      return (arr[mid] < key) ? binsearch(arr, mid, hi, key)
+                              : binsearch(arr, lo, mid, key);
+  }
+}
+
 int binsearch(int* arr, int n, int key) {
-  std::cout << "Boop" << std::endl;
+  return binsearch(arr, 0, n, key);
 }
 #else
 /** Iterative Solutions
@@ -231,24 +240,6 @@ int log(int base, int num) {
     ++count;
   }
   return count;
-}
-
-int chartoint(char c) {
-  if (c < '0' || c > '9')
-    throw "Bad character";
-  return c - '0';
-}
-
-char inttochar(int x) {
-  return (char)(x + '0');
-}
-
-char chr(int x) {
-  return (char)x;
-}
-
-int ord(char c) {
-  return (int)c;
 }
 
 int max(int x, int y) {
@@ -428,6 +419,20 @@ long fibonacci(int n) {
     b = temp;
   }
   return a;
+}
+
+int binsearch(int* arr, int n, int key) {
+  int lo = 0, hi = n;
+  while (lo <= hi) {
+    int idx = lo + (hi - lo) / 2;
+    if (arr[idx] == key)
+      return idx;
+    else if (arr[idx] < key)
+      lo = idx + 1;
+    else
+      hi = idx - 1;
+  }
+  return -1;
 }
 
 #endif
