@@ -57,6 +57,11 @@ class String {
    */
   void erase(char);
 
+  /** clear()
+   * Clears the contents of the string.
+   */
+  void clear();
+
   /** remove(int index)
    * Removes the character at the given index.
    * O(?)

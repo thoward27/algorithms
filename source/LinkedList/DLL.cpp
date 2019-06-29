@@ -26,6 +26,8 @@ void LinkedList::push_front(int d) {
 }
 
 int LinkedList::pop_front() {
+  if (!head)
+    throw "Nothing to pop";
   Node* to_remove = head;
   int rval = head->data;
   if (len == 1) {
@@ -64,6 +66,8 @@ void LinkedList::push_back(int d) {
 }
 
 int LinkedList::pop_back() {
+  if (!head)
+    throw "Nothing to pop";
   Node* to_remove = tail;
   int rval = tail->data;
   if (len == 1) {

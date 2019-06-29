@@ -57,6 +57,11 @@ char String::at(int index) const {
                                                       : array[index];
 }
 
+void String::clear() {
+  for (unsigned int i = 0; i < _capacity; ++i)
+    array[i] = '\0';
+}
+
 // O(n)
 unsigned int String::size() const {
   int length = 0;
@@ -152,8 +157,8 @@ void String::remove(int index) {
 // https://www.interviewcake.com/concept/java/dynamic-array-amortized-analysis
 void String::append(char c) {
   unsigned int length = size();
-  if (length == this->capacity()) {
-    this->reserve(length * 2);
+  if (length >= this->capacity()) {
+    this->reserve((length + 1) * 2);
   }
   array[length] = c;
   array[length + 1] = 0;
@@ -163,8 +168,8 @@ void String::append(char c) {
 // O(n)
 void String::prepend(char c) {
   unsigned int length = size();
-  if (length == this->capacity()) {
-    this->reserve(length * 2);
+  if (length >= this->capacity()) {
+    this->reserve((length + 1) * 2);
   }
   for (int i = length + 1; i >= 0; --i)
     array[i] = array[i - 1];
