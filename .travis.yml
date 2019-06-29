@@ -34,4 +34,4 @@ matrix:
       - TARGET=CDLL
 
 script:
-  - make CXX=g++-8 $TARGET
+  - make $TARGET
