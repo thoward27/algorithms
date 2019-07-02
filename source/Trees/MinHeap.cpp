@@ -20,12 +20,12 @@ int MinHeap::count() {
   return size;
 }
 
-int MinHeap::peek_min() {
+int MinHeap::peek() {
   if (!size) throw "Attempted to access empty heap";
   return array[0];
 }
 
-void MinHeap::heapify_up() {
+void MinHeap::swim() {
   int i = size - 1;
   while (array[i] < array[(i-1)/2]) {
     swap(array + i, array + (i-1)/2);
@@ -33,7 +33,7 @@ void MinHeap::heapify_up() {
   }
 }
 
-void MinHeap::heapify_down(int i) {
+void MinHeap::sink(int i) {
   while (2*i + 1 < size) {
     // Heap at i is still greater than children but only has one child
     if (2*i + 2 == size) {
@@ -65,17 +65,17 @@ void MinHeap::heapify_down(int i) {
   }
 }
 
-void MinHeap::insert(int data) {
-  if ((unsigned int) size == capacity) throw "Attempted to insert into a full heap";
+void MinHeap::push(int data) {
+  if ((unsigned int) size == capacity) throw "Attempted to push into a full heap";
   array[size++] = data;
-  heapify_up();
+  swim();
 }
 
-int MinHeap::extract_min() {
+int MinHeap::pop() {
   if (!size) throw "Attempted to extract from an empty heap";
   int rval = array[0];
   array[0] = array[--size];
-  heapify_down(0);
+  sink(0);
   return rval;
 }
 
@@ -94,7 +94,7 @@ int MinHeap::remove(int i) {
   if (i < 0 || i >= size) throw "Attempted to remove from a heap at an invalid location";
   int rval = array[i];
   array[i] = array[--size];
-  heapify_down(i);
+  sink(i);
   return rval;
 }
 
