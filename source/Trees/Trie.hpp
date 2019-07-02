@@ -64,6 +64,11 @@ class Trie {
    */
   void remove(char* word);
 
+  /** clear()
+   * Removes all words from the Trie.
+   */
+  void clear();
+
   /** print()
    * Prints the Trie's key-value (string-int) pairs to the ostream in
    * alphabetical order.
