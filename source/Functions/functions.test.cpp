@@ -363,7 +363,6 @@ TEST_CASE("Binary Search") {
     REQUIRE_EQ(binsearch(arr, 100, 0), 0);
     REQUIRE_EQ(binsearch(arr, 100, 99), 99);
     REQUIRE_EQ(binsearch(arr, 25, 25), 25);
-    shift(arr, ) REQUIRE_EQ(binsearch(arr, ))
   }
   SUBCASE("Key is not preset") {
     REQUIRE_EQ(binsearch(arr, 100, 100), -1);

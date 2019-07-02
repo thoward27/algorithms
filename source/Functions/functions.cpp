@@ -118,9 +118,12 @@ int round(double x, char c) {
 
 int stringtoint(char* string) {
   int length = strlen(string);
-  return (length) ? chartoint(string[0]) * pow(10, length - 1) +
-                        stringtoint(string + 1)
-                  : 0;
+  if (!length)
+    return 0;
+  else if (string[0] == '-')
+    return -1 * stringtoint(string + 1);
+  else
+    return chartoint(string[0]) * pow(10, length - 1) + stringtoint(string + 1);
 }
 
 int max(int arr[], int n) {

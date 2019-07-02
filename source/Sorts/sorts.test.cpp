@@ -49,8 +49,17 @@ void test_sort(sort_fn func) {
         for (int n = 1; n < CASES; ++n) {
           int arr[n];
           fillers[i](arr, n, shift);
+
+          int freq[6000] = {};
+          for (int i = 0; i < n; ++i)
+            freq[arr[i] + 2000] += 1;
+
           func(arr, n);
           REQUIRE(is_sorted(arr, n));
+
+          for (int i = 0; i < n; ++i)
+            freq[arr[i] + 2000] -= 1;
+          REQUIRE_EQ(sum(freq, 6000), 0);
         }
       }
     }

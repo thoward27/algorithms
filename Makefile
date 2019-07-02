@@ -1,11 +1,10 @@
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra
 TARGETS=functions sorts String SLL CSLL DLL CDLL Stack Queue Dequeue BST
-RECURSIVE=false
 
 # Object Files
 %.o: source/*/%.cpp
-	$(CXX) -c -DRECURSIVE=$(if $(filter true,$(RECURSIVE)),true,false) $(FLAGS) $^
+	$(CXX) -c $(if $(RECURSIVE),-DRECURSIVE=$(RECURSIVE)) $(FLAGS) $^
 
 # Tests
 functions: source/Functions/functions.test.cpp functions.o
@@ -44,7 +43,7 @@ calculator: calculator.cpp Stack.o SLL.o String.o functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
-%: source/Algorithms/%.test.cpp functions.o
+%: source/Algorithms/%.test.cpp functions.o Stack.o Queue.o String.o $(if $(LIST),$(LIST).o,SLL.o)
 	$(CXX) $(FLAGS) $^
 	./a.out
 

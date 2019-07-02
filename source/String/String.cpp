@@ -217,7 +217,7 @@ void String::concatenate(String& str) {
 }
 
 // O(n)
-bool exact_match(char* a, char* b) {
+inline bool exact_match(char* a, char* b) {
   return (!b[0]) ? true : a[0] == b[0] && exact_match(a + 1, b + 1);
 }
 
@@ -269,14 +269,7 @@ void String::shift(int n) {
 
 // O(n)
 int String::toInt() const {
-  int len = size();
-  int out = 0;
-
-  for (int i = 0; i < len; ++i) {
-    out += chartoint(array[len - i - 1]) * pow(10, i);
-  }
-
-  return out;
+  return stringtoint(this->array);
 }
 
 // O(n) since append is O(1) amortized.
@@ -285,4 +278,10 @@ String String::substr(int start, int end) const {
   for (int i = start; i < end; ++i)
     ret.append(array[i]);
   return ret;
+}
+
+void String::print(std::ostream& oss) {
+  for (int i = 0; array[i]; ++i)
+    oss << array[i];
+  oss << std::endl;
 }

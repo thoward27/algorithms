@@ -64,7 +64,7 @@ This assignment will be hosted on Github Classroom.
    1. Open your new folder in VS Code
    2. In your folder you should have an updated copies of `functions.test.cpp, functions.hpp, functions.cpp, functions_recursive.cpp, sorts.test.cpp, sorts.hpp, and sorts.cpp`.
    3. Check that you can compile and run the unit tests for Tree Sort
-      1. `g++ -std=c++11 source/sorts/sorts.test.cpp source/sorts/sorts.cpp && ./a.out`
+      1. `g++ -std=c++11 source/sorts/sorts.test.cpp source/sorts/sorts.cpp source/Functions/functions.cpp && ./a.out`
    4. Check that you can compile and run the unit tests for Binary Search
       1. Iterative `g++ -std=c++11 source/Functions/functions.test.cpp source/Functions/functions.cpp && ./a.out`
       2. Recursive `g++ -std=c++11 source/Functions/functions.test.cpp source/Functions/functions_recursive.cpp && ./a.out`

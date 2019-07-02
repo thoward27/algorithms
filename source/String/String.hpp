@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class String {
  private:
@@ -129,4 +130,6 @@ class String {
    * O(?)
    */
   String substr(int, int) const;
+
+  void print(std::ostream& oss = std::cout);
 };

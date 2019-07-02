@@ -20,17 +20,18 @@ bool isop(char c) {
   return false;
 }
 
-double twostack(char* expression) {
+double twostack(char* str) {
   Stack a;
   Stack b;
   String temp;
   int i = 0;
-  while (expression[i]) {
+  while (str[i]) {
     temp.clear();
-    if (expression[i] == '(' || expression[i] == ' ') {
+    if (str[i] == '(' || str[i] == ' ') {
       // Do nothing.
       i += 1;
-    } else if (expression[i] == ')') {
+
+    } else if (str[i] == ')') {
       // Do some computation.
       int y = a.pop();
       int x = a.pop();
@@ -48,17 +49,21 @@ double twostack(char* expression) {
       else if (op == '%')
         a.push(x % y);
       i += 1;
-    } else if (isnum(expression[i])) {
+
+    } else if (isnum(str[i]) || (str[i] == '-' && isnum(str[i + 1]))) {
       // Get the number.
-      while (isnum(expression[i]))
-        temp.append(expression[i++]);
+      do {
+        temp.append(str[i++]);
+      } while (isnum(str[i]));
+
       a.push(temp.toInt());
 
-    } else if (isop(expression[i])) {
+    } else if (isop(str[i])) {
       // Get the operator.
-      b.push(expression[i++]);
+      b.push(str[i++]);
+
     } else {
-      throw "Bad input";
+      throw "Bad character in twostack string.";
     }
   }
   if (a.size() > 1)

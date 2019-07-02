@@ -255,8 +255,8 @@
               ctx.font = "1.5em serif";
 
               function node(x, y, text = "") {
-                ctx.arc(x, y, 50, 1.5 * Math.PI, 4.5 * Math.PI);
-                ctx.fillText(text, x - 30, y + 20);
+                ctx.arc(x, y, 50 + text.includes(' ') * 25, 1.5 * Math.PI, 4.5 * Math.PI);
+                ctx.fillText(text, x - 30 - text.includes(' ') * 30, y + 20);
                 return [x, y]
               }
 
@@ -516,7 +516,66 @@
             </tbody>
           </table>
         </section>
+      </section>
+      <section>
+        <section class="center">
+          <h2>Priority Queues</h2>
+          <h5>Introducing the Binary Heap</h5>
+        </section>
+        <section>
+          <h3>Priority Queue: API</h3>
+          <ul>
+            <li>Push: Places an element into the queue</li>
+            <li>Pop: Removes and returns the next highest priority item from the queue.</li>
+          </ul>
+          <p class="fragment">Can you think of any real-life applications for a priority queue?</p>
+          <p class="fragment">Hospital lines</p>
+          <p class="fragment">How long would these basic operations take if we used ordered lists? Unordered Lists?</p>
+          <p class="fragment">An unordered list: $O(1), O(n)$.<br> Ordered list: $O(n), O(1)$ <br> We can do better.</p>
+        </section>
+        <section class="center">
+          <h3>Priority Queue: Implementation</h3>
+          <h5>What if we maintained a somewhat ordered array?</h5>
+        </section>
+        <section>
+          <h3>Binary Heaps</h3>
+          <p>An array representation of a heap-ordered complete binary tree</p>
+          <p class="fragment">Heap Ordered: Parent's key is no smaller than children's</p>
+          <p class="fragment">Array Representation: Indices start at 1, nodes are in level order.</p>
+          <canvas class="fragment" heigh="1000" width="2000" id="binaryheap"></canvas>
+          <script>
 
+          </script>
+        </section>
+      </section>
+      <section>
+        <section class="center">
+          <h2>Balanced Search Trees</h2>
+          <h5>Guaranteeing $\log n$ performance</h5>
+        </section>
+        <section>
+          <h3>2-3 Trees</h3>
+          <ul>
+            <li>2-node: one key, two children</li>
+            <li>3-node: two keys, three children</li>
+          </ul>
+          <p>This scheme achieves perfect balance, every path from root to null has same length.</p>
+          <canvas id="23-intro" width="2000" height="1000"></canvas>
+          <script>
+            var ctx = document.getElementById('23-intro').getContext('2d');
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.font = "1.5em serif";
+
+            ctx.beginPath();
+            var root = node(1000, 100, "15");
+            var n5_10 = leftChild(...root, "5 10");
+
+            ctx.stroke();
+            ctx.closePath();
+          </script>
+        </section>
       </section>
     </div>
   </div>
