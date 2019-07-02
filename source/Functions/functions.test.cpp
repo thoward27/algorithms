@@ -273,6 +273,8 @@ TEST_CASE("stringtoint") {
   CHECK(stringtoint((char*)"1234") == 1234);
   CHECK(stringtoint((char*)"10") == 10);
   CHECK(stringtoint((char*)"33") == 33);
+  CHECK(stringtoint((char*)"-1") == -1);
+  CHECK(stringtoint((char*)"-99") == -99);
 }
 
 TEST_CASE("reverse") {
