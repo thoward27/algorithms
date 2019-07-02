@@ -255,8 +255,8 @@
               ctx.font = "1.5em serif";
 
               function node(x, y, text = "") {
-                ctx.arc(x, y, 50, 1.5 * Math.PI, 4.5 * Math.PI);
-                ctx.fillText(text, x - 30, y + 20);
+                ctx.arc(x, y, 50 + text.includes(' ') * 25, 1.5 * Math.PI, 4.5 * Math.PI);
+                ctx.fillText(text, x - 30 - text.includes(' ') * 30, y + 20);
                 return [x, y]
               }
 
@@ -516,7 +516,185 @@
             </tbody>
           </table>
         </section>
+      </section>
+      <section>
+        <section class="center">
+          <h2>Priority Queues</h2>
+          <h5>Introducing the Binary Heap</h5>
+        </section>
+        <section>
+          <h3>Priority Queue: API</h3>
+          <ul>
+            <li>Push: Places an element into the queue</li>
+            <li>Pop: Removes and returns the next highest priority item from the queue.</li>
+          </ul>
+          <p class="fragment">Can you think of any real-life applications for a priority queue?</p>
+          <p class="fragment">Hospital lines</p>
+          <p class="fragment">How long would these basic operations take if we used ordered lists? Unordered Lists?</p>
+          <p class="fragment">An unordered list: $O(1), O(n)$.<br> Ordered list: $O(n), O(1)$ <br> We can do better.</p>
+        </section>
+        <section class="center">
+          <h3>Priority Queue: Implementation</h3>
+          <h5>What if we maintained a somewhat ordered array?</h5>
+        </section>
+        <section>
+          <h3>Binary Heaps</h3>
+          <p>Heap-ordered complete binary trees</p>
+          <div class="row">
+            <div class="column">
+              <canvas height="1000" width="1000" id="binaryheap"></canvas>
+              <script>
+                var ctx = document.getElementById('binaryheap').getContext('2d');
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.font = "1.5em serif";
 
+                ctx.beginPath();
+                var root = node(500, 400, "5");
+                var n10 = leftChild(...root, "10", 200);
+                var n12 = rightChild(...root, "12", 200);
+                var n14 = leftChild(...n10, "14");
+                var n15 = rightChild(...n10, "15", 90);
+                var n25 = leftChild(...n12, "25", 90);
+                var n17 = rightChild(...n12, "17");
+                var n20 = leftChild(...n14, "20");
+                var n50 = rightChild(...n14, "50");
+                ctx.stroke();
+                ctx.closePath();
+              </script>
+            </div>
+            <div class="column">
+              <ul>
+                <li class="fragment">Heap Ordered</li>
+                <li class="fragment">Array Representation</li>
+                <li class="fragment">Push</li>
+                <li class="fragment">Swimming Up</li>
+                <li class="fragment">Pop</li>
+                <li class="fragment">Sinking Down</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Heap Ordered: Parent's key is no smaller than children's</li>
+              <li>Push: Insert at the end, then swim up.</li>
+              <li>Swimming Up: While the parent node is less, swap them.</li>
+              <li>Overall, insertion costs 1 + log n comparisons</li>
+              <li>Pop: Exchange root with node at end, then sink it down.</li>
+              <li>Sinking Down: Exchange the data with the smaller of the two children. (Why smaller?)</li>
+              <li>Removing the max takes at most 2 log n comparisons</li>
+              <li>Array Representation: Indices start at 1, nodes are in level order, no explicit links are needed!</li>
+              <li>Parents of item k are at k//2, children are 2k and 2k + 1</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Binary Heap: Further Considerations</h3>
+          <ul>
+            <li class="fragment">Underflow: Throw an exception</li>
+            <li class="fragment">Overflow: Use a dynamic array</li>
+            <li class="fragment">Max-Oriented: Swap the comparisons</li>
+            <li class="fragment">Remove: Remove an arbitrary item.</li>
+            <li class="fragment">Change Priority of an Item</li>
+            <li class="fragment">Immutability of Keys: Client should not be able to change the keys in the array.</li>
+          </ul>
+          <aside class="notes">Immutability: cannot change the data value once created. Should always try and make
+            everything immutable.</aside>
+        </section>
+        <section>
+          <h3>Priority Queue: Costs Summary</h3>
+          <table>
+            <thead>
+              <tr>
+                <td>Implementation</td>
+                <td>Push</td>
+                <td>Pop</td>
+                <td>Peek</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Unordered Array</td>
+                <td>1</td>
+                <td>n</td>
+                <td>n</td>
+              </tr>
+              <tr>
+                <td>Ordered Array</td>
+                <td>n</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Binary Heap</td>
+                <td>log n</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>d-ary Heap</td>
+                <td>$\log_d n$</td>
+                <td>$\log_d n$</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Fibonacci</td>
+                <td>1</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Brodal Queue</td>
+                <td>1</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Impossible</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            Assume there is a priority queue that makes constant compares for both push and pop.
+            Design a sorting algorithm that uses this queue.
+            You've just violated O(n * log n) (see max of three)
+
+            Sweet spot for d is 4-way
+          </aside>
+        </section>
+      </section>
+      <section>
+        <section class="center">
+          <h2>Balanced Search Trees</h2>
+          <h5>Guaranteeing $\log n$ performance</h5>
+        </section>
+        <section>
+          <h3>2-3 Trees</h3>
+          <ul>
+            <li>2-node: one key, two children</li>
+            <li>3-node: two keys, three children</li>
+          </ul>
+          <p>This scheme achieves perfect balance, every path from root to null has same length.</p>
+          <canvas id="23-intro" width="2000" height="1000"></canvas>
+          <script>
+            var ctx = document.getElementById('23-intro').getContext('2d');
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = "red";
+            ctx.fillStyle = "red";
+            ctx.font = "1.5em serif";
+
+            ctx.beginPath();
+            var root = node(1000, 100, "15");
+            var n5_10 = leftChild(...root, "5 10");
+
+            ctx.stroke();
+            ctx.closePath();
+          </script>
+        </section>
       </section>
     </div>
   </div>

@@ -55,6 +55,15 @@ TEST_CASE("Compare") {
   }
 }
 
+TEST_CASE("Clear") {
+  String s;
+  for (int i = 10; i < 200; ++i)
+    s.append((char)i);
+  REQUIRE_EQ(s.size(), 190);
+  s.clear();
+  REQUIRE_EQ(s.size(), 0);
+}
+
 TEST_CASE("Concatenate") {
   SUBCASE("Character arrays") {
     SUBCASE("Empty Strings") {

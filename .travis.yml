@@ -18,19 +18,22 @@ matrix:
       - TARGET=all
     - name: "Strings"
       env: 
-      - TARGET=string
-    - name: "Iterative Functions"
+      - TARGET=String
+    - name: "Functions"
       env:
-      - TARGET=functions
-    - name: "Recursive Functions"
-      env:
-      - TARGET=functions_recursive
+      - TARGET=functions RECURSIVE=true
+      - TARGET=functions RECURSIVE=false
     - name: "Sorts"
       env:
       - TARGET=sorts
-    - name: "SLL"
+    - name: "LinkedList"
       env:
       - TARGET=SLL
+      - TARGET=CSLL
+      - TARGET=DLL
+      - TARGET=CDLL
+    - name: "Two Stacks"
+      -TARGET=twostack
 
 script:
-  - make CXX=g++-8 $TARGET
+  - make $TARGET

@@ -1,5 +1,9 @@
 #pragma once
 
+#ifndef RECURSIVE
+#define RECURSIVE true
+#endif
+
 /** Absolute Value.
  * Converts any integer to its absolute value.
  * O(1) and Omega(1), thus,

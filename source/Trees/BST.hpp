@@ -9,9 +9,10 @@ class Node {
   int data;
   Node* left;
   Node* right;
+  int count;
 
  public:
-  Node(int d) : data(d) { left = right = nullptr; }
+  Node(int d) : data(d), count(1) { left = right = nullptr; }
   ~Node() {}
 
   friend class BST;
@@ -64,19 +65,19 @@ class BST {
    * Recursively prints the contents of the subtree rooted at n to the
    * ostream using a pre-order traversal.
    */
-  void preorder(Node* n, std::ostream& oss = std::cout);
+  void preorder(Node* n, std::ostream& oss, bool dups);
 
   /** inorder()
    * Recursively prints the contents of the subtree rooted at n to the
    * ostream using an in-order traversal.
    */
-  void inorder(Node* n, std::ostream& oss = std::cout);
+  void inorder(Node* n, std::ostream& oss, bool dups);
 
   /** postorder()
    * Recursively prints the contents of the subtree rooted at n to the
    * ostream using a post-order traversal.
    */
-  void postorder(Node* n, std::ostream& oss = std::cout);
+  void postorder(Node* n, std::ostream& oss, bool dups);
 
  public:
   BST();
@@ -119,17 +120,17 @@ class BST {
    * Prints the contents of the tree to the ostream using a pre-order
    * traversal.
    */
-  void preorder(std::ostream& oss = std::cout);
+  void preorder(std::ostream& oss = std::cout, bool dups = false);
 
   /** inorder()
    * Prints the contents of the tree to the ostream using an in-order
    * traversal.
    */
-  void inorder(std::ostream& oss = std::cout);
+  void inorder(std::ostream& oss = std::cout, bool dups = false);
 
   /** postorder()
    * Prints the contents of the tree to the ostream using a post-order
    * traversal.
    */
-  void postorder(std::ostream& oss = std::cout);
+  void postorder(std::ostream& oss = std::cout, bool dups = false);
 };

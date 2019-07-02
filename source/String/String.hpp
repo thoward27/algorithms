@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class String {
  private:
@@ -56,6 +57,11 @@ class String {
    * O(?)
    */
   void erase(char);
+
+  /** clear()
+   * Clears the contents of the string.
+   */
+  void clear();
 
   /** remove(int index)
    * Removes the character at the given index.
@@ -124,4 +130,6 @@ class String {
    * O(?)
    */
   String substr(int, int) const;
+
+  void print(std::ostream& oss = std::cout);
 };

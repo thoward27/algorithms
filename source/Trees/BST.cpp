@@ -15,6 +15,8 @@ Node* BST::insert(int data, Node* n) {
     n->left = insert(data, n->left);
   } else if (data > n->data) {
     n->right = insert(data, n->right);
+  } else if (data == n->data) {
+    n->count += 1;
   }
   return n;
 }
@@ -81,7 +83,7 @@ void BST::remove(int data) {
   root = remove(data, root);
 }
 
-int max(int a, int b) {
+inline int max(int a, int b) {
   return (a > b) ? a : b;
 }
 int BST::height(Node* n) {
@@ -108,41 +110,57 @@ void BST::clear() {
   root = nullptr;
 }
 
-void BST::preorder(Node* n, std::ostream& oss) {
+void BST::preorder(Node* n, std::ostream& oss, bool dups) {
   if (!n)
     return;
-  oss << n->data << ", ";
-  preorder(n->left, oss);
-  preorder(n->right, oss);
+
+  for (int i = 0; i < n->data; ++i) {
+    oss << n->data << ", ";
+    if (!dups)
+      break;
+  }
+
+  preorder(n->left, oss, dups);
+  preorder(n->right, oss, dups);
 }
 
-void BST::preorder(std::ostream& oss) {
-  preorder(root, oss);
+void BST::preorder(std::ostream& oss, bool dups) {
+  preorder(root, oss, dups);
   oss << std::endl;
 }
 
-void BST::inorder(Node* n, std::ostream& oss) {
+void BST::inorder(Node* n, std::ostream& oss, bool dups) {
   if (!n)
     return;
-  inorder(n->left, oss);
-  oss << n->data << ", ";
-  inorder(n->right, oss);
+  inorder(n->left, oss, dups);
+
+  for (int i = 0; i < n->count; ++i) {
+    oss << n->data << ", ";
+    if (!dups)
+      break;
+  }
+
+  inorder(n->right, oss, dups);
 }
 
-void BST::inorder(std::ostream& oss) {
-  inorder(root, oss);
+void BST::inorder(std::ostream& oss, bool dups) {
+  inorder(root, oss, dups);
   oss << std::endl;
 }
 
-void BST::postorder(Node* n, std::ostream& oss) {
+void BST::postorder(Node* n, std::ostream& oss, bool dups) {
   if (!n)
     return;
-  postorder(n->left, oss);
-  postorder(n->right, oss);
-  oss << n->data << ", ";
+  postorder(n->left, oss, dups);
+  postorder(n->right, oss, dups);
+  for (int i = 0; i < n->count; ++i) {
+    oss << n->data << ", ";
+    if (!dups)
+      break;
+  }
 }
 
-void BST::postorder(std::ostream& oss) {
-  postorder(root, oss);
+void BST::postorder(std::ostream& oss, bool dups) {
+  postorder(root, oss, dups);
   oss << '\n';
 }

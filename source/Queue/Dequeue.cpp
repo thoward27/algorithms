@@ -2,55 +2,56 @@
 
 /** Constructor */
 Dequeue::Dequeue() {
+  list = new LinkedList();
   // Construction handled by LinkedList class
 }
 
 /** Destructor */
 Dequeue::~Dequeue() {
-  queue.clear();
+  list->clear();
 }
 
 /** size() */
 unsigned int Dequeue::size() {
-  return queue.length();
+  return list->length();
 }
 
 /** pushleft() */
 void Dequeue::pushleft(int data) {
-  queue.push_front(data);
+  list->push_front(data);
 }
 
 /** popleft() */
 int Dequeue::popleft() {
-  return queue.pop_front();
+  return list->pop_front();
 }
 
 /** pushright() */
 void Dequeue::pushright(int data) {
-  queue.push_back(data);
+  list->push_back(data);
 }
 
 /** popright() */
 int Dequeue::popright() {
-  return queue.pop_back();
+  return list->pop_back();
 }
 
 /** front() */
 int Dequeue::front() {
-  return queue.at(0);
+  return list->at(0);
 }
 
 /** back() */
 int Dequeue::back() {
-  return queue.at(queue.length() - 1);
+  return list->at(list->length() - 1);
 }
 
 /** empty() */
 bool Dequeue::empty() {
-  return (queue.length()) ? false : true;
+  return (list->length()) ? false : true;
 }
 
 /** clear() */
 void Dequeue::clear() {
-  queue.clear();
+  list->clear();
 }
