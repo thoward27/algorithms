@@ -12,10 +12,10 @@ class MinHeap {
   int size;
 
   /** swim()
-   * Restores the heap order property after element pushion. Assumes the new
-   * element has been pushed at the end of the heap array (right-most node in
-   * the bottom level of the tree), and swaps it up the tree until it's greater
-   * than its parent.
+   * Restores the heap order property after an element is pushed. Assumes the
+   * new element has been pushed at the end of the heap array (right-most node
+   * in the bottom level of the tree), and swaps it upwards the tree until it's
+   * greater than its parent.
    */
   void swim();
 
@@ -43,14 +43,13 @@ class MinHeap {
   void erase(int i, int data);
 
  public:
-  MinHeap(unsigned int cap);
+  MinHeap(unsigned int cap = 16);
   ~MinHeap();
 
   /** push(int data)
    * Inserts data into the MinHeap such that the heap order property is
    * preserved.
    * Assumes duplicate elements will not be pushed.
-   * Throws an error if the heap is full.
    */
   void push(int data);
 
