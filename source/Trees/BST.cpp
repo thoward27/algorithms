@@ -114,7 +114,7 @@ void BST::preorder(Node* n, std::ostream& oss, bool dups) {
   if (!n)
     return;
 
-  for (int i = 0; i < n->data; ++i) {
+  for (int i = 0; i < n->count; ++i) {
     oss << n->data << ", ";
     if (!dups)
       break;

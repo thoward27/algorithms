@@ -1,8 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
 
-#include "MinHeap.hpp"
 #include <iostream>
+#include "MinHeap.hpp"
 
 TEST_CASE("constructor") {
   MinHeap heap(1);
@@ -24,13 +24,15 @@ TEST_CASE("push") {
   heap.push(1);
   REQUIRE_EQ(heap.peek(), 1);
 
-  REQUIRE_THROWS(heap.push(2));
+  heap.push(100);
+  REQUIRE_EQ(heap.peek(), 1);
+  REQUIRE_EQ(heap.count(), 5);
 }
 
 TEST_CASE("pop") {
   MinHeap heap(10);
   REQUIRE_THROWS(heap.pop());
-  
+
   for (int i = 0; i < 10; ++i) {
     heap.push(i);
   }
