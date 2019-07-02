@@ -632,8 +632,39 @@
                 <td>log n</td>
                 <td>1</td>
               </tr>
+              <tr>
+                <td>d-ary Heap</td>
+                <td>$\log_d n$</td>
+                <td>$\log_d n$</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Fibonacci</td>
+                <td>1</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Brodal Queue</td>
+                <td>1</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Impossible</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
             </tbody>
           </table>
+          <aside class="notes">
+            Assume there is a priority queue that makes constant compares for both push and pop.
+            Design a sorting algorithm that uses this queue.
+            You've just violated O(n * log n) (see max of three)
+
+            Sweet spot for d is 4-way
+          </aside>
         </section>
       </section>
       <section>
