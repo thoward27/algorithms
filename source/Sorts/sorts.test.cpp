@@ -4,6 +4,11 @@
 #include "../Functions/functions.hpp"
 #include "sorts.hpp"
 
+#include <chrono>
+#include <iostream>
+#include <vector>
+#include <numeric>
+
 #define CASES 11
 
 /** Sorting Functions */
@@ -65,6 +70,26 @@ void test_sort(sort_fn func) {
     }
   }
 }
+
+// TEST_CASE("Benchmark") { 
+//   int size = 1000000;
+//   int arr[size]; 
+
+//   std::vector<int> vec;
+//   for (int i = 0; i < 20; ++i) {
+//     fill::random(arr, size, 0);
+    
+//     auto start = std::chrono::high_resolution_clock::now();
+//     advancedsort(arr, size);
+//     auto stop = std::chrono::high_resolution_clock::now();
+    
+//     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
+//     vec.push_back(duration);
+//   }
+//   std::cout << "Averaged runtime: ";
+//   std::cout << std::accumulate(vec.begin(), vec.end(), 0.0)/vec.size() << " ms";
+//   std::cout << std::endl;
+// }
 
 TEST_CASE("Bubble Sort") {
   test_sort(bubble_sort);
