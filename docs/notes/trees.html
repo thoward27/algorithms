@@ -502,7 +502,7 @@
                 <td>O(h)</td>
               </tr>
               <tr>
-                <td>Predecessor / Successor</td>
+                <td>Floor / Ceil</td>
                 <td>O(n)</td>
                 <td>O(log n)</td>
                 <td>O(h)</td>
@@ -528,9 +528,9 @@
             <li>Push: Places an element into the queue</li>
             <li>Pop: Removes and returns the next highest priority item from the queue.</li>
           </ul>
-          <p class="fragment">Can you think of any real-life applications for a priority queue?</p>
-          <p class="fragment">Hospital lines</p>
-          <p class="fragment">How long would these basic operations take if we used ordered lists? Unordered Lists?</p>
+          <p class="fragment">Real-life applications? <span class="fragment">Hospital Lines!</span>
+          </p>
+          <p class="fragment">Cost to implement with ordered lists? Unordered Lists?</p>
           <p class="fragment">An unordered list: $O(1), O(n)$.<br> Ordered list: $O(n), O(1)$ <br> We can do better.</p>
         </section>
         <section class="center">
@@ -551,7 +551,7 @@
                 ctx.font = "1.5em serif";
 
                 ctx.beginPath();
-                var root = node(500, 400, "5");
+                var root = node(500, 100, "5");
                 var n10 = leftChild(...root, "10", 200);
                 var n12 = rightChild(...root, "12", 200);
                 var n14 = leftChild(...n10, "14");
