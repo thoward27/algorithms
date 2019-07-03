@@ -36,8 +36,6 @@ Node* RBTree::rotateLeft(Node* node) {
   temp->left = node;
   temp->color = temp->left->color;
   temp->left->color = 1;
-  if (node == root)
-    root = temp;
   return temp;
 }
 
@@ -54,17 +52,8 @@ void RBTree::flipColors(Node* node) {
  * A method to insert keys into the trees
  */
 Node* RBTree::insert(int data, Node* temp) {
-  // if at bottom insert node
-  if (!root) {
-    Node* insertnode = new Node(data, 0);
-    root = insertnode;
-    return insertnode;
-  }
-
   if (!temp) {
-    Node* insertnode = new Node(data, 1);
-    temp = insertnode;
-    return insertnode;
+    return new Node(data, 1);
   }
 
   // recurse to bottom
@@ -75,8 +64,14 @@ Node* RBTree::insert(int data, Node* temp) {
   }
 
   temp = fix(temp);
-
   return temp;
+}
+
+void RBTree::insert(int data) {
+  if (!root)
+    root = new Node(data, 0);
+  else
+    root = insert(data, root);
 }
 
 /** Search()
@@ -98,15 +93,18 @@ bool RBTree::search(int data, Node* n) {
  */
 Node* RBTree::fix(Node* temp) {
   if (temp->right != nullptr && temp->right->color) {
+    std::cout << "Rotating left" << std::endl;
     temp = rotateLeft(temp);
   }
 
   if (temp->left != nullptr && temp->left->color) {
+    std::cout << "Rotating right" << std::endl;
     temp = rotateRight(temp);
   }
 
   if (temp->left && temp->right) {
     if (temp->left->color && temp->right->color) {
+      std::cout << "Flipping Colors" << std::endl;
       flipColors(temp);
     }
   }

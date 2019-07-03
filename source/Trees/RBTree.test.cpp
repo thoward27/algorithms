@@ -15,7 +15,7 @@ TEST_CASE("Insert Method") {
     REQUIRE_FALSE(tree.is_empty());
     REQUIRE(tree.search(3));
   }
-  SUBCASE("Shifting") {
+  SUBCASE("Rotating") {
     for (int i = 0; i < 3; ++i)
       tree.insert(i);
     std::ostringstream oss;

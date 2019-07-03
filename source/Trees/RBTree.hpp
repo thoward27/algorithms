@@ -97,7 +97,7 @@ class RBTree {
    * Inserts the given data into the tree.
    * Does nothing if the data is already in the tree.
    */
-  void insert(int data) { insert(data, root); }
+  void insert(int data);
 
   /** is_empty()
    * Returns true if the tree is empty and false otherwise
