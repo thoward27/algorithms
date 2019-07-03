@@ -353,6 +353,10 @@ TEST_CASE("reverse") {
     reverse(arr4);
     for (int i = 0; i < 4; ++i)
       CHECK(arr4[i] == arr5[i]);
+
+    char arr[] = "12";
+    reverse(arr);
+    CHECK(arr[0] == '2');
   }
 }
 

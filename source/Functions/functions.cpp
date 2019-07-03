@@ -211,8 +211,8 @@ int binsearch(int* arr, int lo, int hi, int key) {
     if (arr[mid] == key)
       return mid;
     else
-      return (arr[mid] < key) ? binsearch(arr, mid, hi, key)
-                              : binsearch(arr, lo, mid, key);
+      return (arr[mid] < key) ? binsearch(arr, mid + 1, hi, key)
+                              : binsearch(arr, lo, mid - 1, key);
   }
 }
 
@@ -270,14 +270,14 @@ int round(double x, char c) {
 }
 
 int stringtoint(char string[]) {
-  int len = strlen(string);
   int out = 0;
-
-  for (int i = 0; i < len; ++i) {
-    out += chartoint(string[len - i - 1]) * pow(10, i);
+  int len = strlen(string) - 1;
+  for (int i = 0; i <= len; ++i) {
+    if (i == len && string[0] == '-')
+      continue;
+    out += chartoint(string[len - i]) * pow(10, i);
   }
-
-  return out;
+  return (string[0] == '-') ? -1 * out : 1 * out;
 }
 
 int max(int arr[], int n) {
@@ -364,9 +364,7 @@ bool is_sorted(int arr[], int n) {
 }
 
 void reverse(char* arr) {
-  int len;
-  for (len = 0; arr[len] != '\0'; ++len) {
-  }
+  int len = strlen(arr);
   for (int i = 0; i < len / 2; ++i) {
     char tmp = arr[i];
     arr[i] = arr[len - i - 1];

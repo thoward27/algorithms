@@ -1,7 +1,7 @@
 #pragma once
 
 #ifndef RECURSIVE
-#define RECURSIVE true
+#define RECURSIVE false
 #endif
 
 /** Absolute Value.

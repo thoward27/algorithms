@@ -72,6 +72,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
   - [Visualgo](https://visualgo.net/en)
 - Books
   - [OpenDSA](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/)
+  - [Algorithms](https://algs4.cs.princeton.edu/home/)
   - [Accelerated C++](https://www.google.com/search?q=accelerated+c%2B%2B&oq=accelerated+c%2B%2B&aqs=chrome..69i57j69i60j0l4.2026j0j7&client=ubuntu&sourceid=chrome&ie=UTF-8)
 - Videos
   - [CS50](https://www.youtube.com/channel/UCcabW7890RKJzL968QWEykA)
