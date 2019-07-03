@@ -26,6 +26,7 @@ class Node {
  * last letter of the string.
  * If the value of a Node is null the string is not in the tree.
  * Allows for efficient insert and search/data access methods.
+ * Assumes all words are lowercase.
  */
 class Trie {
  private:
@@ -40,7 +41,7 @@ class Trie {
    * Inserts word with the associated val into the Trie.
    * If the word is already in the tree, its value is replaced with val.
    */
-  void insert(char* word, int val);
+  void insert(const char* word, int val);
 
   /** count()
    * Returns the number of word in the Trie.
@@ -50,19 +51,19 @@ class Trie {
   /** search(char* word)
    * Searches for word in the Trie, returning true if found and false otherwise.
    */
-  bool search(char* word);
+  bool search(const char* word);
 
   /** get(char* word)
    * Searches for word in the Trie and returns its value.
    * Throws an error if word is not found.
    */
-  int get(char* word);
+  int get(const char* word);
 
   /** remove(char* word)
    * Searches for word in the tree and remove it if found.
    * Throws an error if word is not found.
    */
-  void remove(char* word);
+  void remove(const char* word);
 
   /** clear()
    * Removes all words from the Trie.
