@@ -79,7 +79,7 @@ TEST_CASE("remove") {
     REQUIRE_THROWS(heap.remove(0));
     heap.push(1);
     heap.push(2);
-    REQUIRE_THROWS(heap.remove(2));
+    REQUIRE_THROWS(heap.remove(3));
     REQUIRE_THROWS(heap.remove(-1));
   }
   SUBCASE("last and leaf nodes") {
@@ -88,19 +88,19 @@ TEST_CASE("remove") {
       heap.push(nums[i]);
     }
     heap.remove(7);
-    REQUIRE_FALSE(heap.search(9));
+    REQUIRE_FALSE(heap.search(7));
     REQUIRE(heap.search(4));
     heap.remove(4);
-    REQUIRE_FALSE(heap.search(3));
+    REQUIRE_FALSE(heap.search(4));
     REQUIRE(heap.search(2));
-    REQUIRE(heap.search(7));
+    REQUIRE_FALSE(heap.search(7));
   }
   SUBCASE("internal node") {
     MinHeap heap(10);
     for (int i = 0; i < 8; ++i) {
       heap.push(nums[i]);
     }
-    heap.remove(2);
+    heap.remove(3);
     REQUIRE_FALSE(heap.search(5));
     REQUIRE(heap.search(7));
     REQUIRE(heap.search(9));
@@ -110,7 +110,7 @@ TEST_CASE("remove") {
     for (int i = 0; i < 8; ++i) {
       heap.push(nums[i]);
     }
-    heap.remove(0);
+    heap.remove(1);
     REQUIRE_FALSE(heap.search(1));
     REQUIRE_EQ(heap.peek(), 2);
     REQUIRE(heap.search(3));
