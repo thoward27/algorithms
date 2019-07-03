@@ -92,21 +92,18 @@ bool RBTree::search(int data, Node* n) {
  * A method to fix the tree
  */
 Node* RBTree::fix(Node* temp) {
-  if (temp->right != nullptr && temp->right->color) {
-    std::cout << "Rotating left" << std::endl;
+  if (temp->right != nullptr && temp->right->color) 
     temp = rotateLeft(temp);
-  }
+  
 
-  if (temp->left != nullptr && temp->left->color) {
-    std::cout << "Rotating right" << std::endl;
+  if (temp->left != nullptr && temp->left->color && 
+      temp->left->left != nullptr && temp->left->left->color)
     temp = rotateRight(temp);
-  }
 
   if (temp->left && temp->right) {
-    if (temp->left->color && temp->right->color) {
-      std::cout << "Flipping Colors" << std::endl;
+    if (temp->left->color && temp->right->color) 
       flipColors(temp);
-    }
+  
   }
 
   return temp;
@@ -281,4 +278,17 @@ void RBTree::postorder(Node* n, std::ostream& oss) {
 void RBTree::postorder(std::ostream& oss) {
   postorder(root, oss);
   oss << std::endl;
+}
+
+int RBTree::height() {
+    return height(root);
+}
+
+int RBTree::height(Node* n) {
+  if (n == nullptr) return -1;
+  else {
+    int leftsub = height(n->left);
+    int rightsub = height(n->right);
+    return ( (leftsub < rightsub) ? rightsub : leftsub) + 1;
+  }
 }
