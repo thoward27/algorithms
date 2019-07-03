@@ -43,10 +43,10 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | Tue, 6/25 | [Queues](docs/notes/linear.html)                                     | [OpenDSA 9.12, 9.13][odsa9], [CS50 Queues](https://youtu.be/3TmUv1uS92s)                                                               |                                            |
 | Wed, 6/26 | [Trees / Binary Trees](docs/notes/trees.html)                        | [OpenDSA 12.1-12.13][odsa12]                                                                                                           |                                            |
 | Thu, 6/27 | [Binary Trees](docs/notes/trees.html#/2)                             | [OpenDSA 12.14-12.16][odsa12]                                                                                                          | [A06: For the Love of Binary][a06]         |
-| Tue, 7/2  | Heaps                                                                | [OpenDSA 12.17][odsa12]                                                                                                                |                                            |
-| Wed, 7/3  | Heap Sort                                                            |                                                                                                                                        |                                            |
-| Fri, 7/5  | 2-3 Tree                                                             |                                                                                                                                        | A07                                        |
-| Tue, 7/9  | Red-Black Tree                                                       |                                                                                                                                        |                                            |
+| Tue, 7/2  | [Heaps](docs/notes/trees.html#/3)                                    | [OpenDSA 12.17][odsa12]                                                                                                                |                                            |
+| Wed, 7/3  | 2-3 Tree / Red Black Tree                                            |                                                                                                                                        |                                            |
+| Fri, 7/5  | Red Black Tree                                                       |                                                                                                                                        | A07                                        |
+| Tue, 7/9  | Tries                                                                |                                                                                                                                        |                                            |
 | Wed, 7/10 | Data Structures Review                                               |                                                                                                                                        |                                            |
 | Thu, 7/11 | Exam (Data Structures)                                               |                                                                                                                                        | A08                                        |
 | Tue, 7/16 | Hashing                                                              |                                                                                                                                        |                                            |
@@ -62,7 +62,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [DevDocs](https://devdocs.io/)
 - Cheat Sheets
   - [Git](docs/cheat_sheets/git-cheat-sheet-education.pdf)
-  - [Github](docs/cheat_sheets/github-get-cheat-sheet.pdf)
+  - [Github](docs/cheat_sheets/github-git-cheat-sheet.pdf)
   - VS Code
     - [Linux](docs/cheat_sheets/vscode-linux.pdf)
     - [Mac OS](docs/cheat_sheets/vscode-macos.pdf)
