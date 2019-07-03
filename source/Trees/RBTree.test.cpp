@@ -18,9 +18,9 @@ TEST_CASE("Insert Method") {
   SUBCASE("Shifting") {
     for (int i = 0; i < 3; ++i)
       tree.insert(i);
-    // std::ostringstream oss;
-    // tree.preorder(oss);
-    // REQUIRE_EQ(oss.str(), "1, 0, 2, \n");
+    std::ostringstream oss;
+    tree.preorder(oss);
+    REQUIRE_EQ(oss.str(), "1, 0, 2, \n");
   }
   SUBCASE("Beyond Root: Linear Insertions") {
     for (int i = 0; i < 10; ++i) {
