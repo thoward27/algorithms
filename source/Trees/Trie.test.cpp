@@ -43,7 +43,7 @@ TEST_CASE("get") {
 TEST_CASE("remove") {
   Trie trie;
   populate(trie);
-  REQUIRE_THROWS(trie.remove("inserted"));
+  REQUIRE_THROWS(trie.remove("searched"));
   REQUIRE_THROWS(trie.remove("i"));
   trie.remove("inert");
   REQUIRE_FALSE(trie.search("inert"));
