@@ -17,6 +17,10 @@ You may select any algorithm from the following list:
 - SpreadSort
 - FlashSort
 - PostmanSort
+- In-place MergeSort
+- Patience Sorting
+- Block Sort
+- Topological Sort
 
 The student with the fastest sorting algorithm will receive 50 bonus points, second fastest will receive 30, third will receive 20.
 
