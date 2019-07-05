@@ -22,8 +22,6 @@ Node* RBTree::rotateRight(Node* node) {
   temp->right = node;
   temp->color = temp->right->color;
   temp->right->color = 1;
-  if (node == root)
-    root = temp;
   return temp;
 }
 
@@ -63,15 +61,11 @@ Node* RBTree::insert(int data, Node* temp) {
     temp->right = insert(data, temp->right);
   }
 
-  temp = fix(temp);
-  return temp;
+  return fix(temp);
 }
 
 void RBTree::insert(int data) {
-  if (!root)
-    root = new Node(data, 0);
-  else
-    root = insert(data, root);
+  root = root ? insert(data, root) : new Node(data, 0);
 }
 
 /** Search()
@@ -152,12 +146,15 @@ Node* RBTree::deleteMax(Node* temp) {
   if (temp->right && temp->right->color) {
     temp = moveRedRight(temp->left);
   }
+
+  temp->right = deleteMax(temp->right);
   return fix(temp);
 }
 
 /** Delete the tree form the root */
 void RBTree::deleteMin() {
   root = deleteMin(root);
+  // TODO: nullptr->color
   root->color = 0;
 }
 
