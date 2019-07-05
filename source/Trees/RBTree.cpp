@@ -92,19 +92,15 @@ bool RBTree::search(int data, Node* n) {
  * A method to fix the tree
  */
 Node* RBTree::fix(Node* temp) {
-  if (temp->right != nullptr && temp->right->color) 
+  if (temp->right && temp->right->color)
     temp = rotateLeft(temp);
-  
 
-  if (temp->left != nullptr && temp->left->color && 
-      temp->left->left != nullptr && temp->left->left->color)
+  if (temp->left && temp->left->color && temp->left->left &&
+      temp->left->left->color)
     temp = rotateRight(temp);
 
-  if (temp->left && temp->right) {
-    if (temp->left->color && temp->right->color) 
-      flipColors(temp);
-  
-  }
+  if (temp->left && temp->right && temp->left->color && temp->right->color)
+    flipColors(temp);
 
   return temp;
 }
@@ -114,7 +110,7 @@ Node* RBTree::fix(Node* temp) {
  */
 Node* RBTree::moveRedLeft(Node* temp) {
   flipColors(temp);
-  if (temp->right->left != nullptr && temp->right->left->color) {
+  if (temp->right->left && temp->right->left->color) {
     temp->right = rotateRight(temp->right);
     temp = rotateLeft(temp);
     flipColors(temp);
@@ -127,7 +123,7 @@ Node* RBTree::moveRedLeft(Node* temp) {
  */
 Node* RBTree::moveRedRight(Node* temp) {
   flipColors(temp);
-  if (temp->left->left != nullptr && temp->left->left->color) {
+  if (temp->left->left && temp->left->left->color) {
     temp = rotateRight(temp);
     flipColors(temp);
   }
@@ -144,16 +140,16 @@ void RBTree::deleteMax() {
  * A method to aid in deleteing a key
  */
 Node* RBTree::deleteMax(Node* temp) {
-  if (temp->left != nullptr && temp->left->color) {
+  if (temp->left && temp->left->color) {
     temp = rotateRight(temp);
   }
 
-  if (temp->right == nullptr) {
+  if (!temp->right) {
     delete temp;
     return nullptr;
   }
 
-  if (temp->right != nullptr && temp->right->color) {
+  if (temp->right && temp->right->color) {
     temp = moveRedRight(temp->left);
   }
   return fix(temp);
@@ -174,8 +170,8 @@ Node* RBTree::deleteMin(Node* temp) {
     return nullptr;
   }
 
-  if (temp->left != nullptr && temp->left->color &&
-      temp->left->left != nullptr && temp->left->left->color) {
+  if (temp->left && temp->left->color && temp->left->left &&
+      temp->left->left->color) {
     temp = moveRedLeft(temp);
   }
 
@@ -208,8 +204,8 @@ Node* RBTree::remove(int data, Node* temp) {
   }
 
   if (comparison < 0) {
-    if (temp->left != nullptr && temp->left->color &&
-        temp->left->left != nullptr && temp->left->left->color) {
+    if (temp->left && temp->left->color && temp->left->left &&
+        temp->left->left->color) {
       temp = moveRedLeft(temp);
     }
     temp->left = remove(data, temp->left);
@@ -223,8 +219,8 @@ Node* RBTree::remove(int data, Node* temp) {
       return nullptr;
     }
 
-    if (temp->right != nullptr && temp->right->color &&
-        temp->right->left != nullptr && temp->right->left->color) {
+    if (temp->right && temp->right->color && temp->right->left &&
+        temp->right->left->color) {
       temp = moveRedRight(temp);
     }
 
@@ -281,14 +277,15 @@ void RBTree::postorder(std::ostream& oss) {
 }
 
 int RBTree::height() {
-    return height(root);
+  return height(root);
 }
 
 int RBTree::height(Node* n) {
-  if (n == nullptr) return -1;
+  if (n == nullptr)
+    return -1;
   else {
     int leftsub = height(n->left);
     int rightsub = height(n->right);
-    return ( (leftsub < rightsub) ? rightsub : leftsub) + 1;
+    return ((leftsub < rightsub) ? rightsub : leftsub) + 1;
   }
 }
