@@ -7,6 +7,8 @@ Welcome to CSC 212, Data Structures and Algorithms!
 - [Table of Contents](#Table-of-Contents)
 - [Important Links](#Important-Links)
 - [Schedule](#Schedule)
+- [Assignments (100 points each)](#Assignments-100-points-each)
+- [Bonus Points](#Bonus-Points)
 - [Resources](#Resources)
 - [Setup](#Setup)
 - [Working with Github Classroom](#Working-with-Github-Classroom)
@@ -23,39 +25,68 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Schedule
 
-| Date      | Lectures                                                             | Readings                                                                                                                               | Assignments                                |
-| --------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| Tue, 5/21 | Getting Started                                                      | Accelerated C++ [0, 4], [CS50 Data Types](https://youtu.be/Fc9htmvVZ9U)                                                                | [A00: Practice Test][a00]                  |
-| Wed, 5/22 | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                    | Accelerated C++ [5, 7], [CS50 Variables and Scope](https://youtu.be/GiFbdVGjF9I)                                                       |                                            |
-| Thu, 5/23 | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                    | Accelerated C++ [8, 10], [CS50 Pointers](https://youtu.be/XISnO2YhnsY)                                                                 | [A01: Kattis Competition][a01]             |
-| Tue, 5/28 | [Algorithms for Singular Variables](docs/notes/algorithms.html)      | [OpenDSA 6][odsa6], [CS50 Functions](https://youtu.be/n1glFqt3g38)                                                                     |                                            |
-| Wed, 5/29 | [Algorithms for Arrays](docs/notes/algorithms.html)                  | [OpenDSA 8][odsa8], [CS50 Arrays](https://youtu.be/YdSycMcxvY0)                                                                        |                                            |
-| Thu, 5/30 | [Recursion](docs/notes/algorithms.html)                              | [OpenDSA 10][odsa10],  [CS50 Recursion](https://youtu.be/mz6tAJMVmfM), [CS50 Stack Frames](https://youtu.be/aCPkszeKRa4)               | [A02: String Class][a02]                   |
-| Tue, 6/4  | [Sorting / Bubble Sort](docs/notes/sorting.html)                     | [OpenDSA 13.1, 13.2, 13.4][odsa13],  [CS50 Bubble Sort](https://youtu.be/RT-hUXUWQ2I)                                                  |                                            |
-| Wed, 6/5  | [Insertion Sort / Selection Sort](docs/notes/sorting.html)           | [OpenDSA 13.3, 13.5][odsa13], [CS50 Insertion Sort](https://youtu.be/O0VbBkUvriI), [CS50 Selection Sort](https://youtu.be/3hH8kTHFw2A) |                                            |
-| Thu, 6/6  | [MergeSort](docs/notes/sorting.html)                                 | [OpenDSA 13.9][odsa13], [CS50 MergeSort](https://youtu.be/Ns7tGNbtvV4)                                                                 | [A03: HybridSort][a03]                     |
-| Tue, 6/11 | [QuickSort](docs/notes/sorting.html)                                 | [OpenDSA 13.11][odsa13],                                                                                                               |                                            |
-| Wed, 6/12 | Sorting & Analysis Review                                            | [OpenDSA 6, 8, 10, 13][odsa]                                                                                                           |                                            |
-| Thu, 6/13 | [Exam 01 Review](docs/exams/E01R.md), [Answers](docs/exams/E01RA.md) |                                                                                                                                        | [A04: Advanced Sorting][a04]               |
-| Tue, 6/18 | [SLL](docs/notes/linear.html)                                        | [OpenDSA 9.1-9.5][odsa9], [CS50 SLL](https://youtu.be/zQI3FyWm144)                                                                     |                                            |
-| Wed, 6/19 | [CSLL / DLL / CDLL](docs/notes/linear.html)                          | [OpenDSA 9.6][odsa9], [CS50 DLL](https://youtu.be/FHMPswJDCvU)                                                                         |                                            |
-| Thu, 6/20 | [Stacks](docs/notes/linear.html)                                     | [OpenDSA 9.8, 9.9][odsa9], [CS50 Stacks](https://youtu.be/hVsNqhEthOk)                                                                 | [A05: Djikstra's Two Stack Algorithm][a05] |
-| Tue, 6/25 | [Queues](docs/notes/linear.html)                                     | [OpenDSA 9.12, 9.13][odsa9], [CS50 Queues](https://youtu.be/3TmUv1uS92s)                                                               |                                            |
-| Wed, 6/26 | [Trees / Binary Trees](docs/notes/trees.html)                        | [OpenDSA 12.1-12.13][odsa12]                                                                                                           |                                            |
-| Thu, 6/27 | [Binary Trees](docs/notes/trees.html#/2)                             | [OpenDSA 12.14-12.16][odsa12]                                                                                                          | [A06: For the Love of Binary][a06]         |
-| Tue, 7/2  | [Heaps](docs/notes/trees.html#/3)                                    | [OpenDSA 12.17][odsa12]                                                                                                                |                                            |
-| Wed, 7/3  | 2-3 Tree / Red Black Tree                                            |                                                                                                                                        |                                            |
-| Fri, 7/5  | Red Black Tree                                                       |                                                                                                                                        | A07                                        |
-| Tue, 7/9  | Tries                                                                |                                                                                                                                        |                                            |
-| Wed, 7/10 | Data Structures Review                                               |                                                                                                                                        |                                            |
-| Thu, 7/11 | Exam (Data Structures)                                               |                                                                                                                                        | A08                                        |
-| Tue, 7/16 | Hashing                                                              |                                                                                                                                        |                                            |
-| Wed, 7/17 | Open / Bucket Hashing                                                |                                                                                                                                        |                                            |
-| Thu, 7/18 | Collision Resolution                                                 |                                                                                                                                        | A09                                        |
-| Tue, 7/23 | Graphs                                                               |                                                                                                                                        |                                            |
-| Wed, 7/24 | Prims Algorithm                                                      |                                                                                                                                        |                                            |
-| Thu, 7/25 | Kruskal's Algorithm                                                  |                                                                                                                                        | A10                                        |
-|           | Final Exam (Cumulative)                                              |                                                                                                                                        |                                            |
+| Date      | Lectures                                                                                           | Readings                                                                                                                               |
+| --------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Tue, 5/21 | Getting Started                                                                                    | Accelerated C++ [0, 4], [CS50 Data Types](https://youtu.be/Fc9htmvVZ9U)                                                                |
+| Wed, 5/22 | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                                                  | Accelerated C++ [5, 7], [CS50 Variables and Scope](https://youtu.be/GiFbdVGjF9I)                                                       |
+| Thu, 5/23 | [C++ Crash Course](docs/notes/CrashCourseCPP.pdf)                                                  | Accelerated C++ [8, 10], [CS50 Pointers](https://youtu.be/XISnO2YhnsY)                                                                 |
+| Tue, 5/28 | [Algorithms for Singular Variables](docs/notes/algorithms.html)                                    | [OpenDSA 6][odsa6], [CS50 Functions](https://youtu.be/n1glFqt3g38)                                                                     |
+| Wed, 5/29 | [Algorithms for Arrays](docs/notes/algorithms.html)                                                | [OpenDSA 8][odsa8], [CS50 Arrays](https://youtu.be/YdSycMcxvY0)                                                                        |
+| Thu, 5/30 | [Recursion](docs/notes/algorithms.html)                                                            | [OpenDSA 10][odsa10],  [CS50 Recursion](https://youtu.be/mz6tAJMVmfM), [CS50 Stack Frames](https://youtu.be/aCPkszeKRa4)               |
+| Tue, 6/4  | [Sorting / Bubble Sort](docs/notes/sorting.html)                                                   | [OpenDSA 13.1, 13.2, 13.4][odsa13],  [CS50 Bubble Sort](https://youtu.be/RT-hUXUWQ2I)                                                  |
+| Wed, 6/5  | [Insertion Sort / Selection Sort](docs/notes/sorting.html)                                         | [OpenDSA 13.3, 13.5][odsa13], [CS50 Insertion Sort](https://youtu.be/O0VbBkUvriI), [CS50 Selection Sort](https://youtu.be/3hH8kTHFw2A) |
+| Thu, 6/6  | [MergeSort](docs/notes/sorting.html)                                                               | [OpenDSA 13.9][odsa13], [CS50 MergeSort](https://youtu.be/Ns7tGNbtvV4)                                                                 |
+| Tue, 6/11 | [QuickSort](docs/notes/sorting.html)                                                               | [OpenDSA 13.11][odsa13],                                                                                                               |
+| Wed, 6/12 | Sorting & Analysis Review                                                                          | [OpenDSA 6, 8, 10, 13][odsa]                                                                                                           |
+| Thu, 6/13 | [Exam 01 Review](docs/exams/E01R.md), [Answers](docs/exams/E01RA.md)                               |                                                                                                                                        |
+| Tue, 6/18 | [SLL](docs/notes/linear.html)                                                                      | [OpenDSA 9.1-9.5][odsa9], [CS50 SLL](https://youtu.be/zQI3FyWm144)                                                                     |
+| Wed, 6/19 | [CSLL / DLL / CDLL](docs/notes/linear.html)                                                        | [OpenDSA 9.6][odsa9], [CS50 DLL](https://youtu.be/FHMPswJDCvU)                                                                         |
+| Thu, 6/20 | [Stacks](docs/notes/linear.html)                                                                   | [OpenDSA 9.8, 9.9][odsa9], [CS50 Stacks](https://youtu.be/hVsNqhEthOk)                                                                 |
+| Tue, 6/25 | [Queues](docs/notes/linear.html)                                                                   | [OpenDSA 9.12, 9.13][odsa9], [CS50 Queues](https://youtu.be/3TmUv1uS92s)                                                               |
+| Wed, 6/26 | [Trees / Binary Trees](docs/notes/trees.html)                                                      | [OpenDSA 12.1-12.13][odsa12]                                                                                                           |
+| Thu, 6/27 | [Binary Trees](docs/notes/trees.html#/2)                                                           | [OpenDSA 12.14-12.16][odsa12]                                                                                                          |
+| Tue, 7/2  | [Heaps](docs/notes/trees.html#/3)                                                                  | [OpenDSA 12.17][odsa12]                                                                                                                |
+| Wed, 7/3  | [2-3 Tree / Red Black Tree](https://algs4.cs.princeton.edu/lectures/33BalancedSearchTrees-2x2.pdf) | [OpenDSA 17.5](odsa17), [Balanced Search Trees](https://algs4.cs.princeton.edu/33balanced/)                                            |
+| Fri, 7/5  | [Red Black Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf)                         | [LLRB Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf)                                                                      |
+| Tue, 7/9  | Tries                                                                                              | [OpenDSA 12.19](odsa12), [Wikipedia](https://en.wikipedia.org/wiki/Trie)                                                               |
+| Wed, 7/10 | Data Structures Review                                                                             |                                                                                                                                        |
+| Thu, 7/11 | Exam (Data Structures)                                                                             |                                                                                                                                        |
+| Tue, 7/16 | Hash Tables                                                                                        |                                                                                                                                        |
+| Wed, 7/17 | Graphs                                                                                             |                                                                                                                                        |
+| Thu, 7/18 | Recursive Backtracking                                                                             |                                                                                                                                        |
+| Tue, 7/23 | Dynamic Programming                                                                                |                                                                                                                                        |
+| Wed, 7/24 | Course Review                                                                                      |                                                                                                                                        |
+| Thu, 7/25 | Final Exam (Cumulative)                                                                            |                                                                                                                                        |
+
+## Assignments (100 points each)
+
+| Title                                                            | Due Date |
+| ---------------------------------------------------------------- | -------- |
+| [A01: Kattis Competition](docs/assignments/A01-kattis.md)        | May 30   |
+| [A02: String Class](docs/assignments/A02-string.md)              | June 6   |
+| [A03: Hybrid Sorting](docs/assignments/A03-hybrid-sort.md)       | June 13  |
+| [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)   | June 20  |
+| [A05: Djikstra's Two Stack](docs/assignments/A05-two-stack.md)   | June 27  |
+| [A06: For the love of Binary](docs/assignments/A06-binary.html)  | July 2   |
+| [A07: Heap Sort](docs/assignments/A07-heapsort.html)             | July 11  |
+| [A08: Red/Black Tree Sort](docs/assignments/A08-rbtreesort.html) | July 11  |
+| [A09: Dynamic Array](docs/assignments/A09-dynarray.html)         | July 25  |
+| [A10: Lexographic Sorting]()                                     | July 18  |
+| [A11: Radix Tree]()                                              | July 25  |
+| [A12: Spellchecker]()                                            | July 25  |
+| [A13: Sudoku]()                                                  | Final    |
+
+## Bonus Points
+
+| Task                      | Points     | Due     |
+| ------------------------- | ---------- | ------- |
+| Code Signal Practice Test | 20         | May 23  |
+| Boot Linux                | 50         | June 6  |
+| Top Kattis                | 50, 30, 20 | May 30  |
+| Fastest Sort              | 50, 30, 20 | June 20 |
+| Array Based Containers    | 50         | June 27 |
+| Heap Implementation       | 25         | July 3  |
+| Additional Advanced Sorts | 50 / Sort  | July 25 |
 
 ## Resources
 
@@ -259,3 +290,4 @@ This section contains some helpful online IDEs that can be used for in-class wor
 [odsa12]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#binary-trees
 [odsa13]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#sorting
 [odsa15]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#hashing
+[odsa17]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#indexing

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Assignment 06: For the Love of Binary</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="Assignment-06-For-the-Love-of-Binary">Assignment 06: For the Love of Binary</h1>
+<p>For this assignment you will be implementing and analyzing two algorithms: Tree Sort and Binary Search.</p>
+<h2 id="The-Algorithms">The Algorithms</h2>
+<h3 id="Tree-Sort">Tree Sort</h3>
+<p>Using a BST to sort an array of elements.</p>
+<p>The steps to perform tree sort are:</p>
+<ol>
+<li>Insert all of the elements in the array into a BST</li>
+<li>Traverse the tree, placing each element back into the array in sorted order.</li>
+</ol>
+<p>Input constraints:</p>
+<p>Let [A = {x \in \mathbb{Z} | -10,000 \leq x \leq 10,000}].</p>
+<p>Some pseudocode:</p>
+<pre><code class="language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">treesort</span><span class="hljs-params">(A)</span> -&gt; <span class="hljs-keyword">None</span>:</span>
+   tree = BST()
+   <span class="hljs-comment"># Insert all of the elements into a BST</span>
+   <span class="hljs-keyword">for</span> element <span class="hljs-keyword">in</span> A:
+      tree.insert(element)
+
+   <span class="hljs-comment"># Traverse the tree replacing elements in A</span>
+   i = <span class="hljs-number">0</span>
+   <span class="hljs-keyword">for</span> element <span class="hljs-keyword">in</span> A.traverse():
+      A[i] = element
+      i += <span class="hljs-number">1</span>
+</div></code></pre>
+<h2 id="Binary-Search">Binary Search</h2>
+<p>This algorithm relies on the input array being in sorted order to efficiently find elements.</p>
+<p>The steps are:</p>
+<ol>
+<li>If there are no elements in the array, return -1.</li>
+<li>If the middle element is the one we are looking for, return that index.</li>
+<li>If the element at the middle is larger than the one we are searching for, recursively search the left half.</li>
+<li>Otherwise, recursively search the right half.</li>
+</ol>
+<p>Input constraints:</p>
+<p>Let <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>=</mo><mo stretchy="false">{</mo><mi>x</mi><mo>∈</mo><mi mathvariant="double-struck">Z</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo><mo>≤</mo><mi>x</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo><mi mathvariant="normal">∀</mi><mi>i</mi><mo>≥</mo><mn>1</mn><mo separator="true">,</mo><mo>−</mo><mn>1000</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>1000</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">A = \{x \in \mathbb{Z} | x[i-1] \leq x[i] \forall i \geq 1, -1000 \leq x \leq 1000 \}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbb">Z</span></span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">x</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span><span class="mord">∀</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">−</span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">}</span></span></span></span></p>
+<h2 id="Instructions">Instructions</h2>
+<p>This assignment will be hosted on Github Classroom.</p>
+<ol>
+<li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/9gBhRcA_">this link</a>
+<ol>
+<li>Be sure to select your name from the list to link your Github to the class roster!</li>
+</ol>
+</li>
+<li>Clone the repository to your machine
+<ol>
+<li>Open a terminal</li>
+<li>Navigate to your algorithms folder</li>
+<li>Go to the parent directory (<code>cd ..</code>)</li>
+<li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)
+<ol>
+<li>Be sure to use the link for <strong>your copy</strong> of the repository for the assignment</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Getting things in order
+<ol>
+<li>Open your new folder in VS Code</li>
+<li>In your folder you should have an updated copies of <code>functions.test.cpp, functions.hpp, functions.cpp, functions_recursive.cpp, sorts.test.cpp, sorts.hpp, and sorts.cpp</code>.</li>
+<li>Check that you can compile and run the unit tests for Tree Sort
+<ol>
+<li><code>g++ -std=c++11 source/sorts/sorts.test.cpp source/sorts/sorts.cpp source/Functions/functions.cpp &amp;&amp; ./a.out</code></li>
+</ol>
+</li>
+<li>Check that you can compile and run the unit tests for Binary Search
+<ol>
+<li>Iterative <code>g++ -std=c++11 source/Functions/functions.test.cpp source/Functions/functions.cpp &amp;&amp; ./a.out</code></li>
+<li>Recursive <code>g++ -std=c++11 source/Functions/functions.test.cpp source/Functions/functions_recursive.cpp &amp;&amp; ./a.out</code></li>
+</ol>
+</li>
+<li>At this point you should be failing 3 unit tests, one for tree sort, and one for each implementation of binary search.</li>
+</ol>
+</li>
+<li>[60 points] Implement and analyze Tree Sort <strong>Commit and Push your work after each task</strong>
+<ol>
+<li>[50 points] Implement Tree Sort in <code>sorts.cpp</code>.</li>
+<li>[10 points] Analyze the function, providing your pseudocode, and Big-Oh for the best and worst case.</li>
+</ol>
+</li>
+<li>Run the following command: <code>git add . &amp;&amp; git commit -m &quot;Tree Sort&quot; &amp;&amp; git push</code></li>
+<li>[40 points] Implement and analyze Binary Search <strong>Commit and Push your work after each task</strong>
+<ol>
+<li>[15 points] Your iterative implementation should go in <code>functions.cpp</code></li>
+<li>[15 points] Your recursive implementation should go in <code>functions_recursive.cpp</code></li>
+<li>[10 points] Analyze your functions, providing pseudocode, and Big-Oh notation.</li>
+</ol>
+</li>
+<li>Run the following command: <code>git add . &amp;&amp; git commit -m &quot;Binary Search&quot; &amp;&amp; git push</code></li>
+</ol>
+<h2 id="Submission">Submission</h2>
+<p>To submit this assignment, simply commit and push your work to your assignment repository.
+Your last submission before the deadline will be graded.</p>
+
+    </body>
+    </html>
