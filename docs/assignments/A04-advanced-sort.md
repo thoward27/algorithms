@@ -7,7 +7,6 @@ You may select any algorithm from the following list:
 
 - Radix Sort
 - ShellSort
-- HeapSort
 - BinSort
 - TimSort
 - IntroSort
@@ -15,7 +14,6 @@ You may select any algorithm from the following list:
 - CycleSort
 - SmoothSort
 - StrandSort
-- BurstSort
 - SpreadSort
 - FlashSort
 - PostmanSort
