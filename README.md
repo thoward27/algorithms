@@ -47,17 +47,16 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | Thu, 6/27 | [Binary Trees](docs/notes/trees.html#/2)                                                           | [OpenDSA 12.14-12.16][odsa12]                                                                                                          |
 | Tue, 7/2  | [Heaps](docs/notes/trees.html#/3)                                                                  | [OpenDSA 12.17][odsa12]                                                                                                                |
 | Wed, 7/3  | [2-3 Tree / Red Black Tree](https://algs4.cs.princeton.edu/lectures/33BalancedSearchTrees-2x2.pdf) | [OpenDSA 17.5](odsa17), [Balanced Search Trees](https://algs4.cs.princeton.edu/33balanced/)                                            |
-| Fri, 7/5  | [Red Black Tree](https://algs4.cs.princeton.edu/lectures/33BalancedSearchTrees-2x2.pdf)            | [LLRB Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf)                                                                      |
+| Fri, 7/5  | [Red Black Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf)                         | [LLRB Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf)                                                                      |
 | Tue, 7/9  | Tries                                                                                              | [OpenDSA 12.19](odsa12), [Wikipedia](https://en.wikipedia.org/wiki/Trie)                                                               |
 | Wed, 7/10 | Data Structures Review                                                                             |                                                                                                                                        |
 | Thu, 7/11 | Exam (Data Structures)                                                                             |                                                                                                                                        |
-| Tue, 7/16 | Hashing                                                                                            |                                                                                                                                        |
-| Wed, 7/17 | Open / Bucket Hashing                                                                              |                                                                                                                                        |
-| Thu, 7/18 | Collision Resolution                                                                               |                                                                                                                                        |
-| Tue, 7/23 | Graphs                                                                                             |                                                                                                                                        |
-| Wed, 7/24 | Prims Algorithm                                                                                    |                                                                                                                                        |
-| Thu, 7/25 | Kruskal's Algorithm                                                                                |                                                                                                                                        |
-|           | Final Exam (Cumulative)                                                                            |                                                                                                                                        |
+| Tue, 7/16 | Hash Tables                                                                                        |                                                                                                                                        |
+| Wed, 7/17 | Graphs                                                                                             |                                                                                                                                        |
+| Thu, 7/18 | Recursive Backtracking                                                                             |                                                                                                                                        |
+| Tue, 7/23 | Dynamic Programming                                                                                |                                                                                                                                        |
+| Wed, 7/24 | Course Review                                                                                      |                                                                                                                                        |
+| Thu, 7/25 | Final Exam (Cumulative)                                                                            |                                                                                                                                        |
 
 ## Assignments (100 points each)
 
@@ -87,6 +86,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | Fastest Sort              | 50, 30, 20 | June 20 |
 | Array Based Containers    | 50         | June 27 |
 | Heap Implementation       | 25         | July 3  |
+| Additional Advanced Sorts | 50 / Sort  | July 25 |
 
 ## Resources
 
