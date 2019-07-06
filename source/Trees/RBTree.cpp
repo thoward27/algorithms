@@ -138,16 +138,17 @@ Node* RBTree::deleteMax(Node* temp) {
     temp = rotateRight(temp);
   }
 
-  if (!temp->right) {
-    delete temp;
+  if (temp->right == nullptr) {
+    // delete temp;
     return nullptr;
   }
 
-  if (temp->right && temp->right->color) {
-    temp = moveRedRight(temp->left);
+  if (temp->right && !temp->right->color &&
+      temp->right->left != nullptr && !temp->right->left->color) {
+    temp = moveRedRight(temp);
   }
 
-  temp->right = deleteMax(temp->right);
+  temp->left = deleteMax(temp->left);
   return fix(temp);
 }
 
@@ -163,12 +164,12 @@ void RBTree::deleteMin() {
  */
 Node* RBTree::deleteMin(Node* temp) {
   if (temp->left == nullptr) {
-    delete temp;
+    // delete temp;
     return nullptr;
   }
 
-  if (temp->left && temp->left->color && temp->left->left &&
-      temp->left->left->color) {
+  if (temp->left && !temp->left->color && 
+      temp->left->left && !temp->left->left->color) {
     temp = moveRedLeft(temp);
   }
 
@@ -180,11 +181,13 @@ Node* RBTree::deleteMin(Node* temp) {
  * A method to find the successor to a node, aids in deletion
  */
 int RBTree::min(Node* subtree, bool first = 1) {
-  if (first)
+  if (first) {
     return min(subtree->right, 0);
-  if (subtree->left == nullptr)
+  }
+  if (subtree->left == nullptr) {
     return subtree->data;
-  return min(subtree->left);
+  }
+  return min(subtree->left, 0);
 }
 
 /** Deletekey()
@@ -201,28 +204,31 @@ Node* RBTree::remove(int data, Node* temp) {
   }
 
   if (comparison < 0) {
-    if (temp->left && temp->left->color && temp->left->left &&
-        temp->left->left->color) {
+    if (temp->left && !temp->left->color && 
+        temp->left->left && !temp->left->left->color) {
       temp = moveRedLeft(temp);
     }
     temp->left = remove(data, temp->left);
   }
 
   else {
-    if (temp->left && temp->left->color)
+    if (temp->left != nullptr && temp->left->color) {
       temp = rotateRight(temp);
+    }
 
     if (comparison == 0 && temp->right == nullptr) {
+      //maybe delete here
       return nullptr;
     }
 
-    if (temp->right && temp->right->color && temp->right->left &&
-        temp->right->left->color) {
+    if (temp->right != nullptr && !temp->right->color && 
+        temp->right->left != nullptr && !temp->right->left->color) {
       temp = moveRedRight(temp);
     }
 
     if (comparison == 0) {
       temp->data = min(temp->right);
+      // std::cout << temp->data << std::endl;
       temp->right = deleteMin(temp->right);
     } else {
       temp->right = remove(data, temp->right);
