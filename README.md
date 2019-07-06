@@ -49,7 +49,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | Wed, 7/3  | [2-3 Tree / Red Black Tree](https://algs4.cs.princeton.edu/lectures/33BalancedSearchTrees-2x2.pdf) | [OpenDSA 17.5](odsa17), [Balanced Search Trees](https://algs4.cs.princeton.edu/33balanced/)                                            |
 | Fri, 7/5  | [Red Black Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf)                         | [LLRB Tree](https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf)                                                                      |
 | Tue, 7/9  | Tries                                                                                              | [OpenDSA 12.19](odsa12), [Wikipedia](https://en.wikipedia.org/wiki/Trie)                                                               |
-| Wed, 7/10 | Data Structures Review                                                                             |                                                                                                                                        |
+| Wed, 7/10 | [Data Structures Review](docs/exams/E02R.md)                                                       |                                                                                                                                        |
 | Thu, 7/11 | Exam (Data Structures)                                                                             |                                                                                                                                        |
 | Tue, 7/16 | Hash Tables                                                                                        |                                                                                                                                        |
 | Wed, 7/17 | Graphs                                                                                             |                                                                                                                                        |
@@ -78,15 +78,15 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Bonus Points
 
-| Task                      | Points     | Due     |
-| ------------------------- | ---------- | ------- |
-| Code Signal Practice Test | 20         | May 23  |
-| Boot Linux                | 50         | June 6  |
-| Top Kattis                | 50, 30, 20 | May 30  |
-| Fastest Sort              | 50, 30, 20 | June 20 |
-| Array Based Containers    | 50         | June 27 |
-| Heap Implementation       | 25         | July 3  |
-| Additional Advanced Sorts | 50 / Sort  | July 25 |
+| Task                      | Points      | Due     |
+| ------------------------- | ----------- | ------- |
+| Code Signal Practice Test | 20          | May 23  |
+| Boot Linux                | 50          | June 6  |
+| Top Kattis                | 50, 30, 20  | May 30  |
+| Fastest Sort              | 50, 30, 20  | June 20 |
+| Array Based Containers    | 50          | June 27 |
+| Heap Implementation       | 25          | July 3  |
+| Additional Advanced Sorts | 50/25/15/10 | July 25 |
 
 ## Resources
 
