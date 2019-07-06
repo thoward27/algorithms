@@ -85,7 +85,7 @@ class RBTree {
   void postorder(Node* n, std::ostream& oss);
 
   Node* deleteMax(Node* temp);
-  Node* deleteMin(Node* temp);
+  Node* deleteMin(Node* temp, bool first);
 
   int min(Node* subtree, bool first);
 

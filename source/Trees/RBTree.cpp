@@ -86,15 +86,18 @@ bool RBTree::search(int data, Node* n) {
  * A method to fix the tree
  */
 Node* RBTree::fix(Node* temp) {
-  if (temp->right && temp->right->color)
+  if (temp->right && temp->right->color) {
     temp = rotateLeft(temp);
+  }
 
   if (temp->left && temp->left->color && temp->left->left &&
-      temp->left->left->color)
+      temp->left->left->color) {
     temp = rotateRight(temp);
+  }
 
-  if (temp->left && temp->right && temp->left->color && temp->right->color)
+  if (temp->left && temp->right && temp->left->color && temp->right->color) {
     flipColors(temp);
+  }
 
   return temp;
 }
@@ -154,7 +157,7 @@ Node* RBTree::deleteMax(Node* temp) {
 
 /** Delete the tree form the root */
 void RBTree::deleteMin() {
-  root = deleteMin(root);
+  root = deleteMin(root, 1);
   // TODO: nullptr->color
   root->color = 0;
 }
@@ -162,7 +165,12 @@ void RBTree::deleteMin() {
 /** DeleteMax()
  * A method to aid in deleteing a key
  */
-Node* RBTree::deleteMin(Node* temp) {
+Node* RBTree::deleteMin(Node* temp, bool first = 1) {
+  if(first) {
+    deleteMin(temp->right, 0);
+    return fix(temp);
+  }
+
   if (temp->left == nullptr) {
     // delete temp;
     return nullptr;
@@ -173,7 +181,7 @@ Node* RBTree::deleteMin(Node* temp) {
     temp = moveRedLeft(temp);
   }
 
-  temp->left = deleteMin(temp->left);
+  temp->left = deleteMin(temp->left, 0);
   return fix(temp);
 }
 
@@ -181,8 +189,12 @@ Node* RBTree::deleteMin(Node* temp) {
  * A method to find the successor to a node, aids in deletion
  */
 int RBTree::min(Node* subtree, bool first = 1) {
+  
   if (first) {
-    return min(subtree->right, 0);
+    if(subtree->right != nullptr)
+      return min(subtree->right, 0);
+    else 
+      return subtree->left->data;
   }
   if (subtree->left == nullptr) {
     return subtree->data;
@@ -215,7 +227,6 @@ Node* RBTree::remove(int data, Node* temp) {
     if (temp->left != nullptr && temp->left->color) {
       temp = rotateRight(temp);
     }
-
     if (comparison == 0 && temp->right == nullptr) {
       //maybe delete here
       return nullptr;
@@ -227,8 +238,7 @@ Node* RBTree::remove(int data, Node* temp) {
     }
 
     if (comparison == 0) {
-      temp->data = min(temp->right);
-      // std::cout << temp->data << std::endl;
+      temp->right->data = min(temp->right);
       temp->right = deleteMin(temp->right);
     } else {
       temp->right = remove(data, temp->right);

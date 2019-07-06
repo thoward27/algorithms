@@ -278,21 +278,16 @@ TEST_CASE("Delete Method") {
     REQUIRE(tree.search(0) == 1);
     REQUIRE(tree.search(4) == 1);
   }
-  //Segfaults
+  
   SUBCASE("Internal Node") {
     tree.remove(7);
     std::ostringstream oss;
-    tree.inorder(oss);
-    CHECK_EQ(oss.str(), "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, \n");
-
+    tree.preorder(oss);
+    CHECK_EQ(oss.str(), "3, 1, 0, 2, 8, 5, 4, 6, 9, \n");
+    
     REQUIRE(tree.search(7) == 0);
     REQUIRE(tree.search(8) == 1);
     REQUIRE(tree.search(4) == 1);
   }
-  SUBCASE("Root Node") {
-    tree.remove(3);
-    REQUIRE(tree.search(3) == 0);
-    REQUIRE(tree.search(8) == 1);
-    REQUIRE(tree.search(4) == 1);
-  }
+  
 }
