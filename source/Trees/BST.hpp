@@ -1,22 +1,6 @@
 #pragma once
 #include <iostream>
-
-/** Node Class
- * These are the building blocks of the binary search tree.
- */
-class Node {
- private:
-  int data;
-  Node* left;
-  Node* right;
-  int count;
-
- public:
-  Node(int d) : data(d), count(1) { left = right = nullptr; }
-  ~Node() {}
-
-  friend class BST;
-};
+#include "Node.hpp"
 
 /** Binary Search Tree
  * A class that stores data in a binary tree structure, providing

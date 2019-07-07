@@ -3,6 +3,7 @@
 #include <sstream>
 #include "../Functions/functions.hpp"
 #include "../Trees/BST.hpp"
+#include "../Trees/RBTree.hpp"
 
 /* Helper Functions */
 
