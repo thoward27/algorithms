@@ -1,8 +1,6 @@
 dist: xenial
-language:
-  - cpp
-compiler:
-  - gcc
+language: cpp
+compiler: gcc
 addons:
   apt:
     sources:
@@ -33,7 +31,8 @@ matrix:
       - TARGET=DLL
       - TARGET=CDLL
     - name: "Two Stacks"
-      -TARGET=twostack
+      env:
+      - TARGET=twostack
 
 script:
   - make $TARGET
