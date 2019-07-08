@@ -34,6 +34,14 @@ class Trie {
   int size;
   int max_height;
 
+  /** remove(const char* word, Node* n)
+   * Recursively searches the Trie for word, and then deletes every node used
+   * exclusively by that word (i.e. all nodes with end_of_word false and all
+   * null pointers in children array coming out of recursion).
+   * Returns null if n was deleted, and n otherwise
+   */
+  Node* remove(const char* word, Node* n);
+
   /** clear(Node* n)
    * Recursively deletes all of the nodes in the subtree rooted at n, and then
    * deletes n.
