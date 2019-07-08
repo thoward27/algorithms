@@ -54,6 +54,12 @@ TEST_CASE("remove") {
   trie.remove("insert");
   REQUIRE_FALSE(trie.search("insert"));
   REQUIRE(trie.search("inserted"));
+  SUBCASE("remove last word and retain usability") {
+    trie.remove("inserted");
+    trie.remove("sea");
+    REQUIRE_FALSE(trie.count());
+    trie.insert("remove", 128);
+  }
 }
 
 TEST_CASE("clear") {
