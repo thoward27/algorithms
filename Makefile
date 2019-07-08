@@ -1,6 +1,6 @@
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra
-TARGETS=functions sorts String SLL CSLL DLL CDLL Stack Queue Dequeue BST
+TARGETS=functions sorts String SLL CSLL DLL CDLL Stack Queue Dequeue BST RBTree 
 
 # Object Files
 %.o: source/*/%.cpp
