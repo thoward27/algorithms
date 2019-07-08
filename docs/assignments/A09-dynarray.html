@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Assignment 09: Dynamic Array</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <h1 id="Assignment-09-Dynamic-Array">Assignment 09: Dynamic Array</h1>
+<p>For this assignment you will be implementing a Dynamic Array capable of accepting any primitive type.</p>
+<h2 id="The-Header">The Header</h2>
+<pre><code class="language-c++"><div><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span>
+
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;memory&gt;</span></span>
+
+<span class="hljs-keyword">template</span> &lt;<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">T</span>&gt; <span class="hljs-title">class</span> <span class="hljs-title">Vec</span> {</span>
+ <span class="hljs-keyword">public</span>:
+  <span class="hljs-keyword">typedef</span> T* iterator;
+  <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">const</span> T* const_iterator;
+  <span class="hljs-keyword">typedef</span> <span class="hljs-keyword">size_t</span> size_type;
+  <span class="hljs-keyword">typedef</span> T value_type;
+
+  Vec();
+  <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">Vec</span><span class="hljs-params">(size_type n, <span class="hljs-keyword">const</span> T&amp; t = T())</span></span>;
+
+  Vec(<span class="hljs-keyword">const</span> Vec&amp; v);
+  Vec&amp; <span class="hljs-keyword">operator</span>=(<span class="hljs-keyword">const</span> Vec&amp;);
+  ~Vec()
+
+  T&amp; <span class="hljs-keyword">operator</span>[](size_type i)
+  <span class="hljs-keyword">const</span> T&amp; <span class="hljs-keyword">operator</span>[](size_type i) <span class="hljs-keyword">const</span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_back</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T&amp; t)</span></span>;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">push_front</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T&amp; t)</span></span>;
+  
+  <span class="hljs-function"><span class="hljs-keyword">const</span> T <span class="hljs-title">pop_back</span><span class="hljs-params">()</span></span>;
+  <span class="hljs-function"><span class="hljs-keyword">const</span> T <span class="hljs-title">pop_front</span><span class="hljs-params">()</span></span>;
+
+  <span class="hljs-function">size_type <span class="hljs-title">size</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+  <span class="hljs-comment">// Iterators</span>
+  <span class="hljs-function">iterator <span class="hljs-title">begin</span><span class="hljs-params">()</span></span>;
+  <span class="hljs-function">const_iterator <span class="hljs-title">begin</span><span class="hljs-params">()</span></span>;
+
+  <span class="hljs-function">iterator <span class="hljs-title">end</span><span class="hljs-params">()</span></span>;
+  <span class="hljs-function">const_iterator <span class="hljs-title">end</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+  <span class="hljs-comment">// Clear the vector</span>
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">clear</span><span class="hljs-params">()</span></span>;
+  <span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> <span class="hljs-keyword">const</span></span>;
+
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">erase</span><span class="hljs-params">(iterator position)</span></span>;
+  <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">const</span> T&amp; t)</span></span>;
+
+ <span class="hljs-keyword">private</span>:
+  iterator data;
+  iterator size;
+  iterator capacity;
+
+  <span class="hljs-comment">// facilities for memory allocation</span>
+  <span class="hljs-built_in">std</span>::allocator&lt;T&gt; alloc;
+};
+</div></code></pre>
+<h2 id="Instructions">Instructions</h2>
+<p>This assignment will be hosted on Github Classroom.</p>
+<ol>
+<li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/veyFoobr">this link</a></li>
+<li>Clone the repository to your machine
+<ol>
+<li>Open a terminal</li>
+<li>Navigate to your algorithms folder</li>
+<li>Go to the parent directory (<code>cd ..</code>)</li>
+<li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)</li>
+</ol>
+</li>
+<li>Getting things in order
+<ol>
+<li>Open your new folder in VS Code</li>
+</ol>
+</li>
+<li>Implement a Generic Dynamic Array <strong>Commit and Push your work after each task</strong>
+<ol>
+<li>Create the folder necessary to complete the class (<code>Array</code>)</li>
+<li>Create and populate the header file <code>Array.hpp</code> (Copy and paste the header content from above)</li>
+<li>Create the unit tests file <code>Array.test.cpp</code> (Refer to other test files for guidance)</li>
+<li>Create the source file <code>Array.cpp</code></li>
+<li>Populate the source file with all the requisite methods</li>
+<li>Repeat the following steps, committing and pushing after each cycle
+<ol>
+<li>Select a method to implement</li>
+<li>Write a unit test for that method</li>
+<li>Implement the method such that it passes your unit tests, adding additional tests along the way as you think of new possible scenarios</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Submit your work (<code>git add . &amp;&amp; git commit -m &quot;Done&quot; &amp;&amp; git push</code></li>
+</ol>
+<h2 id="Grading">Grading</h2>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional Correctness</td>
+<td>90</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Submission">Submission</h2>
+<p>Submissions are handled by Github Classroom.
+Submissions after the deadline are not graded.</p>
+
+    </body>
+    </html>

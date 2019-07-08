@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Assignment 07: Heap Sort</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="Assignment-07-Heap-Sort">Assignment 07: Heap Sort</h1>
+<p>For this assignment you will be using our class-built heap to implement the heap sort algorithm, making all necessary changes to the base class, while still maintaining its original functionality.</p>
+<h2 id="The-Algorithm">The Algorithm</h2>
+<p>Given an array <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi><mo>:</mo><mo>=</mo><mo stretchy="false">{</mo><mi>x</mi><mo>∈</mo><mi mathvariant="double-struck">Z</mi><mi mathvariant="normal">∣</mi><mo>−</mo><mn>10</mn><mo separator="true">,</mo><mn>000</mn><mo>≤</mo><mi>x</mi><mo>≤</mo><mn>10</mn><mo separator="true">,</mo><mn>000</mn><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">A := \{x \in \mathbb{Z} | -10,000 \leq x \leq 10,000 \}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathbb">Z</span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mclose">}</span></span></span></span></p>
+<pre><code class="language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">heapsort</span><span class="hljs-params">(A)</span>:</span>
+   <span class="hljs-comment"># Create a heap.</span>
+   Heap h
+   <span class="hljs-comment"># Push all elements to the heap.</span>
+   <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> A:
+      h.push(x)
+   <span class="hljs-comment"># Refill the original array with the in-order elements.</span>
+   <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(A)):
+      A[i] = h.pop()
+   <span class="hljs-keyword">return</span>
+</div></code></pre>
+<h2 id="Instructions">Instructions</h2>
+<p>This assignment will be hosted on Github Classroom.</p>
+<ol>
+<li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/BCUpZdDr">this link</a>
+<ol>
+<li>Be sure to select your name from the list to link your Github to the class roster!</li>
+</ol>
+</li>
+<li>Clone the repository to your machine
+<ol>
+<li>Open a terminal</li>
+<li>Navigate to your algorithms folder</li>
+<li>Go to the parent directory (<code>cd ..</code>)</li>
+<li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)</li>
+</ol>
+</li>
+<li>Getting things in order
+<ol>
+<li>Open your new folder in VS Code</li>
+<li>Check that you can compile and run the unit tests for the sorting algorithms (<code>make sorts</code>)</li>
+</ol>
+</li>
+<li>Implement Heap Sort <strong>Commit and Push your work after each task</strong>
+<ol>
+<li>Add the signature for <code>heapsort</code> to <code>sorts.hpp</code> (<code>heapsort(int*, int)</code>)</li>
+<li>Add a unit test to <code>sorts.test.cpp</code> for <code>heapsort</code></li>
+<li>Create a docstring for your implementation</li>
+<li>In your docstring, detail your pseudocode for <code>heapsort</code></li>
+<li>Implement <code>heapsort</code></li>
+<li>Analyze the function you just created, noting the runtimes per line</li>
+<li>Present your Big-Oh analysis for the best and worst case at the bottom of your docstring</li>
+</ol>
+</li>
+<li>Submit your work (<code>git add . &amp;&amp; git commit -m &quot;Done&quot; &amp;&amp; git push</code>)</li>
+</ol>
+<h2 id="Grading">Grading</h2>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functional Correctness</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Submission">Submission</h2>
+<p>Submissions are handled by Github Classroom.
+Submissions after the deadline are not graded.</p>
+
+    </body>
+    </html>

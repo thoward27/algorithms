@@ -3,7 +3,7 @@
 
 /** Min Heap
  * A class that stores data in a heap structure, with the smallest
- * element at the root, providing efficient insert and min operations
+ * element at the root, providing efficient push and min operations
  */
 class MinHeap {
  private:
@@ -11,22 +11,22 @@ class MinHeap {
   unsigned int capacity;
   int size;
 
-  /** heapify_up()
-   * Restores the heap order property after element insertion. Assumes the new
-   * element has been inserted at the end of the heap array (right-most node in
-   * the bottom level of the tree), and swaps it up the tree until it's greater
-   * than its parent.
+  /** swim()
+   * Restores the heap order property after an element is pushed. Assumes the
+   * new element has been pushed at the end of the heap array (right-most node
+   * in the bottom level of the tree), and swaps it upwards the tree until it's
+   * greater than its parent.
    */
-  void heapify_up();
+  void swim();
 
-  /** heapify_down(int i)
+  /** sink(int i)
    * Restores the heap order property after element removal. Assumes the element
    * at the end of the heap array has been swapped with the root, and the size
    * has been decremented (effectively removing the last element in the heap
    * array). It then swaps the element at the root down the tree until both
    * children are greater than it.
    */
-  void heapify_down(int i);
+  void sink(int i);
 
   /** search(int i, int data)
    * Recursively searches for data in the MinHeap's subtree rooted at i,
@@ -43,34 +43,33 @@ class MinHeap {
   void erase(int i, int data);
 
  public:
-  MinHeap(unsigned int cap);
+  MinHeap(unsigned int cap = 16);
   ~MinHeap();
 
-  /** insert(int data)
+  /** push(int data)
    * Inserts data into the MinHeap such that the heap order property is
    * preserved.
-   * Assumes duplicate elements will not be inserted.
-   * Throws an error if the heap is full.
+   * Assumes duplicate elements will not be pushed.
    */
-  void insert(int data);
+  void push(int data);
 
   /** count()
    * Returns the number of elements in the MinHeap.
    */
   int count();
 
-  /** extract_min()
+  /** pop()
    * Removes and returns the minimum element in the MinHeap, preserving the
    * heap order property.
    * Throws an error if the heap is empty.
    */
-  int extract_min();
+  int pop();
 
-  /** peek_min()
+  /** peek()
    * Returns the minimum element in the MinHeap without modifying its contents.
    * Throws an error if the heap is empty.
    */
-  int peek_min();
+  int peek();
 
   /** search(int data)
    * Searches the MinHeap for the given data, returning true if the data is

@@ -471,8 +471,8 @@
             <thead>
               <tr>
                 <td>Function</td>
-                <td>Sequential Search</td>
-                <td>Binary Search</td>
+                <td>Unordered List</td>
+                <td>Ordered List</td>
                 <td>BST</td>
               </tr>
             </thead>
@@ -502,7 +502,7 @@
                 <td>O(h)</td>
               </tr>
               <tr>
-                <td>Predecessor / Successor</td>
+                <td>Floor / Ceil</td>
                 <td>O(n)</td>
                 <td>O(log n)</td>
                 <td>O(h)</td>
@@ -528,9 +528,9 @@
             <li>Push: Places an element into the queue</li>
             <li>Pop: Removes and returns the next highest priority item from the queue.</li>
           </ul>
-          <p class="fragment">Can you think of any real-life applications for a priority queue?</p>
-          <p class="fragment">Hospital lines</p>
-          <p class="fragment">How long would these basic operations take if we used ordered lists? Unordered Lists?</p>
+          <p class="fragment">Real-life applications? <span class="fragment">Hospital Lines!</span>
+          </p>
+          <p class="fragment">Cost to implement with ordered lists? Unordered Lists?</p>
           <p class="fragment">An unordered list: $O(1), O(n)$.<br> Ordered list: $O(n), O(1)$ <br> We can do better.</p>
         </section>
         <section class="center">
@@ -539,13 +539,132 @@
         </section>
         <section>
           <h3>Binary Heaps</h3>
-          <p>An array representation of a heap-ordered complete binary tree</p>
-          <p class="fragment">Heap Ordered: Parent's key is no smaller than children's</p>
-          <p class="fragment">Array Representation: Indices start at 1, nodes are in level order.</p>
-          <canvas class="fragment" heigh="1000" width="2000" id="binaryheap"></canvas>
-          <script>
+          <p>Heap-ordered complete binary trees</p>
+          <div class="row">
+            <div class="column">
+              <canvas height="1000" width="1000" id="binaryheap"></canvas>
+              <script>
+                var ctx = document.getElementById('binaryheap').getContext('2d');
+                ctx.lineWidth = 3;
+                ctx.strokeStyle = "red";
+                ctx.fillStyle = "red";
+                ctx.font = "1.5em serif";
 
-          </script>
+                ctx.beginPath();
+                var root = node(500, 100, "5");
+                var n10 = leftChild(...root, "10", 200);
+                var n12 = rightChild(...root, "12", 200);
+                var n14 = leftChild(...n10, "14");
+                var n15 = rightChild(...n10, "15", 90);
+                var n25 = leftChild(...n12, "25", 90);
+                var n17 = rightChild(...n12, "17");
+                var n20 = leftChild(...n14, "20");
+                var n50 = rightChild(...n14, "50");
+                ctx.stroke();
+                ctx.closePath();
+              </script>
+            </div>
+            <div class="column">
+              <ul>
+                <li class="fragment">Heap Ordered</li>
+                <li class="fragment">Array Representation</li>
+                <li class="fragment">Push</li>
+                <li class="fragment">Swimming Up</li>
+                <li class="fragment">Pop</li>
+                <li class="fragment">Sinking Down</li>
+              </ul>
+            </div>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Heap Ordered: Parent's key is no greater than children's</li>
+              <li>Push: Insert at the end, then swim up.</li>
+              <li>Swimming Up: While the parent node is less, swap them.</li>
+              <li>Overall, insertion costs 1 + log n comparisons</li>
+              <li>Pop: Exchange root with node at end, then sink it down.</li>
+              <li>Sinking Down: Exchange the data with the smaller of the two children. (Why smaller?)</li>
+              <li>Removing the max takes at most 2 log n comparisons</li>
+              <li>Array Representation: Indices start at 1, nodes are in level order, no explicit links are needed!</li>
+              <li>Parents of item k are at k//2, children are 2k and 2k + 1</li>
+            </ul>
+          </aside>
+        </section>
+        <section>
+          <h3>Binary Heap: Further Considerations</h3>
+          <ul>
+            <li class="fragment">Underflow: Throw an exception</li>
+            <li class="fragment">Overflow: Use a dynamic array</li>
+            <li class="fragment">Max-Oriented: Swap the comparisons</li>
+            <li class="fragment">Remove: Remove an arbitrary item.</li>
+            <li class="fragment">Change Priority of an Item</li>
+            <li class="fragment">Immutability of Keys: Client should not be able to change the keys in the array.</li>
+          </ul>
+          <aside class="notes">Immutability: cannot change the data value once created. Should always try and make
+            everything immutable.</aside>
+        </section>
+        <section>
+          <h3>Priority Queue: Costs Summary</h3>
+          <table>
+            <thead>
+              <tr>
+                <td>Implementation</td>
+                <td>Push</td>
+                <td>Pop</td>
+                <td>Peek</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Unordered Array</td>
+                <td>1</td>
+                <td>n</td>
+                <td>n</td>
+              </tr>
+              <tr>
+                <td>Ordered Array</td>
+                <td>n</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Binary Heap</td>
+                <td>log n</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>d-ary Heap</td>
+                <td>$\log_d n$</td>
+                <td>$\log_d n$</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Fibonacci</td>
+                <td>1</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Brodal Queue</td>
+                <td>1</td>
+                <td>log n</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Impossible</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            Assume there is a priority queue that makes constant compares for both push and pop.
+            Design a sorting algorithm that uses this queue.
+            You've just violated O(n * log n) (see max of three)
+
+            Sweet spot for d is 4-way
+          </aside>
         </section>
       </section>
       <section>
