@@ -71,44 +71,35 @@ int Trie::get(const char* word) {
     throw "Key not found.";
 }
 
-// TODO: Fix erroneous implementation
-void Trie::remove(const char* word) {
-  if (!*word) throw "Attempted to remove empty string";
-  int i = 0;
-  int idx;
-  Node* n = root;
-  Node* prev = nullptr;
-  Node* next;
-  do {
-    idx = word[i] - 'a';
-    if (!(n->children[idx]))
-      throw "Key not found.";
-    next = n->children[idx];
-    n->children[idx] = prev;
-    prev = n;
-    n = next;
-  } while (word[++i]);
-
-  if (!(prev->end_of_word)) {
-    throw "Key not found.";
-  }
-
-  if (n) {
-    prev->end_of_word = false;
+Node* Trie::remove(const char *word, Node *n) {
+  if (!word[0]) {
+    if (!n->end_of_word) throw "Key not found.";
+    n->end_of_word = false;
+    --size;
   } else {
-    bool suffix = true;
-    do {
-      n = prev;
-      prev = n->children[word[--i] - 'a'];
-      for (int j = 0; j < 26; ++j) {
-        if (n->children[j]) {
-          suffix = false;
-          break;
-        }
-      }
-      delete n;
-    } while (suffix);
+    if (!n) throw "Key not found.";
+    int idx = word[0] - 'a';
+    n->children[idx] = remove(word + 1, n->children[idx]);
   }
+  if (!n->end_of_word) {
+    bool deletable = true;
+    for (int i = 0; i < 26; ++i) {
+      if (n->children[i]) {
+        deletable = false;
+        break;
+      }
+    }
+    if (deletable) {
+      delete n;
+      return nullptr;
+    }
+  }
+  return n;
+}
+
+void Trie::remove(const char* word) {
+  root = remove(word, root);
+  if (!root) root = new Node(0, false);
 }
 
 void Trie::clear(Node* n) {
