@@ -6,8 +6,8 @@
 
 #include <chrono>
 #include <iostream>
-#include <vector>
 #include <numeric>
+#include <vector>
 
 #define CASES 11
 
@@ -42,6 +42,10 @@ void equal(int* arr, int n, int shift) {
 }
 }  // namespace fill
 
+inline bool increasing(int* arr, int n) {
+  return (n < 2) ? true : arr[0] <= arr[1] && increasing(arr + 1, n - 1);
+}
+
 typedef void (*fill_fn)(int*, int, int);
 fill_fn fillers[] = {fill::random, fill::ascending, fill::descending,
                      fill::equal};
@@ -60,35 +64,37 @@ void test_sort(sort_fn func) {
             freq[arr[i] + 2000] += 1;
 
           func(arr, n);
-          REQUIRE(is_sorted(arr, n));
 
           for (int i = 0; i < n; ++i)
             freq[arr[i] + 2000] -= 1;
-          REQUIRE_EQ(sum(freq, 6000), 0);
+
+          bool success = increasing(arr, n) && sum(freq, 6000) == 0;
+          CHECK(success);
         }
       }
     }
   }
 }
 
-// TEST_CASE("Benchmark") { 
+// TEST_CASE("Benchmark") {
 //   int size = 1000000;
-//   int arr[size]; 
+//   int arr[size];
 
 //   std::vector<int> vec;
 //   for (int i = 0; i < 20; ++i) {
 //     fill::random(arr, size, 0);
-    
+
 //     auto start = std::chrono::high_resolution_clock::now();
 //     advancedsort(arr, size);
 //     auto stop = std::chrono::high_resolution_clock::now();
-    
-//     auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
-//     vec.push_back(duration);
+
+//     auto duration =
+//     std::chrono::duration_cast<std::chrono::milliseconds>(stop -
+//     start).count(); vec.push_back(duration);
 //   }
 //   std::cout << "Averaged runtime: ";
-//   std::cout << std::accumulate(vec.begin(), vec.end(), 0.0)/vec.size() << " ms";
-//   std::cout << std::endl;
+//   std::cout << std::accumulate(vec.begin(), vec.end(), 0.0)/vec.size() << "
+//   ms"; std::cout << std::endl;
 // }
 
 TEST_CASE("Bubble Sort") {

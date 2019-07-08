@@ -361,18 +361,16 @@ TEST_CASE("reverse") {
 }
 
 TEST_CASE("Binary Search") {
-  int arr[100];
-  for (int i = 0; i < 100; ++i)
-    arr[i] = i;
+  int n = 100;
+  int arr[n];
+  for (int i = 0; i < n; ++i)
+    arr[i] = 2 * i;
   SUBCASE("Key is present") {
-    REQUIRE_EQ(binsearch(arr, 100, 50), 50);
-    REQUIRE_EQ(binsearch(arr, 100, 0), 0);
-    REQUIRE_EQ(binsearch(arr, 100, 99), 99);
-    REQUIRE_EQ(binsearch(arr, 25, 25), 25);
+    for (int i = 0; i < n; ++i)
+      CHECK_EQ(binsearch(arr, n, 2 * i), i);
   }
   SUBCASE("Key is not preset") {
-    REQUIRE_EQ(binsearch(arr, 100, 100), -1);
-    REQUIRE_EQ(binsearch(arr, 100, -1), -1);
-    REQUIRE_EQ(binsearch(arr, 100, 1000), -1);
+    for (int i = 0; i < n; ++i)
+      CHECK_EQ(binsearch(arr, n, 2 * i + 1), -1);
   }
 }
