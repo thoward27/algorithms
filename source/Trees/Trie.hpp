@@ -32,7 +32,7 @@ class Trie {
  private:
   Node* root;
   int size;
-  int max_height;
+  int height_upper_bound;
 
   /** remove(const char* word, Node* n)
    * Recursively searches the Trie for word, and then deletes every node used
@@ -63,6 +63,8 @@ class Trie {
   /** insert(char* word)
    * Inserts word with the associated val into the Trie.
    * If the word is already in the tree, its value is replaced with val.
+   * Increases height_upper_bound to word length if
+   * word length > height_upper_bound.
    */
   void insert(const char* word, int val);
 
@@ -90,6 +92,7 @@ class Trie {
 
   /** clear()
    * Removes all words from the Trie.
+   * Sets height_upper_bound back to zero.
    */
   void clear();
 
@@ -98,6 +101,8 @@ class Trie {
    * alphabetical order.
    * The key and value of each pair are separated by a space, and each pair is
    * separated by the newline character.
+   * Size of letters array for call to recursive print should be
+   * height_upper_bound
    */
   void print(std::ostream& oss = std::cout);
 };

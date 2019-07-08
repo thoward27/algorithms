@@ -3,7 +3,7 @@
 Trie::Trie() {
   root = new Node(0, false);
   size = 0;
-  max_height = 0;
+  height_upper_bound = 0;
 }
 
 Trie::~Trie() {
@@ -25,8 +25,8 @@ void Trie::insert(const char* word, int val) {
     }
     ++i;
   }
-  if (i > max_height) {
-    max_height = i;
+  if (i > height_upper_bound) {
+    height_upper_bound = i;
   }
   n->end_of_word = true;
   n->value = val;
@@ -115,7 +115,7 @@ void Trie::clear() {
   clear(root);
   root = new Node(0, false);
   size = 0;
-  max_height = 0;
+  height_upper_bound = 0;
 }
 
 void Trie::print(std::ostream& oss, Node* n, char* letters, int level) {
@@ -133,7 +133,7 @@ void Trie::print(std::ostream& oss, Node* n, char* letters, int level) {
 }
 
 void Trie::print(std::ostream& oss) {
-  char* letters = new char[max_height + 1];
+  char* letters = new char[height_upper_bound + 1];
   print(oss, root, letters, 0);
   delete [] letters;
 }
