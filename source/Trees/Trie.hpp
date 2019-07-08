@@ -32,6 +32,21 @@ class Trie {
  private:
   Node* root;
   int size;
+  int max_height;
+
+  /** clear(Node* n)
+   * Recursively deletes all of the nodes in the subtree rooted at n, and then
+   * deletes n.
+   */
+  void clear(Node* n);
+
+  /** print(std::ostream& oss, Node* n, char* letters, int level)
+   * Recursively traverses the Trie with a depth-first search, printing each
+   * word to the ostream in alphabetical order. All the letters from the root
+   * to n are stored in the variable "letters", and the current level in the
+   * Trie is stored in the variable "level".
+   */
+  void print(std::ostream& oss, Node* n, char* letters, int level);
 
  public:
   Trie();
