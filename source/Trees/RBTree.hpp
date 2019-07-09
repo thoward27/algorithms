@@ -2,7 +2,10 @@
 #include <iostream>
 #include "Node.hpp"
 
-/** Red-Black Tree Class */
+/** Red-Black Tree
+ * Go to the link below for details about certain methods (e.g. rotateRight):
+ * https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf
+ */
 class RBTree {
  private:
   Node* root;
@@ -15,11 +18,45 @@ class RBTree {
    * Does nothing if the data is already in the subtree.
    */
   Node* insert(int data, Node* n);
+
+  /** rotateRight(Node* node)
+   * Performs the "rotate right" operation on node, as described in the link
+   * above.
+   * Returns the node at the same position after rotation (node->left)
+   */
   Node* rotateRight(Node* node);
+
+  /** rotateLeft(Node* node)
+   * Performs the "rotate left" operation on node, as described in the link
+   * above.
+   * Returns the node at the same position after rotation (node->right)
+   */
   Node* rotateLeft(Node* node);
+
+  /** flipColors(Node* node)
+   * Flips the colors of node and its children.
+   */
   void flipColors(Node* node);
+
+  /** fix(Node* node)
+   * Combines rotateRight, rotateLeft, and flipColors to restore RBTree
+   * properties, as described in the link above.
+   * Returns the node at the same position in the tree after fixing.
+   */
   Node* fix(Node* temp);
+
+  /** moveRedLeft(Node* temp)
+   * Performs the "move red left" operation on temp, as described in the link
+   * above.
+   * Returns the node at the same position in the tree after alteration.
+   */
   Node* moveRedLeft(Node* temp);
+
+  /** moveRedRight(Node* temp)
+   * Performs the "move red right" operation on temp, as described in the link
+   * above.
+   * Returns the node at the same position in the tree after alteration.
+   */
   Node* moveRedRight(Node* temp);
 
   /** search(int data, Node* n)
@@ -37,6 +74,18 @@ class RBTree {
    *   the pointer to the right child (successor) if n has two children.
    */
   Node* remove(int data, Node* n);
+
+  /** removeMax(Node* temp)
+   * Removes the node with the largest key from the subtree rooted at temp.
+   * Returns nullptr if temp was removed and temp otherwise.
+   */
+  Node* removeMax(Node* temp);
+
+  /** removeMin(Node* temp)
+   * Removes the node with the smallest key from the subtree rooted at temp.
+   * Returns nullptr if temp was removed and temp otherwise.
+   */
+  Node* removeMin(Node* temp);
 
   /** height(Node* n)
    * Recursively determines the height of the subtree rooted at n.
@@ -66,13 +115,28 @@ class RBTree {
    */
   void postorder(Node* n, std::ostream& oss);
 
-  Node* deleteMax(Node* temp);
-  Node* deleteMin(Node* temp, bool first);
+  /** isRed(Node* n)
+   * Checks if n is red. A null pointer is defined to not be red.
+   */
+  bool isRed(Node* n);
 
-  int min(Node* subtree, bool first);
+  /** min(Node* subtree)
+   * Finds the value of the minimum key in the subtree rooted at subtree and
+   * returns it.
+   */
+  int min(Node* subtree);
+
+  /** max(Node* subtree)
+   * Finds the value of the maximum key in the subtree rooted at subtree and
+   * returns it.
+   */
+  int max(Node* subtree);
 
  public:
+  /** Constructors */
   RBTree() { root = nullptr; };
+
+  /** Destructors */
   ~RBTree();
 
   /** insert(int data)
@@ -92,10 +156,30 @@ class RBTree {
    */
   bool search(int data) { return search(data, root); }
 
+  /** min()
+   * Finds the minimum key in the tree and returns it.
+   */
+  int min() { return min(root); }
+
+  /** max()
+   * Finds the maximum key in the tree and returns it.
+   */
+  int max() { return max(root); }
+
   /** remove(int data)
    * Removes the given data from the tree, provided it exists.
    */
-  void remove(int data) { remove(data, root); }
+  void remove(int data) { root = remove(data, root); }
+
+  /** removeMin()
+   * Removes the minimum key from the tree
+   */
+  void removeMin();
+
+  /** removeMax()
+   * Removes the maximum key from the tree
+   */
+  void removeMax();
 
   /** height()
    * Determines and returns the height of the tree.
@@ -125,8 +209,4 @@ class RBTree {
    * traversal.
    */
   void postorder(std::ostream& oss = std::cout);
-
-  void deleteMax();
-
-  void deleteMin();
 };
