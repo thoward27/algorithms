@@ -16,6 +16,12 @@ char inttochar(int x) {
   return (x >= 0 && x <= 9) ? x + 48 : throw "bad input";
 }
 
+void swap(int* a, int* b) {
+  *a ^= *b;
+  *b ^= *a;
+  *a ^= *b;
+}
+
 #if RECURSIVE
 /** Recursive Solutions
  *
@@ -218,6 +224,13 @@ int binsearch(int* arr, int lo, int hi, int key) {
 
 int binsearch(int* arr, int n, int key) {
   return binsearch(arr, 0, n, key);
+}
+
+void copy(int* A, int* B, int n) {
+  if (!n)
+    return;
+  B[0] = A[0];
+  return copy(A + 1, B + 1, n - 1);
 }
 #else
 /** Iterative Solutions
@@ -434,6 +447,11 @@ int binsearch(int* arr, int n, int key) {
       hi = idx - 1;
   }
   return -1;
+}
+
+void copy(int* A, int* B, int n) {
+  for (int i = 0; i < n; ++i)
+    B[i] = A[i];
 }
 
 #endif

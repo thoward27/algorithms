@@ -374,3 +374,21 @@ TEST_CASE("Binary Search") {
       CHECK_EQ(binsearch(arr, n, 2 * i + 1), -1);
   }
 }
+
+TEST_CASE("Copy") {
+  SUBCASE("Array") {
+    int A[] = {1, 2, 3, 4, 5};
+    int B[10];
+    copy(A, B, 5);
+    for (int i = 0; i < 5; ++i)
+      CHECK_EQ(B[i], A[i]);
+  }
+}
+
+TEST_CASE("Swap") {
+  int a = 5;
+  int b = 10;
+  swap(&a, &b);
+  CHECK_EQ(a, 10);
+  CHECK_EQ(b, 5);
+}

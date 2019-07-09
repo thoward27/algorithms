@@ -147,3 +147,11 @@ void reverse(char* arr);
  * Finds a given key in a given sorted array.
  */
 int binsearch(int* arr, int n, int key);
+
+/** Copy Array
+ * Copies an array from A to B
+ */
+void copy(int* A, int* B, int n);
+
+/** Swap */
+void swap(int* a, int* b);
