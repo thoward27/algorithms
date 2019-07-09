@@ -155,3 +155,9 @@ void copy(int* A, int* B, int n);
 
 /** Swap */
 void swap(int* a, int* b);
+
+/** Merge */
+void merge(int* arr, int n, int mid);
+
+/** Partition */
+int partition(int* arr, int lo, int hi);

@@ -22,6 +22,40 @@ void swap(int* a, int* b) {
   *a ^= *b;
 }
 
+void merge(int* arr, int n, int mid) {
+  int* temp = new int[n];
+  copy(arr, temp, n);
+
+  int j = 0;
+  int k = mid;
+  for (int i = 0; i < n; i++) {
+    // If k is consumed, or the element at j is better, take j.
+    if (k >= n || (j < mid && temp[j] <= temp[k]))
+      arr[i] = temp[j++];
+    // Otherwise take k.
+    else
+      arr[i] = temp[k++];
+  }
+  delete[] temp;
+}
+
+int partition(int* arr, int lo, int hi) {
+  int i = lo + 1, j = hi;
+  while (i <= j) {
+    while (i < hi && arr[i] <= arr[lo])
+      i++;
+    while (j > lo && arr[j] >= arr[lo])
+      j--;
+    if (j <= i) {
+      break;
+    }
+    swap(&arr[i], &arr[j]);
+  }
+  if (lo != j)
+    swap(&arr[lo], &arr[j]);
+  return j;
+}
+
 #if RECURSIVE
 /** Recursive Solutions
  *
