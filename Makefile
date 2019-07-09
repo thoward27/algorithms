@@ -1,6 +1,12 @@
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra
-TARGETS=functions sorts String SLL CSLL DLL CDLL Stack Queue Dequeue BST
+
+SORTS=bubble insertion selection merge quick tree hybrid
+LISTS=SLL CSLL DLL CDLL
+TREES=BST RBTree Trie
+ALGORITHMS=twostack
+
+TARGETS=functions $(SORTS) String $(LISTS) Stack Queue Dequeue $(TREES) $(ALGORITHMS)
 
 # Object Files
 %.o: source/*/%.cpp
@@ -11,17 +17,16 @@ functions: source/Functions/functions.test.cpp functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
-sorts: source/Sorts/sorts.test.cpp sorts.o functions.o BST.o
-	$(CXX) $(FLAGS) $^
+$(SORTS): source/Sorts/sort.test.cpp functions.o BST.o RBTree.o
+	$(CXX) $(FLAGS) $^ source/Sorts/$@.cpp
 	./a.out
 
 String: source/String/String.test.cpp String.o functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
-%: source/LinkedList/LinkedList.test.cpp source/LinkedList/%.cpp
-	$(CXX) $(FLAGS) $^
-	./a.out
+$(LISTS): source/LinkedList/LinkedList.test.cpp 
+	$(CXX) $(FLAGS) $^ source/LinkedList/$@.cpp && ./a.out
 
 Queue: source/Queue/Queue.test.cpp Queue.o $(if $(LIST),$(LIST).o,SLL.o)
 	$(CXX) $(FLAGS) $^

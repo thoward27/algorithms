@@ -16,6 +16,46 @@ char inttochar(int x) {
   return (x >= 0 && x <= 9) ? x + 48 : throw "bad input";
 }
 
+void swap(int* a, int* b) {
+  *a ^= *b;
+  *b ^= *a;
+  *a ^= *b;
+}
+
+void merge(int* arr, int n, int mid) {
+  int* temp = new int[n];
+  copy(arr, temp, n);
+
+  int j = 0;
+  int k = mid;
+  for (int i = 0; i < n; i++) {
+    // If k is consumed, or the element at j is better, take j.
+    if (k >= n || (j < mid && temp[j] <= temp[k]))
+      arr[i] = temp[j++];
+    // Otherwise take k.
+    else
+      arr[i] = temp[k++];
+  }
+  delete[] temp;
+}
+
+int partition(int* arr, int lo, int hi) {
+  int i = lo + 1, j = hi;
+  while (i <= j) {
+    while (i < hi && arr[i] <= arr[lo])
+      i++;
+    while (j > lo && arr[j] >= arr[lo])
+      j--;
+    if (j <= i) {
+      break;
+    }
+    swap(&arr[i], &arr[j]);
+  }
+  if (lo != j)
+    swap(&arr[lo], &arr[j]);
+  return j;
+}
+
 #if RECURSIVE
 /** Recursive Solutions
  *
@@ -218,6 +258,13 @@ int binsearch(int* arr, int lo, int hi, int key) {
 
 int binsearch(int* arr, int n, int key) {
   return binsearch(arr, 0, n, key);
+}
+
+void copy(int* A, int* B, int n) {
+  if (!n)
+    return;
+  B[0] = A[0];
+  return copy(A + 1, B + 1, n - 1);
 }
 #else
 /** Iterative Solutions
@@ -434,6 +481,11 @@ int binsearch(int* arr, int n, int key) {
       hi = idx - 1;
   }
   return -1;
+}
+
+void copy(int* A, int* B, int n) {
+  for (int i = 0; i < n; ++i)
+    B[i] = A[i];
 }
 
 #endif

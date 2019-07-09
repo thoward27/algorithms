@@ -6,16 +6,18 @@
  * (Avaialable here: https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf)
  * that has been translated into C++ and tweaked for the purposes of this
  * course/
+ * These sources were also taken into account:
+ * https://algs4.cs.princeton.edu/code/edu/princeton/cs/algs4/RedBlackBST.java.html
+ * https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf
  */
 
 /** Destructor */
 RBTree::~RBTree() {
-  clear();
-  root = nullptr;
+  clear(root);
 }
 
-/** RotateRight()
- * A method to rotate nodes in a RB tree in order to maintain balance
+/** rotateRight()
+ * A method to rotate nodes in an RBTree in order to maintain balance
  */
 Node* RBTree::rotateRight(Node* node) {
   Node* temp = node->left;
@@ -26,8 +28,8 @@ Node* RBTree::rotateRight(Node* node) {
   return temp;
 }
 
-/** RotateLeft()
- * A method to rotate nodes in a RB tree in order to maintain balance
+/** rotateLeft()
+ * A method to rotate nodes in an RBTree in order to maintain balance
  */
 Node* RBTree::rotateLeft(Node* node) {
   Node* temp = node->right;
@@ -38,8 +40,8 @@ Node* RBTree::rotateLeft(Node* node) {
   return temp;
 }
 
-/** FlipColors()
- * A method to flip the colors of a nodes links in order to maintain balance
+/** flipColors()
+ * A method to flip the colors of a node's links in order to maintain balance
  */
 void RBTree::flipColors(Node* node) {
   node->color = !node->color;
@@ -47,7 +49,7 @@ void RBTree::flipColors(Node* node) {
   node->right->color = !node->right->color;
 }
 
-/** Insert()
+/** insert()
  * A method to insert keys into the trees
  */
 Node* RBTree::insert(int data, Node* temp) {
@@ -69,8 +71,8 @@ void RBTree::insert(int data) {
   root = root ? insert(data, root) : new Node(data, 0);
 }
 
-/** Search()
- * A method to search a RBTree for a given key
+/** search()
+ * A method to search an RBTree for a given key
  */
 bool RBTree::search(int data, Node* n) {
   if (!n)
@@ -83,20 +85,19 @@ bool RBTree::search(int data, Node* n) {
     return search(data, n->right);
 }
 
-/** Fix()
+/** fix()
  * A method to fix the tree
  */
 Node* RBTree::fix(Node* temp) {
-  if (temp->right && temp->right->color) {
+  if (isRed(temp->right)) {
     temp = rotateLeft(temp);
   }
 
-  if (temp->left && temp->left->color && temp->left->left &&
-      temp->left->left->color) {
+  if (isRed(temp->left) && isRed(temp->left->left) ) {
     temp = rotateRight(temp);
   }
 
-  if (temp->left && temp->right && temp->left->color && temp->right->color) {
+  if (isRed(temp->left) && isRed(temp->right) ) {
     flipColors(temp);
   }
 
@@ -108,7 +109,7 @@ Node* RBTree::fix(Node* temp) {
  */
 Node* RBTree::moveRedLeft(Node* temp) {
   flipColors(temp);
-  if (temp->right->left && temp->right->left->color) {
+  if (isRed(temp->right->left)) {
     temp->right = rotateRight(temp->right);
     temp = rotateLeft(temp);
     flipColors(temp);
@@ -128,123 +129,118 @@ Node* RBTree::moveRedRight(Node* temp) {
   return temp;
 }
 
-/** Delete the tree form the root */
-void RBTree::deleteMax() {
-  root = deleteMax(root);
-  root->color = 0;
+void RBTree::removeMax() {
+  root = removeMax(root);
+  if (root) root->color = 0;
 }
 
-/** DeleteMax()
- * A method to aid in deleteing a key
- */
-Node* RBTree::deleteMax(Node* temp) {
-  if (temp->left && temp->left->color) {
+Node* RBTree::removeMax(Node* temp) {
+  if (isRed(temp->left)) {
     temp = rotateRight(temp);
   }
 
-  if (temp->right == nullptr) {
-    // delete temp;
+  if (!temp->right) {
+    delete temp;
     return nullptr;
   }
 
-  if (temp->right && !temp->right->color && temp->right->left != nullptr &&
-      !temp->right->left->color) {
+  if (!isRed(temp->right) && !isRed(temp->right->left)) {
     temp = moveRedRight(temp);
   }
 
-  temp->left = deleteMax(temp->left);
+  temp->right = removeMax(temp->right);
+
   return fix(temp);
 }
 
-/** Delete the tree form the root */
-void RBTree::deleteMin() {
-  root = deleteMin(root, 1);
-  // TODO: nullptr->color
-  root->color = 0;
+/** Delete the tree's min key from the root */
+void RBTree::removeMin() {
+  root = removeMin(root);
+  if (root) root->color = 0;
 }
 
-/** DeleteMax()
- * A method to aid in deleteing a key
+/** removeMin()
+ * A method to aid in deleting a key
  */
-Node* RBTree::deleteMin(Node* temp, bool first = 1) {
-  if (first) {
-    deleteMin(temp->right, 0);
-    return fix(temp);
-  }
-
-  if (temp->left == nullptr) {
-    // delete temp;
+Node* RBTree::removeMin(Node* temp) {
+  if(temp->left == nullptr) {
+    delete temp;
     return nullptr;
   }
 
-  if (temp->left && !temp->left->color && temp->left->left &&
-      !temp->left->left->color) {
+  if(!isRed(temp->left) && !isRed(temp->left->left) ) {
     temp = moveRedLeft(temp);
   }
 
-  temp->left = deleteMin(temp->left, 0);
+  temp->left = removeMin(temp->left);
+
   return fix(temp);
 }
 
-/** Min()
- * A method to find the successor to a node, aids in deletion
+/** max()
+ * A method to find the maximum key.
  */
-int RBTree::min(Node* subtree, bool first = 1) {
-  if (first) {
-    if (subtree->right != nullptr)
-      return min(subtree->right, 0);
-    else
-      return subtree->left->data;
-  }
-  if (subtree->left == nullptr) {
-    return subtree->data;
-  }
-  return min(subtree->left, 0);
+int RBTree::max(Node* subtree) {
+  if (subtree->right == nullptr) return subtree->data;
+  else return max(subtree->right);
 }
 
-/** Deletekey()
- * Delete a key in the tree with the given key
+
+/** min()
+ * A method to find the successor to a node (minimum key). Aids in deletion.
+ */
+int RBTree::min(Node* subtree) {
+  if (subtree->left == nullptr) return subtree->data;
+  else return min(subtree->left);
+}
+
+/** remove()
+ * Remove a key with the given data from the tree
  */
 Node* RBTree::remove(int data, Node* temp) {
-  int comparison;
-  if (temp->data == data) {
-    comparison = 0;
-  } else if (temp->data < data) {
-    comparison = 1;
-  } else {
-    comparison = -1;
-  }
-
-  if (comparison < 0) {
-    if (temp->left && !temp->left->color && temp->left->left &&
-        !temp->left->left->color) {
-      temp = moveRedLeft(temp);
-    }
+  if (data < temp->data) {
+    if (!isRed(temp->left) && !isRed(temp->left->left) ) temp = moveRedLeft(temp);
     temp->left = remove(data, temp->left);
   }
 
   else {
-    if (temp->left != nullptr && temp->left->color) {
-      temp = rotateRight(temp);
-    }
-    if (comparison == 0 && temp->right == nullptr) {
-      // maybe delete here
-      return nullptr;
+    if(isRed(temp->left)) temp = rotateRight(temp);
+
+    if(data == temp->data && (temp->right == nullptr)) {
+        delete temp;
+        return nullptr;
     }
 
-    if (temp->right != nullptr && !temp->right->color &&
-        temp->right->left != nullptr && !temp->right->left->color) {
-      temp = moveRedRight(temp);
-    }
+    if(!isRed(temp->right) && !isRed(temp->right->left)) temp = moveRedRight(temp);
 
-    if (comparison == 0) {
-      temp->right->data = min(temp->right);
-      temp->right = deleteMin(temp->right);
-    } else {
+    if(data == temp->data) {
+      temp->data = min(temp->right);
+      temp->right = removeMin(temp->right);
+    }
+    else {
       temp->right = remove(data, temp->right);
     }
   }
+
   return fix(temp);
+}
+
+/** clear(Node* n)
+ * Clear the subtree rooted at n
+ */
+void RBTree::clear(Node* n) {
+  if (!n) return;
+  clear(n->left);
+  clear(n->right);
+  delete n;
+}
+
+/** clear()
+ * Clear the whole tree
+ */
+void RBTree::clear() {
+  clear(root);
+  root = nullptr;
 }
 
 void RBTree::preorder(std::ostream& oss) {
@@ -276,18 +272,6 @@ void RBTree::inorder(std::ostream& oss) {
   oss << std::endl;
 }
 
-void RBTree::clear() {
-  clear(root);
-}
-
-void RBTree::clear(Node* n) {
-  if (!n)
-    return;
-  clear(n->left);
-  clear(n->right);
-  delete n;
-}
-
 void RBTree::postorder(Node* n, std::ostream& oss) {
   if (!n)
     return;
@@ -305,6 +289,9 @@ int RBTree::height() {
   return height(root);
 }
 
+/** height()
+ * Find the height of the tree
+ */
 int RBTree::height(Node* n) {
   if (n == nullptr)
     return -1;
@@ -313,4 +300,12 @@ int RBTree::height(Node* n) {
     int rightsub = height(n->right);
     return ((leftsub < rightsub) ? rightsub : leftsub) + 1;
   }
+}
+
+/** isRed()
+ * Checks if a node is red. A null pointer is defined to not be red.
+ */
+bool RBTree::isRed(Node* n) {
+  if(n == nullptr) return false;
+  return n->color;
 }
