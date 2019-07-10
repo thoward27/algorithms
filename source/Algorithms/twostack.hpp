@@ -4,8 +4,9 @@
 #include "../String/String.hpp"
 
 /** Djikstra's Two Stack Algorithm
- * <Place your notes and analysis here>
- * O(?)
+ * Iterates through an in-fix, fully-parenthesized, mathematical equation,
+ * utilizing two stacks to evaluate said expression efficiently.
+ * O(n)
  */
 
 bool isnum(char c) {

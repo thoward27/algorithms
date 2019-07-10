@@ -1,26 +1,30 @@
 #include "Trie.hpp"
 
+// O(1)
 Trie::Trie() {
   root = new Node(0, false);
   size = 0;
 }
 
+// O(height)
 Trie::~Trie() {
   clear(root);
 }
 
+// O(1) since we maintain size.
 int Trie::count() {
   return size;
 }
 
+// O(word)
 void Trie::put(const char* word, int val) {
   int idx;
   Node* n = root;
-  for (int i = 0; word[i]; ++i) {
+  for (int i = 0; word[i]; ++i) {  // O(word)
     idx = word[i] - 'a';
-    if (n->children[idx]) {
+    if (n->children[idx]) {  // O(1)
       n = n->children[idx];
-    } else {
+    } else {  // O(1)
       Node* next = new Node(0, false);
       n->children[idx] = next;
       n = n->children[idx];
@@ -31,6 +35,7 @@ void Trie::put(const char* word, int val) {
   ++size;
 }
 
+// O(word) but is normally sublinear for a miss.
 bool Trie::search(const char* word) {
   Node* n = root;
   for (int i = 0; word[i]; ++i) {
@@ -45,6 +50,7 @@ bool Trie::search(const char* word) {
     return false;
 }
 
+// O(word) but is normally sublinear for a miss.
 int Trie::get(const char* word) {
   Node* n = root;
   for (int i = 0; word[i]; ++i) {
@@ -59,6 +65,7 @@ int Trie::get(const char* word) {
     throw "Key not found.";
 }
 
+// O(word)
 Node* Trie::remove(const char* word, Node* n) {
   if (!word[0]) {
     if (!n->end_of_word)
@@ -81,13 +88,14 @@ Node* Trie::remove(const char* word, Node* n) {
 }
 
 void Trie::remove(const char* word) {
-  root = remove(word, root);
+  root = remove(word, root);  // O(word)
   if (!root)
-    root = new Node(0, false);
+    root = new Node(0, false);  // O(1)
 }
 
+// O(R * height)
 void Trie::clear(Node* n) {
-  for (int i = 0; i < 26; ++i) {
+  for (int i = 0; i < n->R; ++i) {
     if (n->children[i]) {
       clear(n->children[i]);
     }
@@ -95,26 +103,29 @@ void Trie::clear(Node* n) {
   delete n;
 }
 
+// O(R * height)
 void Trie::clear() {
-  clear(root);
-  root = new Node(0, false);
-  size = 0;
+  clear(root);                // O(R * height)
+  root = new Node(0, false);  // O(1)
+  size = 0;                   // O(1)
 }
 
+// O(R * height)
 void Trie::print(std::ostream& oss, Node* n, String& letters) {
   if (n->end_of_word) {
     oss << letters << ' ' << n->value << std::endl;
   }
 
-  for (int i = 0; i < 26; ++i) {
+  for (int i = 0; i < n->R; ++i) {  // O(R)
     if (n->children[i]) {
       letters.append('a' + i);
-      print(oss, n->children[i], letters);
+      print(oss, n->children[i], letters);  // O(height)
       letters.clear();
     }
   }
 }
 
+// O(R * height)
 void Trie::print(std::ostream& oss) {
   String letters;
   print(oss, root, letters);
