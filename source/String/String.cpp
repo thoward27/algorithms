@@ -280,8 +280,12 @@ String String::substr(int start, int end) const {
   return ret;
 }
 
-void String::print(std::ostream& oss) {
+void String::print(std::ostream& oss) const {
   for (int i = 0; array[i]; ++i)
     oss << array[i];
-  oss << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& oss, const String& str) {
+  str.print(oss);
+  return oss;
 }

@@ -131,5 +131,10 @@ class String {
    */
   String substr(int, int) const;
 
-  void print(std::ostream& oss = std::cout);
+  /** print(output stream)
+   * Prints the contents of the string to the given output.
+   */
+  void print(std::ostream& oss = std::cout) const;
+
+  friend std::ostream& operator<<(std::ostream& oss, const String& str);
 };

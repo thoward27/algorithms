@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 
+#include "../String/String.hpp"
+
 /** Node Class
  * These are the building blocks of the trie.
  */
@@ -12,10 +14,16 @@ class Node {
 
  public:
   Node(int d, bool eow) : value(d), end_of_word(eow) {
-    for (int i = 0; i < 26; ++i) children[i] = nullptr;
+    for (int i = 0; i < 26; ++i)
+      children[i] = nullptr;
   }
   ~Node() {}
-
+  bool any() {
+    for (int i = 0; i < 26; ++i)
+      if (children[i])
+        return true;
+    return false;
+  }
   friend class Trie;
 };
 
@@ -25,14 +33,13 @@ class Node {
  * The value associated with the string is stored in the node representing the
  * last letter of the string.
  * If the value of a Node is null the string is not in the tree.
- * Allows for efficient insert and search/data access methods.
+ * Allows for efficient put and search/data access methods.
  * Assumes all words are lowercase.
  */
 class Trie {
  private:
   Node* root;
   int size;
-  int height_upper_bound;
 
   /** remove(const char* word, Node* n)
    * Recursively searches the Trie for word, and then deletes every node used
@@ -54,19 +61,19 @@ class Trie {
    * to n are stored in the variable "letters", and the current level in the
    * Trie is stored in the variable "level".
    */
-  void print(std::ostream& oss, Node* n, char* letters, int level);
+  void print(std::ostream& oss, Node* n, String& letters);
 
  public:
   Trie();
   ~Trie();
 
-  /** insert(char* word)
+  /** put(char* word)
    * Inserts word with the associated val into the Trie.
    * If the word is already in the tree, its value is replaced with val.
    * Increases height_upper_bound to word length if
    * word length > height_upper_bound.
    */
-  void insert(const char* word, int val);
+  void put(const char* word, int val);
 
   /** count()
    * Returns the number of word in the Trie.
