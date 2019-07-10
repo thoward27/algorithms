@@ -14,23 +14,40 @@ matrix:
     - name: "All"
       env:
       - TARGET=all
-    - name: "Strings"
+    
+    - name: "String"
       env: 
       - TARGET=String
+    
     - name: "Functions"
       env:
       - TARGET=functions RECURSIVE=true
       - TARGET=functions RECURSIVE=false
+    
     - name: "Sorts"
       env:
-      - TARGET=sorts
-    - name: "LinkedList"
+      - TARGET=bubble
+      - TARGET=insertion
+      - TARGET=selection
+      - TARGET=merge
+      - TARGET=quick
+      - TARGET=tree
+      - TARGET=hybrid
+    
+    - name: "Lists"
       env:
       - TARGET=SLL
       - TARGET=CSLL
       - TARGET=DLL
       - TARGET=CDLL
-    - name: "Two Stacks"
+    
+    - name: "Trees"
+      env:
+      - TARGET=BST
+      - TARGET=RBTree
+      - TARGET=Trie
+    
+    - name: "Algorithms"
       env:
       - TARGET=twostack
 

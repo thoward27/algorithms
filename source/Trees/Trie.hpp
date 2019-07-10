@@ -8,18 +8,16 @@
  */
 class Node {
  private:
-  Node* children[26];
+  const static unsigned short R = 26;
+  Node* children[R] = {nullptr};
   int value;
   bool end_of_word;
 
  public:
-  Node(int d, bool eow) : value(d), end_of_word(eow) {
-    for (int i = 0; i < 26; ++i)
-      children[i] = nullptr;
-  }
+  Node(int d, bool eow) : value(d), end_of_word(eow) {}
   ~Node() {}
   bool any() {
-    for (int i = 0; i < 26; ++i)
+    for (int i = 0; i < R; ++i)
       if (children[i])
         return true;
     return false;
