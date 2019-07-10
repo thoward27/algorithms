@@ -44,7 +44,7 @@ calculator: calculator.cpp Stack.o SLL.o String.o functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
-%: source/*/%.test.cpp %.o functions.o Stack.o Queue.o $(if $(LIST),$(LIST).o,SLL.o)
+%: source/*/%.test.cpp %.o functions.o Stack.o Queue.o $(if $(LIST),$(LIST).o,SLL.o) String.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 

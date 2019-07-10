@@ -3,18 +3,20 @@
 Trie::Trie() {
   root = new Node(0, false);
   size = 0;
-  height_upper_bound = 0;
 }
 
 Trie::~Trie() {
   clear(root);
 }
 
-void Trie::insert(const char* word, int val) {
-  int i = 0;
+int Trie::count() {
+  return size;
+}
+
+void Trie::put(const char* word, int val) {
   int idx;
   Node* n = root;
-  while (word[i]) {
+  for (int i = 0; word[i]; ++i) {
     idx = word[i] - 'a';
     if (n->children[idx]) {
       n = n->children[idx];
@@ -23,30 +25,19 @@ void Trie::insert(const char* word, int val) {
       n->children[idx] = next;
       n = n->children[idx];
     }
-    ++i;
-  }
-  if (i > height_upper_bound) {
-    height_upper_bound = i;
   }
   n->end_of_word = true;
   n->value = val;
   ++size;
 }
 
-int Trie::count() {
-  return size;
-}
-
 bool Trie::search(const char* word) {
-  int i = 0;
-  int idx;
   Node* n = root;
-  while (word[i]) {
-    idx = word[i] - 'a';
-    if (!(n->children[idx]))
+  for (int i = 0; word[i]; ++i) {
+    if (!(n->children[word[i] - 'a']))
       return false;
-    n = n->children[idx];
-    ++i;
+    else
+      n = n->children[word[i] - 'a'];
   }
   if (n->end_of_word)
     return true;
@@ -55,15 +46,12 @@ bool Trie::search(const char* word) {
 }
 
 int Trie::get(const char* word) {
-  int i = 0;
-  int idx;
   Node* n = root;
-  while (word[i]) {
-    idx = word[i] - 'a';
-    if (!(n->children[idx]))
+  for (int i = 0; word[i]; ++i) {
+    if (n->children[word[i] - 'a'])
+      n = n->children[word[i] - 'a'];
+    else
       throw "Key not found.";
-    n = n->children[idx];
-    ++i;
   }
   if (n->end_of_word)
     return n->value;
@@ -71,25 +59,20 @@ int Trie::get(const char* word) {
     throw "Key not found.";
 }
 
-Node* Trie::remove(const char *word, Node *n) {
+Node* Trie::remove(const char* word, Node* n) {
   if (!word[0]) {
-    if (!n->end_of_word) throw "Key not found.";
+    if (!n->end_of_word)
+      throw "Key not found.";
     n->end_of_word = false;
     --size;
   } else {
-    if (!n) throw "Key not found.";
+    if (!n)
+      throw "Key not found.";
     int idx = word[0] - 'a';
     n->children[idx] = remove(word + 1, n->children[idx]);
   }
   if (!n->end_of_word) {
-    bool deletable = true;
-    for (int i = 0; i < 26; ++i) {
-      if (n->children[i]) {
-        deletable = false;
-        break;
-      }
-    }
-    if (deletable) {
+    if (!n->any()) {
       delete n;
       return nullptr;
     }
@@ -99,7 +82,8 @@ Node* Trie::remove(const char *word, Node *n) {
 
 void Trie::remove(const char* word) {
   root = remove(word, root);
-  if (!root) root = new Node(0, false);
+  if (!root)
+    root = new Node(0, false);
 }
 
 void Trie::clear(Node* n) {
@@ -115,25 +99,23 @@ void Trie::clear() {
   clear(root);
   root = new Node(0, false);
   size = 0;
-  height_upper_bound = 0;
 }
 
-void Trie::print(std::ostream& oss, Node* n, char* letters, int level) {
+void Trie::print(std::ostream& oss, Node* n, String& letters) {
   if (n->end_of_word) {
-    letters[level] = '\0';
     oss << letters << ' ' << n->value << std::endl;
   }
 
   for (int i = 0; i < 26; ++i) {
     if (n->children[i]) {
-      letters[level] = 'a' + i;
-      print(oss, n->children[i], letters, level + 1);
+      letters.append('a' + i);
+      print(oss, n->children[i], letters);
+      letters.clear();
     }
   }
 }
 
 void Trie::print(std::ostream& oss) {
-  char* letters = new char[height_upper_bound + 1];
-  print(oss, root, letters, 0);
-  delete [] letters;
+  String letters;
+  print(oss, root, letters);
 }
