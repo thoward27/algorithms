@@ -1,4 +1,5 @@
 #include "Trie.hpp"
+#include "../Functions/functions.hpp"
 
 // O(1)
 Trie::Trie() {
@@ -78,11 +79,9 @@ Node* Trie::remove(const char* word, Node* n) {
     int idx = word[0] - 'a';
     n->children[idx] = remove(word + 1, n->children[idx]);
   }
-  if (!n->end_of_word) {
-    if (!n->any()) {
-      delete n;
-      return nullptr;
-    }
+  if (!n->end_of_word && !any(n->children, n->R)) {
+    delete n;
+    return nullptr;
   }
   return n;
 }
