@@ -370,7 +370,7 @@ int frequency(int arr[], int n, int x) {
   return count;
 }
 
-long sum(int arr[], int n) {
+long sum(int* arr, int n) {
   long sum = 0;
   for (int i = 0; i < n; ++i)
     sum += arr[i];
@@ -469,18 +469,20 @@ long fibonacci(int n) {
   return a;
 }
 
+#include <iostream>
 int binsearch(int* arr, int n, int key) {
-  int lo = 0, hi = n;
-  while (lo <= hi) {
-    int idx = lo + (hi - lo) / 2;
-    if (arr[idx] == key)
-      return idx;
-    else if (arr[idx] < key)
+  if (!n)
+    throw "no elements to search";
+
+  int lo = 0, hi = n - 1, idx = n / 2;
+  while (lo < hi && arr[idx] != key) {
+    if (arr[idx] < key)
       lo = idx + 1;
     else
       hi = idx - 1;
+    idx = lo + (hi - lo) / 2;
   }
-  return -1;
+  return (arr[idx] == key) ? idx : -1;
 }
 
 void copy(int* A, int* B, int n) {

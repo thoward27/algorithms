@@ -108,7 +108,7 @@ void String::reserve(unsigned int n) {
 // O(n)
 void String::insert(char c, int index) {
   // Prepend and append as easy cases.
-  if (index < 0)
+  if (index <= 0)
     prepend(c);
   else if ((unsigned int)index >= size())
     append(c);
@@ -177,7 +177,7 @@ void String::prepend(char c) {
   if (length >= this->capacity()) {
     this->reserve((length + 1) * 2);
   }
-  for (int i = length + 1; i >= 0; --i)
+  for (int i = length + 1; i > 0; --i)
     array[i] = array[i - 1];
   array[0] = c;
   _size++;

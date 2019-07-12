@@ -77,15 +77,15 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 | Task                                                                 | Points      | Due     |
 | -------------------------------------------------------------------- | ----------- | ------- |
-| [Code Signal Practice Test](docs/bonus/B00-pretest.html)             | 20          | May 23  |
-| [Boot Linux](docs/bonus/B01-linux.html)                              | 50          | June 6  |
+| [B00: Code Signal Practice Test](docs/bonus/B00-pretest.html)        | 20          | May 23  |
+| [B01: Boot Linux](docs/bonus/B01-linux.html)                         | 50          | June 6  |
 | [Top Kattis](docs/assignments/A01-kattis.html)                       | 50, 30, 20  | May 30  |
 | [Fastest Sort](docs/assignments/A04-advanced-sort.html)              | 50, 30, 20  | June 20 |
-| [Array Based Containers](docs/bonus/B02-array-based.html)            | 50          | June 27 |
-| [Heap Implementation](docs/bonus/B03-heap.html)                      | 25          | July 3  |
+| [B02: Array Based Containers](docs/bonus/B02-array-based.html)       | 50          | June 27 |
+| [B03: Heap Implementation](docs/bonus/B03-heap.html)                 | 25          | July 3  |
 | [Additional Advanced Sorts](docs/assignments/A04-advanced-sort.html) | 50/25/15/10 | July 25 |
-| [Red/Black Tree Sort](docs/bonus/B04-rbtreesort.html)                | 100         | July 11 |
-| [Dynamic Array](docs/bonus/B05-dynarray.html)                        | 100         | July 25 |
+| [B04: Red/Black Tree Sort](docs/bonus/B04-rbtreesort.html)           | 100         | July 11 |
+| [B05: Dynamic Array](docs/bonus/B05-dynarray.html)                   | 100         | July 25 |
 
 ## Resources
 
