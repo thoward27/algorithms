@@ -8,7 +8,7 @@ Dequeue::Dequeue() {
 
 /** Destructor */
 Dequeue::~Dequeue() {
-  list->clear();
+  delete list;
 }
 
 /** size() */

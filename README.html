@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>CSC 212: Data Structures and Algorithms</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <h1 id="CSC-212-Data-Structures-and-Algorithms">CSC 212: Data Structures and Algorithms</h1>
+<p>Welcome to CSC 212, Data Structures and Algorithms!</p>
+<h2 id="Table-of-Contents">Table of Contents</h2>
+<ul>
+<li><a href="#Table-of-Contents">Table of Contents</a></li>
+<li><a href="#Important-Links">Important Links</a></li>
+<li><a href="#Schedule">Schedule</a></li>
+<li><a href="#Assignments-100-points-each">Assignments (100 points each)</a></li>
+<li><a href="#Bonus-Points">Bonus Points</a></li>
+<li><a href="#Resources">Resources</a></li>
+<li><a href="#Setup">Setup</a></li>
+<li><a href="#Working-with-Github-Classroom">Working with Github Classroom</a></li>
+<li><a href="#FAQ">FAQ</a></li>
+<li><a href="#Good-Reads">Good Reads</a></li>
+</ul>
+<h2 id="Important-Links">Important Links</h2>
+<ul>
+<li><a href="https://thoward27.github.io/algorithms/">Website</a></li>
+<li><a href="docs/syllabus.md">Syllabus</a></li>
+<li><a href="https://csc212.slack.com/">Slack Room</a></li>
+</ul>
+<hr>
+<h2 id="Schedule">Schedule</h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Lectures</th>
+<th>Readings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tue, 5/21</td>
+<td>Getting Started</td>
+<td>Accelerated C++ [0, 4], <a href="https://youtu.be/Fc9htmvVZ9U">CS50 Data Types</a></td>
+</tr>
+<tr>
+<td>Wed, 5/22</td>
+<td><a href="docs/notes/CrashCourseCPP.pdf">C++ Crash Course</a></td>
+<td>Accelerated C++ [5, 7], <a href="https://youtu.be/GiFbdVGjF9I">CS50 Variables and Scope</a></td>
+</tr>
+<tr>
+<td>Thu, 5/23</td>
+<td><a href="docs/notes/CrashCourseCPP.pdf">C++ Crash Course</a></td>
+<td>Accelerated C++ [8, 10], <a href="https://youtu.be/XISnO2YhnsY">CS50 Pointers</a></td>
+</tr>
+<tr>
+<td>Tue, 5/28</td>
+<td><a href="docs/notes/algorithms.html">Algorithms for Singular Variables</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#mathematical-background">OpenDSA 6</a>, <a href="https://youtu.be/n1glFqt3g38">CS50 Functions</a></td>
+</tr>
+<tr>
+<td>Wed, 5/29</td>
+<td><a href="docs/notes/algorithms.html">Algorithms for Arrays</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#algorithm-analysis">OpenDSA 8</a>, <a href="https://youtu.be/YdSycMcxvY0">CS50 Arrays</a></td>
+</tr>
+<tr>
+<td>Thu, 5/30</td>
+<td><a href="docs/notes/algorithms.html">Recursion</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#recursion">OpenDSA 10</a>,  <a href="https://youtu.be/mz6tAJMVmfM">CS50 Recursion</a>, <a href="https://youtu.be/aCPkszeKRa4">CS50 Stack Frames</a></td>
+</tr>
+<tr>
+<td>Tue, 6/4</td>
+<td><a href="docs/notes/sorting.html">Sorting / Bubble Sort</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#sorting">OpenDSA 13.1, 13.2, 13.4</a>,  <a href="https://youtu.be/RT-hUXUWQ2I">CS50 Bubble Sort</a></td>
+</tr>
+<tr>
+<td>Wed, 6/5</td>
+<td><a href="docs/notes/sorting.html">Insertion Sort / Selection Sort</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#sorting">OpenDSA 13.3, 13.5</a>, <a href="https://youtu.be/O0VbBkUvriI">CS50 Insertion Sort</a>, <a href="https://youtu.be/3hH8kTHFw2A">CS50 Selection Sort</a></td>
+</tr>
+<tr>
+<td>Thu, 6/6</td>
+<td><a href="docs/notes/sorting.html">MergeSort</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#sorting">OpenDSA 13.9</a>, <a href="https://youtu.be/Ns7tGNbtvV4">CS50 MergeSort</a></td>
+</tr>
+<tr>
+<td>Tue, 6/11</td>
+<td><a href="docs/notes/sorting.html">QuickSort</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#sorting">OpenDSA 13.11</a>,</td>
+</tr>
+<tr>
+<td>Wed, 6/12</td>
+<td>Sorting &amp; Analysis Review</td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/">OpenDSA 6, 8, 10, 13</a></td>
+</tr>
+<tr>
+<td>Thu, 6/13</td>
+<td><a href="docs/exams/E01R.md">Exam 01 Review</a>, <a href="docs/exams/E01RA.md">Answers</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Tue, 6/18</td>
+<td><a href="docs/notes/linear.html">SLL</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#linear-structures">OpenDSA 9.1-9.5</a>, <a href="https://youtu.be/zQI3FyWm144">CS50 SLL</a></td>
+</tr>
+<tr>
+<td>Wed, 6/19</td>
+<td><a href="docs/notes/linear.html">CSLL / DLL / CDLL</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#linear-structures">OpenDSA 9.6</a>, <a href="https://youtu.be/FHMPswJDCvU">CS50 DLL</a></td>
+</tr>
+<tr>
+<td>Thu, 6/20</td>
+<td><a href="docs/notes/linear.html">Stacks</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#linear-structures">OpenDSA 9.8, 9.9</a>, <a href="https://youtu.be/hVsNqhEthOk">CS50 Stacks</a></td>
+</tr>
+<tr>
+<td>Tue, 6/25</td>
+<td><a href="docs/notes/linear.html">Queues</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#linear-structures">OpenDSA 9.12, 9.13</a>, <a href="https://youtu.be/3TmUv1uS92s">CS50 Queues</a></td>
+</tr>
+<tr>
+<td>Wed, 6/26</td>
+<td><a href="docs/notes/trees.html">Trees / Binary Trees</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#binary-trees">OpenDSA 12.1-12.13</a></td>
+</tr>
+<tr>
+<td>Thu, 6/27</td>
+<td><a href="docs/notes/trees.html#/2">Binary Trees</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#binary-trees">OpenDSA 12.14-12.16</a></td>
+</tr>
+<tr>
+<td>Tue, 7/2</td>
+<td><a href="docs/notes/trees.html#/3">Heaps</a></td>
+<td><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#binary-trees">OpenDSA 12.17</a></td>
+</tr>
+<tr>
+<td>Wed, 7/3</td>
+<td><a href="https://algs4.cs.princeton.edu/lectures/33BalancedSearchTrees-2x2.pdf">2-3 Tree / Red Black Tree</a></td>
+<td><a href="odsa17">OpenDSA 17.5</a>, <a href="https://algs4.cs.princeton.edu/33balanced/">Balanced Search Trees</a></td>
+</tr>
+<tr>
+<td>Fri, 7/5</td>
+<td><a href="https://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf">Red Black Tree</a></td>
+<td><a href="https://www.cs.princeton.edu/~rs/talks/LLRB/LLRB.pdf">LLRB Tree</a></td>
+</tr>
+<tr>
+<td>Tue, 7/9</td>
+<td><a href="https://algs4.cs.princeton.edu/lectures/52Tries-2x2.pdf">Tries</a></td>
+<td><a href="odsa12">OpenDSA 12.19</a>, <a href="https://en.wikipedia.org/wiki/Trie">Wikipedia</a></td>
+</tr>
+<tr>
+<td>Wed, 7/10</td>
+<td><a href="docs/exams/E02R.md">Data Structures Review</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Thu, 7/11</td>
+<td>Exam (Data Structures)</td>
+<td></td>
+</tr>
+<tr>
+<td>Tue, 7/16</td>
+<td><a href="https://algs4.cs.princeton.edu/lectures/34HashTables-2x2.pdf">Hash Tables</a></td>
+<td></td>
+</tr>
+<tr>
+<td>Wed, 7/17</td>
+<td>Graphs</td>
+<td></td>
+</tr>
+<tr>
+<td>Thu, 7/18</td>
+<td>Recursive Backtracking</td>
+<td></td>
+</tr>
+<tr>
+<td>Tue, 7/23</td>
+<td>Dynamic Programming</td>
+<td></td>
+</tr>
+<tr>
+<td>Wed, 7/24</td>
+<td>Course Review</td>
+<td></td>
+</tr>
+<tr>
+<td>Thu, 7/25</td>
+<td>Final Exam (Cumulative)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Assignments-100-points-each">Assignments (100 points each)</h2>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Due Date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="docs/assignments/A01-kattis.md">A01: Kattis Competition</a></td>
+<td>May 30</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A02-string.md">A02: String Class</a></td>
+<td>June 6</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A03-hybrid-sort.md">A03: Hybrid Sorting</a></td>
+<td>June 13</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A04-advanced-sort.md">A04: Advanced Sorting</a></td>
+<td>June 20</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A05-two-stack.md">A05: Djikstra's Two Stack</a></td>
+<td>June 27</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A06-binary.html">A06: Tree Sort</a></td>
+<td>July 2</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A07-heapsort.html">A07: Heap Sort</a></td>
+<td>July 11</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A10-lexicographic.html">A08: Lexographic Sorting</a></td>
+<td>July 18</td>
+</tr>
+<tr>
+<td><a href="">A09: Spellchecker</a></td>
+<td>July 25</td>
+</tr>
+<tr>
+<td><a href="">A10: Sudoku</a></td>
+<td>Final</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Bonus-Points">Bonus Points</h2>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Points</th>
+<th>Due</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="docs/bonus/B00-pretest.html">B00: Code Signal Practice Test</a></td>
+<td>20</td>
+<td>May 23</td>
+</tr>
+<tr>
+<td><a href="docs/bonus/B01-linux.html">B01: Boot Linux</a></td>
+<td>50</td>
+<td>June 6</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A01-kattis.html">Top Kattis</a></td>
+<td>50, 30, 20</td>
+<td>May 30</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A04-advanced-sort.html">Fastest Sort</a></td>
+<td>50, 30, 20</td>
+<td>June 20</td>
+</tr>
+<tr>
+<td><a href="docs/bonus/B02-array-based.html">B02: Array Based Containers</a></td>
+<td>50</td>
+<td>June 27</td>
+</tr>
+<tr>
+<td><a href="docs/bonus/B03-heap.html">B03: Heap Implementation</a></td>
+<td>25</td>
+<td>July 3</td>
+</tr>
+<tr>
+<td><a href="docs/assignments/A04-advanced-sort.html">Additional Advanced Sorts</a></td>
+<td>50/25/15/10</td>
+<td>July 25</td>
+</tr>
+<tr>
+<td><a href="docs/bonus/B04-rbtreesort.html">B04: Red/Black Tree Sort</a></td>
+<td>100</td>
+<td>July 11</td>
+</tr>
+<tr>
+<td><a href="docs/bonus/B05-dynarray.html">B05: Dynamic Array</a></td>
+<td>100</td>
+<td>July 25</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Resources">Resources</h2>
+<ul>
+<li><a href="https://devdocs.io/">DevDocs</a></li>
+<li>Cheat Sheets
+<ul>
+<li><a href="docs/cheat_sheets/git-cheat-sheet-education.pdf">Git</a></li>
+<li><a href="docs/cheat_sheets/github-git-cheat-sheet.pdf">Github</a></li>
+<li>VS Code
+<ul>
+<li><a href="docs/cheat_sheets/vscode-linux.pdf">Linux</a></li>
+<li><a href="docs/cheat_sheets/vscode-macos.pdf">Mac OS</a></li>
+<li><a href="docs/cheat_sheets/vscode-windows.pdf">Windows</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Visualizations
+<ul>
+<li><a href="https://www.cs.usfca.edu/~galles/visualization/Algorithms.html">Visualizations</a></li>
+<li><a href="https://visualgo.net/en">Visualgo</a></li>
+</ul>
+</li>
+<li>Books
+<ul>
+<li><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/">OpenDSA</a></li>
+<li><a href="https://algs4.cs.princeton.edu/home/">Algorithms</a></li>
+<li><a href="https://www.google.com/search?q=accelerated+c%2B%2B&amp;oq=accelerated+c%2B%2B&amp;aqs=chrome..69i57j69i60j0l4.2026j0j7&amp;client=ubuntu&amp;sourceid=chrome&amp;ie=UTF-8">Accelerated C++</a></li>
+</ul>
+</li>
+<li>Videos
+<ul>
+<li><a href="https://www.youtube.com/channel/UCcabW7890RKJzL968QWEykA">CS50</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo">Crash Course Computer Science</a></li>
+<li><a href="https://www.youtube.com/user/MIT">MIT OpenCourseWare</a></li>
+</ul>
+</li>
+<li>Interactive Online Learning
+<ul>
+<li><a href="https://www.khanacademy.org/computing/computer-science">Khan Academy Computer Science</a></li>
+<li><a href="https://www.freecodecamp.org/">FreeCodeCamp</a></li>
+</ul>
+</li>
+<li>Problem Solving Practice
+<ul>
+<li><a href="https://codesignal.com/">Code Signal</a></li>
+<li><a href="https://open.kattis.com/">Kattis</a></li>
+</ul>
+</li>
+<li>Learning C++
+<ul>
+<li><a href="http://www.cplusplus.com/doc/tutorial/">cplusplus Tutorial</a></li>
+<li><a href="https://www.codecademy.com/learn/learn-c-plus-plus">Codecademy</a></li>
+<li><a href="https://www.youtube.com/watch?v=-ofiQpm3Kmo">FreeCodeCamp (YouTube)</a></li>
+<li><a href="https://www.udemy.com/share/1001No/">C++, Short and Sweet (Udemy)</a></li>
+<li><a href="https://www.udemy.com/free-learn-c-tutorial-beginners/">C++ For Complete Beginners (Udemy)</a></li>
+<li><a href="https://www.udacity.com/course/c-plus-plus-nanodegree--nd213">Udacity Nanodegree (non-free)</a></li>
+<li><a href="https://www.udemy.com/share/10079O/">Learn C++ by Creating (Udemy non-free)</a></li>
+<li><a href="https://www.learncpp.com/">LearnCPP</a></li>
+<li><a href="https://www.udemy.com/share/100nB6/">C++ Programming Basics (Udemy non-free)</a></li>
+<li><a href="https://www.sololearn.com/Course/CPlusPlus/">Sololearn</a></li>
+<li><a href="https://www.udemy.com/share/1002YA/">C++ Templates</a></li>
+<li><a href="https://www.udemy.com/share/1000MS/">Learn Advanced C++ Programming (udemy non-free)</a></li>
+</ul>
+</li>
+<li>Learning Git &amp; Github
+<ul>
+<li><a href="https://guides.github.com/activities/hello-world/">Github Hello World</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Setup">Setup</h2>
+<h3 id="Github">Github</h3>
+<p><a href="https://guides.github.com/introduction/git-handbook/">View the official Handbook</a></p>
+<h4 id="Students">Students</h4>
+<ol>
+<li>Create a fork.
+<ol>
+<li>Visit the public repository's <a href="https://github.com/thoward27/algorithms">website</a></li>
+<li>Fork the repository (Button on the top right)</li>
+</ol>
+</li>
+<li>Clone your fork.
+<ol>
+<li>Navigate to your Github profile</li>
+<li>Select your copy of the <code>algorithms</code> repository</li>
+<li>Get the link to your repository from the big green button on the right side of the page.</li>
+<li>In your terminal, navigate to where you'd like to save your work</li>
+<li>Execute <code>git clone &lt;your_repository_link_goes_here&gt;</code></li>
+</ol>
+</li>
+<li>Configure your new repository.
+<ol>
+<li>CD into the freshly cloned repository (<code>cd algorithms</code>)</li>
+<li><a href="https://help.github.com/en/articles/configuring-a-remote-for-a-fork">Configure a remote for your fork</a>
+<ol>
+<li>Run <code>git remote add upstream https://github.com/thoward27/algorithms.git</code></li>
+</ol>
+</li>
+<li>Make sure when you run <code>git remote -v</code> you see <code>upstream</code> with a link to my copy of <code>algorithms</code> (<code>https://github.com/thoward27/algorithms.git</code>)</li>
+</ol>
+</li>
+<li>Procedure for doing classwork.
+<ol>
+<li>Ensure that you've committed all of your work to your current branch (<strong>which should not be master</strong>)
+<ol>
+<li>Add your current changes: <code>git add .</code></li>
+<li>Commit your changes: <code>git commit -m &quot;&lt;your message here&gt;&quot;</code></li>
+</ol>
+</li>
+<li>Now that you're in a clean state, checkout the master branch: <code>git checkout master</code></li>
+<li>In order to get the most recent changes from the class repository, you must update your repository:
+<ol>
+<li>Fetch upstream changes: <code>git fetch upstream</code></li>
+<li>Merge upstream changes into master: <code>git merge upstream/master</code></li>
+<li>For good measure, you should also push these new changes to your online copy of the repository: <code>git push</code></li>
+</ol>
+</li>
+<li>At this point you should be on master, with all updates from the class repository.</li>
+<li>Create a new branch for your work <code>git checkout -b lab/&lt;topic&gt;</code></li>
+<li>Publish your changes with <code>git push -u origin lab/&lt;topic&gt;</code></li>
+<li>Do your work, committing and pushing regularly, especially after passing any new unit tests
+<ol>
+<li>Add your changes: <code>git add .</code></li>
+<li>Commit your changes: <code>git commit -m &quot;&lt;your message here&gt;&quot;</code></li>
+<li>Push your changes: <code>git push</code></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Opening a Pull Request
+<ol>
+<li><strong>You should only do this with explicit permission</strong></li>
+<li>Navigate to your Github profile, and select the <code>algorithms</code> repository.</li>
+<li>Select the branch you'd like to open a pull request from (normally the one from that days work)</li>
+<li>Select &quot;Open a Pull Request&quot;</li>
+<li>In the message, put all of your groups URI Emails so that I can update my grade book</li>
+</ol>
+</li>
+</ol>
+<h4 id="TAs">TAs</h4>
+<ol>
+<li>Clone the public repository (<code>git clone git@github.com:thoward27/algorithms.git</code>)</li>
+<li>CD into the repo (<code>cd algorithms</code>)</li>
+<li>Add the private remote (<code>git remote add private git@github.com:thoward27/_algorithms.git</code>)</li>
+<li>Fetch from the remote (<code>git fetch private</code>)</li>
+<li>Checkout dev to work (<code>git checkout dev</code>), merge to master when you're ready to publish.</li>
+</ol>
+<blockquote>
+<p>Be sure that when you're dealing with solutions, or WIP, that you ensure you push only to private. The branch Dev should never be pushed to the public facing repo, accidental pushes will be hard wiped immediately, <strong>all data will be lost</strong>.</p>
+</blockquote>
+<h3 id="IDE">IDE</h3>
+<h4 id="Linux-Preferred-Auto-grader-OS">Linux (Preferred, Auto-grader OS)</h4>
+<p>This is the operating system we prefer in this class, as it closely mirrors your auto-grader environment.</p>
+<p><a href="https://code.visualstudio.com/">VSCode</a></p>
+<h4 id="Windows-10">Windows 10</h4>
+<p><a href="https://code.visualstudio.com/docs/remote/wsl">VS Code via WSL</a></p>
+<h4 id="Windows-8-and-older">Windows 8 and older</h4>
+<p>Please boot linux, Windows 8 and older is extremely challenging to develop C++ on.</p>
+<p>If you insist on using Windows 8, you will need to install <a href="https://www.cygwin.com/">Cygwin</a>, or you will have to buy an online IDE license.</p>
+<p><a href="https://code.visualstudio.com/">VS Code</a>
+Requirement: <a href="https://www.cygwin.com/">Cygwin</a></p>
+<h4 id="Mac-OS">Mac OS</h4>
+<p>In order of preference:</p>
+<ol>
+<li><a href="https://coder.com">Coder</a>
+<ol>
+<li>Requirement: <a href="https://docs.docker.com/docker-for-mac/install/">Docker</a></li>
+</ol>
+</li>
+<li><a href="https://code.visualstudio.com/">VS Code</a></li>
+</ol>
+<h4 id="Online-IDEs">Online IDEs</h4>
+<p>This section contains some helpful online IDEs that can be used for in-class work, but may not be used for homework without purchasing an upgrade.</p>
+<blockquote>
+<p>You may not work on homework in any of these IDEs unless you upgrade your license, you must work in private repositories for homework.</p>
+</blockquote>
+<ol>
+<li><a href="https://www.gitpod.io/">Gitpod</a></li>
+<li><a href="https://repl.it/">repl</a></li>
+<li><a href="https://stackblitz.com/">StackBlitz</a></li>
+</ol>
+<h2 id="Working-with-Github-Classroom">Working with Github Classroom</h2>
+<ol>
+<li>Registering for the assignment
+<ol>
+<li>Click on the link to the assignment</li>
+<li>Make sure you select your email from the roster if you have not already</li>
+<li>Accept the assignment</li>
+<li>Click on the link after the text &quot;Your assignment has been created here:&quot;</li>
+</ol>
+</li>
+<li>Clone your assignment to your computer
+<ol>
+<li>Go to the page for your assignment</li>
+<li>Select &quot;Clone or download&quot; (big green button)</li>
+<li>Copy the link</li>
+<li>Open a terminal and navigate to the <code>algorithms</code> folder</li>
+<li>Use the command <code>cd ..</code> to step out of the algorithms folder</li>
+<li>Clone your repository <code>git clone &lt;your link goes here&gt;</code></li>
+<li><code>cd</code> into your new folder: <code>cd &lt;your assignment folder&gt;</code></li>
+<li>Open this folder in VS Code</li>
+</ol>
+</li>
+<li>Completing your assignment
+<ol>
+<li>Following the instructions for the assignment, being working on the provided unit tests.</li>
+<li>After passing each unit test, commit and push your progress.
+<ol>
+<li>Stage your changes: <code>git add .</code></li>
+<li>Commit your work: <code>git commit -m &quot;&lt;Name of the test case you just passed&gt;&quot;</code></li>
+<li>Push your work to Github: <code>git push</code></li>
+</ol>
+</li>
+<li>Check that your submission worked by visiting the online copy of your assignment, and verifying your changes were pushed.</li>
+</ol>
+</li>
+</ol>
+<h2 id="FAQ">FAQ</h2>
+<ul>
+<li>Why isn't my code compiling?
+<ul>
+<li>Are all expected methods/functions declared <strong>and</strong> defined?</li>
+<li>Are your methods namespaced properly?</li>
+<li>Are you on Mac? Try using <code>-std=c++11</code></li>
+<li>What do the errors say?</li>
+</ul>
+</li>
+<li>Can I add attribute <code>x</code> to my class?
+<ul>
+<li>Yes, you are welcome to modify all private sections to any class we create.</li>
+</ul>
+</li>
+<li>What libraries can I use?
+<ul>
+<li><code>iostream</code>, <code>chrono</code></li>
+<li>Anything we have already built (you have to source it from our repository)</li>
+</ul>
+</li>
+<li>Why doesn't <code>make</code> work?
+<ul>
+<li>Fix script: <code>sudo apt-get update &amp;&amp; sudo apt-get upgrade &amp;&amp; sudo apt install make &amp;&amp; sudo apt install g++-8</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="Good-Reads">Good Reads</h2>
+<ul>
+<li><a href="https://bost.ocks.org/mike/algorithms/">Visualizing Algorithms</a></li>
+<li><a href="http://www.kristenwebster.net/">Algorithmic Art</a></li>
+</ul>
+<!-- Sources -->
+
+    </body>
+    </html>
