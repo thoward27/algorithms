@@ -370,8 +370,7 @@ int frequency(int arr[], int n, int x) {
   return count;
 }
 
-template <class T>
-long sum(T* arr, int n) {
+long sum(int* arr, int n) {
   long sum = 0;
   for (int i = 0; i < n; ++i)
     sum += arr[i];
