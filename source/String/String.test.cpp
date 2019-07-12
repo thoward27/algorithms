@@ -210,3 +210,10 @@ TEST_CASE("To Int") {
     CHECK_THROWS(s.toInt());
   }
 }
+
+TEST_CASE("pop_back") {
+  String s((char*)"boop");
+  CHECK_EQ(s.pop_back(), 'p');
+  CHECK_THROWS(s.at(3));
+  CHECK_EQ(s.at(2), 'o');
+}

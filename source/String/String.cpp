@@ -11,6 +11,7 @@ String::String() {
 
   // Adjust private variables.
   _capacity = 0;
+  _size = 0;
 }
 
 // O(1)
@@ -24,6 +25,7 @@ String::String(char c) {
 
   // Adjust private variables.
   _capacity = 1;
+  _size = 1;
 }
 
 // O(n)
@@ -42,6 +44,7 @@ String::String(char* str) {
 
   // Adjust private variables.
   _capacity = length;
+  _size = length;
 }
 
 // O(1)
@@ -60,14 +63,12 @@ char String::at(int index) const {
 void String::clear() {
   for (unsigned int i = 0; i < _capacity; ++i)
     array[i] = '\0';
+  _size = 0;
 }
 
 // O(n)
 unsigned int String::size() const {
-  int length = 0;
-  while (array[length])
-    ++length;
-  return length;
+  return _size;
 }
 
 // O(1)
@@ -121,6 +122,7 @@ void String::insert(char c, int index) {
       array[i] = array[i - 1];
     // Insert our new character.
     array[index] = c;
+    _size++;
   }
   return;
 }
@@ -135,6 +137,8 @@ void String::erase(char c) {
   for (int i = 0, j = 0; i <= length; ++i) {
     if (array[i] != c)
       _array[j++] = array[i];
+    else
+      _size--;
   }
 
   // Remove the old array.
@@ -149,6 +153,7 @@ void String::remove(int index) {
   int length = this->size();
   for (int i = index; i < length; ++i)
     array[i] = array[i + 1];
+  _size--;
   return;
 }
 
@@ -162,6 +167,7 @@ void String::append(char c) {
   }
   array[length] = c;
   array[length + 1] = 0;
+  _size++;
   return;
 }
 
@@ -174,6 +180,7 @@ void String::prepend(char c) {
   for (int i = length + 1; i >= 0; --i)
     array[i] = array[i - 1];
   array[0] = c;
+  _size++;
   return;
 }
 
@@ -207,6 +214,7 @@ void String::concatenate(char* str) {
   for (unsigned int i = length, j = 0; i <= length + strlen; ++i, ++j) {
     this->array[i] = str[j];
   }
+  _size += strlen;
   return;
 }
 
@@ -288,4 +296,12 @@ void String::print(std::ostream& oss) const {
 std::ostream& operator<<(std::ostream& oss, const String& str) {
   str.print(oss);
   return oss;
+}
+
+char String::pop_back() {
+  if (empty())
+    throw "Nothing to pop";
+  char c = array[_size - 1];
+  array[_size--] = '\0';
+  return c;
 }

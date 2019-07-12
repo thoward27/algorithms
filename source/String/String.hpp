@@ -5,6 +5,7 @@ class String {
  private:
   char* array;
   unsigned int _capacity;
+  unsigned int _size;
 
  public:
   /** Constructors */
@@ -68,6 +69,11 @@ class String {
    * O(?)
    */
   void remove(int);
+
+  /** pop_back
+   * Pops the last character off.
+   */
+  char pop_back();
 
   /** append(char)
    * Appends the given character to the string.
@@ -135,6 +141,11 @@ class String {
    * Prints the contents of the string to the given output.
    */
   void print(std::ostream& oss = std::cout) const;
+
+  /** cstr()
+   * Returns a c-style string.
+   */
+  char* cstr() const { return this->array; };
 
   friend std::ostream& operator<<(std::ostream& oss, const String& str);
 };

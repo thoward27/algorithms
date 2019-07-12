@@ -8,7 +8,7 @@
 #include <numeric>
 #include <vector>
 
-#define CASES 11
+#define CASES 1100
 
 /** Input Types */
 namespace fill {
@@ -43,7 +43,7 @@ inline bool increasing(int* arr, int n) {
 }
 
 typedef void (*fill_fn)(int*, int, int);
-fill_fn fillers[] = {fill::random, fill::ascending, fill::descending,
+fill_fn fillers[] = {fill::random, fill::descending, fill::ascending,
                      fill::equal};
 char filler_names[][20] = {"Random", "Ascending", "Descending", "Equal"};
 
@@ -51,18 +51,18 @@ TEST_CASE("Sorting") {
   for (size_t i = 0; i < sizeof(fillers) / sizeof(fill_fn); ++i) {
     SUBCASE(filler_names[i]) {
       for (int shift = -1000; shift <= 1000; shift += 500) {
-        for (int n = 1; n < CASES; ++n) {
+        for (int n = 1; n <= CASES; n = n * 2 + !(rand() % 2)) {
           int arr[n];
           fillers[i](arr, n, shift);
 
-          int freq[6000] = {};
+          unsigned int freq[10000] = {};
           for (int i = 0; i < n; ++i)
-            freq[arr[i] + 2000] += 1;
+            freq[arr[i] + 5000] += 1;
 
           sort(arr, n);
 
           for (int i = 0; i < n; ++i)
-            freq[arr[i] + 2000] -= 1;
+            freq[arr[i] + 5000] -= 1;
 
           REQUIRE(increasing(arr, n));
           REQUIRE(sum(freq, 6000) == 0);

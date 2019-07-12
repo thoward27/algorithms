@@ -16,12 +16,7 @@ class Node {
  public:
   Node(int d, bool eow) : value(d), end_of_word(eow) {}
   ~Node() {}
-  bool any() {
-    for (int i = 0; i < R; ++i)
-      if (children[i])
-        return true;
-    return false;
-  }
+
   friend class Trie;
 };
 
