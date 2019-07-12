@@ -119,7 +119,7 @@ void Trie::print(std::ostream& oss, Node* n, String& letters) {
     if (n->children[i]) {
       letters.append('a' + i);
       print(oss, n->children[i], letters);  // O(height)
-      letters.clear();
+      letters.pop_back();
     }
   }
 }

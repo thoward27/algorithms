@@ -48,6 +48,10 @@ calculator: calculator.cpp Stack.o SLL.o String.o functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
+lexographic: source/Algorithms/lexographic.test.cpp String.o functions.o Trie.o
+	$(CXX) $(FLAGS) $^
+	./a.out
+
 %: source/Algorithms/%.test.cpp functions.o Stack.o Queue.o String.o $(if $(LIST),$(LIST).o,SLL.o)
 	$(CXX) $(FLAGS) $^
 	./a.out
