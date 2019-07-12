@@ -40,6 +40,15 @@ This assignment will be hosted on Github Classroom.
 | Analysis               | 10     |
 | Quality                | 10     |
 
+## Bonus
+
+For this assignment, you may accrue an additional 25 bonus points by implementing the `Burstsort` algorithm, which is a slightly more advanced implementation of lexicographic sorting.
+
+### Resources
+
+- [The paper that introduced burtsort](https://people.eng.unimelb.edu.au/jzobel/fulltext/acmjea04.pdf)
+- [Wikipedia Entry](https://en.wikipedia.org/wiki/Burstsort)
+
 ## Submission
 
 Submissions are handled by Github Classroom.
