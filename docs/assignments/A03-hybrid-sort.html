@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Assignment 03: Hybrid Sorting</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <h1 id="Assignment-03-Hybrid-Sorting">Assignment 03: Hybrid Sorting</h1>
+<p>For this assignment you will have to create a hybrid sorting algorithm.
+A hybrid sorting algorithm is one that combines two different algorithms such as MergeSort + Bubble, or QuickSort + Selection.
+When creating a hybrid sorting algorithm, you are exploiting the benefits of both, while avoiding the worst cases.</p>
+<p>Continuing the example of MergeSort + Bubble Sort, one approach could be letting MergeSort split the list into smaller chunks, then allowing Bubble Sort to sort those small chunks.
+The reason for this, is that MergeSort may have an extremely high constant value, meaning that for low values of <code>n</code>, bubble sort may actually be faster!</p>
+<blockquote>
+<p>Need a refresher on this? See our notes on <a href="docs/notes/functions.html">functions</a></p>
+</blockquote>
+<h2 id="Instructions">Instructions</h2>
+<p>This assignment will be hosted on Github Classroom.</p>
+<ol>
+<li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/ztjoUAr2">this link</a>
+<ol>
+<li>Be sure to select your name from the list to link your Github to the class roster!</li>
+</ol>
+</li>
+<li>Clone the repository to your machine
+<ol>
+<li>Open a terminal</li>
+<li>Navigate to your algorithms folder</li>
+<li>Go to the parent directory (<code>cd ..</code>)</li>
+<li>Clone the repository to this location (<code>git clone &lt;Link to your repository&gt;</code>)
+<ol>
+<li>Be sure to use the link for <strong>your copy</strong> of the repository</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Getting things in order
+<ol>
+<li>Open your new folder in VS Code</li>
+<li>Begin by creating a new file <code>source/Sorts/hybrid.cpp</code>.
+<ol>
+<li>Within this file, create the definition for your hybrid sorting algorithm: <code>void sort(int*, int) {}</code></li>
+</ol>
+</li>
+<li>Check your work by compiling and running your code (<code>make hybrid</code>)</li>
+<li>Make sure the code compiled and ran, and that the unit tests for your function failed.</li>
+<li>Commit and push your code (<code>git add . &amp;&amp; git commit -m &quot;&lt;message&gt;&quot; &amp;&amp; git push</code>)</li>
+<li>Check the online copy of your repository to make sure these changes were actually pushed</li>
+</ol>
+</li>
+<li>Implement your algorithm (50 points)
+<ol>
+<li>Select the algorithms you'd like to combine</li>
+<li>Decide when each algorithm should fire (maybe cases depending on the size of n)</li>
+<li>Write pseudocode for your algorithm</li>
+<li>Commit and push this pseudocode</li>
+<li>Implement your pseudocode in C++
+<ol>
+<li>Remember that to use another sorting algorithm you must import it into it's own namespace.</li>
+</ol>
+</li>
+<li>Pass all unit tests</li>
+<li>Commit and push your code</li>
+</ol>
+</li>
+<li>Analyze your work (40 points)
+<ol>
+<li>Provide your algorithms' Big-Oh, Omega, and Theta notation</li>
+<li>Explain and justify your decisions for when certain algorithms are called
+<ol>
+<li>Provide theoretical and empirical reasoning for full credit</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Submission">Submission</h2>
+<p>To submit this assignment, simply commit and push your work to your assignment repository.
+Your last submission before the deadline will be graded.</p>
+<h2 id="Grading">Grading</h2>
+<p>For this assignment, 50 points will be awarded for functionality, 40 for your analysis, and 10 for readability.</p>
+
+    </body>
+    </html>

@@ -23,21 +23,21 @@ This assignment will be hosted on Github Classroom.
       1. Be sure to use the link for **your copy** of the repository
 3. Getting things in order
    1. Open your new folder in VS Code
-   2. Begin by creating a signature and dummy definition for your Hybrid Sorting function.
-      1. Your signature should take an array as input, along with the number of elements, and return nothing.
-      2. Your dummy definition should just be a blank return statement.
-   3. Check your work by compiling and running your code (`g++ -std=c++11 source/sorts.cpp && ./a.out`)
+   2. Begin by creating a new file `source/Sorts/hybrid.cpp`.
+      1. Within this file, create the definition for your hybrid sorting algorithm: `void sort(int*, int) {}`
+   3. Check your work by compiling and running your code (`make hybrid`)
    4. Make sure the code compiled and ran, and that the unit tests for your function failed.
-   5. Commit and push these changes (`git add . && git commit -m "<message>" && git push`)
+   5. Commit and push your code (`git add . && git commit -m "<message>" && git push`)
    6. Check the online copy of your repository to make sure these changes were actually pushed
 4. Implement your algorithm (50 points)
    1. Select the algorithms you'd like to combine
    2. Decide when each algorithm should fire (maybe cases depending on the size of n)
    3. Write pseudocode for your algorithm
-   4. Commit and push this pseudocode (`git add . && git push`)
+   4. Commit and push this pseudocode
    5. Implement your pseudocode in C++
+      1. Remember that to use another sorting algorithm you must import it into it's own namespace.
    6. Pass all unit tests
-   7. Commit and push your code (`git add . && git push`)
+   7. Commit and push your code
 5. Analyze your work (40 points)
    1. Provide your algorithms' Big-Oh, Omega, and Theta notation
    2. Explain and justify your decisions for when certain algorithms are called

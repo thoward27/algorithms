@@ -32,16 +32,21 @@ This assignment will be hosted on Github Classroom.
    4. Clone the repository to this location (`git clone <your repository link here>`)
 3. Getting things in order
    1. Open your new folder in VS Code
-   2. Check that you can compile and run the unit tests for the sorting algorithms (`make sorts`)
-4. Implement Heap Sort **Commit and Push your work after each task**
-   1. Add the signature for `heapsort` to `sorts.hpp` (`heapsort(int*, int)`)
-   2. Add a unit test to `sorts.test.cpp` for `heapsort`
-   3. Create a docstring for your implementation
-   4. In your docstring, detail your pseudocode for `heapsort`
-   5. Implement `heapsort`
-   6. Analyze the function you just created, noting the runtimes per line
-   7. Present your Big-Oh analysis for the best and worst case at the bottom of your docstring
-5. Submit your work (`git add . && git commit -m "Done" && git push`)
+   2. Begin by creating a new file `source/Sorts/heap.cpp`
+      1. Within this file, create the defition for your heap sort algorithm.
+   3. Check that you can compile and run the unit tests for heap sort (`make heap`)
+   4. Commit and push these changes (`git add . && git commit -m "<message>" && git push`)
+   5. Check the online copy of your repository to make sure these changes were actually pushed
+4. Implement the Algorithm **Commit and Push your work after each task**
+   1. Begin by creating pseudocode for the algorithm in the docstring
+   2. Commit and push this pseudocode
+   3. Implement your pseudocode in C++
+   4. Pass all unit tests
+   5. Commit and push your code.
+5. Analyze your work
+   1. Determine the cost for each line in your algorithm
+   2. Present your Best / Worst case analysis at the bottom of your docstring.
+6. Submit your work (`git add . && git commit -m "Done" && git push`)
 
 ## Grading
 

@@ -1,4 +1,4 @@
-# Assignment 09: Dynamic Array
+# Bonus 05: Dynamic Array
 
 For this assignment you will be implementing a Dynamic Array capable of accepting any primitive type.
 

@@ -15,12 +15,12 @@ $$((5 + ((10 - 4) * (3 + 2))) + 25)$$
 
 For each element in the expression, the following rules are applied:
 
-| Element           | Action                                                                                                                                            |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Operand           | Push to stack 1                                                                                                                                   |
-| Operator          | Push to stack 2                                                                                                                                   |
-| Left Parenthesis  | Ignore                                                                                                                                            |
-| Right Parenthesis | Pop an operator from stack 2 and two values from stack 1, then apply the operator to those two values, the result gets pushed back onto stack one |
+| Element           | Action                                                                                                                         |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Operand           | Push to stack 1                                                                                                                |
+| Operator          | Push to stack 2                                                                                                                |
+| Left Parenthesis  | Ignore                                                                                                                         |
+| Right Parenthesis | Pop an operator from stack 2 and two values from stack 1; apply the operator to the two operands; pushed the result to stack 1 |
 
 Using only these simple rules, and two functioning stacks, you can solve any infix fully parenthesized expression!
 
@@ -39,8 +39,8 @@ This assignment will be hosted on Github Classroom.
 3. Getting things in order
    1. Open your new folder in VS Code
    2. In your folder you should have: `calculator.cpp`, `source/Algorithms/twostack.hpp`, `source/Linear/Stack.test.cpp` and `source/Linear/Stack.cpp`.
-   3. Check that you can compile and run your calculator program `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
-   4. Check that you can compile and run the Two Stack starter code `g++ -std=c++11 calculator.cpp source/Linear/Stack.cpp && ./a.out`
+   3. Check that you can compile and run your calculator program `make calculator`
+   4. Check that you can compile and run the Two Stack starter code `make twostack`
       1. Ensure that your test cases fail.
 4. Implement the `main` function (30 points)
    1. Following the pseudocode in `calculator.cpp`, implement the main function for your calculator.
@@ -56,11 +56,15 @@ This assignment will be hosted on Github Classroom.
 6. Analyze your work (10 points)
    1. Provide your algorithms' Big-Oh notation as a function of expression length.
 
+## Grading
+
+| Criteria      | Points |
+| ------------- | ------ |
+| Functionality | 70     |
+| Analysis      | 10     |
+| Quality       | 20     |
+
 ## Submission
 
 To submit this assignment, simply commit and push your work to your assignment repository.
 Your last submission before the deadline will be graded.
-
-## Grading
-
-For this assignment, 70 points will be awarded for functionality, 10 for your analysis, and 20 for readability.
