@@ -1,4 +1,4 @@
-# Assignment 08: Left-Leaning Red/Black Tree Sort
+# Bonus 04: Left-Leaning Red/Black Tree Sort
 
 For this assignment you will be implementing Tree Sort using a Red/Black Tree
 
@@ -32,16 +32,13 @@ This assignment will be hosted on Github Classroom.
    4. Clone the repository to this location (`git clone <your repository link here>`)
 3. Getting things in order
    1. Open your new folder in VS Code
-   2. Check that you can compile and run the unit tests for sorting (`make sorts`)
-4. Implement LLRB Tree Sort **Commit and Push your work after each task**
-   1. Add the signature for `LLRBTreeSort` to `sorts.hpp` (`LLRBTreeSort(int*, int)`)
-   2. Add a unit test to `sorts.test.cpp` for `LLRBTreeSort`
-   3. Create a docstring for your implementation
-   4. In your docstring, detail your pseudocode for your approach
-   5. Implement the sorting function
-   6. Analyze the function you just wrote, noting the runtimes per line
-      1. In your analysis, make direct comparisons to the plain BST Tree Sort you already created.
-   7. Present your Big-Oh analysis for the best and worst case at the bottom of your docstring
+   2. Begin by creating a new file `source/Sorts/balancedtree.cpp`, populated with a definition for `sort`
+   3. Check your work by compiling and running your code (`make balancedtree`)
+   4. Commit and push your work.
+4. Implement the Algorithm **Commit and Push your work after each task**
+   1. Begin by creating pseudocode for your approach in the docstring
+   2. Implement this pseudocode in C++
+   3. Analyze your work and provide the best / worst-case analysis
 5. Submit your work (`git add . && git commit -m "Done" && git push`
 
 ## Grading

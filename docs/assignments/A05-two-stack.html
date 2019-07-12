@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>Assignment 05: Stacks / Queues</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="Assignment-05-Stacks--Queues">Assignment 05: Stacks / Queues</h1>
+<p>For this assignment you will be building a program to evaluate fully parenthesized arithmetic expressions using Djikstra's Two Stack Algorithm for expression evaluation.</p>
+<h2 id="The-Algorithm">The Algorithm</h2>
+<p>Djikstra's two stack algorithm is a way to evaluate fully parenthesized infix expressions.</p>
+<ul>
+<li>Infixed expressions are those where the operators are placed between two operands, (2 + 4) is an infix expression.</li>
+<li>Full parenthesized means that every operator and it's operands are contained in parentheses, which means precedence and associativity do not matter.</li>
+</ul>
+<p>An example expression:</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>5</mn><mo>+</mo><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>10</mn><mo>−</mo><mn>4</mn><mo stretchy="false">)</mo><mo>∗</mo><mo stretchy="false">(</mo><mn>3</mn><mo>+</mo><mn>2</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>+</mo><mn>25</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">((5 + ((10 - 4) * (3 + 2))) + 25)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mclose">)</span></span></span></span></span></p>
+<p>For each element in the expression, the following rules are applied:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operand</td>
+<td>Push to stack 1</td>
+</tr>
+<tr>
+<td>Operator</td>
+<td>Push to stack 2</td>
+</tr>
+<tr>
+<td>Left Parenthesis</td>
+<td>Ignore</td>
+</tr>
+<tr>
+<td>Right Parenthesis</td>
+<td>Pop an operator from stack 2 and two values from stack 1; apply the operator to the two operands; pushed the result to stack 1</td>
+</tr>
+</tbody>
+</table>
+<p>Using only these simple rules, and two functioning stacks, you can solve any infix fully parenthesized expression!</p>
+<h2 id="Instructions">Instructions</h2>
+<p>This assignment will be hosted on Github Classroom.</p>
+<ol>
+<li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/jQi18jXV">this link</a>
+<ol>
+<li>Be sure to select your name from the list to link your Github to the class roster!</li>
+</ol>
+</li>
+<li>Clone the repository to your machine
+<ol>
+<li>Open a terminal</li>
+<li>Navigate to your algorithms folder</li>
+<li>Go to the parent directory (<code>cd ..</code>)</li>
+<li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)
+<ol>
+<li>Be sure to use the link for <strong>your copy</strong> of the repository for the assignment</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Getting things in order
+<ol>
+<li>Open your new folder in VS Code</li>
+<li>In your folder you should have: <code>calculator.cpp</code>, <code>source/Algorithms/twostack.hpp</code>, <code>source/Linear/Stack.test.cpp</code> and <code>source/Linear/Stack.cpp</code>.</li>
+<li>Check that you can compile and run your calculator program <code>make calculator</code></li>
+<li>Check that you can compile and run the Two Stack starter code <code>make twostack</code>
+<ol>
+<li>Ensure that your test cases fail.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Implement the <code>main</code> function (30 points)
+<ol>
+<li>Following the pseudocode in <code>calculator.cpp</code>, implement the main function for your calculator.</li>
+</ol>
+</li>
+<li>Implement the algorithm (60 points)
+<ol>
+<li>Write pseudocode for your algorithm</li>
+<li>Commit and push this pseudocode (<code>git add . &amp;&amp; git commit -m &quot;&lt;message&gt;&quot; &amp;&amp; git push</code>)
+<ol>
+<li>Check that your pseudocode uploaded, and is visible on the master branch of your assignment.</li>
+</ol>
+</li>
+<li>Implement the Stack datatype, as it is not provided.</li>
+<li>Implement your pseudocode in C++</li>
+<li>Pass all unit tests</li>
+<li>Commit and push your code (<code>git add . &amp;&amp; git commit -m &quot;&lt;message&gt;&quot; &amp;&amp; git push</code>)
+<ol>
+<li>Check that all of your working code is uploaded, and visible on the master branch of your assignment.</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Analyze your work (10 points)
+<ol>
+<li>Provide your algorithms' Big-Oh notation as a function of expression length.</li>
+</ol>
+</li>
+</ol>
+<h2 id="Grading">Grading</h2>
+<table>
+<thead>
+<tr>
+<th>Criteria</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Functionality</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Submission">Submission</h2>
+<p>To submit this assignment, simply commit and push your work to your assignment repository.
+Your last submission before the deadline will be graded.</p>
+
+    </body>
+    </html>
