@@ -1,5 +1,5 @@
 CXX=g++-8
-FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address -fsanitize=leak
+FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address,leak
 
 SORTS=bubble insertion selection merge quick tree hybrid
 LISTS=SLL CSLL DLL CDLL
