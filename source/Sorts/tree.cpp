@@ -1,17 +1,16 @@
 #include <sstream>
 #include "../Trees/BST.hpp"
-#include "../Trees/RBTree.hpp"
 #include "sort.hpp"
 
 bool validnum(char c) {
   return c == '-' || ('0' <= c && c <= '9');
 }
 void sort(int* arr, int n) {
-  std::ostringstream oss;
   BST tree;
   for (int i = 0; i < n; ++i)
     tree.insert(arr[i]);
 
+  std::ostringstream oss;
   tree.inorder(oss, true);
   int j = 0;
   for (int i = 0; i < n; ++i) {

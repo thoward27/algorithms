@@ -1,9 +1,9 @@
 CXX=g++-8
-FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address -fsanitize=pointer-compare -fsanitize=leak -fsanitize=undefined
+FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address,leak
 
-SORTS=bubble insertion selection merge quick tree hybrid
+SORTS=bubble insertion selection merge quick tree hybrid heap
 LISTS=SLL CSLL DLL CDLL
-TREES=BST RBTree Trie
+TREES=BST RBTree Trie MinHeap
 ALGORITHMS=twostack
 
 TARGETS=functions $(SORTS) String $(LISTS) Stack Queue Dequeue $(TREES) $(ALGORITHMS)
@@ -17,7 +17,7 @@ functions: source/Functions/functions.test.cpp functions.o
 	$(CXX) $(FLAGS) $^
 	./a.out
 
-$(SORTS): source/Sorts/sort.test.cpp functions.o BST.o RBTree.o
+$(SORTS): source/Sorts/sort.test.cpp functions.o BST.o MinHeap.o
 	$(CXX) $(FLAGS) $^ source/Sorts/$@.cpp
 	./a.out
 
