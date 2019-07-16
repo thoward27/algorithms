@@ -41,6 +41,7 @@ String::String(char* str) {
   // Fill our array up, including the null.
   for (int i = 0; i <= length; ++i)
     array[i] = str[i];
+  
 
   // Adjust private variables.
   _capacity = length;
