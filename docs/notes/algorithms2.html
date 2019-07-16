@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>Trees</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link id="theme" rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/monokai.css">
+  <script src="js/diagrams.js"></script>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class="center">
+        <h1>Algorithms</h1>
+      </section>
+      <section>
+        <h2>Algorithms: A Definition</h2>
+        <p class="fragment">An algorithm is a specific set of steps that accomplish a certain task given certain inputs.
+        </p>
+        <p class="fragment">In this class we will study the writing and analysis of algorithms extensively</p>
+        <p class="fragment">Example Questions: How fast can we sort elements? How fast can we find a substring in a
+          given text?</p>
+      </section>
+      <section>
+        <section class="center">
+          <h2>Searching</h2>
+          <h5>How to find things</h5>
+        </section>
+        <section>
+          <h3>Searching: Unordered Arrays of Integers</h3>
+          <p class="fragment">Problem: Given an unordered array of elements, how can you tell if $x \in A$</p>
+          <p class="fragment">Solution: Traverse the entirety of the array, and check each element.</p>
+        </section>
+        <section>
+          <h3>Searching: Ordered Arrays of Integers</h3>
+          <p class="fragment">Problem: Given an ordered array of elements, create an algorithm to tell if $x \in A'$</p>
+          <p class="fragment">
+            <pre>
+            <code class="python" data-trim>
+              def ordered_search(x: int, A: List[int]) -> bool:
+              if A == []: 
+                return False
+              elif A[len(A) // 2] == x: 
+                return True
+              elif A[len(A) // 2] < x: 
+                return ordered_search(x, A[len(A) // 2:]) 
+              else: 
+                return ordered_search(x, A[:len(A) // 2]) 
+            </code>
+          </pre>
+          </p>
+        </section>
+      </section>
+    </div>
+  </div>
+  <script src="js/reveal.js">
+  </script>
+
+  <script>
+    Reveal.initialize({
+      dependencies: [{
+          src: 'plugin/markdown/marked.js'
+        },
+        {
+          src: 'plugin/markdown/markdown.js'
+        },
+        {
+          src: 'plugin/notes/notes.js',
+          async: true
+        },
+        {
+          src: 'plugin/highlight/highlight.js',
+          async: true
+        },
+        {
+          src: 'plugin/math/math.js',
+          async: true
+        },
+        {
+          src: 'plugin/menu/menu.js',
+          async: true
+        },
+        {
+          src: 'plugin/chalkboard/chalkboard.js',
+          async: true
+        }
+      ],
+      hash: true,
+      center: false,
+      fragmentInURL: true,
+      keyboard: {
+        // toggle notes canvas when 'c' is pressed
+        67: function () {
+          RevealChalkboard.toggleNotesCanvas()
+        },
+        // toggle chalkboard when 'b' is pressed
+        66: function () {
+          RevealChalkboard.toggleChalkboard()
+        },
+        // clear chalkboard when 'DEL' is pressed
+        46: function () {
+          RevealChalkboard.clear()
+        },
+        // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+        8: function () {
+          RevealChalkboard.reset()
+        },
+        // downlad recorded chalkboard drawing when 'd' is pressed
+        68: function () {
+          RevealChalkboard.download()
+        },
+      },
+      chalkboard: {
+        toggleChalkboardButton: {
+          left: "80px"
+        },
+        toggleNotesButton: {
+          left: "130px"
+        },
+        color: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 1)']
+      },
+      menu: {
+        titleSelector: 'h2',
+        hideMissingTitles: true,
+      }
+    });
+  </script>
+</body>
+
+</html>
