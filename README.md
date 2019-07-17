@@ -60,18 +60,18 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Assignments (100 points each)
 
-| Title                                                               | Due Date |
-| ------------------------------------------------------------------- | -------- |
-| [A01: Kattis Competition](docs/assignments/A01-kattis.md)           | May 30   |
-| [A02: String Class](docs/assignments/A02-string.md)                 | June 6   |
-| [A03: Hybrid Sorting](docs/assignments/A03-hybrid-sort.md)          | June 13  |
-| [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)      | June 20  |
-| [A05: Djikstra's Two Stack](docs/assignments/A05-two-stack.md)      | June 27  |
-| [A06: Tree Sort](docs/assignments/A06-binary.html)                  | July 2   |
-| [A07: Heap Sort](docs/assignments/A07-heapsort.html)                | July 11  |
-| [A08: Lexographic Sorting](docs/assignments/A08-lexicographic.html) | July 18  |
-| [A09: Spellchecker]()                                               | July 25  |
-| [A10: Sudoku]()                                                     | Final    |
+| Title                                                                 | Due Date |
+| --------------------------------------------------------------------- | -------- |
+| [A01: Kattis Competition](docs/assignments/A01-kattis.md)             | May 30   |
+| [A02: String Class](docs/assignments/A02-string.md)                   | June 6   |
+| [A03: Hybrid Sorting](docs/assignments/A03-hybrid-sort.md)            | June 13  |
+| [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)        | June 20  |
+| [A05: Djikstra's Two Stack](docs/assignments/A05-two-stack.md)        | June 27  |
+| [A06: Tree Sort](docs/assignments/A06-binary.html)                    | July 2   |
+| [A07: Heap Sort](docs/assignments/A07-heapsort.html)                  | July 11  |
+| [A08: Lexicographic Sorting](docs/assignments/A08-lexicographic.html) | July 18  |
+| [A09: Spellchecker]()                                                 | July 25  |
+| [A10: Sudoku]()                                                       | Final    |
 
 ## Bonus Points
 
