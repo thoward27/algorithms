@@ -69,7 +69,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | [A05: Djikstra's Two Stack](docs/assignments/A05-two-stack.md)        | June 27  |
 | [A06: Tree Sort](docs/assignments/A06-binary.html)                    | July 2   |
 | [A07: Heap Sort](docs/assignments/A07-heapsort.html)                  | July 11  |
-| [A08: Lexicographic Sorting](docs/assignments/A08-lexicographic.html) | July 18  |
+| [A08: Lexicographic Sorting](docs/assignments/A08-lexicographic.html) | July 19  |
 | [A09: Spellchecker]()                                                 | July 25  |
 | [A10: Sudoku]()                                                       | Final    |
 
