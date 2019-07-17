@@ -11,4 +11,7 @@ TEST_CASE("Sorting Strings") {
   CHECK(arr[0]->compare(*s1));
   CHECK(arr[1]->compare(*s3));
   CHECK(arr[2]->compare(*s2));
+  delete s1;
+  delete s2;
+  delete s3;
 }
