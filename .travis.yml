@@ -33,6 +33,7 @@ matrix:
       - TARGET=quick
       - TARGET=tree
       - TARGET=hybrid
+      - TARGET=heap
     
     - name: "Lists"
       env:
@@ -46,10 +47,12 @@ matrix:
       - TARGET=BST
       - TARGET=RBTree
       - TARGET=Trie
+      - TARGET=MinHeap
     
     - name: "Algorithms"
       env:
-      - TARGET=twostack
+      - TARGET=twostack.test
+      - TARGET=lexicographic.test
 
 script:
   - make $TARGET
