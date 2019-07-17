@@ -23,6 +23,7 @@ Dequeue: Dequeue.test.o DLL.o
 functions: functions.test.o
 String: String.test.o functions.o
 
+# Algorithm Dependencies
 twostack.test: twostack.test.o Stack.o SLL.o String.o functions.o
 lexicographic.test: lexicographic.test.o Trie.o String.o functions.o
 
@@ -36,6 +37,7 @@ $(SORTS): sort.test.o $$@.o functions.o BST.o RBTree.o MinHeap.o
 %: $$@.o
 	$(CXX) $(FLAGS) $^ && ./a.out
 
+# Algorithms execution rule.
 $(ALGORITHMS): $$@.o 
 	$(CXX) $(FLAGS) $^ && ./a.out
 
