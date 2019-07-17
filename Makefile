@@ -6,60 +6,34 @@ LISTS=SLL CSLL DLL CDLL
 TREES=BST RBTree Trie MinHeap
 ALGORITHMS=twostack
 
-TARGETS=functions $(SORTS) String $(LISTS) Stack Queue Dequeue $(TREES) $(ALGORITHMS)
+TARGETS=functions $(SORTS) String $(LISTS) Stack Queue Dequeue $(TREES) $(ALGORITHMS) Hashtable
 
 # Object Files
 %.o: source/*/%.cpp
-	$(CXX) -c $(if $(RECURSIVE),-DRECURSIVE=$(RECURSIVE)) $(FLAGS) $^
+	$(CXX) $(FLAGS) $(if $(RECURSIVE),-DRECURSIVE=$(RECURSIVE)) -c $^
 
-# Tests
-functions: source/Functions/functions.test.cpp functions.o
-	$(CXX) $(FLAGS) $^
-	./a.out
+# Dependencies
+Hashtable: Hashtable.test.o String.o functions.o
+Stack: Stack.test.o SLL.o
+Queue: Queue.test.o SLL.o
+Dequeue: Dequeue.test.o DLL.o
+functions: functions.test.o
+String: String.test.o functions.o
+twostack: twostack.test.o Stack.o SLL.o String.o functions.o
 
-$(SORTS): source/Sorts/sort.test.cpp functions.o BST.o MinHeap.o
-	$(CXX) $(FLAGS) $^ source/Sorts/$@.cpp
-	./a.out
+# Complex Depedencies
+.SECONDEXPANSION:
+$(LISTS): LinkedList.test.o $$@.o
+$(TREES): $$@.test.o $$@.o String.o functions.o
+$(SORTS): sort.test.o $$@.o functions.o BST.o RBTree.o MinHeap.o
 
-String: source/String/String.test.cpp String.o functions.o
-	$(CXX) $(FLAGS) $^
-	./a.out
-
-$(LISTS): source/LinkedList/LinkedList.test.cpp 
-	$(CXX) $(FLAGS) $^ source/LinkedList/$@.cpp && ./a.out
-
-Queue: source/Queue/Queue.test.cpp Queue.o $(if $(LIST),$(LIST).o,SLL.o)
-	$(CXX) $(FLAGS) $^
-	./a.out
-
-Stack: source/Stack/Stack.test.cpp Stack.o $(if $(LIST),$(LIST).o,SLL.o)
-	$(CXX) $(FLAGS) $^
-	./a.out
-
-Dequeue: source/Queue/Dequeue.test.cpp Dequeue.o $(if $(LIST),$(LIST).o,DLL.o)
-	$(CXX) $(FLAGS) $^
-	./a.out
-
-calculator: calculator.cpp Stack.o SLL.o String.o functions.o
-	$(CXX) $(FLAGS) $^
-	./a.out
-
-%: source/*/%.test.cpp %.o functions.o Stack.o Queue.o $(if $(LIST),$(LIST).o,SLL.o) String.o
-	$(CXX) $(FLAGS) $^
-	./a.out
-
-lexographic: source/Algorithms/lexographic.test.cpp String.o functions.o Trie.o
-	$(CXX) $(FLAGS) $^
-	./a.out
-
-%: source/Algorithms/%.test.cpp functions.o Stack.o Queue.o String.o $(if $(LIST),$(LIST).o,SLL.o)
-	$(CXX) $(FLAGS) $^
-	./a.out
+# Generic execution rule.
+%: $$@.o
+	$(CXX) $(FLAGS) $^ && ./a.out
 
 all: $(TARGETS)
 
 .PHONY: clean
-
 clean:
 	find . -name "*out" -delete
 	find . -name "*.o" -delete
