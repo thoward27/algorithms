@@ -1,18 +1,19 @@
 CXX=g++-8
 FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address,leak
 
-SORTS=bubble insertion selection merge quick tree hybrid heap
-LISTS=SLL CSLL DLL CDLL
-TREES=BST RBTree Trie MinHeap
-ALGORITHMS=twostack
-
-TARGETS=functions $(SORTS) String $(LISTS) Stack Queue Dequeue $(TREES) $(ALGORITHMS) Hashtable
+files = $(basename $(notdir $(filter-out $(wildcard source/**/*.test.cpp), $(wildcard source/$(1)/*.cpp))))
+SORTS=$(basename $(notdir $(filter-out $(wildcard source/Sorts/test.cpp), $(wildcard source/Sorts/*.cpp))))
+LISTS=$(basename $(notdir $(filter-out $(wildcard source/LinkedList/*.test.cpp), $(wildcard source/LinkedList/*.cpp))))
+TREES=$(basename $(notdir $(filter-out $(wildcard source/**/*.test.cpp), $(wildcard source/Trees/*.cpp))))
+TARGETS=$(basename $(notdir $(filter-out $(wildcard source/**/*.test.cpp), $(wildcard source/**/*.cpp))))
+ALGORITHMS=$(basename $(notdir $(filter-outtwostack
 
 # Object Files
 %.o: source/*/%.cpp
 	$(CXX) $(FLAGS) $(if $(RECURSIVE),-DRECURSIVE=$(RECURSIVE)) -c $^
 
 # Dependencies
+Graph: Graph.test.o
 Hashtable: Hashtable.test.o String.o functions.o
 Stack: Stack.test.o SLL.o
 Queue: Queue.test.o SLL.o
