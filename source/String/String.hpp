@@ -92,7 +92,7 @@ class String {
    * O(?)
    */
   bool compare(char*) const;
-  bool compare(String&) const;
+  bool compare(const String&) const;
 
   /** concate(char* or String)
    * Concatenates the string with the given character array, or string.

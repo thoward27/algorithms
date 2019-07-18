@@ -14,12 +14,11 @@ class Node {
   String* key;
   int val;
   Node* next;
-  Node* prev;
 
  public:
-  Node() : key(new String()), val(0) { next = prev = nullptr; }
+  Node() : key(new String()), val(0) { next = nullptr; }
   Node(const String& k, int v) : key(new String(k.cstr())), val(v) {
-    next = prev = nullptr;
+    next = nullptr;
   }
   ~Node() { delete key; };
 
@@ -34,7 +33,6 @@ class Node {
 class List {
  private:
   Node* head;
-  Node* tail;
   unsigned int len;
 
  public:
@@ -46,21 +44,47 @@ class List {
    */
   unsigned int length() { return len; }
 
-  /** push(int data, [int index])
+  /** peak()
+   * Returns the node at the front of the list.
+   */
+  Node* top() const {
+    if (!head)
+      throw std::underflow_error("Empty list.");
+    return head;
+  }
+
+  /** pop()
+   * Removes an element from the front of the list.
+   */
+  void pop() {
+    if (!head)
+      throw std::underflow_error("Empty list.");
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+    len--;
+  }
+
+  /** push(String key, int val)
    * Pushes a node containing the given data to the list.
    */
-  void push_back(const String& key, int val) {
+  void push(const String& key, int val) {
     Node* n = new Node(key, val);
-    if (!head) {
+    if (!head)
       head = n;
-    } else {
-      Node* iter = head;
-      while (iter->next)
-        iter = iter->next;
-
-      iter->next = n;
+    else {
+      n->next = head;
+      head = n;
     }
-    ++len;
+    len++;
+  }
+
+  void update(const String& key, int val) {
+    Node* temp = head;
+    while (temp && !temp->key->compare(key))
+      temp = temp->next;
+    if (temp)
+      temp->val = val;
     return;
   }
 
@@ -77,20 +101,20 @@ class List {
     len = 0;
   }
 
-  /** remove(int data)
-   * Removes the first item from the list with value data.
+  /** remove(String key)
+   * Removes the first item from the list with the given key.
    */
-  void remove(String& data) {
+  void remove(String& key) {
     if (!head)
       throw "Nothing to remove";
-    else if (head->key->compare(data)) {
+    else if (head->key->compare(key)) {
       Node* temp = head;
       head = head->next;
       --len;
       delete temp;
     } else {
       for (Node* iter = head; iter->next; iter = iter->next) {
-        if (iter->next->key->compare(data) == 1) {
+        if (iter->next->key->compare(key) == 1) {
           Node* to_remove = iter->next;
           iter->next = to_remove->next;
           delete to_remove;
@@ -101,45 +125,42 @@ class List {
     }
   }
 
-  /** index(data)
+  /** index(String key)
    * Returns the index of the given data in the linked list,
    * -1 if that data is not present.
    */
-  int index(String& d) {
+  int index(const String& key) {
     int i = 0;
     for (Node* iter = head; iter; iter = iter->next, ++i) {
-      if (iter->key->compare(d) == 1)
+      if (iter->key->compare(key) == 1)
         return i;
     }
     return -1;
   }
 
-  /** at(ind)
+  /** at(int index)
    * returns the val member at the given index
    */
-  int at(int ind) {
+  int at(unsigned int idx) {
     Node* iter = head;
-    for (int i = 0; i < ind; ++i) {
+    for (unsigned int i = 0; iter && i < idx; ++i) {
       iter = iter->next;
     }
-    return iter->val;
+    return (iter) ? iter->val : throw std::out_of_range("Index out of bounds");
   }
 
   /** print()
    * Prints the contents of the list to the ostream.
    */
-
-  friend class HashTable;
   void print(std::ostream& oss = std::cout) {
-    std::cout << "Length " << len << std::endl;
     Node* temp = head;
+    oss << "{";
     while (temp) {
-      oss << temp->val << ", ";
       temp->key->print();
-      std::cout << std::endl;
+      oss << ": " << temp->val << ", ";
       temp = temp->next;
     }
-    oss << std::endl;
+    oss << "}";
     return;
   }
 };

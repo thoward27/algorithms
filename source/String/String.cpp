@@ -42,7 +42,6 @@ String::String(char* str) {
   for (int i = 0; i <= length; ++i)
     array[i] = str[i];
 
-
   // Adjust private variables.
   _capacity = length;
   _size = length;
@@ -197,7 +196,7 @@ bool String::compare(char* str) const {
 }
 
 // O(n)
-bool String::compare(String& str) const {
+bool String::compare(const String& str) const {
   return this->compare(str.array);
 }
 
@@ -207,7 +206,7 @@ void String::concatenate(char* str) {
   unsigned int strlen = 0, length = size();
   while (str[strlen])
     ++strlen;
-  // Reserve the space/
+  // Reserve the space
   if (length + strlen > this->_capacity) {
     this->reserve(strlen);
   }
@@ -292,7 +291,6 @@ String String::substr(int start, int end) const {
 void String::print(std::ostream& oss) const {
   for (int i = 0; array[i]; ++i)
     oss << array[i];
-  oss << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& oss, const String& str) {

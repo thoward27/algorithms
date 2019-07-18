@@ -1,54 +1,45 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "../doctest.h"
 #include <sstream>
+#include "../doctest.h"
 
 #include "Hashtable.hpp"
 
 TEST_CASE("Default Constructor") {
   HashTable test;
-  REQUIRE(test.Size() == 5);
+  REQUIRE(test.size() == 5);
 }
 
 TEST_CASE("Initialized Constructor") {
   HashTable test(7);
-  REQUIRE(test.Size() == 7);
+  REQUIRE(test.size() == 7);
 }
 
 TEST_CASE("Is_Empty") {
   HashTable test;
-  REQUIRE(test.is_empty() == 1);
+  REQUIRE(test.is_empty());
+
+  test.insert(String((char*)"Test"), 10);
+  REQUIRE_FALSE(test.is_empty());
 }
 
 TEST_CASE("Insert") {
   HashTable test;
   SUBCASE("Trivial Case") {
-    String str1((char*)"Hello");
-    String str2((char*)"test");
-    test.insert(str1, 1);
-    REQUIRE(test.is_empty() == 0);
-    REQUIRE(test.search(str2) == 0);
-    REQUIRE(test.search(str1) == 1);
-  }
-
-  SUBCASE("Multiple Insertions") {
-    for (int i = 0; i < 10; ++i) {
-      String str('a' + i);
-      test.insert(str, i + 1);
-    }
+    REQUIRE(test.is_empty());
+    test.insert(String((char*)"Hello"), 10);
     REQUIRE_FALSE(test.is_empty());
-    String test_str((char*)"test");
-    REQUIRE_FALSE(test.search(test_str));
-    for (int i = 0; i < 10; ++i) {
-      String str('a' + i);
-      REQUIRE(test.search(str));
-    }
-    SUBCASE("Table Resizing") {
-        String str('a');
-        for (int i = 0; i < 10; ++i) {
-            test.insert(str, i + 1);
-        }
-        REQUIRE(test.Size() == 10);
-    }
+    REQUIRE_EQ(test.elements(), 1);
+  }
+  SUBCASE("Duplicate Inserts") {
+    for (int i = 0; i < 5; ++i)
+      test.insert(String((char*)"ABC"), i);
+    REQUIRE_EQ(test.elements(), 1);
+  }
+  SUBCASE("Unique Inserts") {
+    for (int i = 0; i < 40; ++i)
+      test.insert(String('a' + i), i);
+    REQUIRE_EQ(test.elements(), 40);
+    REQUIRE_EQ(test.size(), 10);
   }
 }
 
@@ -125,18 +116,22 @@ TEST_CASE("Get") {
       String str(cstrings[i]);
       REQUIRE_EQ(test.get(str), nums[i]);
     }
+  }
 }
 
-// TEST_CASE("Print") {
-//     std::ostringstream oss;
-//     HashTable test;
-//     for (int i = 0; i < 10; ++i) {
-//         String str('a' + i);
-//         test.insert(str, i + 1);
-//     }
-//     test.print(oss);
-//     test.print();
-//     String answer("Length 2\n2, b\n7, g\n\nLength 2\n3, c\n8, h\n\nLength 2\n4, d\n9, i\n\nLength 2\n5, e\n10, j\n\nLength 2\n1, a\n6, f\n");
-//     char* ans = answer.cstr();
-//     REQUIRE_EQ(oss.str(), ans);
-// }
+TEST_CASE("Print") {
+  HashTable test;
+  for (int i = 0; i < 10; ++i) {
+    String str('a' + i);
+    test.insert(str, i + 1);
+  }
+
+  // std::ostringstream oss;
+  // test.print(oss);
+  // String answer((
+  //     char*)"Length 2\n2, b\n7, g\n\nLength 2\n3, c\n8, h\n\nLength 2\n4, "
+  //           "d\n9, "
+  //           "i\n\nLength 2\n5, e\n10, j\n\nLength 2\n1, a\n6, f\n");
+  // char* ans = answer.cstr();
+  // REQUIRE_EQ(oss.str(), ans);
+}
