@@ -1,5 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
+#include <sstream>
 
 #include "Hashtable.hpp"
 
@@ -40,6 +41,13 @@ TEST_CASE("Insert") {
     for (int i = 0; i < 10; ++i) {
       String str('a' + i);
       REQUIRE(test.search(str));
+    }
+    SUBCASE("Table Resizing") {
+        String str('a');
+        for (int i = 0; i < 10; ++i) {
+            test.insert(str, i + 1);
+        }
+        REQUIRE(test.Size() == 10);
     }
   }
 }
@@ -117,5 +125,18 @@ TEST_CASE("Get") {
       String str(cstrings[i]);
       REQUIRE_EQ(test.get(str), nums[i]);
     }
-  }
 }
+
+// TEST_CASE("Print") {
+//     std::ostringstream oss;
+//     HashTable test;
+//     for (int i = 0; i < 10; ++i) {
+//         String str('a' + i);
+//         test.insert(str, i + 1);
+//     }
+//     test.print(oss);
+//     test.print();
+//     String answer("Length 2\n2, b\n7, g\n\nLength 2\n3, c\n8, h\n\nLength 2\n4, d\n9, i\n\nLength 2\n5, e\n10, j\n\nLength 2\n1, a\n6, f\n");
+//     char* ans = answer.cstr();
+//     REQUIRE_EQ(oss.str(), ans);
+// }

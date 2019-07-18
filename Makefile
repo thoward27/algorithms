@@ -1,5 +1,5 @@
-CXX=g++-8
-FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address,leak
+CXX=g++
+FLAGS=-std=c++11 -Wall -Wextra -fsanitize=address
 
 files = $(basename $(notdir $(filter-out $(wildcard source/**/*.test.cpp), $(wildcard source/$(1)/*.cpp))))
 SORTS=$(call files,Sorts)
@@ -88,6 +88,10 @@ $(SORTS): sort.test.o $$@.o functions.o BST.o RBTree.o MinHeap.o
 $(ALGORITHMS): $$@.o 
 	$(CXX) $(FLAGS) $^ && ./a.out
 >>>>>>> upstream/master
+
+Hashtable: source/Hashing/Hashtable.test.cpp source/Hashing/Hashtable.cpp source/Hashing/SLL.cpp String.o functions.o
+	$(CXX) $(FLAGS) $^
+	./a.out
 
 all: $(TARGETS)
 

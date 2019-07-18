@@ -24,6 +24,7 @@ class Node {
   ~Node() { delete key; };
 
   friend class List;
+  friend class HashTable;
 };
 
 /** Doubly Linked List
@@ -127,6 +128,8 @@ class List {
   /** print()
    * Prints the contents of the list to the ostream.
    */
+
+  friend class HashTable;
   void print(std::ostream& oss = std::cout) {
     std::cout << "Length " << len << std::endl;
     Node* temp = head;

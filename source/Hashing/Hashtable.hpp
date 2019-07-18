@@ -60,5 +60,5 @@ class HashTable {
         /** print()
          * Calls the Linked List print() method on each of its chains
          */
-        void print();
+        void print(std::ostream& oss = std::cout);
 };
