@@ -15,6 +15,7 @@ class Node {
   ~Node() {}
 
   friend class LinkedList;
+  friend class Stack;
 };
 
 /** Doubly Linked List

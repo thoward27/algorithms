@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CSC 212: Data Structures and Algorithms
 
 Welcome to CSC 212, Data Structures and Algorithms!
@@ -195,7 +196,24 @@ This is the operating system we prefer in this class, as it closely mirrors your
 
 #### Windows 10
 
+<<<<<<< HEAD
+- [Git](https://git-scm.com/)
+  - [Basics](https://git-scm.com/book/en/v1/Getting-Started-Git-Basics)
+- [Github](https://github.com/)
+  - [Handbook](https://guides.github.com/introduction/git-handbook/)
+- [OpenDSA](https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/)
+  - Chapters: 4, 6, 8, 10, 13, 9
+- [Accelerated C++](https://www.google.com/search?q=accelerated+c%2B%2B&oq=accelerated+c%2B%2B&aqs=chrome..69i57j69i60j0l4.2026j0j7&client=ubuntu&sourceid=chrome&ie=UTF-8)
+  - Chapters: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+- [VS Code: Getting Started](https://code.visualstudio.com/docs/getstarted/introvideos)
+  - Watch: Introductory Videos (all)
+  - Read: Tips and Tricks, User Interface, Themes, and Settings
+# algorithms
+Class repository for CSC 212 Data Structures and Algorithms
+=======
+=======
 [VS Code via WSL](https://code.visualstudio.com/docs/remote/wsl)
+>>>>>>> upstream/master
 
 #### Windows 8 and older
 
@@ -203,6 +221,13 @@ Please boot linux, Windows 8 and older is extremely challenging to develop C++ o
 
 If you insist on using Windows 8, you will need to install [Cygwin](https://www.cygwin.com/), or you will have to buy an online IDE license.
 
+<<<<<<< HEAD
+- [E01 Review](docs/exams/E01R.md)
+- [E01 Review Answers](docs/exams/E01RA.md)
+<<<<<<< HEAD
+>>>>>>> upstream/master
+=======
+=======
 [VS Code](https://code.visualstudio.com/)
 Requirement: [Cygwin](https://www.cygwin.com/)
 
@@ -262,11 +287,15 @@ This section contains some helpful online IDEs that can be used for in-class wor
   - Anything we have already built (you have to source it from our repository)
 - Why doesn't `make` work?
   - Fix script: `sudo apt-get update && sudo apt-get upgrade && sudo apt install make && sudo apt install g++-8`
+>>>>>>> upstream/master
 
 ## Good Reads
 
 - [Visualizing Algorithms](https://bost.ocks.org/mike/algorithms/)
 - [Algorithmic Art](http://www.kristenwebster.net/)
+<<<<<<< HEAD
+>>>>>>> upstream/master
+=======
 
 <!-- Sources -->
 
@@ -289,5 +318,12 @@ This section contains some helpful online IDEs that can be used for in-class wor
 [odsa12]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#binary-trees
 [odsa13]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#sorting
 [odsa15]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#hashing
+<<<<<<< HEAD
+>>>>>>> upstream/master
+=======
 [odsa17]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#indexing
+<<<<<<< HEAD
+>>>>>>> upstream/master
+=======
 [odsa19]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#graphs
+>>>>>>> upstream/master

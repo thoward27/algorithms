@@ -8,7 +8,7 @@
  */
 class Stack {
  private:
-  LinkedList* list;
+    LinkedList* list;
 
  public:
   Stack();

@@ -62,6 +62,8 @@ Node* RBTree::insert(int data, Node* temp) {
     temp->left = insert(data, temp->left);
   } else if (data > temp->data) {
     temp->right = insert(data, temp->right);
+  } else if (data == temp->data) {
+    temp->count += 1;
   }
 
   return fix(temp);
@@ -257,18 +259,22 @@ void RBTree::preorder(Node* n, std::ostream& oss) {
   preorder(n->right, oss);
 }
 
-void RBTree::inorder(Node* n, std::ostream& oss) {
+void RBTree::inorder(Node* n, std::ostream& oss, bool dups) {
   if (!n)
     return;
-  inorder(n->left, oss);
+  inorder(n->left, oss, dups);
 
-  oss << n->data << ", ";
+  for (int i = 0; i < n->count; ++i) {
+    oss << n->data << ", ";
+    if (!dups)
+      break;
+  }
 
-  inorder(n->right, oss);
+  inorder(n->right, oss, dups);
 }
 
-void RBTree::inorder(std::ostream& oss) {
-  inorder(root, oss);
+void RBTree::inorder(std::ostream& oss, bool dups) {
+  inorder(root, oss, dups);
   oss << std::endl;
 }
 

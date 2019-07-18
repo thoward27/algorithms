@@ -12,6 +12,53 @@ TARGETS=$(call files,*) $(ALGORITHMS)
 
 # Object Files
 %.o: source/*/%.cpp
+<<<<<<< HEAD
+	$(CXX) -c $(if $(RECURSIVE),-DRECURSIVE=$(RECURSIVE)) $(FLAGS) $^
+
+# Tests
+functions: source/Functions/functions.test.cpp functions.o
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+$(SORTS): source/Sorts/sort.test.cpp functions.o BST.o MinHeap.o
+	$(CXX) $(FLAGS) $^ source/Sorts/$@.cpp
+	./a.out
+
+String: source/String/String.test.cpp String.o functions.o
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+$(LISTS): source/LinkedList/LinkedList.test.cpp
+	$(CXX) $(FLAGS) $^ source/LinkedList/$@.cpp && ./a.out
+
+Queue: source/Queue/Queue.test.cpp Queue.o $(if $(LIST),$(LIST).o,SLL.o)
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+Stack: source/Stack/Stack.test.cpp Stack.o $(if $(LIST),$(LIST).o,SLL.o)
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+Dequeue: source/Queue/Dequeue.test.cpp Dequeue.o $(if $(LIST),$(LIST).o,DLL.o)
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+calculator: calculator.cpp Stack.o SLL.o String.o functions.o
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+%: source/*/%.test.cpp %.o functions.o Stack.o Queue.o $(if $(LIST),$(LIST).o,SLL.o) String.o
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+lexographic: source/Algorithms/lexographic.test.cpp String.o functions.o Trie.o
+	$(CXX) $(FLAGS) $^
+	./a.out
+
+%: source/Algorithms/%.test.cpp functions.o Stack.o Queue.o String.o $(if $(LIST),$(LIST).o,SLL.o)
+	$(CXX) $(FLAGS) $^
+	./a.out
+=======
 	$(CXX) $(FLAGS) $(if $(RECURSIVE),-DRECURSIVE=$(RECURSIVE)) -c $^
 
 # Dependencies
@@ -40,6 +87,7 @@ $(SORTS): sort.test.o $$@.o functions.o BST.o RBTree.o MinHeap.o
 # Algorithms execution rule.
 $(ALGORITHMS): $$@.o 
 	$(CXX) $(FLAGS) $^ && ./a.out
+>>>>>>> upstream/master
 
 all: $(TARGETS)
 
