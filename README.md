@@ -322,8 +322,4 @@ This section contains some helpful online IDEs that can be used for in-class wor
 >>>>>>> upstream/master
 =======
 [odsa17]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#indexing
-<<<<<<< HEAD
->>>>>>> upstream/master
-=======
 [odsa19]: https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/#graphs
->>>>>>> upstream/master
