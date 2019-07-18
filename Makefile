@@ -26,6 +26,7 @@ String: String.test.o functions.o
 # Algorithm Dependencies
 twostack.test: twostack.test.o Stack.o SLL.o String.o functions.o
 lexicographic.test: lexicographic.test.o Trie.o String.o functions.o
+hamiltoniancycle.test: Graph.o
 
 # Complex Depedencies
 .SECONDEXPANSION:

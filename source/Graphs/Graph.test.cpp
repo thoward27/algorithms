@@ -1,8 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
 
-#include "Graph.hpp"
 #include <algorithm>
+#include "Graph.hpp"
 
 TEST_CASE("Constructor") {
   Graph G(10);
@@ -72,20 +72,18 @@ TEST_CASE("neighbors") {
   G.add_edge(1, 4);
   G.add_edge(3, 0);
   G.remove_edge(3, 2);
-  std::vector<int> v0_t{ 1 };
-  std::vector<int> v1_t{ 0, 2, 3, 4 };
-  std::vector<int> v2_t{ 1, 3 };
-  std::vector<int> v3_t{ 0, 4 };
-  std::vector<int> v4_t{ 3 };
-  std::vector<std::vector<int>> tests{ v0_t, v1_t, v2_t, v3_t, v4_t };
+  std::vector<int> v0_t{1};
+  std::vector<int> v1_t{0, 2, 3, 4};
+  std::vector<int> v2_t{1, 3};
+  std::vector<int> v3_t{0, 4};
+  std::vector<int> v4_t{3};
+  std::vector<std::vector<int>> tests{v0_t, v1_t, v2_t, v3_t, v4_t};
   char name[9] = "Vertex -";
   for (int i = 0; i < 5; ++i) {
     name[7] = '0' + i;
     std::vector<int> result = G.neighbors(i);
     std::sort(result.begin(), result.end());
-    SUBCASE(name) {
-      REQUIRE_EQ(result, tests[i]);
-    }
+    SUBCASE(name) { REQUIRE_EQ(result, tests[i]); }
   }
 
   REQUIRE_THROWS(G.neighbors(6));
