@@ -26,9 +26,9 @@ void add_triangle(Graph& G, unsigned int u, unsigned int v, unsigned int w) {
  */
 void free_maze(int** maze, int n) {
   for (int i = 0; i < n; ++i) {
-    delete [] maze[i];
+    delete[] maze[i];
   }
-  delete [] maze;
+  delete[] maze;
 }
 
 TEST_CASE("solve_maze") {
@@ -76,10 +76,8 @@ TEST_CASE("solve_maze") {
     for (int i = 0; i < 5; ++i) {
       maze[i] = new int[5]();
     }
-    int free_cells[2][11] = {
-        { 0, 0, 0, 0, 0, 1, 2, 2, 3, 4, 4 },
-        { 0, 1, 2, 3, 4, 4, 4, 3, 3, 3, 4 }
-    };
+    int free_cells[2][11] = {{0, 0, 0, 0, 0, 1, 2, 2, 3, 4, 4},
+                             {0, 1, 2, 3, 4, 4, 4, 3, 3, 3, 4}};
     for (int i = 0; i < 11; ++i) {
       maze[free_cells[0][i]][free_cells[1][i]] = 1;
     }
@@ -92,10 +90,8 @@ TEST_CASE("solve_maze") {
     for (int i = 0; i < 7; ++i) {
       maze[i] = new int[7]();
     }
-    int free_cells[2][13] = {
-        { 0, 0, 1, 2, 3, 3, 4, 4, 4, 5, 5, 5, 6 },
-        { 0, 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 6, 6 }
-    };
+    int free_cells[2][13] = {{0, 0, 1, 2, 3, 3, 4, 4, 4, 5, 5, 5, 6},
+                             {0, 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 6, 6}};
     for (int i = 0; i < 13; ++i) {
       maze[free_cells[0][i]][free_cells[1][i]] = 1;
     }
@@ -108,12 +104,10 @@ TEST_CASE("solve_maze") {
     for (int i = 0; i < 7; ++i) {
       maze[i] = new int[7]();
     }
-    int free_cells[2][26] = {
-        { 0, 0, 1, 2, 3, 4, 4, 4, 5, 5, 5, 6,
-          4, 5, 6, 6, 6, 0, 0, 1, 1, 1, 1, 2, 3, 6 },
-        { 0, 1, 1, 1, 1, 2, 3, 4, 4, 5, 6, 6,
-          1, 1, 1, 2, 3, 2, 3, 3, 4, 5, 6, 5, 5, 4 }
-    };
+    int free_cells[2][26] = {{0, 0, 1, 2, 3, 4, 4, 4, 5, 5, 5, 6, 4,
+                              5, 6, 6, 6, 0, 0, 1, 1, 1, 1, 2, 3, 6},
+                             {0, 1, 1, 1, 1, 2, 3, 4, 4, 5, 6, 6, 1,
+                              1, 1, 2, 3, 2, 3, 3, 4, 5, 6, 5, 5, 4}};
     for (int i = 0; i < 26; ++i) {
       maze[free_cells[0][i]][free_cells[1][i]] = 1;
     }
@@ -126,12 +120,10 @@ TEST_CASE("solve_maze") {
     for (int i = 0; i < 7; ++i) {
       maze[i] = new int[7]();
     }
-    int free_cells[2][29] = {
-        { 0, 0, 1, 2, 3, 3, 4, 4, 4, 5, 5, 6,
-          4, 5, 6, 6, 6, 0, 0, 1, 1, 1, 1, 2, 3, 6, 2, 3, 4 },
-        { 0, 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 6,
-          1, 1, 1, 2, 3, 2, 3, 3, 4, 5, 6, 5, 5, 4, 6, 6, 6 }
-    };
+    int free_cells[2][29] = {{0, 0, 1, 2, 3, 3, 4, 4, 4, 5, 5, 6, 4, 5, 6,
+                              6, 6, 0, 0, 1, 1, 1, 1, 2, 3, 6, 2, 3, 4},
+                             {0, 1, 1, 1, 1, 2, 2, 3, 4, 4, 5, 6, 1, 1, 1,
+                              2, 3, 2, 3, 3, 4, 5, 6, 5, 5, 4, 6, 6, 6}};
     for (int i = 0; i < 29; ++i) {
       maze[free_cells[0][i]][free_cells[1][i]] = 1;
     }
@@ -183,10 +175,8 @@ TEST_CASE("hamiltonian_cycle") {
   }
 
   SUBCASE("Complex - Possible") {
-    int edges[2][16] = {
-        { 0, 0, 0, 0, 1, 1, 2, 2, 2, 3, 4, 4, 5, 5, 6, 7 },
-        { 1, 3, 5, 7, 2, 3, 3, 5, 6, 7, 5, 7, 6, 8, 8, 8 }
-    };
+    int edges[2][16] = {{0, 0, 0, 0, 1, 1, 2, 2, 2, 3, 4, 4, 5, 5, 6, 7},
+                        {1, 3, 5, 7, 2, 3, 3, 5, 6, 7, 5, 7, 6, 8, 8, 8}};
     Graph G(9);
     for (int i = 0; i < 16; ++i) {
       add_simple_edge(G, edges[0][i], edges[1][i]);
@@ -195,10 +185,8 @@ TEST_CASE("hamiltonian_cycle") {
   }
 
   SUBCASE("Complex - Impossible") {
-    int edges[2][16] = {
-        { 0, 0, 0, 0, 1, 2, 2, 2, 4, 4, 5, 5, 6 },
-        { 1, 3, 5, 7, 2, 3, 5, 6, 5, 7, 6, 8, 8 }
-    };
+    int edges[2][16] = {{0, 0, 0, 0, 1, 2, 2, 2, 4, 4, 5, 5, 6},
+                        {1, 3, 5, 7, 2, 3, 5, 6, 5, 7, 6, 8, 8}};
     Graph G(9);
     for (int i = 0; i < 13; ++i) {
       add_simple_edge(G, edges[0][i], edges[1][i]);

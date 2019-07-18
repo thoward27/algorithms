@@ -2,24 +2,27 @@
 #include <iostream>
 
 bool solve_maze(int** maze, int n) {
-  int start[2] = { 0, 0 };
+  int start[2] = {0, 0};
   return solve_maze(maze, n, start);
 }
 
 bool solve_maze(int** maze, int n, int position[2]) {
-  if (position[0] == n - 1 && position[1] == n - 1) return true;
+  if (position[0] == n - 1 && position[1] == n - 1)
+    return true;
 
   bool result;
   ++(position[1]);
   if (position[1] < n && maze[position[0]][position[1]] == 1) {
     result = solve_maze(maze, n, position);
-    if (result) return true;
+    if (result)
+      return true;
   }
   --(position[1]);
   ++(position[0]);
   if (position[0] < n && maze[position[0]][position[1]] == 1) {
     result = solve_maze(maze, n, position);
-    if (result) return true;
+    if (result)
+      return true;
   }
   --(position[0]);
   return false;
@@ -45,7 +48,8 @@ bool hamiltonian_cycle(Graph& G, unsigned int v, unsigned int path_len) {
   for (unsigned int i = 0; i < neighbors.size(); ++i) {
     if (G.get_value(neighbors[i]) == UNVISITED) {
       result = hamiltonian_cycle(G, neighbors[i], ++path_len);
-      if (result) return true;
+      if (result)
+        return true;
       --path_len;
       G.set_value(neighbors[i], UNVISITED);
     }
