@@ -7,9 +7,15 @@
  * All methods that take one or more node indices will throw an error if any of
  * the nodes are out of bounds.
  */
-class Graph {
- private:
- public:
+class Graph
+{
+private:
+  std::vector<std::vector<unsigned int>> array;
+  unsigned int count_node;
+  unsigned int count_edge;
+  unsigned int *value;
+
+public:
   /** Constructor
    * Creates a graph with n vertices but no edges.
    * Each vertex is initialized with a value of 0.
@@ -70,8 +76,10 @@ class Graph {
 
   /** neighbors(unsigned int v)
    * Returns a vector containing the indices of every neighbor of the node v.
-   * A node w is defined to be a neighbor of v iff there exists an edge
+   * A node w is defined to be a neighbor of v if there exists an edge
    * from v to w.
    */
   std::vector<int> neighbors(unsigned int v);
+
+  void print();
 };
