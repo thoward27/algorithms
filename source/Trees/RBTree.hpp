@@ -107,7 +107,7 @@ class RBTree {
    * Recursively prints the contents of the subtree rooted at n to the
    * ostream using an in-order traversal.
    */
-  void inorder(Node* n, std::ostream& oss, bool dups);
+  void inorder(Node* n, std::ostream& oss);
 
   /** postorder()
    * Recursively prints the contents of the subtree rooted at n to the
@@ -202,7 +202,7 @@ class RBTree {
    * Prints the contents of the tree to the ostream using an in-order
    * traversal.
    */
-  void inorder(std::ostream& oss = std::cout, bool dups);
+  void inorder(std::ostream& oss = std::cout);
 
   /** postorder()
    * Prints the contents of the tree to the ostream using a post-order
