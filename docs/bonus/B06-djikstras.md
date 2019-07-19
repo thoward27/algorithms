@@ -15,7 +15,7 @@ For this bonus assignment you must research the algorithm in question.
 
 This assignment will be hosted on Github Classroom.
 
-1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/veyFoobr)
+1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/ivxvyc-C)
 2. Clone the repository to your machine
    1. Open a terminal
    2. Navigate to your algorithms folder

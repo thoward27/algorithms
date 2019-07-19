@@ -43,7 +43,7 @@ def asearch(maze, start, finish):
 
 This assignment will be hosted on Github Classroom.
 
-1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/rWxvtRFI)
+1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/xa30-340)
 2. Clone the repository to your machine
    1. Open a terminal
    2. Navigate to your algorithms folder
