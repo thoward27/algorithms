@@ -25,7 +25,7 @@ For this task, we use a special "rolling hash" function, similar to the one we'v
 
 This assignment will be hosted on Github Classroom.
 
-1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/rWxvtRFI)
+1. Register for the assignment on our Github Classroom using [this link](https://classroom.github.com/a/V5-ecbS2)
 2. Clone the repository to your machine
    1. Open a terminal
    2. Navigate to your algorithms folder
