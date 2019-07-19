@@ -42,6 +42,7 @@ $(SORTS): sort.test.o $$@.o functions.o BST.o RBTree.o MinHeap.o
 # Algorithms execution rule.
 $(ALGORITHMS): $$@.o 
 	$(CXX) $(FLAGS) $^ && ./a.out
+	make clean
 
 all: $(TARGETS)
 

@@ -70,8 +70,8 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | [A06: Tree Sort](docs/assignments/A06-binary.html)                    | July 2   |
 | [A07: Heap Sort](docs/assignments/A07-heapsort.html)                  | July 11  |
 | [A08: Lexicographic Sorting](docs/assignments/A08-lexicographic.html) | July 19  |
-| [A09: Spellchecker]()                                                 | July 25  |
-| [A10: Sudoku]()                                                       | Final    |
+| [A09: Karp-Rabin](docs/assignments/A09-karp-rabin.html)               | July 25  |
+| [A10: A* Search](docs/assignments/A10-a-search)                       | Final    |
 
 ## Bonus Points
 
@@ -86,6 +86,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | [Additional Advanced Sorts](docs/assignments/A04-advanced-sort.html) | 50/25/15/10 | July 25 |
 | [B04: Red/Black Tree Sort](docs/bonus/B04-rbtreesort.html)           | 100         | July 11 |
 | [B05: Dynamic Array](docs/bonus/B05-dynarray.html)                   | 100         | July 25 |
+| [B06: Djikstra's](docs/bonus/B06-djikstras.html)                     | 100         | July 25 |
 
 ## Resources
 
@@ -269,14 +270,6 @@ This section contains some helpful online IDEs that can be used for in-class wor
 - [Algorithmic Art](http://www.kristenwebster.net/)
 
 <!-- Sources -->
-
-[a00]: docs/assignments/A00-pretest.md
-[a01]: docs/assignments/A01-kattis.md
-[a02]: docs/assignments/A02-string.md
-[a03]: docs/assignments/A03-hybrid-sort.md
-[a04]: docs/assignments/A04-advanced-sort.md
-[a05]: docs/assignments/A05-two-stack.md
-[a06]: docs/assignments/A06-binary-things.md
 
 [git-basics]: https://git-scm.com/book/en/v1/Getting-Started-Git-Basics
 [git-handbook]: https://guides.github.com/introduction/git-handbook/

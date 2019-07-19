@@ -1,4 +1,4 @@
-# Assignment 10: Lexicographic String Sorting
+# Assignment 08: Lexicographic String Sorting
 
 For this assignment you will be implementing an algorithm capable of sorting strings lexicographically.
 
