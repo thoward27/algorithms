@@ -24,21 +24,40 @@ void HashTable::grow() {
   m *= 2;
 }
 
+void HashTable::shrink() {
+  unsigned int old_m = m;
+  m = m/2 + 1; // May need to divide by m later, so ensure m > 0
+  List* newtable = new List[m];
+  for (unsigned int i = 0; i < old_m; ++i) {
+    while (!table[i].empty()) {
+      Node *node = table[i].top();
+      newtable[hash(*(node->key))].push(*(node->key), node->val);
+      table[i].pop();
+    }
+  }
+  delete[] table;
+  table = newtable;
+}
+
 void HashTable::insert(const String& key, int data) {
   int h = hash(key);
   if (table[h].index(key) == -1) {
     table[h].push(key, data);
     n++;
-    if ((n / m) >= 8) {
-      grow();
-    }
   } else {
     table[h].update(key, data);
   }
+
+  if (n / m >= 8)
+    grow();
 }
 
 void HashTable::remove(String& key) {
   table[hash(key)].remove(key);
+  --n;
+
+  if (n / m <= 2)
+    shrink();
 }
 
 bool HashTable::search(String& key) {
@@ -49,7 +68,7 @@ bool HashTable::search(String& key) {
 }
 
 int HashTable::get(String& key) {
-  return table[hash(key)].at(table[hash(key)].index(key));
+  return table[hash(key)].get(key);
 }
 
 bool HashTable::is_empty() {

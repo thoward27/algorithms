@@ -25,8 +25,8 @@ def asearch(maze, start, finish):
     if current == goal:
         break
 
-    for next in graph.neighbors(current):
-        new_cost = cost_so_far[current] + graph.cost(current, next)
+    for next in maze.neighbors(current):
+        new_cost = cost_so_far[current] + maze.cost(current, next)
         if next not in cost_so_far or new_cost < cost_so_far[next]:
             cost_so_far[next] = new_cost
             priority = new_cost + heuristic(goal, next)
@@ -52,7 +52,7 @@ This assignment will be hosted on Github Classroom.
 3. Getting things in order
    1. Open your new folder in VS Code
 4. Implement the algorithm **Commit and Push your work after each task**
-   1. Locate the header file `karprabin.hpp` under `Algorithms`
+   1. Locate the header file `a-star.hpp` under `Algorithms`
    2. In the docstring for your sorting algorithm, detail your pseudocode for accomplishing this task.
    3. Under the provided signature implement the algorithm.
    4. Analyze your work, providing the O(?) runtime.

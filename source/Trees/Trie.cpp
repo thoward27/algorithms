@@ -109,7 +109,7 @@ void Trie::clear() {
   size = 0;                   // O(1)
 }
 
-// O(R * height)
+// O(nodes)
 void Trie::print(std::ostream& oss, Node* n, String& letters) {
   if (n->end_of_word) {
     oss << letters << ' ' << n->value << std::endl;
@@ -124,7 +124,7 @@ void Trie::print(std::ostream& oss, Node* n, String& letters) {
   }
 }
 
-// O(R * height)
+// O(nodes)
 void Trie::print(std::ostream& oss) {
   String letters;
   print(oss, root, letters);

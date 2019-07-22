@@ -44,6 +44,11 @@ class List {
    */
   unsigned int length() { return len; }
 
+  /** empty()
+   * Returns whether or not the string is empty.
+   */
+  bool empty() const { return len == 0; }
+
   /** peak()
    * Returns the node at the front of the list.
    */
@@ -79,6 +84,9 @@ class List {
     len++;
   }
 
+  /** update(String key, int val)
+   * Updates the given key with the given value.
+   */
   void update(const String& key, int val) {
     Node* temp = head;
     while (temp && !temp->key->compare(key))
@@ -136,6 +144,17 @@ class List {
         return i;
     }
     return -1;
+  }
+
+  /** get(String key)
+   * Gets the value associated with the given key.
+   */
+  int get(const String& key) const {
+    for (Node* iter = head; iter; iter = iter->next)
+      if (iter->key->compare(key))
+        return iter->val;
+
+    throw std::runtime_error("Key not found.");
   }
 
   /** at(int index)
