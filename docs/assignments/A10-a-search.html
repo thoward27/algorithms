@@ -21,9 +21,9 @@
         
     </head>
     <body>
-        <h1 id="Assignment-10-A-Search">Assignment 10: A* Search</h1>
+        <h1 id="assignment-10-a-search">Assignment 10: A* Search</h1>
 <p>For this assignment you will be implementing an algorithm capable of more efficiently finding paths through a more complicated maze.</p>
-<h2 id="The-Algorithm">The Algorithm</h2>
+<h2 id="the-algorithm">The Algorithm</h2>
 <p>A* Search uses a heuristic to try and take &quot;better&quot; steps through a maze.</p>
 <p>Typically, the metric used is a simple Euclidean Distance.</p>
 <p>Pseudocode for this algorithm is as follows:</p>
@@ -41,20 +41,20 @@
     <span class="hljs-keyword">if</span> current == goal:
         <span class="hljs-keyword">break</span>
 
-    <span class="hljs-keyword">for</span> next <span class="hljs-keyword">in</span> graph.neighbors(current):
-        new_cost = cost_so_far[current] + graph.cost(current, next)
+    <span class="hljs-keyword">for</span> next <span class="hljs-keyword">in</span> maze.neighbors(current):
+        new_cost = cost_so_far[current] + maze.cost(current, next)
         <span class="hljs-keyword">if</span> next <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> cost_so_far <span class="hljs-keyword">or</span> new_cost &lt; cost_so_far[next]:
             cost_so_far[next] = new_cost
             priority = new_cost + heuristic(goal, next)
             frontier.put(next, priority)
             came_from[next] = current
 </div></code></pre>
-<h3 id="Resources">Resources</h3>
+<h3 id="resources">Resources</h3>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=ySN5Wnu88nE">Computerfile</a></li>
 <li><a href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">Red Blob Games</a></li>
 </ul>
-<h2 id="Instructions">Instructions</h2>
+<h2 id="instructions">Instructions</h2>
 <p>This assignment will be hosted on Github Classroom.</p>
 <ol>
 <li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/xa30-340">this link</a></li>
@@ -73,7 +73,7 @@
 </li>
 <li>Implement the algorithm <strong>Commit and Push your work after each task</strong>
 <ol>
-<li>Locate the header file <code>karprabin.hpp</code> under <code>Algorithms</code></li>
+<li>Locate the header file <code>a-star.hpp</code> under <code>Algorithms</code></li>
 <li>In the docstring for your sorting algorithm, detail your pseudocode for accomplishing this task.</li>
 <li>Under the provided signature implement the algorithm.</li>
 <li>Analyze your work, providing the O(?) runtime.</li>
@@ -81,7 +81,7 @@
 </li>
 <li>Submit your work (<code>git add . &amp;&amp; git commit -m &quot;Done&quot; &amp;&amp; git push</code></li>
 </ol>
-<h2 id="Grading">Grading</h2>
+<h2 id="grading">Grading</h2>
 <table>
 <thead>
 <tr>
@@ -104,7 +104,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Submission">Submission</h2>
+<h2 id="submission">Submission</h2>
 <p>Submissions are handled by Github Classroom.
 Submissions after the deadline are not graded.</p>
 
