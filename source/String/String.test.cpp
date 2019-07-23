@@ -182,6 +182,10 @@ TEST_CASE("Reverse") {
   String s((char*)"abc");
   s.reverse();
   CHECK_EQ(s.at(0), 'c');
+
+  String w((char*)"acde");
+  w.reverse();
+  CHECK_EQ(w.at(2), 'c');
 }
 
 TEST_CASE("Shift") {

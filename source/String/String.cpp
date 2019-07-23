@@ -41,7 +41,6 @@ String::String(char* str) {
   // Fill our array up, including the null.
   for (int i = 0; i <= length; ++i)
     array[i] = str[i];
-  
 
   // Adjust private variables.
   _capacity = length;
@@ -257,7 +256,7 @@ unsigned int String::find(String& str, int start) const {
 // O(n)
 void String::reverse() {
   int length = size() - 1;
-  for (int i = 0; i < length / 2; ++i) {
+  for (int i = 0; i <= length / 2; ++i) {
     array[i] ^= array[length - i];
     array[length - i] ^= array[i];
     array[i] ^= array[length - i];

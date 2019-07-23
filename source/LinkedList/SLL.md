@@ -33,3 +33,128 @@ A variety of different methods with different time complexities can be implement
 + Every element of the list is accessible and no nodes are lost.
 
 Due to the versatility of linked lists, they can actually be used to implement data structures tailored to more specific purposes, which will be discussed in the future.
+
+## Pseudocode
+
+*push_front(int data)*
+
+```
+Create new node on the heap using data.
+ If head is null,
+    set head to the new node pointer.
+Otherwise, 
+    set the new node's next value to head,
+    set head to the new node pointer.
+ Increment the length.
+```
+
+*pop_front()*
+
+```
+Copy head to a new variable.
+// Note: The above line makes a copy of the POINTER,
+// not the node itself.
+ Copy the head node's data to a new variable.
+ If there is only one element in the list,
+    set head to null.
+Otherwise,
+    set head to its "next" pointer.
+ Use the copy of the (old) head pointer to delete the node.
+ Decrement the length.
+ Return the (old) head node's data.
+```
+
+ Iterating over a singly linked list
+
+ ```
+Copy head to a new variable. This will be your loop variable.
+ While the loop variable is not null,
+    if necessary, do something with the loop variable (i.e. the current node),
+    set the loop variable to its "next" pointer.
+    
+// Note: often you will need to check if the next node,
+// or even the node after that, is null instead of the loop
+// variable itself. The most important part of iterating over
+// a singly linked list is having a variable that starts at the
+// head and moves to the next node at each iteration.
+```
+
+ *push_back(int data)*
+
+ ```
+Create new node on the heap using data.
+ If head is null,
+    set head to the new node pointer.
+Otherwise,
+    iterate over the linked list to find the last node,
+    set the last node's "next" to the new node pointer.
+ Increment the length.
+```
+
+ *pop_back()*
+
+ ```
+Create a variable to store the pointer to the node that will be removed.
+ If there is only one element in the list,
+    set the node to be removed to head,
+    set head to null.
+Otherwise,
+    iterate over the linked list to find the second-to-last node,
+    set the node to be removed to the second-to-last node's "next",
+    // i.e. the last node
+    set the second-to-ast node's "next" to null.
+ Copy the data in the node to be removed to a new variable.
+ Delete the node to be removed, decrement the length and return the data.
+// not all in one line
+```
+
+ *at(int index)*
+
+ ```
+If the index is negative, change it to itself plus the length of the list.
+ If the index is still negative, or it is greater than the length of the list,
+    throw an error.
+ Iterate to the node at index and return that node's data.
+```
+
+ *push(int data, int index)*
+
+ ```
+If index is 0,
+    call push_front on data.
+Otherwise, if index is equal to the length,
+    call push_back on data.
+Otherwise,
+    create new node on the heap using data,
+    iterate to the node in front of the index,
+    // i.e., the node at index - 1
+    set the new node's "next" to the loop node's "next",
+    set the loop node's "next" to the new node,
+    increment the length.
+```
+
+ *pop(int index)*
+
+ ```
+If index is 0,
+    call pop_front and return the result.
+Otherwise, if index is equal to the length MINUS ONE,
+    call pop_back and return the result.
+Otherwise,
+    iterate to the node in front of the index,
+    store the loop node's "next" node in a new variable as the node to be removed,
+    set the loop node's "next" to the "next" of the node to be removed,
+    store the data of the node to be removed in a new variable,
+    delete the node to be removed, decrement the length, and return the data.
+```
+
+ *clear()*
+
+ ```
+Create a variable to store the pointer to the node that will be removed.
+ While head is not null,
+    set the pointer to be removed to head,
+    set head to its "next" pointer,
+    delete the old head using the pointer to the node to be removed.
+ Set the length to zero.
+```
