@@ -24,7 +24,7 @@ This assignment will be hosted on Github Classroom.
 3. Getting things in order
    1. Open your new folder in VS Code
 4. Implement the Algorithm **Commit and Push your work after each task**
-   1. Locate the header `djikstra.hpp`
+   1. Locate the header `dijkstra.hpp`
    2. Implement the algorithm according to the documentation provided
    3. Add unit tests as you see fit
 5. Submit your work (`git add . && git commit -m "Done" && git push`

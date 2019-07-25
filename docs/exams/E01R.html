@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>CSC 212 Midterm Exam Review</title>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        
+    </head>
+    <body>
+        <h1 id="csc-212-midterm-exam-review">CSC 212 Midterm Exam Review</h1>
+<h2 id="programming-portion">Programming Portion</h2>
+<p>You should be able to implement all of the functions declared in the <code>functions.hpp</code>, <code>string.hpp</code>, and <code>sorts.hpp</code> files.</p>
+<p>Although there are some functions that may not be solvable recursively, you should be able to solve the vast majority both iteratively, and recursively.</p>
+<h2 id="comprehension-portion">Comprehension Portion</h2>
+<p>You should be able to analyze and discuss all algorithms and functions we have implemented in class, along with analyzing some fictitious pseudocode algorithms.</p>
+<h3 id="recursion">Recursion</h3>
+<ol>
+<li>What are the required components of recursive programming?</li>
+<li>What happens when you create a recursive function that does not reduce the problem size on each call?</li>
+</ol>
+<p>Provide recursive definitions, recurrence relations, and Big-Oh notation for the following functions:</p>
+<pre><code class="language-algorithm"><div>function func(int x):
+    return (x) ? func(abs(x) - 1) + x : 0;
+
+function func(int[] array, int n):
+    if n &lt;= 1: return
+    else:
+        swap(array[0], array[n-1])
+        func(array + 1, n - 2)
+</div></code></pre>
+<h3 id="sorting">Sorting</h3>
+<ol>
+<li>What does it mean for a sorting algorithm to be stable?</li>
+<li>What does it mean for a sorting algorithm to be in-place?</li>
+<li>What does it mean for a sorting algorithm to be adaptive?</li>
+<li>If you were given input conditions that the arrays would always be almost completely sorted, what algorithm would you choose?</li>
+<li>Given input constraints that every input array would be smaller then 10 elements, which algorithm would you choose? Does it matter?</li>
+</ol>
+<p>Calculate the value for <code>n</code> at which you would choose algorithm A over algorithm B to sort a given list, or if you would always choose algorithm B.</p>
+<p>A: T1(n) = 27n; B: T2(n) = n!</p>
+<p>A: T1(n) = 10n log n; B: T2(n) = 2^n</p>
+<p>A: T1(n) = 5n + n^2 - 6; B: T2(n) = n^3 / 2</p>
+<p>A: T1(n) = n^60; B: T2(n) = 100n</p>
+<h3 id="bubble-sort">Bubble Sort</h3>
+<ol>
+<li>Provide the upper and lower bounds for best and worst cases for Bubble Sort.</li>
+<li>Is Bubble Sort stable? Adaptive? In-Place?</li>
+<li>Are there any advantages to Bubble Sort?</li>
+<li>What is the space-complexity of Bubble Sort?</li>
+</ol>
+<h3 id="insertion">Insertion</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for Insertion Sort.</li>
+<li>Is Insertion Sort stable? Adaptive? In-Place?</li>
+<li>What are the advantages to Insertion Sort?</li>
+<li>What is the space-complexity of Insertion Sort?</li>
+</ol>
+<h3 id="selection-sort">Selection Sort</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for Selection Sort.</li>
+<li>Is Selection Sort stable? Adaptive? In-Place?</li>
+<li>Are there any advantages to Selection Sort?</li>
+<li>What is the space-complexity of Selection Sort?</li>
+</ol>
+<h3 id="mergesort">MergeSort</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for MergeSort.</li>
+<li>Is MergeSort stable? Adaptive? In-Place?</li>
+<li>What is the purpose of the <code>merge</code> function in most MergeSort implementations? What about the <code>MergeSort</code> function?</li>
+<li>What is the space complexity of MergeSort?</li>
+</ol>
+<h3 id="quicksort">QuickSort</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for QuickSort.</li>
+<li>Is QuickSort stable? Adaptive? In-Place?</li>
+<li>What is the purpose of the <code>partition</code> function in quicksort? What about the <code>quicksort</code> function?</li>
+<li>What partitioning scheme did you use in class for your <code>partition</code> function?</li>
+<li>Find an array that would produce the worst case runtime for this partitioning scheme.</li>
+</ol>
+<h3 id="analysis">Analysis</h3>
+<p>Solve the following recurrence relations:</p>
+<ol>
+<li><code>T(0) = 1 ; T(n) = 2T(n - 1) + 1</code></li>
+<li><code>T(1) = 1 ; T(n) = 2T(n / 2) + n</code></li>
+<li><code>T(0) = 1 ; T(n) = T(n - 1) + n</code></li>
+<li><code>T(1) = 1 ; T(n) = T(n / 3) + 1</code></li>
+<li><code>T(0) = 1 ; T(n) = T(n - 4) + 1</code></li>
+</ol>
+
+    </body>
+    </html>

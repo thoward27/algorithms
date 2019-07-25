@@ -14,4 +14,6 @@
 
 #include "../String/String.hpp"
 
-String a_search(int maze[4][4]);
+String a_search(int maze[4][4]) {
+  return String();
+}

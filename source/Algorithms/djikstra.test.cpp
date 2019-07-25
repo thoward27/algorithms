@@ -8,7 +8,7 @@ TEST_CASE("Trivial") {
   g.add_edge(0, 1);
   g.add_edge(1, 2);
   g.add_edge(2, 0, 100);
-  Graph d = djikstras(g, 0);
+  Graph d = dijkstras(g, 0);
   REQUIRE(d.has_edge(0, 1));
   REQUIRE(d.has_edge(1, 2));
   REQUIRE_FALSE(d.has_edge(2, 0));

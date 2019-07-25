@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+        <title>CSC 212 Midterm Exam Review</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+        <link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        <style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+    </head>
+    <body>
+        <h1 id="csc-212-midterm-exam-review">CSC 212 Midterm Exam Review</h1>
+<h2 id="programming-portion">Programming Portion</h2>
+<p>You should be able to implement all of the functions declared in the <code>functions.hpp</code>, <code>string.hpp</code>, and <code>sorts.hpp</code> files.</p>
+<p>Although there are some functions that may not be solvable recursively, you should be able to solve the vast majority both iteratively, and recursively.</p>
+<p>For solutions, consult the various <code>.cpp</code> files.</p>
+<h2 id="comprehension-portion">Comprehension Portion</h2>
+<p>You should be able to analyze and discuss all algorithms and functions we have implemented in class, along with analyzing some fictitious pseudocode algorithms.</p>
+<h3 id="recursion">Recursion</h3>
+<ol>
+<li>What are the required components of recursive programming?
+<ol>
+<li>A base case, which handles simple inputs that can be easily solved.</li>
+<li>A recursive call to the function itself, where the parameters are made closer to the base case.</li>
+</ol>
+</li>
+<li>What happens when you create a recursive function that does not reduce the problem size on each call?
+<ol>
+<li>A recursive function that doesn't reduce the size of its problem will recurse infinitely, which results in a stack overflow, since each call requires a separate stack frame.</li>
+</ol>
+</li>
+</ol>
+<p>Provide recursive definitions, recurrence relations, and Big-Oh notation for the following functions:</p>
+<pre><code class="language-algorithm"><div>Definition: func(x) = func(abs(x) - 1) + x; func(0) = 0
+Relation: T(n) = T(n - 1) + 1; T(0) = 0
+O(n), Omega(1)
+function func(int x):
+    return (x) ? func(abs(x) - 1) + x : 0;
+
+Definition: func(array, n) = array[-1] + func(array + 1, n - 2) + array[0]; func([n], 1) = func([], 0) = 1
+Relation: T(n) = T(n - 2) + 2; T(0) = T(1) = 1
+O(n), Omega(1)
+function func(int[] array, int n):
+    if n &lt;= 1: return
+    else:
+        swap(array[0], array[n-1])
+        func(array + 1, n - 2)
+</div></code></pre>
+<h3 id="sorting">Sorting</h3>
+<ol>
+<li>What does it mean for a sorting algorithm to be stable?
+<ol>
+<li>An algorithm that is stable will maintain the relative order of the objects it is sorting.</li>
+</ol>
+</li>
+<li>What does it mean for a sorting algorithm to be in-place?
+<ol>
+<li>An in-place algorithm is one that can sort the elements given within the memory the original elements were stored, i.e. it requires O(1) space to perform its sorting.</li>
+</ol>
+</li>
+<li>What does it mean for a sorting algorithm to be adaptive?
+<ol>
+<li>An adaptive algorithm is one that will take advantage of an array that is already partially sorted.</li>
+</ol>
+</li>
+<li>If you were given input conditions that the arrays would always be almost completely sorted, what algorithm would you choose?
+<ol>
+<li>Insertion sort will be the best algorithm here as it runs in O(kn) where k is the upper bound on the distance each element is from where it should be.</li>
+</ol>
+</li>
+<li>Given input constraints that every input array would be smaller then 10 elements, which algorithm would you choose? Does it matter?
+<ol>
+<li>I would choose insertion sort, though it doesn't necessarily matter for such a small number of elements, as the differences in runtime are extremely unlikely to make a difference.</li>
+</ol>
+</li>
+</ol>
+<p>Calculate the value for <code>n</code> at which you would choose algorithm A over algorithm B to sort a given list, or if you would always choose algorithm B.</p>
+<p>Algorithms: A: T<sub>1</sub>(n) = 27n; B: T<sub>2</sub>(n) = n!</p>
+<p>Answer: n = 6. You can set the equations equal to one another and find the n such that T<sub>1</sub>(n-1) &gt; T<sub>2</sub>(n-1) but T<sub>1</sub>(n) &lt; T<sub>2</sub>(n).</p>
+<ol>
+<li>27n = n!</li>
+<li>27 = n!/n = (n-1)!</li>
+<li>Think about the first few factorials:
+<ol>
+<li>2! = 2, 3! = 6, 4! = 24, 5! = 120, 6! = 720</li>
+</ol>
+</li>
+<li>Since 4! = 24 &lt; 27 &lt; 120 = 5!, we have n-1 = 5, or n = 6.</li>
+</ol>
+<p>Algorithms: A: T<sub>1</sub>(n) = 10n log n; B: T<sub>2</sub>(n) = 2^n
+n = 1</p>
+<p>Answer: n = 8. Here, trial and error is easier than solving algebraically. Since log n is easy to solve for powers of 2, try each one starting from 1.</p>
+<ol>
+<li>T<sub>1</sub>(1) = 10*1 * log 1 = 10 * 0 = 0; T<sub>2</sub>(1) = 2^1 = 2
+<ol>
+<li>T<sub>1</sub>(1) &lt; T<sub>2</sub>(1)</li>
+<li>We might think we are done, but since we have log 1 = 0 in T<sub>1</sub>(1), we can't be certain this is the solution</li>
+</ol>
+</li>
+<li>T<sub>1</sub>(2) = 10*2 * log 2 = 20 * 1 = 20; T<sub>2</sub>(2) = 2^2 = 4.
+<ol>
+<li>T<sub>1</sub>(2) &gt; T<sub>2</sub>(2)</li>
+</ol>
+</li>
+<li>T<sub>1</sub>(4) = 10*4 * log 4 = 40 * 2 = 80; T<sub>2</sub>(4) = 2^4 = 16.
+<ol>
+<li>T<sub>1</sub>(4) &gt; T<sub>2</sub>(4)</li>
+</ol>
+</li>
+<li>T<sub>1</sub>(8) = 10*8 * log 8 = 80 * 3 = 240; T<sub>2</sub>(8) = 2^8 = 256.
+<ol>
+<li>T<sub>1</sub>(8) &lt; T<sub>2</sub>(8)</li>
+</ol>
+</li>
+<li>We could then check T<sub>1</sub>(7) and T<sub>2</sub>(7) with a calculator, and see that T<sub>1</sub>(7) &gt; T<sub>2</sub>(7)</li>
+<li>Since T<sub>2</sub> continues to increase more quickly than T<sub>1</sub> after n = 8, our solution is n = 8.</li>
+</ol>
+<p>Algorithms: A: T<sub>1</sub>(n) = 5n + n^2 - 6; B: T<sub>2</sub>(n) = n^3 / 2</p>
+<p>Answer: n = 4. Again, rather than attempting to solve a cubic polynomial, we can do simple trial and error starting at n = 1</p>
+<ol>
+<li>T<sub>1</sub>(1) = 5*1 + 1^2 - 6 = 0; T<sub>2</sub>(1) = 1^3 / 2 = 1/2.
+<ol>
+<li>T<sub>1</sub>(1) &lt; T<sub>2</sub>(1).</li>
+<li>Again, we have to be careful, because 1^x is 1 for all x.</li>
+</ol>
+</li>
+<li>T<sub>1</sub>(2) = 5*2 + 2^2 - 6 = 8; T<sub>2</sub>(2) = 2^3 / 2 = 4.
+<ol>
+<li>T<sub>1</sub>(2) &gt; T<sub>2</sub>(2).</li>
+</ol>
+</li>
+<li>T<sub>1</sub>(3) = 5*3 + 3^2 - 6 = 18; T<sub>2</sub>(3) = 3^3 / 2 = 13.5.
+<ol>
+<li>T<sub>1</sub>(3) &gt; T<sub>2</sub>(3).</li>
+</ol>
+</li>
+<li>T<sub>1</sub>(4) = 5*4 + 4^2 - 6 = 30; T<sub>2</sub>(4) = 4^3 / 2 = 32.
+<ol>
+<li>T<sub>1</sub>(4) &lt; T<sub>2</sub>(4).</li>
+</ol>
+</li>
+<li>Since T<sub>2</sub> continues to increase more quickly than T<sub>1</sub> after n = 4, our solution is n = 4.</li>
+</ol>
+<p>Algorithms: A: T<sub>1</sub>(n) = n^60; B: T<sub>2</sub>(n) = 100n</p>
+<p>Answer: n = 2. It may seem like the answer is &quot;Always B&quot;, since even just 2^60 is much greater than 200, but again, since 1^x is 1 for all x, T<sub>1</sub>(1) = 1 &lt; T<sub>2</sub>(1) = 100. Thus, since we clearly saw that 2^60 is much greater than 200, n = 2.</p>
+<h3 id="bubble-sort">Bubble Sort</h3>
+<ol>
+<li>Provide the upper and lower bounds for best and worst cases for Bubble Sort.
+<ol>
+<li>Best: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> Worst: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+<li>Is Bubble Sort stable? Adaptive? In-Place?
+<ol>
+<li>Bubble sort is stable and in-place.</li>
+</ol>
+</li>
+<li>Are there any advantages to Bubble Sort?
+<ol>
+<li>It is adaptive, and in-place.</li>
+</ol>
+</li>
+<li>What is the space-complexity of Bubble Sort?
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+</ol>
+<h3 id="insertion">Insertion</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for Insertion Sort.
+<ol>
+<li>Best: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> Worst: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+<li>Is Insertion Sort stable? Adaptive? In-Place?
+<ol>
+<li>Insertion sort is adaptive, stable, and in-place.</li>
+</ol>
+</li>
+<li>What are the advantages to Insertion Sort?
+<ol>
+<li>It runs in <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>k</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(kn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> for partially sorted arrays, is in-place, and stable.</li>
+</ol>
+</li>
+<li>What is the space-complexity of Insertion Sort?
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+</ol>
+<h3 id="selection-sort">Selection Sort</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for Selection Sort.
+<ol>
+<li>Best: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> Worst: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+<li>Is Selection Sort stable? Adaptive? In-Place?
+<ol>
+<li>In-place, can be made stable, not adaptive.</li>
+</ol>
+</li>
+<li>Are there any advantages to Selection Sort?
+<ol>
+<li>Not really.</li>
+</ol>
+</li>
+<li>What is the space-complexity of Selection Sort?
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+</ol>
+<h3 id="mergesort">MergeSort</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for MergeSort.
+<ol>
+<li>Best: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> Worst: $O(n \log n)</li>
+</ol>
+</li>
+<li>Is MergeSort stable? Adaptive? In-Place?
+<ol>
+<li>Stable</li>
+</ol>
+</li>
+<li>What is the purpose of the <code>merge</code> function in most MergeSort implementations? What about the <code>MergeSort</code> function?
+<ol>
+<li>MergeSort splits up the array into smaller arrays, while merge  puts the arrays back together.</li>
+</ol>
+</li>
+<li>What is the space complexity of MergeSort?
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
+</ol>
+</li>
+</ol>
+<h3 id="quicksort">QuickSort</h3>
+<ol>
+<li>Provide the upper and lower bounds for the best and worst cases for QuickSort.
+<ol>
+<li>Best: <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n \log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> Worst: $O(n^2)</li>
+</ol>
+</li>
+<li>Is QuickSort stable? Adaptive? In-Place?
+<ol>
+<li>In-Place</li>
+</ol>
+</li>
+<li>What is the purpose of the <code>partition</code> function in quicksort? What about the <code>quicksort</code> function?
+<ol>
+<li>Partition will place all elements that are larger or smaller than the pivot to either the left or right and then call quicksort on both the new halves.</li>
+</ol>
+</li>
+<li>What partitioning scheme did you use in class for your <code>partition</code> function?
+<ol>
+<li>EX: The Lomuto partitioning scheme, which selects the element in the last position in the array to be the pivot.</li>
+</ol>
+</li>
+<li>Find an array that would produce the worst case runtime for this partitioning scheme.
+<ol>
+<li>EX: Lomuto, an array in reverse order will produce the worst-case for this partitioning scheme.</li>
+</ol>
+</li>
+</ol>
+<h3 id="analysis">Analysis</h3>
+<p>Solve the following recurrence relations:</p>
+<ol>
+<li><code>T(0) = 1 ; T(n) = 2T(n - 1) + 1</code></li>
+<li><code>T(1) = 1 ; T(n) = 2T(n / 2) + n</code></li>
+<li><code>T(0) = 1 ; T(n) = T(n - 1) + n</code></li>
+<li><code>T(1) = 1 ; T(n) = T(n / 3) + 1</code></li>
+<li><code>T(0) = 1 ; T(n) = T(n - 4) + 1</code></li>
+</ol>
+
+    </body>
+    </html>

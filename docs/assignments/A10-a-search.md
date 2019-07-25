@@ -36,7 +36,7 @@ def asearch(maze, start, finish):
 
 ### Resources
 
-- [Computerfile](https://www.youtube.com/watch?v=ySN5Wnu88nE)
+- [Computerphile](https://www.youtube.com/watch?v=ySN5Wnu88nE)
 - [Red Blob Games](https://www.redblobgames.com/pathfinding/a-star/introduction.html)
 
 ## Instructions

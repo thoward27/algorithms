@@ -10,7 +10,7 @@
 #include "../Graphs/Graph.hpp"
 #include "../String/String.hpp"
 
-Graph djikstras(Graph& G, int vertex) {
+Graph dijkstras(Graph& G, int vertex) {
   // Initialize helpers.
   bool kwn[G.node_count()] = {0};
   int cst[G.node_count()], pth[G.node_count()];

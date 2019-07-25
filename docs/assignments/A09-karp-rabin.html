@@ -1,93 +1,111 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Assignment 09: Karp-Rabin Substring Search</title>
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        
-        <style>
-.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
-</style>
-        <style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        
-        
-    </head>
-    <body>
-        <h1 id="Assignment-09-Karp-Rabin-Substring-Search">Assignment 09: Karp-Rabin Substring Search</h1>
-<p>For this assignment you will be implementing an algorithm capable of pattern-matching substrings in a larger body of text.</p>
-<h2 id="The-Algorithm">The Algorithm</h2>
-<p>Karp-Rabin (or Rabin-Karp) uses rolling hashing to find substrings within a larger string.</p>
-<p>Pseudocode for this algorithm is as follows:</p>
-<pre><code class="language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">KarpRabin</span><span class="hljs-params">(text, pattern)</span>:</span>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Assignment 09: Karp-Rabin Substring Search</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+
+    <style>
+        .task-list-item {
+            list-style-type: none;
+        }
+
+        .task-list-item-checkbox {
+            margin-left: -20px;
+            vertical-align: middle;
+        }
+    </style>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1 id="Assignment-09-Karp-Rabin-Substring-Search">Assignment 09: Karp-Rabin Substring Search</h1>
+    <p>For this assignment you will be implementing an algorithm capable of pattern-matching substrings in a larger body
+        of text.</p>
+    <h2 id="The-Algorithm">The Algorithm</h2>
+    <p>Karp-Rabin (or Rabin-Karp) uses rolling hashing to find substrings within a larger string.</p>
+    <p>Pseudocode for this algorithm is as follows:</p>
+    <pre><code class="language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">KarpRabin</span><span class="hljs-params">(text, pattern)</span>:</span>
     hash_pattern = hash(pattern)
     <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">0</span>, len(text)):
         <span class="hljs-keyword">if</span> hash_pattern == hash(text[i:i + len(pattern)]) <span class="hljs-keyword">and</span> text[i:i + len(pattern)] == pattern:
             <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
     <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
 </div></code></pre>
-<p>Essentially, we hash the pattern we are looking for, then compare that hash to a hash of a small piece of the main text.</p>
-<p>For this task, we use a special &quot;rolling hash&quot; function, similar to the one we've seen on the Princeton slides.</p>
-<h2 id="Instructions">Instructions</h2>
-<p>This assignment will be hosted on Github Classroom.</p>
-<ol>
-<li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/V5-ecbS2">this link</a></li>
-<li>Clone the repository to your machine
-<ol>
-<li>Open a terminal</li>
-<li>Navigate to your algorithms folder</li>
-<li>Go to the parent directory (<code>cd ..</code>)</li>
-<li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)</li>
-</ol>
-</li>
-<li>Getting things in order
-<ol>
-<li>Open your new folder in VS Code</li>
-</ol>
-</li>
-<li>Implement the algorithm <strong>Commit and Push your work after each task</strong>
-<ol>
-<li>Locate the header file <code>karprabin.hpp</code> under <code>Algorithms</code></li>
-<li>In the docstring for your sorting algorithm, detail your pseudocode for accomplishing this task.</li>
-<li>Under the provided signature implement the algorithm.</li>
-<li>Analyze your work, providing the O(?) runtime.</li>
-</ol>
-</li>
-<li>Submit your work (<code>git add . &amp;&amp; git commit -m &quot;Done&quot; &amp;&amp; git push</code></li>
-</ol>
-<h2 id="Grading">Grading</h2>
-<table>
-<thead>
-<tr>
-<th>Criteria</th>
-<th>Points</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Functional Correctness</td>
-<td>80</td>
-</tr>
-<tr>
-<td>Analysis</td>
-<td>10</td>
-</tr>
-<tr>
-<td>Quality</td>
-<td>10</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Submission">Submission</h2>
-<p>Submissions are handled by Github Classroom.
-Submissions after the deadline are not graded.</p>
+    <p>Essentially, we hash the pattern we are looking for, then compare that hash to a hash of a small piece of the
+        main text.</p>
+    <p>For this task, we use a special &quot;rolling hash&quot; function, similar to the one we've seen on the Princeton
+        slides.</p>
+    <h2 id="Instructions">Instructions</h2>
+    <p>This assignment will be hosted on Github Classroom.</p>
+    <ol>
+        <li>Register for the assignment on our Github Classroom using <a
+                href="https://classroom.github.com/a/V5-ecbS2">this link</a></li>
+        <li>Clone the repository to your machine
+            <ol>
+                <li>Open a terminal</li>
+                <li>Navigate to your algorithms folder</li>
+                <li>Go to the parent directory (<code>cd ..</code>)</li>
+                <li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)
+                </li>
+            </ol>
+        </li>
+        <li>Getting things in order
+            <ol>
+                <li>Open your new folder in VS Code</li>
+            </ol>
+        </li>
+        <li>Implement the algorithm <strong>Commit and Push your work after each task</strong>
+            <ol>
+                <li>Locate the header file <code>karprabin.hpp</code> under <code>Algorithms</code></li>
+                <li>In the docstring for your sorting algorithm, detail your pseudocode for accomplishing this task.
+                </li>
+                <li>Under the provided signature implement the algorithm.</li>
+                <li>Analyze your work, providing the O(?) runtime.</li>
+            </ol>
+        </li>
+        <li>Submit your work (<code>git add . &amp;&amp; git commit -m &quot;Done&quot; &amp;&amp; git push</code></li>
+    </ol>
+    <h2 id="Grading">Grading</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Functional Correctness</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>Analysis</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Quality</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 id="Submission">Submission</h2>
+    <p>Submissions are handled by Github Classroom.
+        Submissions after the deadline are not graded.</p>
 
-    </body>
-    </html>
+</body>
+
+</html>

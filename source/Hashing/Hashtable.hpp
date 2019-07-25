@@ -12,17 +12,17 @@ class HashTable {
   /** hash(String key)
    * Calculates the simple modular hash of a string being:
    * (sum of ascii values for each character) % (size data member)
-   * 
+   *
    * Inputs:
    * @param key: A string to calculate the hash of
-   * 
+   *
    * Outputs:
    * The calculated hash value of key, used for indexing within the table
-   * 
+   *
    * Examples:
-   * hash("Hello World") == 5 //this value is arbitrary the actual hash 
+   * hash("Hello World") == 5 //this value is arbitrary the actual hash
    *                            for "Hello World" will likely not be 5
-   * 
+   *
    * Runtime:
    * O(?)
    */
@@ -30,11 +30,11 @@ class HashTable {
 
   /** grow()
    * Doubles the size of the table.
-   * 
+   *
    * Side Effects:
    * Doubles the number of chains in the hash table, used when table
    * becomes too loaded
-   * 
+   *
    * Runtime:
    * O(?)
    */
@@ -42,11 +42,11 @@ class HashTable {
 
   /** shrink()
    * Halves the size of the table.
-   * 
+   *
    * Side Effects:
    * Halves the number of chains in the hash table, used when table
    * becomes becomes less loaded
-   * 
+   *
    * Runtime:
    * O(?)
    */
@@ -60,14 +60,14 @@ class HashTable {
 
   /** size()
    * Returns the number of rows in the table.
-   * 
+   *
    * Outputs:
    * The value of internal data member m : the number of chains in the table
-   * 
+   *
    * Examples:
    * Hashtable test(10)
    * test.size() == 10
-   * 
+   *
    * Runtime:
    * O(1)
    */
@@ -75,16 +75,16 @@ class HashTable {
 
   /** elements()
    * Returns the number of elements in the table.
-   * 
+   *
    * Outputs:
    * The sum of the lengths of each chain in the table
-   * 
+   *
    * Examples:
    * Hashtable test(10)
    * test.insert("Hello", 1)
    * test.insert("World", 2)
    * test.elements() == 2
-   * 
+   *
    * Runtime:
    * O(1)
    */
@@ -92,18 +92,18 @@ class HashTable {
 
   /** insert(String key, int data)
    * Insert the value of data into the chain at index hash(key)
-   * 
+   *
    * Inputs:
-   * @param key: A string to caclulate the hash for
+   * @param key: A string to calculate the hash for
    * @param data: Value to assign to that key
-   * 
+   *
    * Side Effects:
    * Inserts data at hashtable[hash(key)]
-   * 
+   *
    * Examples:
    * Hashtable test(10)
    * test.insert("Hello", 1)
-   * 
+   *
    * Runtime:
    * O(1)
    */
@@ -112,18 +112,18 @@ class HashTable {
   /** remove(String key)
    * Removes the first instance of the given key from the chain located at
    * hash(key)
-   * 
+   *
    * Inputs:
-   * @param key: A string to caclulate the hash for
-   * 
+   * @param key: A string to calculate the hash for
+   *
    * Side Effects:
-   * Removes the first occurence of key in table[hash(key)]
-   * 
+   * Removes the first occurrence of key in table[hash(key)]
+   *
    * Examples:
    * Hashtable test(10)
    * test.insert("Hello", 1)
    * test.remove("Hello")
-   * 
+   *
    * Runtime:
    * O(1) //dependant on backing Linked List implementation
    */
@@ -132,20 +132,20 @@ class HashTable {
   /** search(String key)
    * Returns true if it found an instance of the key at index hash(key) false
    * otherwise
-   * 
+   *
    * Inputs:
    * @param key: key to search for
-   * 
+   *
    * Outputs:
-   * True if key found in the cahin at table[hash(key)]
+   * True if key found in the chain at table[hash(key)]
    * False otherwise
-   * 
+   *
    * Examples:
    * Hashtable test(10)
    * test.insert("Hello", 1)
    * test.search("Hello") == 1
    * test.search("World") == 0
-   * 
+   *
    * Runtime:
    * O(n)
    */
@@ -154,18 +154,18 @@ class HashTable {
   /** get(String key)
    * Returns the integer value associated with the given key from the key/value
    * pair
-   * 
+   *
    * Inputs:
    * @param key: key to look for value of
-   * 
+   *
    * Outputs:
    * Value associated with key within the chain at table[hash(key)]
-   *  
+   *
    * Examples:
    * Hashtable test(10)
    * test.insert("Hello", 12)
    * test.get("Hello") == 12
-   * 
+   *
    * Runtime:
    * O(n)
    */
@@ -174,17 +174,17 @@ class HashTable {
   /** is_empty()
    * Returns true if all chains are of length 0 indicating them being empty,
    * returns false otherwise
-   * 
+   *
    * Outputs:
    * True when all chains are of length 0
    * False otherwise
-   * 
+   *
    * Examples:
    * Hashtable test(10)
    * test.is_empty() == 1
    * test.insert("hello", 1)
    * test.is_empty() == 0
-   * 
+   *
    * Runtime:
    * O(1) // dependant on Linked List implementation
    */
@@ -192,10 +192,10 @@ class HashTable {
 
   /** print()
    * Calls the Linked List print() method on each of its chains
-   * 
+   *
    * Side Effects:
    * Prints the contents of each chain to cout
-   * 
+   *
    * Runtime:
    * O(n)
    */

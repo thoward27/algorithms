@@ -26,11 +26,11 @@ void HashTable::grow() {
 
 void HashTable::shrink() {
   unsigned int old_m = m;
-  m = m/2 + 1; // May need to divide by m later, so ensure m > 0
+  m = m / 2 + 1;  // May need to divide by m later, so ensure m > 0
   List* newtable = new List[m];
   for (unsigned int i = 0; i < old_m; ++i) {
     while (!table[i].empty()) {
-      Node *node = table[i].top();
+      Node* node = table[i].top();
       newtable[hash(*(node->key))].push(*(node->key), node->val);
       table[i].pop();
     }

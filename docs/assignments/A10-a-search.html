@@ -1,33 +1,45 @@
 <!DOCTYPE html>
-    <html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Assignment 10: A* Search</title>
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
-        
-        <style>
-.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
-</style>
-        <style>
-            body {
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
-                font-size: 14px;
-                line-height: 1.6;
-            }
-        </style>
-        
-        
-    </head>
-    <body>
-        <h1 id="assignment-10-a-search">Assignment 10: A* Search</h1>
-<p>For this assignment you will be implementing an algorithm capable of more efficiently finding paths through a more complicated maze.</p>
-<h2 id="the-algorithm">The Algorithm</h2>
-<p>A* Search uses a heuristic to try and take &quot;better&quot; steps through a maze.</p>
-<p>Typically, the metric used is a simple Euclidean Distance.</p>
-<p>Pseudocode for this algorithm is as follows:</p>
-<pre><code class="language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">asearch</span><span class="hljs-params">(maze, start, finish)</span>:</span>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <title>Assignment 10: A* Search</title>
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+
+    <style>
+        .task-list-item {
+            list-style-type: none;
+        }
+
+        .task-list-item-checkbox {
+            margin-left: -20px;
+            vertical-align: middle;
+        }
+    </style>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', 'Ubuntu', 'Droid Sans', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1 id="assignment-10-a-search">Assignment 10: A* Search</h1>
+    <p>For this assignment you will be implementing an algorithm capable of more efficiently finding paths through a
+        more complicated maze.</p>
+    <h2 id="the-algorithm">The Algorithm</h2>
+    <p>A* Search uses a heuristic to try and take &quot;better&quot; steps through a maze.</p>
+    <p>Typically, the metric used is a simple Euclidean Distance.</p>
+    <p>Pseudocode for this algorithm is as follows:</p>
+    <pre><code class="language-python"><div><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">asearch</span><span class="hljs-params">(maze, start, finish)</span>:</span>
     frontier = PriorityQueue()
     frontier.put(start, <span class="hljs-number">0</span>)
     came_from = {}
@@ -49,64 +61,68 @@
             frontier.put(next, priority)
             came_from[next] = current
 </div></code></pre>
-<h3 id="resources">Resources</h3>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=ySN5Wnu88nE">Computerfile</a></li>
-<li><a href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">Red Blob Games</a></li>
-</ul>
-<h2 id="instructions">Instructions</h2>
-<p>This assignment will be hosted on Github Classroom.</p>
-<ol>
-<li>Register for the assignment on our Github Classroom using <a href="https://classroom.github.com/a/xa30-340">this link</a></li>
-<li>Clone the repository to your machine
-<ol>
-<li>Open a terminal</li>
-<li>Navigate to your algorithms folder</li>
-<li>Go to the parent directory (<code>cd ..</code>)</li>
-<li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)</li>
-</ol>
-</li>
-<li>Getting things in order
-<ol>
-<li>Open your new folder in VS Code</li>
-</ol>
-</li>
-<li>Implement the algorithm <strong>Commit and Push your work after each task</strong>
-<ol>
-<li>Locate the header file <code>a-star.hpp</code> under <code>Algorithms</code></li>
-<li>In the docstring for your sorting algorithm, detail your pseudocode for accomplishing this task.</li>
-<li>Under the provided signature implement the algorithm.</li>
-<li>Analyze your work, providing the O(?) runtime.</li>
-</ol>
-</li>
-<li>Submit your work (<code>git add . &amp;&amp; git commit -m &quot;Done&quot; &amp;&amp; git push</code></li>
-</ol>
-<h2 id="grading">Grading</h2>
-<table>
-<thead>
-<tr>
-<th>Criteria</th>
-<th>Points</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Functional Correctness</td>
-<td>80</td>
-</tr>
-<tr>
-<td>Analysis</td>
-<td>10</td>
-</tr>
-<tr>
-<td>Quality</td>
-<td>10</td>
-</tr>
-</tbody>
-</table>
-<h2 id="submission">Submission</h2>
-<p>Submissions are handled by Github Classroom.
-Submissions after the deadline are not graded.</p>
+    <h3 id="resources">Resources</h3>
+    <ul>
+        <li><a href="https://www.youtube.com/watch?v=ySN5Wnu88nE">Computerphile</a></li>
+        <li><a href="https://www.redblobgames.com/pathfinding/a-star/introduction.html">Red Blob Games</a></li>
+    </ul>
+    <h2 id="instructions">Instructions</h2>
+    <p>This assignment will be hosted on Github Classroom.</p>
+    <ol>
+        <li>Register for the assignment on our Github Classroom using <a
+                href="https://classroom.github.com/a/xa30-340">this link</a></li>
+        <li>Clone the repository to your machine
+            <ol>
+                <li>Open a terminal</li>
+                <li>Navigate to your algorithms folder</li>
+                <li>Go to the parent directory (<code>cd ..</code>)</li>
+                <li>Clone the repository to this location (<code>git clone &lt;your repository link here&gt;</code>)
+                </li>
+            </ol>
+        </li>
+        <li>Getting things in order
+            <ol>
+                <li>Open your new folder in VS Code</li>
+            </ol>
+        </li>
+        <li>Implement the algorithm <strong>Commit and Push your work after each task</strong>
+            <ol>
+                <li>Locate the header file <code>a-star.hpp</code> under <code>Algorithms</code></li>
+                <li>In the docstring for your sorting algorithm, detail your pseudocode for accomplishing this task.
+                </li>
+                <li>Under the provided signature implement the algorithm.</li>
+                <li>Analyze your work, providing the O(?) runtime.</li>
+            </ol>
+        </li>
+        <li>Submit your work (<code>git add . &amp;&amp; git commit -m &quot;Done&quot; &amp;&amp; git push</code></li>
+    </ol>
+    <h2 id="grading">Grading</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Criteria</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Functional Correctness</td>
+                <td>80</td>
+            </tr>
+            <tr>
+                <td>Analysis</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Quality</td>
+                <td>10</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2 id="submission">Submission</h2>
+    <p>Submissions are handled by Github Classroom.
+        Submissions after the deadline are not graded.</p>
 
-    </body>
-    </html>
+</body>
+
+</html>

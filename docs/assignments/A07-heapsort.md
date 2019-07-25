@@ -33,7 +33,7 @@ This assignment will be hosted on Github Classroom.
 3. Getting things in order
    1. Open your new folder in VS Code
    2. Begin by creating a new file `source/Sorts/heap.cpp`
-      1. Within this file, create the defition for your heap sort algorithm.
+      1. Within this file, create the definition for your heap sort algorithm.
    3. Check that you can compile and run the unit tests for heap sort (`make heap`)
    4. Commit and push these changes (`git add . && git commit -m "<message>" && git push`)
    5. Check the online copy of your repository to make sure these changes were actually pushed

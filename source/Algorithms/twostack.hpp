@@ -11,10 +11,10 @@
 
 /** isnum(char c)
  * Returns true if a c represents a number
- * 
+ *
  * Inputs:
  * @param c: An ASCII character
- * 
+ *
  * Outputs:
  * True when c is a character representing a number
  * False otherwise
@@ -24,10 +24,10 @@ bool isnum(char c) {
 }
 
 /** isop(char c)
- * Returns true if c represents an arithmatic operator
+ * Returns true if c represents an arithematic operator
  * Inputs:
  * @param c: An ASCII character
- * 
+ *
  * Outputs:
  * True when c is a character representing one of six operators
  * False otherwise
@@ -41,14 +41,15 @@ bool isop(char c) {
 }
 
 /** twostack(char* str)
- * Uses Dijkstra's two stack algorithm for evaluating mathmatic expressions
- * to return the value of a mathmatic expression expressed as a string
- * 
+ * Uses Dijkstra's two stack algorithm for evaluating mathematic expressions
+ * to return the value of a mathematic expression expressed as a string
+ *
  * Inputs:
- * @param str: A c-style string representing a mathmatic expression (e.g. "1+2*5")
- * 
+ * @param str: A c-style string representing a mathematic expression (e.g.
+ * "1+2*5")
+ *
  * Outputs:
- * A double value represnting the solved expression given by str
+ * A double value representing the solved expression given by str
  */
 double twostack(char* str) {
   Stack a;
