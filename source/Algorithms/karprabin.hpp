@@ -9,5 +9,4 @@ unsigned long long int hash(const String& a) {
  * Using a rolling-hash to find word in text.
  */
 bool karp_rabin(const String& text, const String& word) {
-;
 }
