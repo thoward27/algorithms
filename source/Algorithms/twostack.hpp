@@ -34,8 +34,8 @@ bool isnum(char c) {
  */
 bool isop(char c) {
   char ops[] = {'+', '-', '*', '/', '^', '%'};
-  for (unsigned int i = 0; i < sizeof(ops) / sizeof(char); ++i)
-    if (c == ops[i])
+  for (char op : ops)
+    if (c == op)
       return true;
   return false;
 }
@@ -94,10 +94,10 @@ double twostack(char* str) {
       b.push(str[i++]);
 
     } else {
-      throw "Bad character in twostack string.";
+      throw std::invalid_argument("Bad character in twostack string.");
     }
   }
   if (a.size() > 1)
-    throw "Bad!";
+    throw std::runtime_error("a is not empty on completion.");
   return a.pop();
 }

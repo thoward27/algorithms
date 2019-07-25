@@ -29,7 +29,7 @@ String::String(char c) {
 }
 
 // O(n)
-String::String(char* str) {
+String::String(const char* str) {
   // Get the length of the incoming string.
   int length = 0;
   while (str[length])

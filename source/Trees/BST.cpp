@@ -88,9 +88,6 @@ inline int max(int a, int b) {
 }
 int BST::height(Node* n) {
   return (!n) ? -1 : 1 + max(height(n->left), height(n->right));
-  if (!n)
-    return -1;
-  return 1 + max(height(n->left), height(n->right));
 }
 
 int BST::height() {

@@ -34,7 +34,7 @@ class BST {
    * Runtime:
    * O(log n)
    */
-  Node* insert(int data, Node* n);
+  static Node* insert(int data, Node* n);
 
   /** search(int data, Node* n)
    * Recursively searches for data in the subtree rooted at n, returning
@@ -57,7 +57,7 @@ class BST {
    * Runtime:
    * O(log n)
    */
-  bool search(int data, Node* n);
+  static bool search(int data, Node* n);
 
   /** remove(int data, Node* n)
    * Recursively searches for data in the subtree rooted at n, removing it
@@ -86,7 +86,7 @@ class BST {
    * Runtime:
    * O(log n)
    */
-  Node* remove(int data, Node* n);
+  static Node* remove(int data, Node* n);
 
   /** height(Node* n)
    * Recursively determines the height of the subtree rooted at n.
@@ -105,7 +105,7 @@ class BST {
    * Runtime:
    * O(?)
    */
-  int height(Node* n);
+  static int height(Node* n);
 
   /** clear(Node* n)
    * Recursively deletes the entire subtree rooted at n.
@@ -125,7 +125,7 @@ class BST {
    * Runtime:
    * O(?)
    */
-  void clear(Node* n);
+  static void clear(Node* n);
 
   /** preorder()
    * Recursively prints the contents of the subtree rooted at n to the
@@ -134,7 +134,7 @@ class BST {
    * Inputs:
    * @param n: Node to root the subtree
    * @param oss: Stream to print to
-   * @param dups: A flag for whether or not toprint duplicates
+   * @param dups: A flag for whether or not to print duplicates
    * 
    * Side Effects:
    * Prints a preorder traversal of the tree to the given stream
@@ -142,7 +142,7 @@ class BST {
    * Runtime:
    * O(?)
    */
-  void preorder(Node* n, std::ostream& oss, bool dups);
+  static void preorder(Node* n, std::ostream& oss, bool dups);
 
   /** inorder()
    * Recursively prints the contents of the subtree rooted at n to the
@@ -151,7 +151,7 @@ class BST {
    * Inputs:
    * @param n: Node to root the subtree
    * @param oss: Stream to print to
-   * @param dups: A flag for whether or not toprint duplicates
+   * @param dups: A flag for whether or not to print duplicates
    * 
    * Side Effects:
    * Prints an inorder traversal of the tree to the given stream
@@ -159,7 +159,7 @@ class BST {
    * Runtime:
    * O(?)
    */
-  void inorder(Node* n, std::ostream& oss, bool dups);
+  static void inorder(Node* n, std::ostream& oss, bool dups);
 
   /** postorder()
    * Recursively prints the contents of the subtree rooted at n to the
@@ -168,7 +168,7 @@ class BST {
    * Inputs:
    * @param n: Node to root the subtree
    * @param oss: Stream to print to
-   * @param dups: A flag for whether or not toprint duplicates
+   * @param dups: A flag for whether or not to print duplicates
    * 
    * Side Effects:
    * Prints a postorder traversal of the tree to the given stream
@@ -176,7 +176,7 @@ class BST {
    * Runtime:
    * O(?)
    */
-  void postorder(Node* n, std::ostream& oss, bool dups);
+  static void postorder(Node* n, std::ostream& oss, bool dups);
 
  public:
   BST();
@@ -301,8 +301,8 @@ class BST {
    * Inputs:
    * @param n: Node to root the subtree
    * @param oss: Stream to print to
-   * @param dups: A flag for whether or not toprint duplicates
-   * 
+   * @param dups: A flag for whether or not to print duplicates
+   *
    * Side Effects:
    * Prints a preorder traversal of the tree to the given stream
    * 
@@ -318,7 +318,7 @@ class BST {
    * Inputs:
    * @param n: Node to root the subtree
    * @param oss: Stream to print to
-   * @param dups: A flag for whether or not toprint duplicates
+   * @param dups: A flag for whether or not to print duplicates
    * 
    * Side Effects:
    * Prints an inorder traversal of the tree to the given stream
@@ -335,7 +335,7 @@ class BST {
    * Inputs:
    * @param n: Node to root the subtree
    * @param oss: Stream to print to
-   * @param dups: A flag for whether or not toprint duplicates
+   * @param dups: A flag for whether or not to print duplicates
    * 
    * Side Effects:
    * Prints a postorder traversal of the tree to the given stream

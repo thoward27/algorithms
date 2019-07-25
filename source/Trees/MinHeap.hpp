@@ -79,7 +79,7 @@ class MinHeap {
   void erase(int i, int data);
 
  public:
-  MinHeap(unsigned int cap = 16);
+  explicit MinHeap(unsigned int cap = 16);
   ~MinHeap();
 
   /** push(int data)

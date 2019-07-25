@@ -15,9 +15,12 @@ unsigned int HashTable::elements() const {
 void HashTable::grow() {
   List* newtable = new List[m * 2];
   for (unsigned int i = 0; i < m; ++i) {
-    Node* n = table[i].top();
-    newtable[hash(*(n->key))].push(*(n->key), n->val);
-    table[i].pop();
+    while (!table[i].empty()) {
+      Node* n = table[i].top();
+      newtable[hash(*(n->key))].push(*(n->key), n->val);
+      table[i].pop();
+    }
+
   }
   delete[] table;
   table = newtable;
@@ -61,10 +64,7 @@ void HashTable::remove(String& key) {
 }
 
 bool HashTable::search(String& key) {
-  if (table[hash(key)].index(key) >= 0)
-    return true;
-  else
-    return false;
+  return table[hash(key)].index(key) >= 0;
 }
 
 int HashTable::get(String& key) {

@@ -17,8 +17,8 @@
 bool hamiltonian_cycle(Graph& G, unsigned int v, unsigned int path_len) {
   if (path_len == G.node_count() - 1) {
     std::vector<int> neighbors = G.neighbors(v);
-    for (unsigned int i = 0; i < neighbors.size(); ++i) {
-      if (neighbors[i] == 0) {
+    for (int neighbor : neighbors) {
+      if (neighbor == 0) {
         return true;
       }
     }
@@ -26,14 +26,12 @@ bool hamiltonian_cycle(Graph& G, unsigned int v, unsigned int path_len) {
   }
   G.set_value(v, VISITED);
   std::vector<int> neighbors = G.neighbors(v);
-  bool result = false;
-  for (unsigned int i = 0; i < neighbors.size(); ++i) {
-    if (G.get_value(neighbors[i]) == UNVISITED) {
-      result = hamiltonian_cycle(G, neighbors[i], ++path_len);
-      if (result)
+  for (int neighbor : neighbors) {
+    if (G.get_value(neighbor) == UNVISITED) {
+      if (hamiltonian_cycle(G, neighbor, ++path_len))
         return true;
       --path_len;
-      G.set_value(neighbors[i], UNVISITED);
+      G.set_value(neighbor, UNVISITED);
     }
   }
   return false;

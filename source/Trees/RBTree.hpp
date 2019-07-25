@@ -55,7 +55,7 @@ class RBTree {
    * Runtime:
    * O(?)
    */
-  Node* rotateRight(Node* node);
+  static  Node* rotateRight(Node* node);
 
   /** rotateLeft(Node* node)
    * Performs the "rotate left" operation on node, as described in the link
@@ -76,7 +76,7 @@ class RBTree {
    * Runtime:
    * O(?)
    */
-  Node* rotateLeft(Node* node);
+  static Node* rotateLeft(Node* node);
 
   /** flipColors(Node* node)
    * Flips the colors of node and its children.
@@ -91,7 +91,7 @@ class RBTree {
    * Runtime:
    * O(1)
    */
-  void flipColors(Node* node);
+  static void flipColors(Node* node);
 
   /** fix(Node* node)
    * Combines rotateRight, rotateLeft, and flipColors to restore RBTree
@@ -177,7 +177,7 @@ class RBTree {
    * Runtime:
    * O(log n)
    */
-  bool search(int data, Node* n);
+  static  bool search(int data, Node* n);
 
   /** remove(int data, Node* n)
    * Recursively searches for data in the subtree rooted at n, removing it
@@ -277,7 +277,7 @@ class RBTree {
    * Runtime:
    * O(?)
    */
-  int height(Node* n);
+  static  int height(Node* n);
 
   /** clear(Node* n)
    * Recursively deletes the entire subtree rooted at n.
@@ -297,7 +297,7 @@ class RBTree {
    * Runtime:
    * O(?)
    */
-  void clear(Node* n);
+  static  void clear(Node* n);
 
   /** preorder()
    * Recursively prints the contents of the subtree rooted at n to the
@@ -313,7 +313,7 @@ class RBTree {
    * Runtime:
    * O(?)
    */
-  void preorder(Node* n, std::ostream& oss);
+  static  void preorder(Node* n, std::ostream& oss);
 
   /** inorder()
    * Recursively prints the contents of the subtree rooted at n to the
@@ -329,7 +329,7 @@ class RBTree {
    * Runtime:
    * O(?)
    */
-  void inorder(Node* n, std::ostream& oss);
+  static  void inorder(Node* n, std::ostream& oss);
 
   /** postorder()
    * Recursively prints the contents of the subtree rooted at n to the
@@ -345,7 +345,7 @@ class RBTree {
    * Runtime:
    * O(?)
    */
-  void postorder(Node* n, std::ostream& oss);
+  static  void postorder(Node* n, std::ostream& oss);
 
   /** isRed(Node* n)
    * Checks if n is red. A null pointer is defined to not be red.
@@ -361,7 +361,7 @@ class RBTree {
    * Runtime:
    * O(1)
    */
-  bool isRed(Node* n);
+  static  bool isRed(Node* n);
 
   /** min(Node* subtree)
    * Finds the value of the minimum key in the subtree rooted at subtree and
@@ -376,7 +376,7 @@ class RBTree {
    * Runtime:
    * O(log n)
    */
-  int min(Node* subtree);
+  static  int min(Node* subtree);
 
   /** max(Node* subtree)
    * Finds the value of the maximum key in the subtree rooted at subtree and
@@ -391,7 +391,7 @@ class RBTree {
    * Runtime:
    * O(log n)
    */
-  int max(Node* subtree);
+  static  int max(Node* subtree);
 
  public:
   /** Constructors */

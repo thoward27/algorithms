@@ -27,7 +27,7 @@ class String {
    * O(n)
    */
   String();
-  String(char*);
+  String(const char*);
   String(char);
 
   /** Destructors

@@ -7,5 +7,4 @@ void sort(int* arr, int n) {
     h.push(arr[i]);
   for (int i = 0; i < n; ++i)
     arr[i] = h.pop();
-  return;
 }

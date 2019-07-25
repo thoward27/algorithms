@@ -144,7 +144,7 @@ int ord(char);
  */
 int max(int, int);
 int max(int, int, int);
-int max(int arr[], int n);
+int max(const int arr[], int n);
 
 /** Min.
  * Returns the minimum element from the parameters given.
@@ -164,7 +164,7 @@ int max(int arr[], int n);
  */
 int min(int, int);
 int min(int, int, int);
-int min(int arr[], int n);
+int min(const int arr[], int n);
 
 /** Round a float.
  * Rounds a float either (u)p or (d)own, depending on the char given.
@@ -201,7 +201,7 @@ int round(double, char);
  * Runtime:
  * O(n)
  */
-bool all(bool arr[], int n);
+bool all(const bool* arr, unsigned int n);
 
 /** Any true
  * Returns whether or not any element is true.
@@ -242,7 +242,7 @@ bool any(T* arr, unsigned int n) {
  * Runtime:
  * O(n)
  */
-int frequency(int arr[], int n, int x);
+int frequency(const int arr[], int n, int x);
 
 /** Sum.
  * Returns the sum of all elements in the array.
@@ -282,7 +282,7 @@ long sum(T* arr, unsigned int n) {
  * Runtime:
  * O(n^2)
  */
-int index(char str[], char substr[]);
+int index(const char str[], const char substr[]);
 
 /** Is sorted.
  * Returns whether or not an array is monotonically increasing or decreasing.
@@ -302,7 +302,7 @@ int index(char str[], char substr[]);
  * Runtime:
  * O(n)
  */
-bool is_sorted(int arr[], int n);
+bool is_sorted(const int arr[], int n);
 
 /** Primality testing.
  * Checks if a given number is prime
@@ -371,7 +371,7 @@ long factorial(int);
  * Runtime:
  * O(n)
  */
-int strlen(char string[]);
+int strlen(char* string);
 
 /** String to Int
  * Returns the given string as an integer
@@ -428,7 +428,7 @@ void reverse(char* arr);
  * Runtime:
  * O(log n)
  */
-int binsearch(int* arr, int n, int key);
+int binsearch(const int* arr, int n, int key);
 
 /** Copy Array
  * Copies an array from A to B
@@ -447,7 +447,7 @@ int binsearch(int* arr, int n, int key);
  * Runtime:
  * O(n)
  */
-void copy(int* A, int* B, int n);
+void copy(const int* A, int* B, int n);
 
 /** Swap
  * Swaps two elements

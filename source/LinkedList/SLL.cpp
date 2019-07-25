@@ -1,18 +1,5 @@
 #include "LinkedList.hpp"
 
-LinkedList::LinkedList() {
-  head = nullptr;
-  len = 0;
-}
-
-LinkedList::~LinkedList() {
-  clear();
-}
-
-unsigned int LinkedList::length() {
-  return len;
-}
-
 void LinkedList::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
@@ -22,7 +9,6 @@ void LinkedList::push_front(int d) {
     head = n;
   }
   ++len;
-  return;
 }
 
 int LinkedList::pop_front() {
@@ -57,7 +43,6 @@ void LinkedList::push_back(int d) {
     iter->next = n;
   }
   ++len;
-  return;
 }
 
 int LinkedList::pop_back() {
@@ -212,5 +197,4 @@ void LinkedList::print(std::ostream& oss) {
     temp = temp->next;
   }
   oss << std::endl;
-  return;
 }

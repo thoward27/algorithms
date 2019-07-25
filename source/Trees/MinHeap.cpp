@@ -22,7 +22,7 @@ int MinHeap::count() {
 
 int MinHeap::peek() {
   if (!size)
-    throw "Attempted to access empty heap";
+    throw std::underflow_error("Attempted to access empty heap");
   return array[1];
 }
 
@@ -61,11 +61,11 @@ void MinHeap::push(int data) {
 
 int MinHeap::pop() {
   if (!size)
-    throw "Attempted to extract from an empty heap";
-  int rval = array[1];
+    throw std::underflow_error("Attempted to extract from an empty heap");
+  int ret = array[1];
   array[1] = array[size--];
   sink(1);
-  return rval;
+  return ret;
 }
 
 bool MinHeap::search(int data) {
@@ -84,7 +84,7 @@ bool MinHeap::search(int i, int data) {
 
 int MinHeap::remove(int i) {
   if (i <= 0 || i > size)
-    throw "Attempted to remove from a heap at an invalid location";
+    throw std::out_of_range("Attempted to remove from a heap at an invalid location");
   int rval = array[i];
   array[i] = array[size--];
   sink(i);

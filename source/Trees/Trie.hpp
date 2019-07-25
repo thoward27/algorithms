@@ -15,7 +15,7 @@ class Node {
 
  public:
   Node(int d, bool eow) : value(d), end_of_word(eow) {}
-  ~Node() {}
+  ~Node() = default;
 
   friend class Trie;
 };
@@ -72,7 +72,7 @@ class Trie {
    * Runtime:
    * O(?)
    */
-  void clear(Node* n);
+  static void clear(Node* n);
 
   /** print(std::ostream& oss, Node* n, char* letters, int level)
    * Recursively traverses the Trie with a depth-first search, printing each
@@ -94,7 +94,7 @@ class Trie {
    * Runtime:
    * O(?)
    */
-  void print(std::ostream& oss, Node* n, String& letters);
+  static void print(std::ostream& oss, Node* n, String& letters);
 
  public:
   Trie();
@@ -108,7 +108,7 @@ class Trie {
    * 
    * Inputs:
    * @param word: word to insert 
-   * @param val: value to associate wit hword
+   * @param val: value to associate with word
    * 
    * Side Effects:
    * Puts the word with its associated value in the Trie

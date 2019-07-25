@@ -5,8 +5,6 @@
 
 #include <chrono>
 #include <iostream>
-#include <numeric>
-#include <vector>
 
 #define CASES 1100
 
@@ -15,26 +13,22 @@ namespace fill {
 void random(int* arr, int n, int shift) {
   for (int i = 0; i < n; ++i)
     arr[i] = (rand() % 1000) + shift;
-  return;
 }
 
 void ascending(int* arr, int n, int shift) {
   for (int i = 0; i < n; ++i)
     arr[i] = i + shift;
-  return;
 }
 
 void descending(int* arr, int n, int shift) {
   for (int i = 0; i < n; ++i)
     arr[i] = n - i + shift;
-  return;
 }
 
 void equal(int* arr, int n, int shift) {
   int x = (rand() % 1000) + shift;
   for (int i = 0; i < n; ++i)
     arr[i] = x;
-  return;
 }
 }  // namespace fill
 
@@ -56,13 +50,13 @@ TEST_CASE("Sorting") {
           fillers[i](arr, n, shift);
 
           unsigned int freq[10000] = {};
-          for (int i = 0; i < n; ++i)
-            freq[arr[i] + 5000] += 1;
+          for (int j = 0; j < n; ++j)
+            freq[arr[j] + 5000] += 1;
 
           sort(arr, n);
 
-          for (int i = 0; i < n; ++i)
-            freq[arr[i] + 5000] -= 1;
+          for (int j = 0; j < n; ++j)
+            freq[arr[j] + 5000] -= 1;
 
           REQUIRE(increasing(arr, n));
           REQUIRE(sum(freq, 6000) == 0);

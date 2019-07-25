@@ -130,7 +130,7 @@ class Queue {
    * test.clear()
    * 
    * Runtime:
-   * O(n) // same as Linkedlist
+   * O(n) // same as LinkedList
    */
   void clear();
 };

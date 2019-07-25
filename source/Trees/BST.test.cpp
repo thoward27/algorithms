@@ -30,8 +30,8 @@ TEST_CASE("search") {
   SUBCASE("multiple nodes") {
     BST tree2;
     int nums[8] = {4, 2, 8, 1, 3, 5, 7, 9};
-    for (int i = 0; i < 8; ++i) {
-      tree2.insert(nums[i]);
+    for (int num : nums) {
+      tree2.insert(num);
     }
     REQUIRE(tree2.search(4));
     REQUIRE(tree2.search(8));
@@ -64,8 +64,8 @@ TEST_CASE("height") {
 TEST_CASE("remove") {
   BST tree;
   int nums[8] = {4, 2, 8, 1, 3, 5, 7, 9};
-  for (int i = 0; i < 8; ++i) {
-    tree.insert(nums[i]);
+  for (int num : nums) {
+    tree.insert(num);
   }
   tree.remove(1);
   REQUIRE_FALSE(tree.search(1));
@@ -85,8 +85,8 @@ TEST_CASE("clear") {
   tree.clear();
   REQUIRE(tree.is_empty());
   int nums[8] = {4, 2, 8, 1, 3, 5, 7, 9};
-  for (int i = 0; i < 8; ++i) {
-    tree.insert(nums[i]);
+  for (int num : nums) {
+    tree.insert(num);
   }
   CHECK_FALSE(tree.is_empty());
   tree.clear();
@@ -103,8 +103,8 @@ TEST_CASE("preorder") {
   SUBCASE("multiple nodes") {
     BST tree;
     int nums[8] = {4, 2, 8, 1, 3, 5, 7, 9};
-    for (int i = 0; i < 8; ++i) {
-      tree.insert(nums[i]);
+    for (int num : nums) {
+      tree.insert(num);
     }
     std::ostringstream oss;
     tree.preorder(oss);
@@ -122,8 +122,8 @@ TEST_CASE("inorder") {
   SUBCASE("multiple nodes") {
     BST tree;
     int nums[8] = {4, 2, 8, 1, 3, 5, 7, 9};
-    for (int i = 0; i < 8; ++i) {
-      tree.insert(nums[i]);
+    for (int num : nums) {
+      tree.insert(num);
     }
     std::ostringstream oss;
     tree.inorder(oss);
@@ -141,8 +141,8 @@ TEST_CASE("postorder") {
   SUBCASE("multiple nodes") {
     BST tree;
     int nums[8] = {4, 2, 8, 1, 3, 5, 7, 9};
-    for (int i = 0; i < 8; ++i) {
-      tree.insert(nums[i]);
+    for (int num : nums) {
+      tree.insert(num);
     }
     std::ostringstream oss;
     tree.postorder(oss);

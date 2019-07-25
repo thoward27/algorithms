@@ -1,0 +1,95 @@
+cmake_minimum_required(VERSION 3.14)
+project(algorithms)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(source)
+include_directories(source/Algorithms)
+include_directories(source/Functions)
+include_directories(source/Graphs)
+include_directories(source/Hashing)
+include_directories(source/LinkedList)
+include_directories(source/Queue)
+include_directories(source/Sorts)
+include_directories(source/Stack)
+include_directories(source/String)
+include_directories(source/Trees)
+
+add_executable(string
+        source/String/String.test.cpp
+        source/String/String.cpp
+        source/Functions/functions.cpp)
+
+add_executable(algorithms
+        docs/examples/array_increment.cpp
+        docs/examples/calculator.cpp
+        docs/examples/HelloUser.cpp
+        docs/examples/HelloWorld.cpp
+        docs/examples/PrintHelloWorld.cpp
+        source/Algorithms/a-star.hpp
+        source/Algorithms/a-star.test.cpp
+        source/Algorithms/djikstra.hpp
+        source/Algorithms/djikstra.test.cpp
+        source/Algorithms/hamiltoniancycle.hpp
+        source/Algorithms/hamiltoniancycle.test.cpp
+        source/Algorithms/karprabin.hpp
+        source/Algorithms/karprabin.test.cpp
+        source/Algorithms/lexicographic.hpp
+        source/Algorithms/lexicographic.test.cpp
+        source/Algorithms/pathfinding.hpp
+        source/Algorithms/pathfinding.test.cpp
+        source/Algorithms/twostack.hpp
+        source/Algorithms/twostack.test.cpp
+        source/Functions/functions.cpp
+        source/Functions/functions.hpp
+        source/Functions/functions.test.cpp
+        source/Graphs/Graph.cpp
+        source/Graphs/Graph.hpp
+        source/Graphs/Graph.test.cpp
+        source/Hashing/Hashtable.cpp
+        source/Hashing/Hashtable.hpp
+        source/Hashing/Hashtable.test.cpp
+        source/Hashing/LinkedList.hpp
+        source/LinkedList/CDLL.cpp
+        source/LinkedList/CSLL.cpp
+        source/LinkedList/DLL.cpp
+        source/LinkedList/LinkedList.hpp
+        source/LinkedList/LinkedList.test.cpp
+        source/LinkedList/SLL.cpp
+        source/Queue/Deque.cpp
+        source/Queue/Deque.hpp
+        source/Queue/Deque.test.cpp
+        source/Queue/Queue.cpp
+        source/Queue/Queue.hpp
+        source/Queue/Queue.test.cpp
+        source/Sorts/bubble.cpp
+        source/Sorts/heap.cpp
+        source/Sorts/hybrid.cpp
+        source/Sorts/insertion.cpp
+        source/Sorts/merge.cpp
+        source/Sorts/quick.cpp
+        source/Sorts/selection.cpp
+        source/Sorts/sort.hpp
+        source/Sorts/sort.test.cpp
+        source/Sorts/tree.cpp
+        source/Stack/Stack.cpp
+        source/Stack/Stack.hpp
+        source/Stack/Stack.test.cpp
+        source/String/String.cpp
+        source/String/String.hpp
+        source/String/String.test.cpp
+        source/Trees/BST.cpp
+        source/Trees/BST.hpp
+        source/Trees/BST.test.cpp
+        source/Trees/MinHeap.cpp
+        source/Trees/MinHeap.hpp
+        source/Trees/MinHeap.test.cpp
+        source/Trees/Node.hpp
+        source/Trees/RBTree.cpp
+        source/Trees/RBTree.hpp
+        source/Trees/RBTree.test.cpp
+        source/Trees/Trie.cpp
+        source/Trees/Trie.hpp
+        source/Trees/Trie.test.cpp
+        source/doctest.h
+        calculator.cpp)

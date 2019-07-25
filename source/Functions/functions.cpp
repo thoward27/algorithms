@@ -1,7 +1,8 @@
 #include "functions.hpp"
+#include <stdexcept>
 
 int chartoint(char c) {
-  return (c >= '0' && c <= '9') ? c - '0' : throw "bad input";
+  return (c >= '0' && c <= '9') ? c - '0' : throw std::invalid_argument("bad input");
 }
 
 int ord(char c) {
@@ -13,13 +14,13 @@ char chr(int x) {
 }
 
 char inttochar(int x) {
-  return (x >= 0 && x <= 9) ? x + 48 : throw "bad input";
+  return (x >= 0 && x <= 9) ? x + 48 : throw std::invalid_argument("bad input");
 }
 
 void swap(int* a, int* b) {
-  *a ^= *b;
-  *b ^= *a;
-  *a ^= *b;
+  int temp = *a;
+  *a = *b;
+  *b = temp;
 }
 
 void merge(int* arr, int n, int mid) {
@@ -84,7 +85,7 @@ int pow(int base, int num) {
   return (!num) ? 1 : base * pow(base, num - 1);
 }
 
-bool all(bool arr[], int n) {
+bool all(bool arr[], unsigned int n) {
   if (!n)
     return false;
   else if (n == 1)
@@ -327,7 +328,7 @@ int stringtoint(char string[]) {
   return (string[0] == '-') ? -1 * out : 1 * out;
 }
 
-int max(int arr[], int n) {
+int max(const int arr[], int n) {
   int max = arr[0];
   for (int i = 1; i < n; ++i) {
     if (arr[i] > max)
@@ -336,7 +337,7 @@ int max(int arr[], int n) {
   return max;
 }
 
-int min(int arr[], int n) {
+int min(const int arr[], int n) {
   int min = arr[0];
   for (int i = 1; i < n; ++i) {
     if (arr[i] < min)
@@ -345,15 +346,15 @@ int min(int arr[], int n) {
   return min;
 }
 
-bool all(bool arr[], int n) {
-  for (int i = 0; i < n; ++i) {
+bool all(const bool* arr, unsigned int n) {
+  for (unsigned int i = 0; i < n; ++i) {
     if (!arr[i])
       return false;
   }
   return true;
 }
 
-bool any(bool arr[], int n) {
+bool any(const bool arr[], int n) {
   for (int i = 0; i < n; ++i) {
     if (arr[i])
       return true;
@@ -361,7 +362,7 @@ bool any(bool arr[], int n) {
   return false;
 }
 
-int frequency(int arr[], int n, int x) {
+int frequency(const int arr[], int n, int x) {
   int count = 0;
   for (int i = 0; i < n; ++i) {
     if (arr[i] == x)
@@ -370,14 +371,14 @@ int frequency(int arr[], int n, int x) {
   return count;
 }
 
-long sum(int* arr, int n) {
+long sum(const int* arr, int n) {
   long sum = 0;
   for (int i = 0; i < n; ++i)
     sum += arr[i];
   return sum;
 }
 
-int index(char str[], char substr[]) {
+int index(const char str[], const char substr[]) {
   int i = 0;
   int j = 0;
   while (str[i] != '\0') {
@@ -394,7 +395,7 @@ int index(char str[], char substr[]) {
   return -1;
 }
 
-bool is_sorted(int arr[], int n) {
+bool is_sorted(const int arr[], int n) {
   if (n <= 2)
     return true;
   else {
@@ -435,7 +436,7 @@ void reverse(char* arr, int n) {
   }
 }
 
-int strlen(char string[]) {
+int strlen(char* string) {
   int out = 0;
   for (int i = 0; string[i]; ++i) {
     ++out;
@@ -469,10 +470,9 @@ long fibonacci(int n) {
   return a;
 }
 
-#include <iostream>
-int binsearch(int* arr, int n, int key) {
+int binsearch(const int* arr, int n, int key) {
   if (!n)
-    throw "no elements to search";
+    throw std::underflow_error("no elements to search");
 
   int lo = 0, hi = n - 1, idx = n / 2;
   while (lo < hi && arr[idx] != key) {
@@ -485,7 +485,7 @@ int binsearch(int* arr, int n, int key) {
   return (arr[idx] == key) ? idx : -1;
 }
 
-void copy(int* A, int* B, int n) {
+void copy(const int* A, int* B, int n) {
   for (int i = 0; i < n; ++i)
     B[i] = A[i];
 }

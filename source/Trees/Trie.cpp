@@ -58,28 +58,28 @@ int Trie::get(const char* word) {
     if (n->children[word[i] - 'a'])
       n = n->children[word[i] - 'a'];
     else
-      throw "Key not found.";
+      throw std::invalid_argument("Key not found.");
   }
   if (n->end_of_word)
     return n->value;
   else
-    throw "Key not found.";
+    throw std::invalid_argument("Key not found.");
 }
 
 // O(word)
 Node* Trie::remove(const char* word, Node* n) {
   if (!word[0]) {
     if (!n->end_of_word)
-      throw "Key not found.";
+      throw std::invalid_argument("Key not found.");
     n->end_of_word = false;
     --size;
   } else {
     if (!n)
-      throw "Key not found.";
+      throw std::invalid_argument("Key not found.");
     int idx = word[0] - 'a';
     n->children[idx] = remove(word + 1, n->children[idx]);
   }
-  if (!n->end_of_word && !any(n->children, n->R)) {
+  if (!n->end_of_word && !any(n->children, Node::R)) {
     delete n;
     return nullptr;
   }

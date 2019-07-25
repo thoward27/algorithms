@@ -15,13 +15,13 @@ void sort(int* arr, int n) {
   int j = 0;
   for (int i = 0; i < n; ++i) {
     char num[50] = {0};
-    int n = 0;
+    int a = 0;
     // Skip irrelevant characters.
     while (!validnum(oss.str()[j]))
       ++j;
     // Get a number
     while (validnum(oss.str()[j])) {
-      num[n++] = oss.str()[j++];
+      num[a++] = oss.str()[j++];
     }
     // Save it.
     arr[i] = stringtoint(num);

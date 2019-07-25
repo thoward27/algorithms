@@ -1,18 +1,5 @@
 #include "LinkedList.hpp"
 
-LinkedList::LinkedList() {
-  head = nullptr;
-  len = 0;
-}
-
-LinkedList::~LinkedList() {
-  clear();
-}
-
-unsigned int LinkedList::length() {
-  return len;
-}
-
 void LinkedList::push_front(int d) {
   Node* n = new Node(d);
   if (!head) {
@@ -32,7 +19,7 @@ void LinkedList::push_front(int d) {
 
 int LinkedList::pop_front() {
   Node* to_remove = head;
-  int rval = head->data;
+  int ret = head->data;
   if (len == 1) {
     head = nullptr;
   } else {
@@ -45,7 +32,7 @@ int LinkedList::pop_front() {
   }
   delete to_remove;
   --len;
-  return rval;
+  return ret;
 }
 
 int LinkedList::index(int data) {
@@ -91,10 +78,10 @@ int LinkedList::pop_back() {
     to_remove = iter->next;
     iter->next = head;
   }
-  int rval = to_remove->data;
+  int ret = to_remove->data;
   delete to_remove;
   --len;
-  return rval;
+  return ret;
 }
 
 int LinkedList::at(int idx) {
@@ -103,7 +90,7 @@ int LinkedList::at(int idx) {
 
   // Check for out of bounds.
   if (idx < 0 || (unsigned int)idx >= len)
-    throw "Bad index";
+    throw std::out_of_range("Bad index");
 
   // Iterate to the element.
   Node* iter = head;
@@ -121,7 +108,7 @@ int LinkedList::set(int idx, int d) {
 
   // Check for out of bounds.
   if (idx < 0 || (unsigned int)idx >= len)
-    throw "Bad index";
+    throw std::out_of_range("Bad index");
 
   Node* iter = head;
   while (--idx >= 0) {
@@ -224,5 +211,4 @@ void LinkedList::print(std::ostream& oss) {
     temp = temp->next;
   }
   oss << std::endl;
-  return;
 }

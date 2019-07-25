@@ -56,7 +56,7 @@ class HashTable {
   HashTable() : m(5), n(0) { table = new List[m]; }
   ~HashTable() { delete[] table; }
 
-  HashTable(int m) : m(m), n(0) { table = new List[m]; }
+  explicit HashTable(int m) : m(m), n(0) { table = new List[m]; }
 
   /** size()
    * Returns the number of rows in the table.

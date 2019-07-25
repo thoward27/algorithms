@@ -11,8 +11,8 @@ class Node {
   Node* prev;
 
  public:
-  Node(int d) : data(d) { next = prev = nullptr; }
-  ~Node() {}
+  explicit Node(int d) : data(d) { next = prev = nullptr; }
+  ~Node() = default;
 
   friend class LinkedList;
 };
@@ -30,8 +30,8 @@ class LinkedList {
   unsigned int len;
 
  public:
-  LinkedList();
-  ~LinkedList();
+  LinkedList(): len(0) {head = tail = nullptr;}
+  ~LinkedList() { clear(); }
 
   /** at(int index)
    * Returns the element at the given index.
@@ -68,7 +68,7 @@ class LinkedList {
    * Runtime:
    * O(1)
    */
-  unsigned int length();
+  unsigned int length() { return len; }
 
   /** push(int data, [int index])
    * Pushes a node containing the given data to the list.

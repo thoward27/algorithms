@@ -30,7 +30,7 @@ class Graph {
    * Runtime:
    * O(?)
    */
-  Graph(unsigned int n);
+  explicit Graph(unsigned int n);
 
   /** Destructor
    * Clear the memory used by the adjacency matrix and node value array.

@@ -32,3 +32,9 @@
 
 # Core Dumps
 core.out*
+
+# CMake
+cmake-build-debug/
+
+# Idea
+.idea/

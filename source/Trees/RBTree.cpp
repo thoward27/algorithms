@@ -24,7 +24,7 @@ Node* RBTree::rotateRight(Node* node) {
   node->left = temp->right;
   temp->right = node;
   temp->color = temp->right->color;
-  temp->right->color = 1;
+  temp->right->color = true;
   return temp;
 }
 
@@ -36,7 +36,7 @@ Node* RBTree::rotateLeft(Node* node) {
   node->right = temp->left;
   temp->left = node;
   temp->color = temp->left->color;
-  temp->left->color = 1;
+  temp->left->color = true;
   return temp;
 }
 
@@ -54,7 +54,7 @@ void RBTree::flipColors(Node* node) {
  */
 Node* RBTree::insert(int data, Node* temp) {
   if (!temp) {
-    return new Node(data, 1);
+    return new Node(data, true);
   }
 
   // recurse to bottom
@@ -68,7 +68,7 @@ Node* RBTree::insert(int data, Node* temp) {
 }
 
 void RBTree::insert(int data) {
-  root = root ? insert(data, root) : new Node(data, 0);
+  root = root ? insert(data, root) : new Node(data, false);
 }
 
 /** search()
@@ -131,7 +131,7 @@ Node* RBTree::moveRedRight(Node* temp) {
 
 void RBTree::removeMax() {
   root = removeMax(root);
-  if (root) root->color = 0;
+  if (root) root->color = false;
 }
 
 Node* RBTree::removeMax(Node* temp) {
@@ -156,7 +156,7 @@ Node* RBTree::removeMax(Node* temp) {
 /** Delete the tree's min key from the root */
 void RBTree::removeMin() {
   root = removeMin(root);
-  if (root) root->color = 0;
+  if (root) root->color = false;
 }
 
 /** removeMin()
