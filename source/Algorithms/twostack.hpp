@@ -9,10 +9,29 @@
  * O(n)
  */
 
+/** isnum(char c)
+ * Returns true if a c represents a number
+ * 
+ * Inputs:
+ * @param c: An ASCII character
+ * 
+ * Outputs:
+ * True when c is a character representing a number
+ * False otherwise
+ */
 bool isnum(char c) {
   return '0' <= c && c <= '9';
 }
 
+/** isop(char c)
+ * Returns true if c represents an arithmatic operator
+ * Inputs:
+ * @param c: An ASCII character
+ * 
+ * Outputs:
+ * True when c is a character representing one of six operators
+ * False otherwise
+ */
 bool isop(char c) {
   char ops[] = {'+', '-', '*', '/', '^', '%'};
   for (unsigned int i = 0; i < sizeof(ops) / sizeof(char); ++i)
@@ -21,6 +40,16 @@ bool isop(char c) {
   return false;
 }
 
+/** twostack(char* str)
+ * Uses Dijkstra's two stack algorithm for evaluating mathmatic expressions
+ * to return the value of a mathmatic expression expressed as a string
+ * 
+ * Inputs:
+ * @param str: A c-style string representing a mathmatic expression (e.g. "1+2*5")
+ * 
+ * Outputs:
+ * A double value represnting the solved expression given by str
+ */
 double twostack(char* str) {
   Stack a;
   Stack b;

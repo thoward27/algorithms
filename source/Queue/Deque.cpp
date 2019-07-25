@@ -1,57 +1,57 @@
-#include "Dequeue.hpp"
+#include "Deque.hpp"
 
 /** Constructor */
-Dequeue::Dequeue() {
+Deque::Deque() {
   list = new LinkedList();
   // Construction handled by LinkedList class
 }
 
 /** Destructor */
-Dequeue::~Dequeue() {
+Deque::~Deque() {
   delete list;
 }
 
 /** size() */
-unsigned int Dequeue::size() {
+unsigned int Deque::size() {
   return list->length();
 }
 
 /** pushleft() */
-void Dequeue::pushleft(int data) {
+void Deque::pushleft(int data) {
   list->push_front(data);
 }
 
 /** popleft() */
-int Dequeue::popleft() {
+int Deque::popleft() {
   return list->pop_front();
 }
 
 /** pushright() */
-void Dequeue::pushright(int data) {
+void Deque::pushright(int data) {
   list->push_back(data);
 }
 
 /** popright() */
-int Dequeue::popright() {
+int Deque::popright() {
   return list->pop_back();
 }
 
 /** front() */
-int Dequeue::front() {
+int Deque::front() {
   return list->at(0);
 }
 
 /** back() */
-int Dequeue::back() {
+int Deque::back() {
   return list->at(list->length() - 1);
 }
 
 /** empty() */
-bool Dequeue::empty() {
+bool Deque::empty() {
   return (list->length()) ? false : true;
 }
 
 /** clear() */
-void Dequeue::clear() {
+void Deque::clear() {
   list->clear();
 }

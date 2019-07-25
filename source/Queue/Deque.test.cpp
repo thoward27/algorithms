@@ -1,15 +1,15 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
 
-#include "Dequeue.hpp"
+#include "Deque.hpp"
 
 TEST_CASE("Constructor") {
-  Dequeue test;
+  Deque test;
   CHECK(test.size() == 0);
 }
 
 TEST_CASE("Size Method") {
-  Dequeue test;
+  Deque test;
   for (int i = 0; i < 100; ++i) {
     test.pushleft(i);
     REQUIRE(test.size() == i + 1);
@@ -17,7 +17,7 @@ TEST_CASE("Size Method") {
 }
 
 TEST_CASE("Push Methods") {
-  Dequeue test;
+  Deque test;
   SUBCASE("Pushleft Method") {
     for (int i = 0; i < 10; ++i) {
       test.pushleft(i);
@@ -35,7 +35,7 @@ TEST_CASE("Push Methods") {
 }
 
 TEST_CASE("Pop Methods") {
-  Dequeue test;
+  Deque test;
   SUBCASE("Popleft Method") {
     for (int i = 0; i < 10; ++i) {
       test.pushleft(i);
@@ -61,8 +61,8 @@ TEST_CASE("Pop Methods") {
 }
 
 TEST_CASE("Front Method") {
-  Dequeue test;
-  Dequeue test2;
+  Deque test;
+  Deque test2;
   for (int i = 0; i < 10; ++i) {
     test.pushright(i);
     test2.pushleft(i);
@@ -77,8 +77,8 @@ TEST_CASE("Front Method") {
 }
 
 TEST_CASE("Back Method") {
-  Dequeue test;
-  Dequeue test2;
+  Deque test;
+  Deque test2;
   for (int i = 0; i < 10; ++i) {
     test.pushright(i);
     test2.pushleft(i);
@@ -93,7 +93,7 @@ TEST_CASE("Back Method") {
 }
 
 TEST_CASE("Empty Method") {
-  Dequeue test;
+  Deque test;
   test.pushleft(1);
   CHECK(!test.empty());
   test.popleft();
@@ -101,7 +101,7 @@ TEST_CASE("Empty Method") {
 }
 
 TEST_CASE("Clear Method") {
-  Dequeue test;
+  Deque test;
   for (int i = 0; i < 10; ++i) {
     test.pushleft(i);
   }

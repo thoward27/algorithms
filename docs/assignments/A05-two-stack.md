@@ -1,6 +1,6 @@
 # Assignment 05: Stacks / Queues  
 
-For this assignment you will be building a program to evaluate fully parenthesized arithmetic expressions using Djikstra's Two Stack Algorithm for expression evaluation.
+For this assignment you will be building a program to evaluate fully parenthesized arithmetic expressions using Dijkstra's Two Stack Algorithm for expression evaluation.
 
 ## The Algorithm
 

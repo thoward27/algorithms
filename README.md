@@ -4,16 +4,16 @@ Welcome to CSC 212, Data Structures and Algorithms!
 
 ## Table of Contents
 
-- [Table of Contents](#Table-of-Contents)
-- [Important Links](#Important-Links)
-- [Schedule](#Schedule)
-- [Assignments (100 points each)](#Assignments-100-points-each)
-- [Bonus Points](#Bonus-Points)
-- [Resources](#Resources)
-- [Setup](#Setup)
-- [Working with Github Classroom](#Working-with-Github-Classroom)
-- [FAQ](#FAQ)
-- [Good Reads](#Good-Reads)
+- [Table of Contents](#table-of-contents)
+- [Important Links](#important-links)
+- [Schedule](#schedule)
+- [Assignments (100 points each)](#assignments-100-points-each)
+- [Bonus Points](#bonus-points)
+- [Resources](#resources)
+- [Setup](#setup)
+- [Working with Github Classroom](#working-with-github-classroom)
+- [FAQ](#faq)
+- [Good Reads](#good-reads)
 
 ## Important Links
 
@@ -66,7 +66,7 @@ Welcome to CSC 212, Data Structures and Algorithms!
 | [A02: String Class](docs/assignments/A02-string.md)                   | June 6   |
 | [A03: Hybrid Sorting](docs/assignments/A03-hybrid-sort.md)            | June 13  |
 | [A04: Advanced Sorting](docs/assignments/A04-advanced-sort.md)        | June 20  |
-| [A05: Djikstra's Two Stack](docs/assignments/A05-two-stack.md)        | June 27  |
+| [A05: Dijkstra's Two Stack](docs/assignments/A05-two-stack.md)        | June 27  |
 | [A06: Tree Sort](docs/assignments/A06-binary.html)                    | July 2   |
 | [A07: Heap Sort](docs/assignments/A07-heapsort.html)                  | July 11  |
 | [A08: Lexicographic Sorting](docs/assignments/A08-lexicographic.html) | July 19  |
