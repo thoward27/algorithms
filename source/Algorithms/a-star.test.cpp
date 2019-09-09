@@ -10,6 +10,6 @@ TEST_CASE("Trivial") {
       {0, 0, 0, 5},
       {0, 0, 0, 6},
   };
-  //   REQUIRE(a_search(maze).compare(
-  //       (char*)"(0, 0), (0, 1), (0, 2), (0, 3), (1, 3), (2, 3), (3, 3)"));
+  REQUIRE(a_search(maze).compare(
+      (char*)"(0, 0), (0, 1), (0, 2), (0, 3), (1, 3), (2, 3), (3, 3)"));
 }
