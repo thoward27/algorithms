@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <title>CHESS</title>
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reveal.css">
+  <link id="theme" rel="stylesheet" href="css/theme/black.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/monokai.css">
+  <script src="js/diagrams.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+  <script>
+    Chart.defaults.global.elements.point.radius = 5;
+
+    window.randomColor = function () {
+      let shift = 60;
+      let color = () => Math.floor(Math.random() * (255 - shift)) + shift;
+      return `rgb(${color()}, ${color()}, ${color()})`;
+    }
+
+    window.randomScalingFactor = function () {
+      return ((Math.random() > 0.5 ? 1.0 : -1.0) * Math.random() * 100).toFixed(1);
+    };
+
+    function distance(a, b) {
+      return Math.hypot(a.x - b.x, a.y - b.y)
+    }
+
+    function centroids(points) {
+      points = points.slice(0, Math.floor(Math.sqrt(points.length)));
+      var max_distance = 0
+      var centroids = []
+      for (var i = 0; i < points.length; ++i) {
+        for (var j = i + 1; j < points.length; ++j) {
+          var dist = distance(points[i], points[j]);
+          if (dist > max_distance) {
+            centroids = [points[i], points[j]];
+            max_distance = dist;
+          }
+        }
+      }
+      return centroids;
+    }
+
+    function pop(datasets) {
+      let clusters = [];
+      datasets.forEach(function (cluster) {
+        if (cluster.data.length < 5) {
+          clusters.push(cluster);
+          return;
+        }
+        let left = {
+          label: cluster.label + '0',
+          borderColor: Chart.helpers.color(window.randomColor()).alpha(0.2).rgbString(),
+          backgroundColor: window.randomColor(),
+          data: []
+        };
+        let right = {
+          label: cluster.label + '1',
+          borderColor: window.randomColor(),
+          backgroundColor: Chart.helpers.color(window.randomColor()).alpha(0.2).rgbString(),
+          data: []
+        };
+        let cs = centroids(cluster.data);
+        cluster.data.forEach(function (point) {
+          (distance(cs[0], point) < distance(cs[1], point) ? left.data.push(point) : right.data.push(point));
+        });
+        clusters.push(left);
+        clusters.push(right);
+      });
+      return clusters;
+    }
+
+    function generateCluster() {
+      var data = [];
+      for (var i = 0; i < 30; i++) {
+        data.push({
+          x: randomScalingFactor(),
+          y: randomScalingFactor()
+        });
+      }
+      return [{
+        label: '1',
+        backgroundColor: window.randomColor(),
+        borderColor: Chart.helpers.color(window.randomColor()).alpha(0.2).rgbString(),
+        data: data,
+      }]
+    }
+  </script>
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+    document.getElementsByTagName('head')[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class="center">
+        <h1>CHESS</h1>
+        <h3>Clustered Hierarchical Entropy Scaling Search</h3>
+      </section>
+      <section>
+        <h4>Key Terms</h4>
+        <table>
+          <thead>
+            <th>Term</th>
+            <th>Definition</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fractal Dimension</td>
+              <td>A measure of how the number of points contained within a D-Dimensional Ball scales with its radius.
+              </td>
+            </tr>
+            <tr>
+              <td>Metric Entropy</td>
+              <td>The number of D-Dimensional Balls required to cover all of the points.</td>
+            </tr>
+            <tr>
+              <td>Manifold</td>
+              <td>A collection of points forming a certain kind of set, such as a plane or a line.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section style="text-align: left;">
+        <h4>The Theory</h4>
+        <ul>
+          <li class="fragment">If the fractal dimension of a dataset is low,<br>it lives on a lower dimensional
+            manifold.</li>
+          <li class="fragment">If we can intelligently segment the manifold,<br>we no longer need to search the entire
+            dataset.</li>
+          <li class="fragment">If we don't need to search the entire dataset,<br>we have sublinear searching.</li>
+        </ul>
+        <ul class="fragment">
+          <li>If data is uniform,<br> we will need to cover the entire space.</li>
+        </ul>
+      </section>
+      <section>
+        <h4>The Algorithm: Pop</h4>
+        <div class="algorithm">
+          <p>Given a cluster C.</p>
+          <ol>
+            <li>Assert |C| > minimum size</li>
+            <li>Create two new clusters L and R</li>
+            <li>Possible Centroids = $\sqrt(|C|)$</li>
+            <li>Compute pairwise distances between centroids</li>
+            <li>Select the two centroids with the largest distance</li>
+            <li>For each point in C</li>
+            <ol>
+              <li>If it's closer to centroid[0], push it to L</li>
+              <li>Else, push to R</li>
+            </ol>
+            <li>Return L, R</li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <h4>The Algorithm: Cluster</h4>
+        <div class="algorithm">
+          <p>Given a cluster C.</p>
+          <ol>
+            <li>While depth &lt; max depth</li>
+            <ol>
+              <li>L, R = pop(cluster)</li>
+              <li>If |L| > min size: Cluster(L)</li>
+              <li>If |R| > min size: Cluster(R)</li>
+            </ol>
+        </div>
+      </section>
+      <section style="font-family: 'Fira Code';">
+        <h4>The Algorithm: Search</h4>
+        <div class="algorithm">
+          <p>Given query, radius, and clusters.</p>
+          <ol>
+            <li>Assert radius >= 0</li>
+            <li>Assert |clusters| != 0</li>
+            <li>results = []</li>
+            <li>If leaf(cluster):</li>
+            <ol>
+              <li>For each point in cluster</li>
+              <ol>
+                <li>If d(q, p) &lt;= r: results.push(r)</li>
+              </ol>
+              <li>Return results</li>
+            </ol>
+            <li>If d(q, cluster.L.center) &lt;= r + cluster.L.radius: results.extend(search(q, r, clusters.L))</li>
+            <li>If d(q, cluster.R.center) &lt;= r + cluster.R.radius: results.extend(search(q, r, clusters.R, results))</li>
+          </ol>
+        </div>
+      </section>
+      <section>
+        <h4>Analysis</h4>
+        $$O \Bigg( k + |B_D (q, r)| \cdot \Big(\frac{r + 2r_c}{r} \Big)^d \Bigg)$$
+
+        $$\log_2 \Bigg( \frac{ |B_D (q, r_1)| }{ |B_D (q, r_2)| } \Bigg)$$
+      </section>
+      <section>
+        <h4>Demonstration</h4>
+        <canvas id="demonstration" width="1810" height="905"></canvas>
+        <button id="resetData" cl ass="button">Reset</button>
+        <button id="popCluster">Pop</button>
+        <script>
+          var scatterChartData = {
+            datasets: generateCluster(),
+          };
+
+          window.onload = function () {
+            var ctx = document.getElementById('demonstration').getContext('2d');
+            window.myScatter = Chart.Scatter(ctx, {
+              data: scatterChartData,
+              options: {
+                title: {
+                  display: false,
+                },
+              }
+            });
+          };
+
+          document.getElementById('resetData').addEventListener('click', function () {
+            scatterChartData.datasets = generateCluster();
+            window.myScatter.update();
+          });
+
+          document.getElementById('popCluster').addEventListener('click', function () {
+            scatterChartData.datasets = pop(scatterChartData.datasets);
+            window.myScatter.update();
+          })
+        </script>
+      </section>
+    </div>
+  </div>
+
+  <script src="js/reveal.js"></script>
+
+  <script>
+    Reveal.initialize({
+      dependencies: [{
+        src: 'plugin/markdown/marked.js'
+      },
+      {
+        src: 'plugin/markdown/markdown.js'
+      },
+      {
+        src: 'plugin/notes/notes.js',
+        async: true
+      },
+      {
+        src: 'plugin/highlight/highlight.js',
+        async: true
+      },
+      {
+        src: 'plugin/math/math.js',
+        async: true
+      },
+      {
+        src: 'plugin/menu/menu.js',
+        async: true
+      },
+      {
+        src: 'plugin/chalkboard/chalkboard.js',
+        async: true
+      }
+      ],
+      hash: true,
+      center: false,
+      fragmentInURL: true,
+      keyboard: {
+        // toggle notes canvas when 'c' is pressed
+        67: function () {
+          RevealChalkboard.toggleNotesCanvas()
+        },
+        // toggle chalkboard when 'b' is pressed
+        66: function () {
+          RevealChalkboard.toggleChalkboard()
+        },
+        // clear chalkboard when 'DEL' is pressed
+        46: function () {
+          RevealChalkboard.clear()
+        },
+        // reset chalkboard data on current slide when 'BACKSPACE' is pressed
+        8: function () {
+          RevealChalkboard.reset()
+        },
+        // downlad recorded chalkboard drawing when 'd' is pressed
+        68: function () {
+          RevealChalkboard.download()
+        },
+      },
+      chalkboard: {
+        toggleChalkboardButton: {
+          left: "80px"
+        },
+        toggleNotesButton: {
+          left: "130px"
+        },
+        color: ['rgba(255, 255, 255, 1)', 'rgba(255, 255, 255, 1)']
+      },
+      menu: {
+        titleSelector: 'h2',
+        hideMissingTitles: true,
+      }
+    });
+  </script>
+</body>
+
+</html>
