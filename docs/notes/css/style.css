@@ -20,4 +20,10 @@ th {
 
 code {
     padding: 1em !important;
+    font-family: 'Fira Code', monospace !important;
+}
+
+.algorithm {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.9rem;
 }
