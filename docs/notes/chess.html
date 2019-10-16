@@ -59,21 +59,37 @@
           clusters.push(cluster);
           return;
         }
+        let cs = centroids(cluster.data);
         let left = {
           label: cluster.label + '0',
+          centroid: cs[0],
+          ball_radius: 0,
           borderColor: Chart.helpers.color(window.randomColor()).alpha(0.2).rgbString(),
           backgroundColor: window.randomColor(),
           data: []
         };
         let right = {
           label: cluster.label + '1',
+          centroid: cs[1],
+          ball_radius: 0,
           borderColor: window.randomColor(),
           backgroundColor: Chart.helpers.color(window.randomColor()).alpha(0.2).rgbString(),
           data: []
         };
-        let cs = centroids(cluster.data);
         cluster.data.forEach(function (point) {
-          (distance(cs[0], point) < distance(cs[1], point) ? left.data.push(point) : right.data.push(point));
+          let dl = distance(left.centroid, point)
+          let dr = distance(right.centroid, point);
+          if (dl < dr) {
+            left.data.push(point);
+            if (dl > left.ball_radius) {
+              left.ball_radius = dl;
+            }
+          } else {
+            right.data.push(point);
+            if (dr > right.ball_radius) {
+              right.ball_radius = dr;
+            }
+          }
         });
         clusters.push(left);
         clusters.push(right);
@@ -81,7 +97,7 @@
       return clusters;
     }
 
-    function generateCluster() {
+    function newDatasets() {
       var data = [];
       for (var i = 0; i < 30; i++) {
         data.push({
@@ -91,6 +107,8 @@
       }
       return [{
         label: '1',
+        type: 'scatter',
+        centroid: { x: 0, y: 0 },
         backgroundColor: window.randomColor(),
         borderColor: Chart.helpers.color(window.randomColor()).alpha(0.2).rgbString(),
         data: data,
@@ -140,8 +158,9 @@
         </table>
       </section>
       <section style="text-align: left;">
-        <h4>The Theory</h4>
+        <h4>Motivation</h4>
         <ul>
+          <li class="fragment">Data is growing faster than Moore's law.</li>
           <li class="fragment">If the fractal dimension of a dataset is low,<br>it lives on a lower dimensional
             manifold.</li>
           <li class="fragment">If we can intelligently segment the manifold,<br>we no longer need to search the entire
@@ -151,9 +170,39 @@
         <ul class="fragment">
           <li>If data is uniform,<br> we will need to cover the entire space.</li>
         </ul>
+        <aside class="notes">
+          <ul>
+            <li>The notion of higher dimensional data being constrained to a lower dimensional manifold is known as the
+              manifold hypothesis</li>
+            <li>
+              If data is uniformly distributed, consider how you would cut the data in order to separate it such that a
+              search query would not overlap other clusters. It requires 3 x (d - 1) cuts before you get one that is
+              orthogonal.
+            </li>
+          </ul>
+        </aside>
       </section>
       <section>
-        <h4>The Algorithm: Pop</h4>
+        <h4>The Algorithms: Cluster</h4>
+        <div class="algorithm">
+          <p>Given a cluster C.</p>
+          <ol>
+            <li>While depth &lt; max depth</li>
+            <ol>
+              <li>L, R = pop(cluster)</li>
+              <li>If |L| > min size: Cluster(L)</li>
+              <li>If |R| > min size: Cluster(R)</li>
+            </ol>
+        </div>
+        <aside class="notes">
+          This recursively clusters, creating two children per cluster if the order is over a certain minimum size.
+          Similar to a binary tree.
+
+          This makes the metric entropy == number of leaf nodes, which is an emergent property.
+        </aside>
+      </section>
+      <section>
+        <h4>The Algorithms: Pop</h4>
         <div class="algorithm">
           <p>Given a cluster C.</p>
           <ol>
@@ -171,21 +220,8 @@
           </ol>
         </div>
       </section>
-      <section>
-        <h4>The Algorithm: Cluster</h4>
-        <div class="algorithm">
-          <p>Given a cluster C.</p>
-          <ol>
-            <li>While depth &lt; max depth</li>
-            <ol>
-              <li>L, R = pop(cluster)</li>
-              <li>If |L| > min size: Cluster(L)</li>
-              <li>If |R| > min size: Cluster(R)</li>
-            </ol>
-        </div>
-      </section>
       <section style="font-family: 'Fira Code';">
-        <h4>The Algorithm: Search</h4>
+        <h4>The Algorithms: Search</h4>
         <div class="algorithm">
           <p>Given query, radius, and clusters.</p>
           <ol>
@@ -201,24 +237,50 @@
               <li>Return results</li>
             </ol>
             <li>If d(q, cluster.L.center) &lt;= r + cluster.L.radius: results.extend(search(q, r, clusters.L))</li>
-            <li>If d(q, cluster.R.center) &lt;= r + cluster.R.radius: results.extend(search(q, r, clusters.R, results))</li>
+            <li>If d(q, cluster.R.center) &lt;= r + cluster.R.radius: results.extend(search(q, r, clusters.R, results))
+            </li>
+            <li>Return results</li>
           </ol>
         </div>
+        <aside class="notes">
+          This works very similarly to a binary search tree,
+          except we may need to inspect both children if the query size overlaps.
+        </aside>
+      </section>
+      <section>
+        <h4>Data Compression</h4>
+        <p>
+          Instead of storing all of the points, store differences to the centroid.
+        </p>
+        <aside class="notes">Only works if the dimensions are quantized.</aside>
       </section>
       <section>
         <h4>Analysis</h4>
         $$O \Bigg( k + |B_D (q, r)| \cdot \Big(\frac{r + 2r_c}{r} \Big)^d \Bigg)$$
 
         $$\log_2 \Bigg( \frac{ |B_D (q, r_1)| }{ |B_D (q, r_2)| } \Bigg)$$
+
+        $$ O(dn) $$
+        <aside class="notes">
+          <ul>
+            <li>k = metric entropy of the dataset</li>
+            <li>BD = output size of the search, this likely depends on n</li>
+            <li>rc = cluster radius</li>
+            <li>d = fractal dimension in the range from query radius to cluster radius</li>
+            <li>r_1 = Larger, r_2 = 1/2 larger</li>
+            <li>Search time is a function of geometric properties of the data</li>
+            <li>Order of algs: search, local fractal dimension, distance comparisons for clustering</li>
+          </ul>
+        </aside>
       </section>
       <section>
         <h4>Demonstration</h4>
         <canvas id="demonstration" width="1810" height="905"></canvas>
-        <button id="resetData" cl ass="button">Reset</button>
+        <button id="newDatasets" cl ass="button">Start Over</button>
         <button id="popCluster">Pop</button>
         <script>
           var scatterChartData = {
-            datasets: generateCluster(),
+            datasets: newDatasets(),
           };
 
           window.onload = function () {
@@ -229,20 +291,55 @@
                 title: {
                   display: false,
                 },
+                tooltips: {
+                  filter: function (item) {
+                    return 'centroid' in scatterChartData.datasets[item.datasetIndex];
+                  }
+                },
+                legend: {
+                  labels: {
+                    filter: function (item, data) {
+                      return !item.text.includes('centroid');
+                    }
+                  }
+                },
               }
             });
           };
 
-          document.getElementById('resetData').addEventListener('click', function () {
-            scatterChartData.datasets = generateCluster();
+          document.getElementById('newDatasets').addEventListener('click', function () {
+            scatterChartData.datasets = newDatasets();
             window.myScatter.update();
           });
 
           document.getElementById('popCluster').addEventListener('click', function () {
+            scatterChartData.datasets = scatterChartData.datasets.filter(cluster => 'centroid' in cluster);
             scatterChartData.datasets = pop(scatterChartData.datasets);
+            scatterChartData.datasets = scatterChartData.datasets.concat(scatterChartData.datasets.map(cluster => {
+              return {
+                label: cluster.label + ':centroid',
+                borderColor: Chart.helpers.color(cluster.borderColor).alpha(0.2).rgbString(),
+                data: [cluster.centroid],
+                radius: cluster.ball_radius,
+                backgroundColor: Chart.helpers.color(window.randomColor).alpha(0.3).rgbString(),
+              };
+            }));
             window.myScatter.update();
           })
         </script>
+      </section>
+      <section>
+        <h4>Results</h4>
+        <ul>
+          <li>Datasets did exhibit low fractal dimension</li>
+          <li>It required $3.2 \cdot 10^4$ comparisons vs FALCONN's $1.32 \cdot 10^5$</li>
+          <li>6.4x speedup over linear on APOGEE</li>
+          <li>3.97x speedup over linear GreenGenes</li>
+
+        </ul>
+        <aside class="notes">
+          In general,
+        </aside>
       </section>
     </div>
   </div>
