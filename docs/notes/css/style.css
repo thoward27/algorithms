@@ -26,4 +26,5 @@ code {
 .algorithm {
     font-family: 'Fira Code', monospace;
     font-size: 1.9rem;
+    text-align: left;
 }
